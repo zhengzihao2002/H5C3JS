@@ -1,0 +1,982 @@
+.clearfix:before,.clearfix:after{
+    content:"";
+    display: table;
+}
+.clearfix:after{
+    clear:both;
+}
+.clearfix{
+    *zoom:1;
+}
+
+/* scrollbar */
+/* width */
+/* ::-webkit-scrollbar {
+width: 20px;
+transition:all 0.5s;
+} */
+
+/* Track */
+/* ::-webkit-scrollbar-track {
+box-shadow: inset 0 0 5px grey; 
+border-radius: 10px;
+} */
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+/* background: lightskyblue; 
+border-radius: 10px;
+transition: all 0.4s; */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+/* background: red;  */
+}
+
+/* CSS内部样式表 ，也被称为嵌入式*/
+body{
+    margin:0;
+    padding:0;
+
+    /*css3抗锯齿形 让文字显示得更加清晰*/
+    -webkit-font-smoothing: antialiased;
+}
+p {
+    /* 选择器 {样式} */
+    /* 给谁改样式 {改什么样式} */
+
+    /* 将所有段落改成黑色 */
+    /* 可以是所有p标签，也可以是所有div标签，等等 */
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+    /* text-indent: 5em; */
+}
+
+a {
+    /*取消所有a标签默认的下划线*/
+    text-decoration: none;
+    outline: none;
+}
+a:visited,a:active,a:focus{
+    /* focus是点击的那一下，active是你上次点的 */
+    /* color: black; */
+}
+
+.colorRed {
+    /* 定义colorRed类 */
+    color: red;
+    /* color: rgba(255, 0, 0, 0.785); */
+    /* color: #ff0000 */
+    /* height: 100px; */
+    /* line-height:100px */
+    background-color: aliceblue;
+
+}
+
+.font35 {
+    /* 定义font为35 */
+    font-size: 50px;
+    text-align: center;
+    /* text-decoration:underline; */
+    /* font-family:'Microsoft YaHei',Arial, Helvetica, sans-serif; */
+    /* 首先会查看电脑有没有安装第一个字体。如果没有，则运行下一个 。
+        如果给body设置字体，整个body都会运行同一个字体。标题除外*/
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: bold;
+
+
+
+    /*集合版-> font: font-style font-weight font-size/line-height font-family */
+}
+
+#green {
+    /* green ID 只能被调用一次。相反，类可以被调用多次 */
+    color: mediumaquamarine;
+}
+
+* {
+    /* 通配符选择器：给所有标签定义 */
+}
+
+ol.classA {
+    /* 给ol标签创建独有类classA */
+    line-height: 40px;
+    text-indent: 2em;
+}
+*{
+    margin: 0; padding: 0;
+}
+/* 必须按照以下顺序都则会出错 */
+a:link{
+    /* 1.未访问过的链接:把没有访问过的链接选出来  */
+    color: #333;
+    text-decoration: none;
+}
+a:visited{
+    /* 2.访问过的链接 */
+}
+a:hover{
+    /* 3.鼠标经过的链接 */
+    color:red;
+}
+a:active{
+    color:cornflowerblue;
+    /* 4.按下链接别松开以显示 */
+}
+.noDisplay{
+    display: none;
+}
+a.blocked{
+    /* 把行内元素a转换为块级元素:每一块都是独占一行的 */
+    width: 150px;
+    height: 50px;
+    display:block;
+}
+div.inline{
+    /* 把div块级元素转换为行内元素(一行有多个div) :注意，行内元素设置宽和高是无效的！*/
+    width: 300px; 
+    height:100px;
+    display:inline;
+}
+span.inlineBlock{
+    /* 将行内元素转换为行内块元素：非独占一行的块 */
+    width:300px;
+    height:30px;
+    background-color: skyblue !important;
+    display: inline-block;
+
+
+}
+div.logoNZ{
+    height: 300px;
+    width: 300px;
+
+    /* 默认背景图片是平铺的 */
+    background-image: url(../images/nz.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+
+    /* x轴或者y轴平铺 
+    background-repeat: repeat-x;
+    background-repeat: repeat-y;
+    */
+
+    background-position: 41px 50px; /*x y：如果没有定义x或者y，这个单位一定是居中。如果都没有定义则是左上角*/
+    /* background-position: 20px center; x为20，y为center。等价于background-position: 20px */
+}
+h3.czsh{
+    /* 成长守护模版 */
+    width:118px;
+    height:40px;
+    line-height: 40px;
+
+    background-color: transparent;
+    font-size: 14px;
+    font-weight: normal;
+    background-image: url(../images/circle.png);
+    background-repeat: no-repeat;
+
+    background-position: left center;
+    text-indent: 1.5em;
+}
+body{
+    /* 壁纸 */
+    background-image: url(../images/北京20.jpg);
+    /* background-image: url(../images/squirt.jpg); */
+    background-repeat: no-repeat;
+
+    /* 设置背景图片位置 */
+    background-position: center center;
+    /* background-position:center 53px ; */
+    
+    background-size:cover;
+
+    /*将背景图片固定*/
+    background-attachment: fixed;
+
+    /*复合型写法*/
+    /* background: black url(../images/wzry.jpg) no-repeat fixed center top; */
+}
+.daohang{
+    height: 41px;
+    border-top: 3px solid #ff8500;
+    border-bottom: 1px solid #edeef0;
+    background-color: #fcfcfc;
+    line-height: 41px;
+}
+.daohang a{
+    display: inline-block;
+    height:41px;
+    /* 上下为零像素，左右为20像素 */
+    padding:0 20px; 
+
+    font-size: 12px;
+    color:#4c4c4c;
+    text-decoration: none;
+
+    float: left;
+}
+.daohang a:hover{
+    background-color: #eee;
+    color:#ff8500;
+}
+/* 内边距padding外边距margin边框border */
+
+/* 原来是.kuaijie */
+div[class^="kuaijie"] li{
+    /*去掉小圆点/数字*/
+    list-style: none;
+}
+div[class*="kuaijie"] a{
+    display: block;
+
+    /*文字垂直居中小技巧：lh=h* 注意，lh不等于text-size*/
+    /* height: 40px;
+    line-height: 40px; */
+    padding-top: 10px;padding-bottom: 10px;
+
+    background-color: gray;
+    text-decoration: none;
+    font-size: 14px;
+    color:white;
+    
+    /*padding：注意，如果没有指定宽或高，padding不会撑开盒子*/
+    padding-left: 30px;
+    padding-right: 30px;
+ }
+
+ div[class^="kuaijie"] a:hover{
+    background-color:yellowgreen;
+ }
+ div[class*="kuaijie"] div{
+    width: fit-content;
+    /* display: inline-block; */
+
+    margin: 50px auto;
+    text-align: center;
+ }
+ 
+ .kuaijie1 li{
+    margin: 0 20px;
+
+ }
+ .kuaijie1 a{
+    transition: all .5s;
+    /* font-size: large !important; */
+ }
+ .kuaijie1 a:hover{
+    background-color: lightblue !important;
+    color:red;
+    font-weight: bold;
+    border-radius: 10px;
+    /* margin: 0 5px; */
+    transform: translateX(5%);
+ }
+ .kuaijie1.specialtranslate2percent a:hover{
+    transform: translateX(2%);
+ }
+ .kuaijie1{
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+ }
+ .kuaijie1 ol li::marker{
+    transition: all .3s;
+ }
+ .kuaijie1 ol li:hover::marker{
+    color:red;
+    font-weight: bold;
+    font-size: larger;
+}
+ .kuaijie1 ul{
+    list-style: none;
+ }
+.comments{
+    background-color: lightgray !important;
+    color:red !important;
+    font-weight:bold;
+}
+a.video_done{
+    /* background: -webkit-linear-gradient(left,lightblue ,lightgreen)!important; */
+    background-color: aliceblue !important;
+    color:black !important;
+    transition: all 1s;
+}
+a.video_special:hover{
+    background-color: lightpink !important;
+    color:black !important;
+    transition: all 1s;
+    transition-timing-function:linear;
+}
+.video_done:hover{
+    /* background: -webkit-linear-gradient(left,lightgreen ,lightblue)!important; */
+    background-color: lightgreen !important;
+}
+ /* <div class="container kuaijie1" style="width: 100%; display: table; background-color: aliceblue;" id="code">
+ <!--第一行：链接-->
+ <div style="display: table-row">
+   <!--第一列：外部链接-->
+   <div style="display: table-cell; width: 25%;">
+     <h3><b>外部链接</b></h3>
+     <ol>
+         <!--自定义列表-->
+         <li><a href="http://www.81.cn" target="_blank">中国军网链接</a></li>
+         <li><a href="http://www.douyin.com" target="_blank">抖音短视频</a></li>
+         <li><a href="http://www.apple.com.cn" target="_blank">苹果中国官网</a></li>
+         <li><a href="http://www.amazon.com" target="_blank">亚马逊美国</a></li>
+     </ol>
+   </div>
+   
+   <!--第二例：内部链接-->
+   <div style="display: table-cell;width: 25%;">
+     <h3><b>内部链接</b></h3>
+     <ol>
+         <li><a href="zzq.html">卡哇伊链接</a></li>
+         <li><a href="girls.html">女孩表格</a></li>
+         <li><a href="jianli.html">CEO郑子豪介绍</a></li>
+         <li><a href="news1.html">新闻案例</a></li>
+         <li><a href="box.html">盒子案例</a></li>
+         <li><a href="easysidebar.html">侧边栏案例</a></li>
+         <li><a href="wucaidaohang.html">五彩导航案例</a></li>
+         <li><a href="cssbox.html">设置盒子案例</a></li>
+         <li><a href="none.html">无边框案例</a></li>
+         <li><a href="pinyougou.html">新闻快报模块</a></li>
+         <li><a href="tiaopi.html">清除浮动案例</a></li>
+         <li><a href="index.html">学成在线案例</a></li>
+         <li><a href="positioning.html">定位</a></li>
+         <li><a href="taobao.html">某宝轮播图案例</a></li>
+         <li><a href="tudou.html">仿土豆网显示隐藏遮罩案例</a></li>
+         <li><a href="jingling.html">精灵图</a></li>
+         <li><a href="tubiao.html">图标</a></li>
+         <li><a href="margin.html">margin巧妙运用</a></li>
+         <li><a href="new.html">html5新增</a></li>
+         <li><a href="new2.html">css3新增</a></li>
+         <li><a href="goods.html">商品案例</a></li>
+         <li><a href="mi_logo.html">小米logo案例</a></li>
+         <li><a href="index2.html">品优购案例</a></li>
+         <li><a href="translate.html">2D 3D</a></li>
+         <li><a href="yidong.html">移动简介</a></li>
+         <li><a href="京东移动端/index.html">京东移动端（流式布局案例）</a></li>
+         <li><a href="flex.html">Flex布局</a></li>
+         <li><a href="携程移动端/xiecheng.html">携程移动端（Flex布局案例）</a></li>
+         <li><a href="rem.html">REM布局</a></li>
+         <li><a href="苏宁移动端/index.html">苏宁移动端（rem布局案例）</a></li>
+         <li><a href="黑马面面/index.html">黑马面面（flex + js + rem 直播案例）</a></li>
+         <li><a href="rwd.html">响应式布局</a></li>
+         <li><a href="阿里百秀移动端/index.html">阿里百秀（响应式布局案例）</a></li>
+     </ol>
+   </div>
+
+   <!-- 第三例：功能 -->
+   <div style="display: table-cell;width: 25%;">
+     <h3><b>功能</b></h3>
+     <ul>
+         <!--speacial features-->
+         <li><a href="#top">返回顶部</a></li>
+     </ul>
+   </div>
+
+   <!-- 第四例：HTML-CSS-JS视频重要 -->
+   <div style="display: table-cell;width: 25%;">
+     <h3><b>HTML5 CSS3 JS 重要视频</b></h3>
+     <ol>
+         <li><a href="https://www.bilibili.com/video/BV1RK4y1X7qd?p=153" target="_blank">153集:外边距 塌陷/合并</a></li>
+         <li><a href="https://www.bilibili.com/video/BV1RK4y1X7qd?p=185" target="_blank">185集:清除浮动用overflow</a></li>
+         <li><a href="https://www.bilibili.com/video/BV1RK4y1X7qd?p=247" target="_blank">247集:overflow真正应用</a></li>
+     </ol>
+   </div>
+
+ </div>
+</div> */
+
+
+ div.special{
+     width: 600px;
+     height: 100;
+     background-color: aliceblue;
+
+     /*上下 左右*/
+     margin: 100px auto;
+
+     /*水平阴影 垂直阴影 模糊距离 阴影尺寸 阴影颜色 内阴影（默认）/外阴影*/
+     box-shadow: 10px 10px 10px 10px rgba(0, 0, 0,0.3);
+ }
+
+ div.special2{
+    /*原先盒子没有阴影，鼠标经过时，才有阴影*/
+
+    width: 600px;
+    height: 100px;
+    background-color: aliceblue;
+    margin: 50px auto;
+    margin-top: 160px;
+}
+div.special2:hover{
+    /*水平阴影 垂直阴影 模糊距离 阴影尺寸 阴影颜色 内阴影（默认）/外阴影*/
+    box-shadow: 10px 10px 10px -4px rgba(0, 0, 0,0.3);
+}
+
+div.special3{
+    /*文字阴影*/
+    font-size: 50px;
+    color: red;
+    font-weight: 700;
+
+    /*水平阴影 垂直阴影 模糊距离 颜色*/
+    text-shadow: 5px 5px 6px rgba(0,0,0,.3);
+}
+.video-bg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -960px;
+    z-index: 2;
+}
+
+
+
+.fixed_btn {
+    position: fixed;
+    /*和"自创妲己"对齐*/
+    top: 135px;
+    right: 80px;
+}
+.fixed_btn2 {
+    position: fixed;
+    /*和"自创妲己"对齐*/
+    top: 135px;
+    right: 110px;
+}
+
+/*自创（左）妲己*/
+.dj{
+    /*根据浏览器的可视窗口来对齐的*/
+    position: fixed;
+    top: 100px;
+    right: 0px;
+}
+
+.fixed_btn3 {
+    position: fixed;
+    /*
+    问题：在body头部可以显示，在尾部就不见了
+    原因：在头部是第一个显示，他就是第一个，首先显示。如果在body的尾部写
+    则是最后一个显示。他就被其他模块压到浏览器无法显示的位置了。记住，
+    他是fixed在浏览器的显示位置，所以如果跑出了浏览器显示位置，即使你往下拉
+    他也会待在你看不到的位置。
+    所以，他其实不在页面里，他在浏览器显示部位里，且跑出去了。其实有显示，
+    只是在你看不到的位置。即使你拉下去也看不到，他不属于页面！
+
+    解决方案：利用外边距把他移过来
+    
+    疑问：为什么在头部写的话，不会被挤出去呢？而在底部写就回呢？
+    答案：浮动性质的问题。它本身是浮动的，页面里的父模块（父模块里的子模块有浮动）
+    没有任何浮动。而浮动只会影响后面的标准流模块。所以，在头部写的话其他模块
+    会跑到他的下面去。尾部写的话，他要遵守前面的模块。所以只会在前面的”模块们‘
+    的下面显示。
+
+    追加：浮动元素只会压住下面标准流的盒子，但是不会压住下面标准流的文字
+    绝对定位和固定定位 会压住下面标准流的所有内容。浮动的目的就是文字环绕效果。
+
+    */
+    top: 80%;
+    right: 20px;
+}
+
+
+
+
+
+.sidebar{
+    width: 55px;
+    /* height: 300px; */
+
+    position: fixed;
+    right: 10px;
+    bottom: 80px;
+
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.sidebar>a{
+    display: block;
+    color:white;
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid white;
+    font-size: 12px;
+    text-align: center;
+
+    transition: all .2s;
+}
+.sidebar>a:hover{
+    background-color: #00AEEC;
+}
+.sidebar>a:last-child{
+    border: 0;
+}
+
+
+/* tab栏切换案例 */
+/* 大盒子 */
+.tab {
+    width: 100%;
+    margin: 10px auto;
+}
+/* 上面部分 */
+.tab_list {
+    height: 39px;
+    border: 1px solid #ccc;
+    /* background-color: #f1f1f1; */
+    background: -webkit-linear-gradient(left,#e99898,#e35d5d);
+    border-radius: 15px;
+    overflow: hidden;
+    /* overflow-x: scroll; */
+}
+.tab_list li {
+    float: left;
+
+    height: 39px;
+    line-height: 39px;
+
+    padding: 0 20px;
+
+    text-align: center;
+    cursor: pointer;
+}
+.tab_list .current {
+    background-color: lightskyblue;
+    color: white;
+    border-radius: 15px;
+}
+/* 下面部分 */
+.item_info {
+    /* padding: 20px 0 0 20px; */
+
+    width: 100%;
+    background-color: aliceblue;
+    height: 800px;
+    overflow: auto;
+}
+.item {
+    display: none;
+}
+.item a{
+    display: block;
+}
+.active{
+    display: block;
+}
+
+
+
+
+.tab_con .item:nth-child(7),.tab_con .item:nth-child(8){
+    background-color: #fff!important;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.tab_con .item:nth-child(7) a,.tab_con .item:nth-child(8) a{
+    display: inline-block;
+    color:#008ac5;
+    transition: all 0.3s;
+}
+.tab_con .item:nth-child(7) a:hover,.tab_con .item:nth-child(8) a:hover{
+    color:#00AEEC;
+}
+.tab_con .item:nth-child(7) .wrap img,.tab_con .item:nth-child(8) .wrap img{
+    vertical-align:text-top;
+    width: 20px;
+    height: 20px;
+}
+.wrap{
+    border: 1px solid red;
+    border-radius: 10px;
+    margin:10px;
+
+    padding: 5px;
+    box-sizing: border-box;
+}
+.wrap h3{
+    margin-bottom: 5px;
+}
+.top-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 30px;
+    height: 18px;
+    border: 1px solid #ff6699;
+    border-radius: 3px;
+    margin-right: 5px;
+    font-size: 12px;
+    color: #ff6699;
+
+    font-style: normal;
+}
+
+
+
+
+/* 遮罩层扩展明星页面 */
+.imgBOX{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.imgBOX img{
+    /* 也可以是contain如果想完全显示出来 */
+    object-fit: cover;
+    object-position:center top;
+
+    width: 100%;
+    height: 100%;
+}
+.imgBOX > div{
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+    font-size: 150px;
+    color: white;
+}
+.imgBOX > div.flag{
+    top: -40px;
+    font-size: 300px;
+}
+
+/* 明星页面 */
+.MX{
+    transition: all 0.4s;
+}
+.MX:hover{
+    transform: scale(1.2);
+}
+
+
+.pointer{
+    cursor: pointer;
+}
+.noSelect{
+    user-select: none;
+}
+
+
+/* 下拉菜单 */
+.nav {
+    border: 1px solid #FECC5B; 
+    background-color: #fff;   
+    z-index: 99999999;        
+}
+.nav>li {
+    /* 头部显示的标签 */
+    position: relative;
+    float: left;
+
+    /* width: 80px; */
+    height: 41px;
+
+    text-align: center;
+    list-style-type: none;
+
+}
+.nav li a {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    line-height: 41px;
+    color: #333;
+
+    text-decoration: none;
+    font-size: 14px;
+    padding:0 20px; 
+
+     /* 必须加这个，否则a的实际大小就不会包括内边距和外边距，也就不会撑开li */
+    box-sizing: border-box;
+
+}
+.nav>li>a:hover {
+    /* 头部显示的标签 */
+    background-color: #eee;
+}
+.nav ul {
+    /* 下拉菜单本单 */
+    display: none;
+    position: absolute;
+
+    top: 41px;
+    left: 0;
+    min-width: 100%;
+    
+    box-sizing: border-box;
+    border-left: 1px solid #FECC5B;
+    border-right: 1px solid #FECC5B;
+    border-top: 1px solid #FECC5B;
+
+    background-color: #fff;
+    z-index: 10;
+}
+.nav ul li {
+    border-bottom: 1px solid #FECC5B;
+    list-style: none;
+}
+.nav ul li a{
+    white-space: nowrap;
+}
+.nav ul li a:hover {
+    background-color: #FFF5DA;
+}
+
+
+.nav #musicMENU a{
+    padding: 0;
+}
+
+
+/* 俩大组合备份：
+<div id="code" style="background-color: aliceblue;border-top-left-radius: 10px;border-top-right-radius: 10px;">
+        <h4 style="text-align: center; font-size: 40px;">链接</h4>
+        <h4 style="text-align: center; font-size: 15px; color:darkgray">淡灰则是注释重区（Comment Heavy）</h4>
+    </div>
+    <div class="container kuaijie1" style="width: 100%; display: table; background-color: aliceblue;display: flex;">
+        
+        <!--第一行：链接-->
+        <!-- <div style="display: table-row"> -->
+          <!--第一列：外部链接-->
+          <div style="flex: 1;display: table-cell; ">
+            <h3><b>外部链接</b></h3>
+            <ol>
+                <!--自定义列表-->
+                <li><a href="http://www.81.cn" target="_blank">中国军网链接</a></li>
+                <li><a href="http://www.douyin.com" target="_blank">抖音短视频</a></li>
+                <li><a href="http://www.apple.com.cn" target="_blank">苹果中国官网</a></li>
+                <li><a href="http://www.amazon.com" target="_blank">亚马逊美国</a></li>
+            </ol>
+          </div>
+          
+          <!--第二例：内部链接-->
+          <div style="flex: 1;display: table-cell;">
+            <h3><b>内部链接</b></h3>
+            <ol>
+                <li><a href="zzq.html" class="comments">卡哇伊链接</a></li>
+                <li><a href="girls.html">女孩表格</a></li>
+                <li><a href="jianli.html">CEO郑子豪介绍</a></li>
+                <li><a href="news1.html">新闻案例</a></li>
+                <li><a href="box.html">盒子案例</a></li>
+                <li><a href="easysidebar.html">侧边栏案例</a></li>
+                <li><a href="wucaidaohang.html">五彩导航案例</a></li>
+                <li><a href="cssbox.html">设置盒子案例</a></li>
+                <li><a href="none.html">无边框案例</a></li>
+                <li><a href="pinyougou.html">新闻快报模块</a></li>
+                <li><a href="tiaopi.html">清除浮动案例</a></li>
+                <li><a href="index.html">学成在线案例</a></li>
+                <li><a href="positioning.html" class="comments">定位</a></li>
+                <li><a href="taobao.html">某宝轮播图案例</a></li>
+                <li><a href="tudou.html">仿土豆网显示隐藏遮罩案例</a></li>
+                <li><a href="jingling.html">精灵图</a></li>
+                <li><a href="tubiao.html" class="comments">图标</a></li>
+                <li><a href="margin.html" class="comments">margin巧妙运用</a></li>
+                <li><a href="new.html" class="comments">html5新增</a></li>
+                <li><a href="new2.html">css3新增</a></li>
+                <li><a href="goods.html">商品案例</a></li>
+                <li><a href="mi_logo.html">小米logo案例</a></li>
+                <li><a href="index2.html">品优购案例</a></li>
+                <li><a href="translate.html" class="comments">2D 3D</a></li>
+                <li><a href="yidong.html">移动简介</a></li>
+                <li><a href="京东移动端/index.html">京东移动端（流式布局案例）</a></li>
+                <li><a href="flex.html">Flex布局</a></li>
+                <li><a href="携程移动端/xiecheng.html">携程移动端（Flex布局案例）</a></li>
+                <li><a href="rem.html">REM布局</a></li>
+                <li><a href="苏宁移动端/index.html">苏宁移动端（rem布局案例）</a></li>
+                <li><a href="黑马面面/index.html">黑马面面（flex + js + rem 直播案例）</a></li>
+                <li><a href="rwd.html">响应式布局</a></li>
+                <li><a href="阿里百秀移动端/index.html">阿里百秀（响应式布局案例）</a></li>
+                <li><a href="./vhvw.html">vh vw 布局</a></li>
+                <li><a href="B素材/index.html">vhvw案例</a></li>
+            </ol>
+          </div>
+
+          <!-- 第三例：功能 -->
+          <div style="display: table-cell;flex: 1;">
+            <h3><b>功能</b></h3>
+            <ul>
+                <!--speacial features-->
+                <li><a href="#top">返回顶部</a></li>
+            </ul>
+          </div>
+
+          <!-- 第四例：HTML-CSS-JS视频重要 -->
+          <div style="display: table-cell;flex: 1;">
+            <h3><b>HTML5 CSS3 JS 重要视频</b></h3>
+            <ol>
+                <li><a href="https://www.bilibili.com/video/BV1RK4y1X7qd?p=153" target="_blank">153集:外边距 塌陷/合并</a></li>
+                <li><a href="https://www.bilibili.com/video/BV1RK4y1X7qd?p=185" target="_blank">185集:清除浮动用overflow</a></li>
+                <li><a href="https://www.bilibili.com/video/BV1RK4y1X7qd?p=247" target="_blank">247集:overflow真正应用</a></li>
+            </ol>
+          </div>
+
+        <!-- </div> -->
+    </div> 
+    
+    
+    
+    <!-- Took out the ---style="display: inline-block;"--- in the inner div's -->
+    <div class="kuaijie" style="background-color: aliceblue; padding: 20px 0 20px 0;" id="tabs">
+        <h4 style="text-align: center; font-size: 40px;">快捷链接</h4>
+        <h4 style="text-align: center; font-size: 15px; color:darkgray">关键字：高级 / 进阶 / 就业 / 实战</h4>
+        <!-- html -->
+        <div>
+            <ol>
+                <dt>HTML5 CSS3</dt>
+                <li><a href="https://www.bilibili.com/video/BV1RK4y1X7qd?p=161&spm_id_from=pageDriver" target="_blank">黑马程序员前端Web全套教程，会打字就能学会的Web前端课程</a></li>
+                <li><a href="https://www.bilibili.com/video/BV1zb4y167cd" target="_blank">Web前端全套_零基础自学到精通必备，Html+Css+前端web就业项目源码实操</a></li>
+                <li><a href="https://www.bilibili.com/video/BV14J4114768?p=127" target="_blank" class="video_done">黑马程序员pink老师前端入门教程，零基础必看的h5(html5)+css3+移动端前端视频教程</a></li>
+                <li><a href="https://www.bilibili.com/video/BV17z4y1D7Yj/?spm_id_from=333.788.recommend_more_video.0" target="_blank">千锋web前端开发项目教程_1000集完全零基础入门HTML5+CSS3+JS到精通</a></li>
+                <li><a href="https://www.bilibili.com/video/BV19i4y147WF?p=21" target="_blank">【爱创课堂】最新web前端开发零基础入门html5+css3+js全套前端教程 | 从入门到就业全套前端教程</a></li>
+                <li><a href="https://www.bilibili.com/video/BV1y64y1r7PU?spm_id_from=333.337.search-card.all.click" target="_blank">web前端必备技能Ajax/Git/node.js/mysql/vue.js详细教程（web前端就业课程）</a></li>
+                <li><a href="https://www.bilibili.com/video/av96953550?spm_id_from=333.788.b_636f6d6d656e74.25" target="_blank">求知讲堂web前端 96天完整版 学完可就业</a></li>
+            </ol>
+        </div>
+
+        <!-- js -->
+        <div >
+            <ol>
+                <dt>JavaScript ReactJS</dt>
+                <li><a href="https://www.bilibili.com/video/BV1YW411T7GX?p=12" target="_blank">尚硅谷JavaScript基础&实战丨JS入门到精通全套完整版</a></li>
+                <li><a href="https://www.bilibili.com/video/BV14s411E7qf/?spm_id_from=333.788.video.desc.click" target="_blank">尚硅谷JavaScript高级教程(javascript实战进阶)</a></li>
+                <li><a href="https://search.bilibili.com/all?vt=17047972&keyword=javascript" target="_blank">Bilibili搜JS</a></li>
+                <li><a href="https://search.bilibili.com/all?keyword=react&from_source=webtop_search&spm_id_from=333.1007" target="_blank">Bilibili搜React</a></li>
+                <li><a href="https://www.bilibili.com/video/BV1wy4y1D7JT?spm_id_from=333.337.search-card.all.click" target="_blank">尚硅谷React技术全家桶全套完整版（零基础入门到精通/男神天禹老师亲授）</a></li>
+                <li><a href="https://www.bilibili.com/video/BV1dP4y1c7qd?spm_id_from=333.337.search-card.all.click" target="_blank">千锋2022版React全家桶教程_react零基础入门到项目实战完整版</a></li>
+            </ol>
+        </div>
+
+        <!-- mysql -->
+        <div>
+            <ol>
+                <dt>MySQL</dt>
+                <li><a href="https://www.bilibili.com/video/BV1Vy4y1z7EX?p=2&spm_id_from=pageDriver" target="_blank">老杜带你学_mysql入门基础（mysql基础视频+数据库实战)</a></li>
+                <li><a href="https://www.bilibili.com/video/BV12b411K7Zu?from=search&seid=16828103040564214589&spm_id_from=333.337.0.0" target="_blank">MySQL_基础+高级篇- 数据库 -sql -mysql教程_mysql视频_mysql入门_尚硅谷</a></li>
+                <li><a href="https://search.bilibili.com/all?vt=41570633&keyword=mysql&from_source=webtop_search&spm_id_from=333.851&order=click" target="_blank">Bilibili搜MySQL</a></li>
+                <li><a href="https://www.bilibili.com/video/BV1iF411z7Pu?p=2" target="_blank">2022黑马程序员最新MySQL知识精讲+mysql实战案例_零基础mysql数据库入门到高级全套教程</a></li>
+                <li><a href="https://search.bilibili.com/all?keyword=mysql%E5%85%A8%E5%A5%97&from_source=webtop_search&spm_id_from=333.788" target="_blank">Bilibili搜mysql全套</a></li>
+                <li><a href="https://search.bilibili.com/all?keyword=mysql%20%E5%B0%B1%E4%B8%9A&from_source=webtop_search&spm_id_from=333.1007" target="_blank">Bilibili搜MySQL就业</a></li>
+                <li><a href="https://www.bilibili.com/video/BV1e64y117iM?spm_id_from=333.337.search-card.all.click" target="_blank">求知讲堂大数据（mysql）视频 99天完整版（不断更新中）学完可就业</a></li>
+                <li><a href="https://www.bilibili.com/video/BV1iq4y1u7vj?spm_id_from=333.337.search-card.all.click" target="_blank">MySQL数据库教程天花板，mysql安装到mysql高级，强！硬！
+                </a></li>
+            </ol>
+        </div>
+
+        <!-- python -->
+        <div >
+            <ol>
+                <dt>Python</dt>
+                <li><a href="https://www.bilibili.com/video/BV1wD4y1o7AS?p=2" target="_blank">花了2万多买的Python教程全套，现在分享给大家，入门到精通(Python全栈开发教程)</a></li>
+            </ol>
+        </div>
+
+        <!-- C++ -->
+        <div>
+            <ol>
+                <dt>C++</dt>
+                <li><a href="https://www.bilibili.com/video/BV1et411b73Z?p=2" target="_blank">黑马程序员匠心之作|C++教程从0到1入门编程,学习编程不再难</a></li>
+                <li><a href="https://search.bilibili.com/all?keyword=C%2B%2B+%E5%85%A8%E5%A5%97&from_source=webtop_search&spm_id_from=333.1007" target="_blank">Bilibili搜C++</a></li>
+            </ol>
+        </div>
+
+        <!-- ssm -->
+        <div>
+            <ol>
+                <dt>SSM框架</dt>
+                <p style="text-align: center; font-size: 15px; color:darkgray">主要  ->  <i style="color:red;font-size: 20px;">(1) 此处第一个</i> + <i  style="color:red;font-size: 20px;">(2) 下面的Java学习路线图</i></p>
+                <li><a href="https://www.bilibili.com/video/BV1WZ4y1P7Bp?from=search&seid=12427324773599784024&spm_id_from=333.337.0.0" target="_blank" class="video_special">黑马程序员最全SSM框架教程|Spring+SpringMVC+MyBatis全套教程(spring+springmvc+mybatis)</a></li>
+                <li><a href="https://search.bilibili.com/all?keyword=springboot&from_source=webtop_search&spm_id_from=333.788" target="_blank">Bilibili搜Spring Boot</a></li>
+                <li><a href="https://www.bilibili.com/video/BV19K4y1L7MT?from=search&seid=18259079546500227797&spm_id_from=333.337.0.0" target="_blank">尚硅谷雷神SpringBoot2零基础入门springboot全套完整版（spring boot2）</a></li>
+                <li><a href="https://www.bilibili.com/read/cv5216534?spm_id_from=333.788.b_636f6d6d656e74.8" target="_blank">Java快速学习路线图 作者：尚硅谷 </a></li>
+                <li><a href="https://www.bilibili.com/read/cv9965357?spm_id_from=333.788.b_636f6d6d656e74.7" target="_blank">Java学习路线图（2022版，视频已更新） 作者：黑马程序员 </a></li>
+            </ol>
+        </div>
+
+        <!-- jw -->
+        <div>
+            <ol>
+                <dt>Java Web</dt>
+                <li><a href="https://www.bilibili.com/video/BV1Qf4y1T7Hx?from=search&seid=13540232972038391458&spm_id_from=333.337.0.0" target="_blank">黑马程序员最新版JavaWeb基础教程，Java web从入门到企业实战完整版</a></li>
+                <li><a href="https://www.bilibili.com/video/BV1Y7411K7zz?from=search&seid=13540232972038391458&spm_id_from=333.337.0.0" target="_blank">尚硅谷最新版JavaWeb全套教程,java web零基础入门完整版</a></li>
+            </ol>
+        </div>
+
+        <!-- money -->
+        <div>
+            <ol>
+                <dt>Money Shit</dt>
+                <li><a href="https://studentaid.gov/fsa-id/sign-in/landing?redirectTo=%2F" target="_blank">FAFSA</a></li>
+                <li><a href="https://www.mohela.com/DL/secure/account/sessionTimeout.aspx" target="_blank">MOHELA</a></li>
+                <li><a href="https://finservices.rutgers.edu/faaward/letter/faaward.htm" target="_blank">Rutgers Award Letter</a></li>
+            </ol>
+        </div>
+
+        <!-- ios -->
+        <div>
+            <ol>
+                <dt>Swift</dt>
+                <li><a href="https://www.bilibili.com/video/BV1rb411C7eN?spm_id_from=333.337.search-card.all.click" target="_blank">【中文字幕】斯坦福（Stanford）Swift 语言教程 iOS 11 开发 苹果公司 编程 CS193P</a></li>
+            </ol>
+        </div>
+
+        <!--PHP：落后语言-->
+        <div>
+            <ol>
+                <dt>PHP</dt>
+                <li><a href="https://www.bilibili.com/video/BV18x411H7qD?spm_id_from=333.337.search-card.all.click" target="_blank">黑马程序员PHP零基础入门到精通教程（P1基础6天）</a></li>
+                <li><a href="https://www.bilibili.com/video/BV1AA411L7S8?spm_id_from=333.337.search-card.all.click" target="_blank">PHP全套教学-就业班（1625集）上部</a></li>
+            </ol>
+        </div>
+
+        <!--ui-->
+        <div>
+            <ol>
+                <dt>UI设计</dt>
+                <li><a href="https://search.bilibili.com/all?keyword=ui&from_source=webtop_search&spm_id_from=333.1007" target="_blank">Bilibili搜UI</a></li>
+            </ol>
+        </div>
+
+        <!--java-->
+        <div>
+            <ol>
+                <dt>Java</dt>
+                <li><a href="https://www.bilibili.com/video/BV1Tf4y1S7zj?spm_id_from=333.880.my_history.page.click" target="_blank">java黑马就业班全套学习视频超完整(IDEA版)持续更新中</a></li>
+                <li><a href="https://www.bilibili.com/video/BV18J411W7cE?spm_id_from=333.337.search-card.all.click" target="_blank">黑马程序员全套Java教程_Java基础入门视频教程，零基础小白自学Java必备教程
+                </a></li>
+                <li><a href="https://search.bilibili.com/all?vt=82473932&keyword=java+%E5%B0%B1%E4%B8%9A&from_source=webtop_search&spm_id_from=333.788&order=click" target="_blank">Bilibili搜Java就业</a></li>
+                <li><a href="https://www.bilibili.com/video/BV1CJ411m7gg?spm_id_from=333.337.search-card.all.click" target="_blank">求知讲堂Java视频 128天完整版 学完可就业</a></li>
+
+            </ol>
+        </div>
+
+        <!--学习路线图-->
+        <div>
+            <ol>
+                <dt>学习路线图</dt>
+                <li><a href="https://www.bilibili.com/read/cv9965357" target="_blank" class="video_special">2022黑马程序员Java学习路线图</a></li>
+                <li><a href="https://www.bilibili.com/read/cv10431130" target="_blank">2022年web前端开发学习路线图</a></li>
+                <li><a href="https://www.bilibili.com/read/cv10593914" target="_blank">2022年黑马程序员Python学习路线图</a></li>
+            </ol>
+        </div>
+
+        <!-- bj -->
+        <div >
+            <ol>
+                <dt>BJ's</dt>
+                <li><a href="https://www.myworkday.com/wday/authgwy/bjswholesaleclub/login.htmld?returnTo=%2fbjswholesaleclub%2fd%2funifiedinbox%2finitialinbox%2f2998%2423221.htmld" target="_blank">My WorkDay</a></li>
+                <li><a href="https://ath05.prd.mykronos.com/authn/XUI/?realm=/bjswholesale_prd_01#login&goto=https%3A%2F%2Fbjswholesale.prd.mykronos.com%3A443%2F" target="_blank">My Kronos</a></li>
+            </ol>
+        </div>
+    </div>
+    */
+
+
