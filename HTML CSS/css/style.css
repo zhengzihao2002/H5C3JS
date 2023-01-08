@@ -190,7 +190,7 @@ body{
     background-repeat: no-repeat;
 
     /* 设置背景图片位置 */
-    background-position: center center;
+/*     background-position: center center; */
     /* background-position:center 53px ; */
     
     background-size:100%;
