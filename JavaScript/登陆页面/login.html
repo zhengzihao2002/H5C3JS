@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section{
+            background-color: #242424;
+            color:green;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 所有的表单要放倒表单域，有的表单域我们才能提交。提交后会把表单域里的参数全都传到对应页面，到对应页面可以去取 -->
+    <form action="index.html">
+        用户名：<input type="text" name="username" >
+        <input type="submit" value="登陆">
+    </form>
+
+    <section>
+        所有的表单要放倒表单域，有的表单域我们才能提交。提交后会把表单域里的参数全都传到对应页面，到对应页面可以去取
+        <p>&lt; form action="index.html" &gt;</p> 
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;用户名: &lt;input type="text" name="username"&gt;</p> 
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&lt; input type="submit" value="登陆"&gt;</p>
+        <p>&lt;form&gt;</p> 
+    </section>
+    
+</body>
+</html>

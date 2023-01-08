@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section{
+            background-color: #242424;
+            color:green;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div></div>
+    <script>
+        console.log(window.location.search); //?username=andy
+        //1. 先去掉问号 substr('起始位置',截取几个字符串);
+        let params = location.search.substr(1);//params 就是参数.1-省略（最后一个）
+        console.log(params);
+
+        //2. 利用等号把字符串分割为数组(自动)
+        let arr = params.split('=');
+        console.log(arr);
+
+        //3. 把数据写入div中
+        var div = document.querySelector('div');
+        div.innerHTML=arr[1]+'欢迎您';
+
+    </script>
+    <p></p>
+    <section>
+        <p>&lt;div&gt;&lt;/div&gt;</p>
+        <p>&lt;script&gt;</p>
+            <p>&nbsp;&nbsp;console.log(window.location.search); //?username=andy</p>
+            <p>&nbsp;&nbsp;//1. 先去掉问号 substr('起始位置',截取几个字符串);</p>
+            <p>&nbsp;&nbsp;let params = location.search.substr(1);//params 就是参数.1-省略（最后一个）</p>
+            <p>&nbsp;&nbsp;console.log(params);//username=andy</p>
+            
+            <p>&nbsp;&nbsp;//2. 利用等号把字符串分割为数组(自动)</p>
+            <p>&nbsp;&nbsp;let arr = params.split('=');</p>
+            <p>&nbsp;&nbsp;console.log(arr);//arr[0]=username ; arr[1]=andy</p>
+            
+            <p>&nbsp;&nbsp;//3. 把数据写入div中</p>
+            <p>&nbsp;&nbsp;var div = document.querySelector('div');</p>
+            <p>&nbsp;&nbsp;div.innerHTML=arr[1]+'欢迎您';</p>
+            
+        <p>&lt;/script&gt;</p>
+    </section>
+</body>
+</html>
