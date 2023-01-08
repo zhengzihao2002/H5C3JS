@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    /*
+    我们需要一个50^2像素（css像素）等图片 直接放到我们 移动端 里面会放大两倍 100*100 就会模糊 (注意:1px约等于2物理像素，以苹果8为例)
+    我们采取的是 放一个100*100 图片 然后手动的把这个图缩小为50*50（css像素）
+    我们准备的图片比我们实际需要的大小大两倍，这就是2倍图
+    */
+    div img:nth-of-type(1) {
+        /*img:nth-child(2) ： 先找第二个孩子，然后再看是否是img*/
+        width: 50px;
+        height: 50px;
+    }
+
+
+
+    div.bgs {
+        width: 50px;
+        height: 50px;
+        border: 1px solid red;
+        background: url(images/apple100.jpg) no-repeat;
+        /* background-size: 图片宽度 图片高度; */
+
+        /*如果只有一个参数，则是宽度，高度等比例缩放。cover：背景图像覆盖背景区域(可能有部分显示不全)。contain：宽度和高度完全适应内容区域*/
+        /* background-size: 500px; */
+        background-size: 50px 50px;
+    }
+
+
+    section.solve div:nth-child(1) {
+        /* 传统盒子模型 */
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+
+        /*注意这里会撑大盒子:box-sizing:content-box*/
+        padding: 10px;
+
+        border: 10px solid red;
+    }
+
+    section.solve div.solve:nth-of-type(2) {
+        width: 200px;
+        height: 200px;
+        background-color: purple;
+
+        padding: 10px;
+        /*有了这句话就变成了CSS3盒子模型:不会撑大*/
+        box-sizing: border-box;
+
+        border: 10px solid blue;
+    }
+
+
+    a {
+        /*去掉移动端点击链接是的高亮效果（highlight）*/
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    input {
+        /*去掉外观样式效果（我们之后可以单独设计）*/
+        -webkit-appearance: none;
+    }
+
+    img,
+    a {
+        /*手指按的时间长了不要弹出菜单*/
+        -webkit-touch-callout: none;
+    }
+
+
+    section.liushi {
+        /*自由伸缩（流式布局，百分比布局）*/
+        width: 100%;
+
+        /*给自由伸缩限制*/
+        max-width: 980px;
+        min-width: 320px;
+
+        margin: 0 auto;
+    }
+
+    section.liushi div {
+        width: 50%;
+        height: 400px;
+
+        float: left;
+    }
+
+    section.liushi div:nth-child(1) {
+        background-color: pink;
+    }
+
+    section.liushi div:nth-child(2) {
+        background-color: purple;
+    }
+</style>
+
+<body>
+    <!--
+        移动开发模式：
+        1. 单独制作 （主流）：流式布局（百分比布局），flex弹性布局（强烈推荐），less+rem+媒体查询布局，混合布局
+        2. 响应式兼容PC移动端：随着宽度高度改变而自由变化 （非主流）-> 媒体查询，bootstrap
+    -->
+
+    <!-- 模糊的:也可以不浮动，转换行内块 -->
+    <div style="display: inline-block; margin: 10px;">
+        <p>正常50像素</p>
+        <img src="images/apple50(1).jpg" alt="">
+    </div>
+
+
+    <!--两倍图-->
+    <div style="display: inline-block; margin: 10px;">
+        <p>100像素缩小为50像素</p>
+        <img src="images/apple100.jpg" alt="">
+    </div>
+
+
+    <!--背景缩放:我们有50^2 盒子需要一个背景图，但是根据分析这个图片还是要准备2倍。我们需要把这个图片缩放一半-->
+    <div class="bgs"></div>
+
+
+    <section class="solve">
+        <div class="solve"></div>
+        <div class="solve"></div>
+    </section>
+
+    <section class="liushi">
+        <div></div>
+        <div></div>
+    </section>
+
+
+    <div style="text-align:center; "><a href="sample.html" style="color:#333; text-decoration:none;">返回主页面</a><br /></div>
+
+</body>
+
+</html>

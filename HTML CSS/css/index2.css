@@ -1,0 +1,449 @@
+/* 声明字体图标 ：这里一定要注意路径的变化*/
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?tomleg');
+    src:  url('../fonts/icomoon.eot?tomleg#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?tomleg') format('truetype'),
+        url('../fonts/icomoon.woff?tomleg') format('woff'),
+        url('../fonts/icomoon.svg?tomleg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+.main{
+    width: 980px;
+    height: 455px;
+
+    margin-left: 220px;
+    margin-top: 10px;
+}
+.focus{
+    /*这样才能插入左右箭头以及下面的轮播图*/
+    position: relative;
+
+    width: 721px;
+    height: 455px;
+
+    /*必须浮动焦点图才能和快报模块在一行显示*/
+    float: left;
+}
+.newsflash{
+    width: 250px;
+    height: 455px;
+
+    /*必须浮动快报才能和模块焦点图在一行显示*/
+    float: right;
+}
+.news{
+    height: 165px;
+    border: 1px solid #e4e4e4;
+}
+.news-hd{
+    /*自动继承父类宽度*/
+    height: 33px;
+    border-bottom: 1px dotted #e4e4e4;
+
+    /*让他的俩小盒子（一个左浮一个右浮）垂直居中*/
+    line-height: 33px;
+
+    /*上下 左右：*/
+    padding:0 15px;
+}
+.news-hd h5{
+    float: left;
+
+    font-size: 14px;
+}
+.news-hd .more{
+    float: right;
+}
+.news-hd .more::after{
+    font-family: icomoon;
+    content:'\e920';
+
+    /*让这个'>'在自己的sentence里垂直对齐*/
+    vertical-align: middle;
+}
+.news-bd{
+    /*上 左右 下*/
+    padding:5px 15px 0;
+}
+.news-bd ul li{
+    height: 24px;
+
+    line-height: 24px;
+
+    /*文字超出用省略号显示:*/
+    overflow: hidden;/*溢出不显示*/
+    white-space: nowrap;/*不允许换行*/
+    text-overflow: ellipsis;/*文字超出了就用省略号*/
+}
+.lifeservice{
+    height: 209px;
+
+    /*不需要上边框since上面的新闻模块已经有下边框了*/
+    border:1px solid #e4e4e4;
+    border-top: 0;
+
+    /*所有小例装进去后会溢出来的*/
+    overflow: hidden;
+}
+.lifeservice ul{
+    /*make it 252 so all 4 can fit, although it will overflow from its father*/
+    width: 252px;
+
+    /*本来（父元素lifeservice）就是250了。为什么不写(UL to 250)就不够fit？？答案：行内块可能 有内或者外 边距*/
+    /*zihao width: 250px; */
+}
+.lifeservice ul li {
+    /*让所有小例尽可能的在一行否则下一行显示*/
+    float: left;
+
+    width: 63px;
+    /*zihao width: 62.25px;*//*62.25*4=249 -> 1 px for .lifeservice border*/
+    height: 71px;
+    /*zihao:71*3=213>209 father .lifeservice which indicates this .lifeservice shit is meant to be overflowed by its li's. 63*4>250 and 71*3>209*/
+
+    border-right: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+
+    /*让图片（i包围着）和字体水平居中*/
+    text-align: center;
+
+    position: relative;
+}
+.lifeservice ul li img{
+    position: absolute;
+    top: 0;
+    right: 3px;
+
+    width: 30%;
+}
+.lifeservice ul li:nth-child(2) img{
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 20%;
+}
+.lifeservice ul li i{
+    display: inline-block;
+    width: 24px;height: 28px;
+    background-color: pink;
+
+    /*有上边框（看起来像垂直居中）*/
+    margin-top: 12px;
+
+    /* background: url(../images/icons.png) no-repeat -19px -15px; */
+}
+.bargain{
+    margin-top: 5px;
+}
+/*如果一个盒子既有left也有right属性，则默认执行left属性，同理top和bottom会执行top*/
+.prev,.next{
+    /*a标签是行内元素，无法设置宽高。使用定位，即可将其自动转换成块级*/
+    /* 
+    相对定位：占位置
+    固定定位：浏览器为准
+    绝对定位：不占位置 
+    */
+    position: absolute;
+
+    /*
+    绝对定位盒子垂直居中：
+    move down 50% from top left of father box, so the son's top left is at middle of y axis of father, then move up by 50% of son's height
+    */
+    top: 50%;margin-top: -15px;
+    width: 20px;
+    height: 30px;
+    background: rgba(0,0,0,0.3);
+
+    /*让文字水平居中*/
+    text-align: center;
+
+    /*让文字垂直居中*/
+    line-height: 30px;
+
+    /*设置颜色和取消下划线*/
+    color: #fff;
+    text-decoration: none;
+}
+.prev{ 
+    left: 0;
+
+    /*将按钮的右上角和右下角改成圆角*/
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.next{
+    right: 0;
+
+    /*将按钮的右上角和右下角改成圆角*/
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+.focus-nav{
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    width: 70px;
+    height: 13px;
+
+    /*将模块水平居中*/
+    left:50%;
+    margin-left:-35px ;
+
+    background: rgba(255,255,255,.3);
+    border-radius: 7px;/*高度一半*/
+}
+.focus-nav li{
+    float: left;
+    width: 8px;height: 8px;
+    background-color: #fff;
+
+    /*将原有的正方形改成小圆点*/
+    border-radius: 50%;
+
+    margin:3px;/*上下左右*/
+}
+.focus-nav .selected{
+    /*不要忘记权重的问题*/
+    background-color: #ff5000;
+}
+
+
+
+/* 推荐模块 */
+.recom{
+    height: 163px;
+    
+    /*右边bd会多出几个像素，把它改成我们图片的颜色*/
+    background-color: #ebebeb;
+
+    margin-top: 12px;
+}
+.recom_hd{
+    /*为了俩俩原本是块级盒子（div）能在一行显示*/
+    float: left;
+
+    height: 163px;
+    width: 205px;
+
+    background-color: #5c5251;
+
+    /* 让图片水平居中 */
+    text-align: center;
+    /*记住，我们不要垂直居中*/
+    padding-top: 30px;
+    /*行内块我们可以垂直居中*/
+    /* line-height: 163px; */
+}
+.recom_bd{
+    float: left;
+}
+.recom_bd ul li{
+    /*相对定位才能看到自己孩子（伪元素）的绝对定位*/
+    position: relative;
+
+    float: left;
+}
+.recom_bd ul li img{
+    /* 强制要求图片准守盒子的高宽 */
+    width: 248px;
+    height: 163px;
+}
+.recom_bd ul li:nth-child(-n+3)::after{
+    /* 只要前三个小例给边框 */
+    content:'';
+    width: 1px;
+    height: 145px;
+    background-color: #ddd;
+
+    /*把border定位到右侧去：绝对定位自动转行内块*/
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+
+
+/*猜你喜欢区域*/
+.guess-bd{
+    height: 230px;
+    border: 1px solid #e4e4e4;
+    background-color: white;
+
+    /*图片压住了边框，所以要隐藏*/
+    /* overflow: hidden; */
+}
+.guess-hd,.fun-hd,.hotsteal-hd{
+    height: 30px;
+}
+.guess-hd h3,.fun-hd h3{
+    font-size: 18px;
+    float: left;
+}
+.guess-hd>.more{
+    float: right;
+    
+}
+.guess-hd>.more::after{
+    font-family:icomoon;
+    content:'\ea2e';
+
+    margin-right: 15px;
+    margin-left: 9px;
+}
+.guess-bd ul li{
+    position: relative;
+    float: left;
+
+    /*上下和左右外边距在css3盒子模型下占内部空间所以宽高都要减到2像素*/
+    width: 198px;
+    height: 228px;
+}
+.guess-bd ul li img{
+    width: 100%;
+    height: 100%; 
+}
+.guess-bd ul li:nth-child(-n+5)::after{
+    /* 只要前5个小例给边框 */
+    content:'';
+    width: 1px;
+    height: 210px;
+    background-color: #ddd;
+
+    /*把border定位到右侧去：绝对定位自动转行内块*/
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+
+.fun-bd{
+    height: 408px;
+    border: 1px solid #e4e4e4;
+}
+
+/* 家用电器模块 */
+.floor .w,.guess,.fun,.hotsteal{
+    /*添加上边距:.floor 也不是不可以*/
+    margin-top: 30px;
+}
+.box_hd{
+    height: 30px;
+    border-bottom: 2px solid #c81623;
+}
+.box_hd h3{
+    float: left;
+    font-size:18px;
+    color: #c81623;
+
+    /*700是加粗 400是取消加粗或者普通*/
+    font-weight: 400;
+}
+.tab_list{
+    float: right;
+
+    /*垂直居中*/
+    line-height: 30px;
+}
+.tab_list ul li{
+    float: left;
+}
+.tab_list ul li a{
+    margin:0 15px;
+}
+.box_bd{
+    height: 361px;
+
+    border: 1px solid #ddd;
+    border-top:0;
+    overflow: hidden;
+}
+.tab_list_item>div{
+    /* 让每个内容小模块在一行显示 */
+    float: left;
+
+    /*所有div小模块高度和父亲一样高*/
+    height: 361px;
+}
+/*内容模块不同的宽度*/
+.col_210{
+    width: 210px;
+    background-color: #f9f9f9;
+
+    /*让图片居中显示*/
+    text-align: center;
+}
+.col_210 ul{
+    padding-left: 12px;
+}
+.col_210 ul li{
+    width: 85px;
+    height: 34px;
+    border-bottom: 1px solid #ccc;
+
+    text-align: center;/*水平居中*/
+    line-height: 33px;/*垂直居中(记住底下的边框不能算进去，但是要算进li的总高度)*/
+
+    float: left;
+
+    margin-right: 10px;
+}
+
+.col_329{
+    width: 329px;
+}
+.col_221{
+    width: 221px;
+    border-right: 1px solid #ccc;
+}
+.col_219{
+    width: 219px;
+    border-right: 1px solid #ccc;
+}
+.col_404{
+    width: 404px;
+    height: 100%;
+    background-color: pink;
+}
+.col_226{
+    width: 226px;
+    height: 100%;
+    background-color: blue;
+}
+.col_405{
+    width: 405px;
+    height: 100%;
+    background-color: green;
+}
+.col_163{
+    width: 163px;
+    height: 100%;
+    background-color: purple;
+}
+
+.border_bottom{
+    /* 一般情况下，如果a包含有宽度的盒子，a需要转换为块级元素 */
+    display: block;
+    border-bottom: 1px solid #ccc;
+}
+
+.hotsteal-hd{
+    font-size:18px;
+    margin-bottom: 12px;
+}
+.hotsteal-bd{
+    height: 281px;
+    border: 1px solid #e4e4e4;
+    background-color: white;
+
+    background-color: pink;
+}
+
+.shouji_brands,.diannao_brands,.jiadian_brands{
+    height: 65px;
+    margin-top: 20px;
+    background-color:skyblue;
+}

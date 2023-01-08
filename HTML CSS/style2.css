@@ -1,0 +1,524 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.w {
+    /* 版心 */
+    width: 1200px;
+
+    /*居中对齐*/
+    margin: auto;
+}
+body {
+    background-color: #f3f5f7;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+/*清除浮动代码*/
+.clearfix:before,.clearfix:after{
+    content:"";
+    display: table;
+}
+.clearfix:after{
+    clear:both;
+}
+.clearfix{
+    *zoom:1;
+}
+.header {
+    /*拖动0像素之后就变成粘性定位*/
+    /* position: sticky;
+    top:0;
+    background-color: #f3f5f7;  */
+
+    height: 42px;
+    /* background-color: pink; */
+
+    /*上下30像素 左右auto（居中对齐）：注意，此地方会成叠w的margin*/
+    /* margin: 30px auto;  */
+    padding-top: 30px;padding-bottom: 30px;
+}
+
+.logo {
+    float: left;
+    width: 198px;
+    height: 42px;
+}
+
+.nav {                  
+    float: left;
+    margin-left: 60px;
+}
+
+.nav ul li {
+    float: left;
+    margin: 0 15px;
+}
+
+.nav ul li a {
+    /*a是行内，必须先转才能设置宽高*/
+    display: block;
+    height: 42px;
+    padding: 0 10px;
+    line-height:42px;    
+    font-size: 18px;
+    color: #050505;
+}
+
+.nav ul li a:hover {
+    border-bottom: 2px solid #00a4ff;
+    color: #00a4ff;
+}
+
+/* search 搜索模块 */
+.search {
+    float: left;
+    width: 412px;
+    height: 42px;
+    margin-left: 70px;
+}
+
+/*
+为什么文本框和按钮需要浮动？因为，首先在父盒子
+搜索模块里是没有浮动的（父盒子在爷爷盒子浮动）。他们俩都是行内块元素。行内块元素中间都有缝隙的，被迫另起一行。所以，加上浮动可以去掉缝隙
+*/
+.search input {
+    float: left;
+    width: 345px;
+    height: 40px;
+    border: 1px solid #00a4ff;
+    border-right: none;
+    color: #bfbfbf;
+    font-size: 14px;
+    padding-left: 15px;
+}
+
+.search button {
+    float: left;
+    width: 50px;
+    height: 42px;
+
+    /* 按钮默认有个边框需要我们手动去掉 */
+    border: 0;
+    background-image: url(images/btn.png);
+}
+
+.user {
+    float: right;
+    line-height: 42px;
+    margin-right: 30px;
+    font-size: 14px;
+    color: #666;
+}
+
+.user img {
+    /* 调节图片垂直对齐方式, middle:居中 */
+    /*让图片与文字垂直居中*/
+    vertical-align: middle;
+}
+/*banner 区域*/
+.banner {
+    height: 421px;
+    background-color: #1c036c;
+}
+
+.banner .w {
+    height: 421px;
+    background: url(images/banner2.png) no-repeat top center;
+}
+
+.subnav {
+    float: left;
+    width: 190px;
+    height: 421px;
+    background: rgba(0, 0, 0, 0.3);
+}
+.subnav ul li{
+    height: 45px;
+    line-height: 45px;
+    padding: 0 20px;
+}
+.subnav ul li a{
+    font-size: 14px;
+    color:#fff;
+}
+.subnav ul li a span{
+    float:right;
+}
+.subnav ul li a:hover {
+    color:#00a4ff;
+}
+.course{
+    float:right;
+    width: 230px;
+    height: 300px;
+    background-color:#fff;
+
+    /*浮动的盒子不会有外边距合并的问题*/
+    margin-top: 50px;
+}
+
+.course h2{
+    height: 48px;
+    background-color: #9bceea;
+
+    /*水平以及垂直居中*/
+    text-align: center;
+    line-height: 48px;
+
+    font-size: 18px;
+    color:#fff;
+}
+.bd{
+    padding: 0 20px;
+}
+.bd ul li{
+    padding: 14px 0;
+    border-bottom: 1px solid #ccc;
+}
+.bd ul li h4{
+    font-size: 16px;
+    color: #4e4e4e;
+
+}
+.bd ul li p{
+    font-size: 12px;
+    color:#a5a5a5;
+}
+.bd .more{
+    display: block;
+    height: 38px;
+    border:1px solid #00a4ff;
+    margin-top: 5px;
+    text-align: center;
+    line-height: 38px;
+    color: #00a4ff;
+    font-size : 16px;
+    font-weight: 700;
+}
+
+/*精品推荐模块*/
+.goods{
+    height: 60px;
+    background-color: #fff;
+    margin-top: 10px;
+    box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.1);
+
+    /*行高会继承给三个孩子*/
+    line-height: 60px;
+
+    margin-bottom: 40px;
+}
+.goods h3{
+    float: left;
+    margin-left: 30px;
+    font-size:16px;
+    color:#00a4ff;
+}
+.goods ul{
+    float: left;
+    margin-left: 30px;
+}
+.goods ul li{
+    float: left;
+    display: block;
+}
+.goods ul li a{
+    padding : 0 30px;
+    /* margin: 0 30px; */
+
+    font-size:16px;
+    color:#050505;
+    border-left: 1px solid #ccc;
+}
+.goods ul li a:hover{
+    color: #00a4ff;
+}
+.mod{
+    float: right;
+    margin-right: 30px;
+    font-size:14px;
+    color:#00a4ff;
+}
+.box{
+    margin-top: 40px;
+    /* margin-bottom: 40px; */
+}
+
+/*bd为body，hd为head*/
+.box-hd{
+    height: 45px;
+}
+.box-hd h3{
+    float: left;
+    font-size: 20px;
+    color:#494949;
+}
+.box-hd a{
+    float:right;
+    font-size: 12px;
+    color: #a5a5a5;
+    margin-top: 10px;
+    margin-right: 30px;
+}
+
+/*把li的父亲ul修改的足够宽一行能装开5个盒子就不会换行了*/
+.box-bd ul{
+    width: 1225px;
+}
+.box-bd ul li{
+    position: relative;
+
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+
+    width: 228px;
+    height: 270px;
+    background-color:#fff;
+
+    /* 必须要有这个否则不丝滑（top：0） */
+    top:0;
+    transition: all .3s;
+}
+
+.box-bd ul li > img{
+    /*本来图片会超出盒子，修改成和父亲一样宽就不会出来了*/
+    /*注意：此方法只能对li的亲儿子img生效*/
+    width: 100%;
+}
+
+.box-bd ul li h4{
+    /*上右下左aka clockwise*/
+    margin: 20px 20px 20px 25px;
+    font-size: 14px;
+    color: #050505;
+    font-weight: 400;
+}
+.box-bd ul li em{
+    /*制作右上角小"NEW"图标*/
+    position: absolute;
+    top: 4px;
+    right: -4px;
+}
+.box-bd .info{
+    margin: 0 20px 0 25px;
+    font-size: 12px;
+    color: #999;
+}
+.box-bd .info span{
+    color:#ff7c2d;
+}
+
+
+/*self*/
+.box-hd ul{
+    margin-left: 188px;
+    float: left;
+}
+.box-hd ul li{
+    float: left;
+    /*注意，这个margin和之前的.box-hd a 相加共等于40+30*/
+    margin-right: 40px;
+}
+.box-hd ul a{
+    font-size: 14px;
+}
+.box-hd ul li a:hover{
+    border-bottom: 2px solid #00a4ff;
+    color: #00a4ff;
+}
+.box-bd ul li:hover {
+    top: -8px;
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,.3);
+}
+.box-bd .left{
+    float: left;
+    width: 228px;
+    height: 393px;
+    margin-right: 15px;
+    
+}
+.box-bd .right{
+    float:left;
+    width: 957px;
+    /* height: 392px; */
+}
+
+.box-bd .right .top{
+    height: 100px;
+    margin-bottom: 23px;
+}
+.box-bd .right .bottom{
+    width: 957px;
+    /* height: 270px; */
+}
+.box-bd img{
+    width:100%;
+}
+.box-bd .left img{
+    height: 100%;
+}
+.box-hd .left{
+    float: left;
+    width: 225px;
+    margin-right: 15px;
+}
+.box-hd .left h3{
+    float: left;
+    font-size: 20px;
+    color:#494949;
+}
+
+
+/*back to pink*/
+.footer{
+    margin-top: 40px;
+    height: 415px;
+    background-color:#fff;
+}
+.footer .w{
+    padding-top: 35px;
+}
+.copyright{
+    float: left;
+}
+.copyright p{
+    font-size:12px;
+    color: #666;
+    /*顺时针*/
+    margin: 20px 0 15px 0;
+}
+.copyright .app{
+    display: block;
+    width: 118px;
+    height: 33px;
+    border: 1px solid #00a4ff;
+    font-size: 16px;
+    text-align: center;
+    line-height: 33px;
+    color: #00a4ff;
+}
+.links{
+    float:right;
+}
+.links dl{
+    float: left;
+    margin-left: 100px;
+}
+.links dl dt{
+    font-size: 16px;
+    color:#333;
+    margin-bottom: 5px;
+}
+.links dl dd a{
+    font-size: 12px;
+    color:#333;
+}
+
+
+/*自创（左）妲己*/
+.dj{
+    /*根据浏览器的可视窗口来对齐的*/
+    position: fixed;
+    top: 100px;
+    left: 0px;
+}
+
+/*王者荣耀妲己（右）*/
+.r_nav {
+    pointer-events: none;
+    position: fixed;
+    z-index: 3;
+    top: 50%;
+    right: 0;
+    margin-top: -240px;
+    width: 254px;
+    height: 494px;
+    background: url(images/sparkles.png) no-repeat top left;
+}
+.r_nav .r_dj {
+    position: absolute;
+    top: 15px;
+    left: 24px;
+    z-index: 2;
+    width: 165px;
+    height: 145px;
+    background: url(images/daji.png) no-repeat top center;
+}
+.r_nav .r_con {
+    pointer-events: auto;
+    position: absolute;
+    top: 160px;
+    left: 85px;
+}
+.r_nav .r_con .r_code {
+    margin-top: 1px;
+}
+.r_nav .r_dj span {
+    display: block;
+    position: absolute;
+    top: 37px;
+    left: 12px;
+    width: 88px;
+    height: 36px;
+    font-size: 14px;
+    text-indent: 2px;
+    font-weight: bold;
+    line-height: 18px;
+    color: #62401b;
+    overflow: hidden;
+}
+
+
+
+.fixed_btn {
+    position: fixed;
+    /*和"自创妲己"对齐*/
+    top: 135px;
+    left: 30px;
+}
+.fixed_btn2 {
+    position: fixed;
+
+    /* 1. 走浏览器宽度的一半 */
+    left: 50%;
+    /* 2. 利用margin 走版心盒子宽度的一半距离 */
+    margin-left: 645px; 
+    margin-top: 758px;
+}
+.fixed_btn3 {
+    position: fixed;
+    /*
+    问题：在body头部可以显示，在尾部就不见了
+    原因：在头部是第一个显示，他就是第一个，首先显示。如果在body的尾部写
+    则是最后一个显示。他就被其他模块压到浏览器无法显示的位置了。记住，
+    他是fixed在浏览器的显示位置，所以如果跑出了浏览器显示位置，即使你往下拉
+    他也会待在你看不到的位置。
+    所以，他其实不在页面里，他在浏览器显示部位里，且跑出去了。其实有显示，
+    只是在你看不到的位置。即使你拉下去也看不到，他不属于页面！
+
+    解决方案：利用外边距把他移过来
+    
+    疑问：为什么在头部写的话，不会被挤出去呢？而在底部写就回呢？
+    答案：浮动性质的问题。它本身是浮动的，页面里的父模块（父模块里的子模块有浮动）
+    没有任何浮动。而浮动只会影响后面的标准流模块。所以，在头部写的话其他模块
+    会跑到他的下面去。尾部写的话，他要遵守前面的模块。所以只会在前面的”模块们‘
+    的下面显示。
+
+    追加：浮动元素只会压住下面标准流的盒子，但是不会压住下面标准流的文字
+    绝对定位和固定定位 会压住下面标准流的所有内容。浮动的目的就是文字环绕效果。
+
+    */
+    /* 1. 走浏览器宽度的一半 */
+    left: 50%;
+    /* 2. 利用margin 走版心盒子宽度的一半距离 */
+    margin-left: 605px; 
+    margin-top: -2670px;
+}

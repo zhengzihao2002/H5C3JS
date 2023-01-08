@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--为了移动端而生-->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>3D 2D 旋转 转换 等</title>
+    <style>
+        .keshiqu{
+            /*专门为3D效果而生*/
+            perspective: 1000px;
+            width: 100%;
+
+        }
+
+
+        /* 移动盒子（块级元素）位置方法：1。定位  2。盒子的外边距  3.2d转换移动 */
+        section.rotate2d div{
+            width: 200px;height: 200px;background-color: pink;
+
+            /* x,y */
+            /* transform: translate(100px,100px); */
+
+            /* 只移动x */
+            /* transform: translate(100px, 0); */
+            /* transform: translateX(100px); */
+            /*距离左边移动了50%自身宽度*/
+            /* transform: translateX(50%); */
+
+            /* 只移动y */
+            /* transform: translate(0,100px); */
+            /* transform: translateY(100px); */
+
+        }
+        section.rotate2d div:first-child{
+            transform: translate(30px,30px);
+            /* 顺时针旋转45度 */
+            transform: rotate(45deg);
+        }
+        section.rotate2d div:last-child{
+            background-color: purple;
+        }
+
+        /* 块级水平居中垂直居中 */
+        /*translate对行内元素是无效的*/
+        div.inside{
+            position: relative;
+            height: 500px;
+            width: 500px;
+            background-color: pink;
+        }
+        p.inside{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+
+            /* margin-top: -100px;
+            margin-left: -100px; */
+            transform: translate(-50%,-50%);
+        }
+
+
+
+
+        /* 2d rotate */
+        img.newrotate,img.oldrotate{
+            width: 100px;
+
+            /* transform: rotate(45deg); */
+            border-radius: 50%;
+            border: 5px solid pink;
+
+            transition: all linear .7s;
+
+            display: block;
+            margin: 100px auto;
+        }
+        img.newrotate{
+            transform-origin:left bottom ;/*这玩意儿默认的是50% 50%，相当于center center*/
+        }
+        img.newrotate:hover,img.oldrotate:hover{
+            transform: rotate(360deg);
+        }
+
+
+
+
+        /* css3小三角 */
+        .tri{
+            width: 249px;
+            height: 35px;
+            border: 1px solid #000;
+            position: relative;
+        }
+        div.tri::after{
+            content: "";
+            position: absolute;
+            top: 8px;right: 15px;
+
+            width: 10px;
+            height: 10px;
+
+            /*奇怪三角，旋转即可*/
+            border-right: 1px solid #000;
+            border-bottom: 1px solid #000;
+
+            transform: rotate(45deg);
+
+            transition: all 0.2s;
+        }
+        /*鼠标经过div，里面的三旋转*/
+        div.tri:hover::after{
+            transform: rotate(225deg);
+            margin-top: 5px;
+        }
+
+
+        /* 2d转换之旋转中心 */
+        div.anli{
+            width: 200px;
+            height: 200px;
+
+            border: 1px solid pink;
+            /* margin : 100px auto; */
+            margin: 10px; float: left;
+
+            overflow: hidden;
+        }
+        div.anli::before{
+            width:100%;
+            height: 100%;
+
+            display: block;
+            background-color: skyblue;
+
+            transform-origin: left bottom;
+            transform: rotate(180deg);
+
+            transition: all 0.7s;
+        }
+        div.anli:hover::before{
+            transform: rotate(0deg);
+        }
+        .bmw::before{
+            content:'宝马';
+        }
+        .audi::before{
+            content:'奥迪';
+        }
+        .benz::before{
+            content:'奔驰';
+        }
+
+
+        /*北京奔驰放大效果*/
+        div.scale{
+            width: 200px;
+            height: 200px;
+            /* background-color: skyblue; */
+            background: url(images/beijingbenz.jpeg) no-repeat center center;background-size: cover;border: 1px solid black;
+            margin: 100px auto;
+
+            transition: all 0.6s;
+        }
+        /* div.scale::before{
+            content:'梅 赛 德 斯 · 奔 驰';
+            display: inline-block;
+
+            line-height: 200px;
+            line-height: 350px;
+            margin-left:35px;
+        } */
+        div.scale:hover{
+            /*数字就是倍数*/
+            /* transform: scale(0.8,0.8); */
+
+            /*宽高都一样*/
+            transform: scale(1.1);
+        }
+
+
+        /* 练习 */
+        div.roc{
+            float: left;
+            margin:10px;
+
+            /*超出的部分隐藏*/
+            overflow: hidden;
+        }
+        div.roc img{
+            width: 300px;
+
+            transition: all 0.4s;
+        }
+        div.roc img:hover{
+            transform: scale(1.1);
+        }
+
+
+        /* 练习2 */
+        .buttons>li{
+            width: 30px;
+            height: 30px;
+            border: 1px solid red;
+
+            text-align: center;
+            line-height: 30px;
+
+            list-style: none;
+            float: left;
+
+            margin: 10px;
+            border-radius: 50%;
+
+            cursor: pointer;
+            transition: all .4s;
+        }
+        .buttons>li:hover{
+            transform: scale(1.2);
+        }
+
+
+        /*综合案例*/
+        div.zhonghe{
+            width: 200px;
+            height: 200px;
+            background-color: cornflowerblue;
+
+            transition: all 2s;
+        }
+        div.zhonghe:hover{
+            /*注意，顺序很重要！！位移放在最前面！！！*/
+            transform: translate(150px,50px) rotate(180deg);
+        }
+
+
+        /*动画*/
+        @keyframes move{
+            /*开始状态*/
+            0%{
+                /*走到0，0*/
+                transform: translate(0,0);
+            }
+            25%{
+                /*走到1000，0*/
+                transform: translate(1000px,0);
+            }
+            50%{
+                /*走到1000，500*/
+                transform: translate(1000px,500px);
+            }
+            75%{
+                /*走到0，500*/
+                transform: translate(0,500px);
+            }
+            /*结束状态*/
+            100%{
+                /*走到0，0*/
+                transform: translate(0,0);
+            }
+        }
+        div.donghua{
+            width: 200px;height: 200px;
+            background-color: pink;
+
+            /* animation-name: move; */
+            /* animation-duration: 10s; */
+            /* animation-timing-function: ease-in; */
+            /* animation-delay: 3s; */
+            /* 无限循环:默认循环1次*/
+            /* animation-iteration-count: 5;也可以是infinite */
+            
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+            animation:move 2s linear 0s 2 alternate;
+
+            background: url(images/beijingbenz.jpeg) no-repeat center center;background-size: cover;border: 1px solid black;
+        }
+        div.donghua:hover{
+            animation-play-state: paused;
+        }
+        
+
+        /*动画序列:from和to等价于0%和100%*/
+        @keyframes move2{
+            from{
+                transform: translate(0,0);   
+            }
+            to{
+                transform: translate(1000px , 0);
+            }
+        }
+        div.donghua2{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+
+            animation-name: move2;
+            animation-duration: 2s;
+            animation-iteration-count: 5;/*也可以是infinite如果想无限循环*/
+
+            /*结束一次后反方向：必须先有上面这一行*/
+            animation-direction: alternate;
+        }
+        div.donghua2:hover{
+            animation-play-state: paused;
+        }
+        @keyframes move3{
+            from{
+                transform: translate(0,0);   
+            }
+            to{
+                transform: translate(1000px , 0);
+            }
+        }
+        div.donghua3{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+
+            animation-name: move2;
+            animation-duration: 2s;
+            /* 动画结束后可以让他停留在结束状态 */
+            animation-fill-mode: forwards;
+        }
+
+
+
+
+
+
+        /* 地图案例 */
+        .map{
+            width: 747px;
+            height: 616px;
+            background: url(media/map.png);
+            margin: 0 auto;
+            background-color: #333;
+
+            /*为了子元素能绝对定位*/
+            position: relative;
+        }
+        .city{
+            position: absolute;
+            /*用chrome调试工具反复调出来的:默认北京坐标*/
+            top: 227px;
+            right: 193px;
+            color:#fff;
+
+            /*注意没给死宽高，说明可以自由伸缩*/
+        }
+        .taipei{
+            /*为什么只能改top和right？：因为 .city用的是top和right如果加入.tapie用bottomleft，那么俩加起来会优先执行topright*/
+            top: 500px;
+            right: 80px;
+        }
+        .guangzhou{
+            /*为什么只能改top和right？：因为 .city用的是top和right如果加入.tapie用bottomleft，那么俩加起来会优先执行topright*/
+            top: 542px;
+            right: 195px;
+        }
+        .dotted{
+            width: 8px;
+            height: 8px;
+            background-color: #09f;
+            border-radius: 50%;
+        }
+        /*city类里的div以pulse开头的: 10 + 1 + 10 = 21*/
+        .city div[class^="pulse"]{
+            /*保证我们的小波纹在父盒子里面水平居中垂直居中 放大之后就会中心向四周发散*/
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);/*走父盒子宽度的一半，然后再走自生宽度一半*/
+
+            width: 8px;
+            height: 8px;
+
+            /*水平 垂直 阴影:  注意！没有color只有shadow！*/
+            box-shadow: 0 0 12px #009dfd;
+
+            border-radius: 50%;
+
+            /* animation: name   duration   timing-function   delay   iteration-count   direction   fill-mode; */
+            animation: pulse 1.2s linear 3;
+        }
+        .city div.pulse2{
+            /*注意权重问题，原：.pulse2*/
+            animation-delay: 0.4s;
+        }
+        .city .pulse3{
+            animation-delay: 0.8s !important;
+        }
+        @keyframes pulse{
+            /*我们不要用scale 因为它会让阴影变大*/
+            0%{}
+            70%{
+                width: 40px;
+                height: 40px;
+
+                opacity: 1;
+            }
+            100%{
+                width: 70px;
+                height: 70px;
+
+                opacity: 0;
+            }
+        }
+
+
+
+        /*STEPS*/
+        div.steps{
+            width: 0;
+            height: 30px;
+            background-color: skyblue;
+
+            /*停留在结束状态:forwards ; steps:分几步完成动画 */
+            animation: stp 4s steps(100) forwards;
+
+            /*一个字20像素，11个字220像素*/
+            font-size:20px;
+
+            /*让文字强制一行内显示:盒子一开始很小，每个字肯定单独一行。强制一行肯定已经造成溢出了*/
+            white-space: nowrap;
+            /*溢出隐藏*/    
+            overflow: hidden;
+        }
+        @keyframes stp{
+            0%{
+                /*也可以略过0*/
+                width: 0;
+            }
+            100%{
+                width: 220px;
+            }
+        }
+
+        /*STEPS小熊案例*/
+        div.steps2{
+            width: 200px;
+            height: 100px;
+
+            background: url(media/bear.png) no-repeat ;
+
+            /*我们元素可以添加多个动画，添加逗号分隔即可*/
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+            animation: bear 0.3s steps(8) 0s 100,bear_move 10s forwards;/*forwards:停留在终点*/
+
+            position: absolute;
+        }
+        @keyframes bear{
+            0%{
+                background-position: 0 0;
+            }
+            100%{
+                /*图片往左走1600像素*/
+                /*疑问：-1600不是虚无吗？图片总共才1600像素，最后播放虚无？不会短片？*/
+                /*解答：首先，-1600是结束位置。如果设置-1400的话会少一帧，因为结束位置在最后一帧的开始位置。想想，滑倒1400就结束了不是少一帧？我们要滑到底才能完整的显示出来！其次，别说断片了，我们有infinite*/
+                /*alternate:The animation reverses direction each cycle, with the first iteration being played forwards. The count to determine if a cycle is even or odd starts at one.*/
+                background-position: -1600px 0;
+            }
+        }
+        @keyframes bear_move{
+            0%{
+                left:0;
+            }
+            100%{
+                left:50%;
+                transform: translate(-50%);/*走自己宽度一半*/
+            }
+        }
+        div.steps3{
+            /*尽量水平拉满*/
+            width: 99.9%;
+            height: 100px;
+
+            /*和div高度一样（试试百分百），且x轴平铺*/
+            background: url(media/bg1.png);
+            background-size:1280px 100px;
+            background-repeat: repeat-x;
+
+            /*我们元素可以添加多个动画，添加逗号分隔即可*/
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+            animation: bg 5s linear 0s 5 ;
+
+            /*为了配合内部的熊*/
+            position: relative;
+
+        }
+        @keyframes bg{
+            0%{
+                background-position: 0 0;
+            }
+            100%{
+                background-position: -1280px 0;
+            }
+        }
+
+
+        /*3D translate*/
+        .translate3dfather{
+            width: 100%;
+            height: 500px;
+            background-color: skyblue;
+            /*透视写到被观察元素的父盒子上面*/
+            perspective: 500px;
+        }
+        div.translate3d{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+
+            /* transform: translateX(100px) translateY(100px) translateZ(100px); */
+            /* transform: translate3d(x,y,z); */
+            transform: translate3d(400px, 100px, 100px);
+        }
+
+
+        /*3D rotate*/
+        .imgfather {
+            /*添加立体感*/
+            perspective: 300px;
+
+            float: left;
+            margin:0 40px;
+        }
+        img.rotate3d{
+            display: block;
+            margin: 20px auto;
+
+            transition: all 1s;
+
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+            animation: rot3d 1.5s linear 0s 2;
+        }
+        @keyframes rot3d{
+            100%{
+                transform: rotateX(360deg);
+            }
+        }
+        img.rotate3d:hover{
+            /*3d 旋转和2d的普通rotate是不一样的*/
+            /* transform: rotateY(-25deg) rotateZ(25deg); */
+            transform: rotate3d(0,-1,1,25deg);
+        }
+
+
+
+        /* 3D呈现 */
+        .boxFather{
+            /*爷爷才是我们的可视区*/
+            perspective: 500px;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+
+            position: relative;
+            /*让（背面的紫色）子元素保持3d效果(立体空间环境)*/
+            transform-style: preserve-3d;
+
+            transition: all 2s;
+        }
+        .box:hover{
+            transform: rotateY(60deg) rotateX(-30deg);
+        }
+        .box>div{
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+            background-color: pink;
+
+        }
+        .box>div:last-child{
+            background-color: purple;
+            transform: rotateX(60deg);
+        }
+
+
+
+        .box2{
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+
+            /*子绝父相：让俩孩子层叠*/
+            position: relative;
+
+            transition: all 4s;
+
+            /* 让背面的紫色盒子保留立体空间 给父级添加的:让孩子一样，和父亲有3d效果。父亲有3d效果是因为爷爷有perspective。没写的话孩子就没有3d效果，只是贴在父亲身上而已*/
+            transform-style: preserve-3d;
+        }
+        .box2:hover{
+            /*旋转父盒子180°*/
+            transform: rotateY(180deg)
+        }
+        .front,.back{
+            position: absolute;
+            top: 0;
+            left:0;
+
+            /*完全继承父亲大小*/
+            width: 100%;
+            height: 100%;
+
+            /*圆角*/
+            border-radius: 50%;
+
+            font-size: 30px;
+            color: #fff;
+            /*水平居中垂直居中（注意这里是行内元素可以用lh）*/
+            text-align: center;
+            line-height: 300px;
+
+            /*隐藏他的背面：假如翻了180°且只有一面，翻了之后另一面不可见*/
+            backface-visibility: hidden;
+        }
+        .front{
+            background-color: pink;
+            /*让front在back前面*/
+            z-index:1;
+        }
+        .back{
+            background-color: purple;
+
+            /*让back背靠背front：本来头靠着粉色的屁股，现在转向另一边去*/
+            transform: rotateY(180deg);
+        }
+
+
+
+        /* 3D 导航栏案例 */
+        ul.daohang{
+            margin: 100px 0;
+            text-align: center;
+
+        }
+        ul.daohang li{
+            float: left;
+            margin: 0 20px;
+
+            width: 120px;
+            height: 35px;
+            list-style: none;
+
+            /*一会儿我们需要给box旋转，也需要透视，干脆给li加*/
+            perspective: 500px;
+        }
+        .box3{
+            width: 100%;
+            height: 100%;
+            
+            position: relative;
+
+            /*父级保留孩子立体空间*/
+            transform-style: preserve-3d;
+
+            transition: all .4s;
+
+            text-align: center;
+            line-height: 35px;
+        }
+        .box3:hover{
+            transform: rotateX(90deg);
+        }
+        .front2,.bottom{
+            position: absolute;
+            left: 0;
+            top: 0;
+
+            width: 100%;
+            height: 100%;
+        }
+        .front2{
+            background-color: skyblue;
+            
+            /*不用z-index因为没有贴在一起*/
+            z-index: 1;
+
+            /*我们要类似于立方体的感觉。中心点要在立方体的中间。下面的transform做完后，是蓝色站在粉色（趴在地上）的中间。我们不要粉色往前/后移动，这样子中心点会在立方体的蓝色部分的平面上。我们要在立方体的中间，所以只要蓝色往前走（Z），中心点就在立方体的中间*/
+            transform: translateZ(17.5px);
+        }
+        .bottom{
+            background-color: pink;
+
+            /*手指弯曲方向就是正直。x为右手。但是又不像立起来的砖头倒下来，因为砖头倒下来是以底部为orgin，这个是以物体的中间，相当于浮在空中。所以我们要Y往下走盒子高度的一半。注意，如果有移动，先写移动再写其他样式。还有，只有animation才要逗号分隔*/
+            transform: translateY(17.5px) rotateX(-90deg);
+        }
+
+        
+
+        /*3D旋转木马 案例*/
+        section.rotate-horse-3d{
+            width: 300px;
+            height: 200px;
+            margin: 100px auto;
+
+            /*子绝父相*/
+            position: relative;
+
+            /*他的父亲是”可视区“，有透视，如果它做3d我们就能看到。可是他的孩子没有透视。如果他的孩子没有继承3d效果的话，我们就看不到他的孩子的3d效果了*/
+            /*https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-style*/
+            transform-style: preserve-3d;
+
+            /* transition: all 5s; */
+            animation:circle 10s linear 5;
+
+            background:url(media/pig.jpg) no-repeat;
+        }
+        section.rotate-horse-3d:hover{
+            /*hover时暂停：使用的是safari和chrome内核专属。意思就是非这俩就无法使用该功能*/
+            -webkit-animation-play-state: paused;
+            /* transform: rotateY(360deg); */
+        }
+        section.rotate-horse-3d div{
+            width: 100%;
+            height: 100%;
+
+            /*全部绝对定位到父盒子section的左上角*/
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            background: url(media/dog.jpg) no-repeat;
+        }
+        /*意思就是转360°*/
+        @keyframes circle{
+            0%{
+                transform: rotateY(0) rotateX(0) translateZ(0);
+            }
+            25%{
+                transform: rotateY(90deg) rotateX(-20deg) translateZ(200px);
+            }
+            50%{
+                transform: rotateY(180deg) rotateX(0deg) translateZ(500px);
+            }
+            75%{
+                transform: rotateY(270deg) rotateX(20deg) translateZ(200px);
+            }
+            100%{
+                transform: rotateY(360deg) rotateX(0deg) translateZ(0);
+            }
+        }
+        /*6张图片，360度一圈，360/6=60度每个图片之间的距离*/
+        section.rotate-horse-3d div:nth-child(1){
+            transform: rotateY(0) translateZ(300px);
+        }
+        section.rotate-horse-3d div:nth-child(2){
+            /*先旋转再移动*/
+            transform: rotateY(60deg) translateZ(300px);
+        }
+        section.rotate-horse-3d div:nth-child(3){
+            /*先旋转再移动*/
+            transform: rotateY(120deg) translateZ(300px);
+        }
+        section.rotate-horse-3d div:nth-child(4){
+            /*先旋转再移动*/
+            transform: rotateY(180deg) translateZ(300px);
+        }
+        section.rotate-horse-3d div:nth-child(5){
+            /*先旋转再移动*/
+            transform: rotateY(240deg) translateZ(300px);
+        }
+        section.rotate-horse-3d div:nth-child(6){
+            /*先旋转再移动*/
+            transform: rotateY(300deg) translateZ(300px);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 移动盒子（块级元素）位置方法：1。定位  2。盒子的外边距  3.2d转换移动  -->
+    <!--animation：动画keyframes；transition：2d3d-->
+
+    <!-- 2d转换 -->
+    <section class="rotate2d">
+        <div ></div>
+        <div ></div>
+    </section>
+    
+
+
+    <br>
+
+    <!-- 块级水平居中垂直居中 -->
+    <div class="inside">
+        <p class="inside"></p>
+    </div>
+
+
+    <!-- 2d rotate -->
+    <img src="images/ass.jpg" alt="" class="oldrotate">
+    <img src="images/ass.jpg" alt="" class="newrotate">
+
+
+    <!-- css3小三角 -->
+    <div class="tri"></div>
+
+    <!-- 2d转换之旋转中心 -->
+    <div style="overflow:hidden;">
+        <div class="anli bmw"></div>
+        <div class="anli benz"></div>
+        <div class="anli audi"></div>
+    </div>
+    
+
+    <!--2d 转换之缩放scale-->
+    <a href="https://www.mercedes-benz.com.cn/vehicles/amg/gt-4door.html" target="_blank"><div class="scale"></div></a>
+    <!-- <div class="scale"></div> -->
+
+    <!--练习-->
+    <p>图片放大案例</p>
+    <div style="overflow:hidden;">
+        <div class="roc"><a href="#"><img src="images/rocket1.jpg" alt=""></a></div>
+        <div class="roc"><a href="#"><img src="images/rocket1.jpg" alt=""></a></div>
+        <div class="roc"><a href="#"><img src="images/rocket1.jpg" alt=""></a></div>
+    </div>
+    
+
+
+    <!-- 练习2 -->
+    <p>分业按钮案例</p>
+    <ul style="overflow: hidden;" class="buttons">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+    </ul>
+
+    <p>综合写法</p>
+    <div class="zhonghe"></div>
+
+    <p>动画</p>
+    <div class="donghua"></div>
+
+    <p>动画序列</p>
+    <div class="donghua2"></div>
+    <div class="donghua3"></div>
+
+    <p style="text-align: center;">地图案例</p>
+    <div class="map">
+        <div class="city">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+        <div class="city taipei">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+        <div class="city guangzhou">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+    </div>
+
+    <p>step成长</p>
+    <div class="steps">中华人民共和国我来了！</div>
+
+    <p>steps小熊案例   -> 原:step2和step3为兄弟元素且都是relative position</p>
+    <!-- 背景图 -->
+    <div class="steps3">
+        <!-- 小熊 -->
+        <div class="steps2"></div>
+    </div>
+    
+    <p>3D 移动：z轴一般都使用px; perspective近大远小</p>
+    <div class="translate3dfather">
+        <div class="translate3d"></div>
+    </div>
+
+    <p>3D旋转 rotate3d</p>
+    <div style="background-color: yellowgreen">
+        <div style="width:620px; height: 200px;margin: 0 auto; background-color: skyblue;">
+            <div class="imgfather">
+                <!-- 块级元素为父亲（有立体感无链接） -->
+                <img src="media/scale.jpg" alt="" class="rotate3d">
+            </div>
+            <a href="sample.html" class="imgfather" style="display:block">
+                <!-- 块级元素为父亲（有立体感且有链接） -->
+                <img src="media/scale.jpg" alt="" class="rotate3d">
+            </a>
+        </div>
+        <a href="sample.html" style="perspective:500px">
+            <!-- 有链接 有设透视 无转换块级元素（无立体感） -->
+            <img src="media/scale.jpg" alt="" class="rotate3d">
+        </a>
+    </div>
+
+    <p>3D呈现transform-style</p>
+    <div class="boxFather">
+        <div class="box">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    
+   
+    <p>3D转换</p>
+    <div style="perspective: 350px； width:100%; background-color: cornflowerblue;">
+        <div class="box2">
+            <div class="front">从侧面hover不会抽搐</div>
+            <div class="back">黑马程序员</div>
+        </div>
+    </div>
+
+    <p>3D 导航栏案例</p>
+    <!-- ul>li>div.box>div.front+div.back -->
+     <!-- 
+        外边距塌陷（啃老一族） 解决方案：
+        1. 添加border
+        2.添加pading
+        3.overflow hidden （推荐）
+    -->
+    <!--
+        /* 清除浮动方法其中之一 */
+        overflow: hidden;
+    -->
+    <div style="height: 300px; width: 100%; background-color: lightgray;overflow: hidden;">
+        <ul class="daohang">
+            <li>
+                <div class="box3">
+                    <div class="front2">郑子豪。。。</div>
+                    <div class="bottom">爱 周子泉！</div>
+                </div>
+            </li>
+            <li>
+                <div class="box3">
+                    <div class="front2">郑子豪。。。</div>
+                    <div class="bottom">要杀 马敬轩！</div>
+                </div>
+            </li>
+            <li>
+                <div class="box3">
+                    <div class="front2" style="transform: translateZ(50px);">郑子豪。。。</div>
+                    <div class="bottom" style="height: 100px; transform:translateY(-20px) rotateX(-90deg);">要 狠狠的鸡巴深入周子泉的骚逼！</div>
+                    <!--为什么20°？还没转90度之前，蓝色比粉色小，且贴在粉色身上（只占小部分）。粉色转时，是以粉色中心点转的（蓝色待在原位）。转后，蓝色和粉色距离会有 粉色一半减去蓝色总。所以我们得出粉色要向上走20像素。让后再让蓝色往我们脸上走粉色的一半。-->
+                </div>
+            </li>
+            <li>
+                <div class="box3">
+                    <div class="front2">郑子豪。。。</div>
+                    <div class="bottom">喜欢李贞贤！</div>
+                </div>
+            </li>
+            <li>
+                <div class="box3">
+                    <div class="front2" style="transform: translateZ(100px);">郑子豪。。。</div>
+                    <div class="bottom" style="height: 200px; transform:translateY(-70px) rotateX(-90deg);">要实现共产主义社会，而不是当上首富去剥削别人</div>
+                    <!--为什么20°？还没转90度之前，蓝色比粉色小，且贴在粉色身上（只占小部分）。粉色转时，是以粉色中心点转的（蓝色待在原位）。转后，蓝色和粉色距离会有 粉色一半减去蓝色总。所以我们得出粉色要向上走200/2 - 30像素。让后再让蓝色往我们脸上走粉色的一半。-->
+                </div>
+            </li>
+            <li>
+                <div class="box3">
+                    <div class="front2">美国是。。。</div>
+                    <div class="bottom">世界劫匪！</div>
+                </div>
+            </li>
+            <li>
+                <div class="box3">
+                    <div class="front2">美国是。。。</div>
+                    <div class="bottom">世界毒瘤！</div>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+    
+
+    <p>旋转木马案例</p>
+    <div class="keshiqu" style="height: 500px; background-color: skyblue; overflow: hidden;">
+        <section class="rotate-horse-3d">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </section>
+    </div>
+    
+    <div style="text-align:center; "><a href="sample.html" style="color:#333; text-decoration:none;">返回主页面</a><br /></div>
+    <!-- 好像transition只能一下，而animation可以多次重复 -->
+    
+</body>
+</html>

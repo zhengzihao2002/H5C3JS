@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 新增</title>
+    <style>
+        @font-face {
+        font-family: 'icomoon';
+        src:  url('fonts/icomoon.eot?dg7fkn');
+        src:  url('fonts/icomoon.eot?dg7fkn#iefix') format('embedded-opentype'),
+            url('fonts/icomoon.ttf?dg7fkn') format('truetype'),
+            url('fonts/icomoon.woff?dg7fkn') format('woff'),
+            url('fonts/icomoon.svg?dg7fkn#icomoon') format('svg');
+        font-weight: normal;
+        font-style: normal;
+        font-display: block;
+        }
+
+        /* *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        } */
+
+
+        /*属性选择器:必须属于input且同时有value属性*/
+        input[value]{
+            color:pink;
+        }
+
+        /*不同的值来选择*/
+        input[type=text]{
+            color: pink;
+        }
+
+        /*选择首先是div让后具有class属性并且属性值必须是icon 开头 的这些元素*/
+        div[class^=icon]{
+            color:red;
+        }
+
+        /*有data为 结尾 的类名*/
+        section[class$=data]{
+            color:skyblue;
+        }
+        /*含有 “-d”元素的类名 且必须是section内部的*/
+        section[class*=-d]{
+            font-size: 30px;
+            font-weight:bolder;
+        }
+
+        /*类选择器和属性选择器 伪类选择器 权重都是10*/
+
+
+
+        /* 1.选择ul里第一个孩子且必须是小li:结构伪类选择器 */
+        ul li:first-child{
+            background-color: skyblue;
+        }
+        /* 2.选择ul里最后一个孩子:结构伪类选择器 */
+        ul :last-child{
+            background-color: skyblue;
+        }
+        /* 3.选择ul里某一个孩子 小li:结构伪类选择器 */
+        ul :nth-child(5){
+            background-color: pink;
+        }
+        /* 4. 把所有偶数孩子选出来*/
+        ul li:nth-child(even){
+            font-weight: bold;
+            background-color: gray;
+        }
+        /* 5. 把所有奇数孩子选出来*/
+        ul li:nth-child(odd){
+            font-style: italic;
+            background-color: lightgray;
+        }
+        /* 6.从0开始 每次加一 往后面计算 这里面必须是n 不能是其他字母 相当于选择了所有的孩子; 2n=0 2 4 6 8偶数;2n+1奇数;5n=5 10 15;5n=5 10 15 ..;n+5=5 6 7 8..;-n+5:前五个*/
+        ol li:nth-child(n){
+            background-color: pink;
+        }
+
+
+        /*nth-child 会把所有孩子都排列序号*/
+        /* 执行的之后首先看 :nth-child(1) 之后回去看 前面的div:首先选择了光头强，但是不是div，所以没有人被选出来 */
+        section div:nth-child(1){
+            background-color: red;
+        }
+        /*nth-of-type 会把指定元素的盒子排列序号*/
+        /* 执行的之后首先看 div 之后回去看 前面的:nth-of-type(1) 第几个孩子.先看了所有的div，然后再去看第几个孩子 */
+        section div:nth-of-type(1){
+            background-color:skyblue;
+        }
+
+
+
+        /*伪元素：元素内部插入内容（基本使用）*/
+        .weiyuansu::before{
+            /*这个content是必须要写的*/
+            content: '我';
+            width: 30px;
+            height: 40px;
+            background-color: skyblue;
+            display: inline-block;
+        }
+        .weiyuansu::after{
+            content: '大帅逼';
+        }
+
+
+        /*伪元素选择器：配合字体图标*/
+        .hezi{
+            /*子绝父相*/
+            position: relative;
+
+            width: 200px;height: 35px;
+            border: 1px solid red;
+        }
+        .hezi::after{
+            font-family: 'icomoon';
+            content:'\e909';
+            color:red;
+
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        /*添加内外边距且不增大盒子*/
+        .enlarge{
+            /*正常情况下，以下会增大盒子（w>200px h>200px）*/
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            border: 20px solid red;
+            padding:15px;
+
+            /*默认的，盒子大小为：width+padding+border*/
+            box-sizing: content-box;
+        }
+        .no-enlarge{
+            /*正常情况下，以下会增大盒子（w>200px h>200px）*/
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            border: 20px solid red;
+            padding:15px;
+
+            /*默认的，盒子大小为：width+padding+border*/
+            box-sizing: content-box;
+
+            /*border-box 盒子大小为width*/
+            box-sizing: border-box;
+        }
+
+
+        /*模糊效果:blur是一个函数，小括号里的数值越大越模糊*/
+        .mohu{
+            /*将mohu类所有的标签高度改为百分百（默认）*/
+            height:100%;
+        }
+        img.mohu{
+            /*mohu类里的img改blur*/
+            filter:blur(6px);
+            transition: all 2s;
+
+            width:300px;
+        }
+        img.mohu:hover{
+            /*只有鼠标经过的时候才会取消变模糊，鼠标在其他地方这个不生效*/
+            filter: blur(0px);
+        }
+
+
+
+        .father{
+            /* position: relative; */
+            
+            width: 300px;
+            height: 200px;
+            background-color: skyblue;
+        }
+        .son{
+            /* position: absolute; */
+            /* 第一步: 先将子盒子向上及向左移动父盒子的50%；*/
+            /* top: 50%;
+            left: 50%; */
+            /* 第二步：*/
+            /* top: 0;bottom: 0;left: 0;right: 0; */
+            /* margin: auto; */
+
+            margin:0 auto;
+
+            /* width: 150px; */
+            /* width: calc(150px + 30px); */
+            width: calc(100% - 30px);
+            height: 30px;
+            background-color: gray;
+        }
+
+        /*过渡展示*/
+        .guodu{
+            width: 200px;
+            height: 100px;
+            background-color: skyblue;
+
+            /* transition: 变化的属性 花费时间(s) 运动曲线(默认ease，可以省略) 何时开始(s，可以省略); */
+            /* transition: width .5s ease 0s, height .5s ease 0s; */
+            /* transition: width .5s , height .5s ; */
+            transition: all 0.5s;
+        }
+        .guodu:hover{
+            width: 400px;
+            height:200px;
+            background-color: rgb(216, 56, 56);
+        }
+
+
+        .bar{
+            width: 150px;
+            height: 15px;
+            border:1px solid red;
+
+            /*圆角：约等于高度的一半*/
+            border-radius:7px;
+
+            padding:1px;
+        }
+        .bar_in{
+            width: 50%;
+            height: 100%;
+            background-color: red;
+
+
+            /*谁做过渡给谁加transition(width 也是同样的效果)*/
+            transition:all .7s;
+        }
+        /*鼠标经过父盒子让后让父盒子里面的barin来变化*/
+        .bar:hover .bar_in{
+            width: 100%;
+        }
+
+
+
+        button{
+            cursor:pointer;
+        }
+        /*属性选择器使用方法：选择的是即使button又是disabled属性的元素*/
+        button[disabled]{
+            cursor: default;
+        }
+        input[type=password]{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. 利用属性选择器就可以不用借助于类或者id选择器 -->
+    <input type="text" value="请输入用户名">
+    <input type="text">
+    <br><br>
+
+    <!-- 2.属性选择器还可以选择 属性=值的某些元素(重点) -->
+    <input type="text" name="" id="">
+    <!-- 快捷->input:password -->
+    <input type="password" name="" id="" style="outline:none;">
+    <br><br>
+
+    <!-- 3.属性选择器可以选择属性值开头的某些元素 -->
+    <div class="icon icon1">小图标1</div>
+    <div class="icon icon2">小图标2</div>
+    <div class="icon icon3">小图标3</div>
+    <div class="icon icon4">小图标4</div>
+    <div>我是打酱油的</div>
+    <br>
+
+    <!-- 4.属性选择器可以选择属性值结尾的某些元素 -->
+    <section class="icon1-data">我是安琪拉</section>
+    <section class="icon2-data">我是哥斯拉</section>
+    <section class="icon3-ico">你是我的人</section>
+    <br>
+    <ul>
+        <li>我是第1个孩子</li>
+        <li>我是第2个孩子</li>
+        <li>我是第3个孩子</li>
+        <li>我是第4个孩子</li>
+        <li>我是第5个孩子</li>
+        <li>我是第6个孩子</li>
+        <li>我是第7个孩子</li>
+        <li>我是第8个孩子</li>
+        <li>我是第9个孩子</li>
+    </ul>
+    <ol>
+        <li>我是第1个孩子</li>
+        <li>我是第2个孩子</li>
+        <li>我是第3个孩子</li>
+        <li>我是第4个孩子</li>
+        <li>我是第5个孩子</li>
+        <li>我是第6个孩子</li>
+        <li>我是第7个孩子</li>
+        <li>我是第8个孩子</li>
+        <li>我是第9个孩子</li>
+    </ol><br>
+
+    <!--:first-child 和 :first-of-type 的区别-->
+    <section>
+        <p>光头强</p>
+        <div>熊大</div>
+        <div>熊二</div>
+    </section><br>
+
+    <!-- 伪元素选择器：基本使用 -->
+    <div class="weiyuansu">是</div>
+
+    <!-- 伪元素选择器：配合字体图标 -->
+    <div class="hezi"></div>
+
+    <!--添加内外边距且不增大盒子-->
+    <p class="enlarge">属性会增大盒子</p>
+    <div class="no-enlarge">属性不会不增大盒子</div>
+
+    <!-- 图像模糊处理 -->
+    <img src="images/ldh.jpg" alt="" class="mohu">
+
+    <!-- calc函数:需求我们的子盒子宽度永远比父盒子小30像素-->
+    <div class="father">
+        <div class="son"></div>
+    </div><br>
+
+    <!-- 过渡 transition:过渡属性 花费时间 运动曲线 何时开始 -->
+    <!-- 运动曲线：linear匀速 ease逐渐慢下来 ease-in加速 ease-out减速 ease-in-out先加速后减速 -->
+    <div class="guodu"></div><br>
+
+    <!--过渡练习-->
+    <div class="bar">
+        <div class="bar_in"></div>
+    </div><br>
+
+
+    <!-- 所谓就业班前部分 -->
+    <button>提交</button>
+    <button>提交</button>
+    <button>提交</button>
+    <button disabled>提交</button>
+        
+    <div style="text-align:center"><a href="sample.html">返回主页面</a><br /></div>
+</body>
+</html>

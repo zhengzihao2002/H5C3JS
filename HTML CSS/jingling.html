@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>精灵图使用</title>
+</head>
+<style>
+    .box1{
+        width: 60px;
+        height: 60px;
+
+         
+        background:url(images/sprites.png) no-repeat -182px 0;
+        margin: 100px auto;
+
+        /*记住，默认是左上角，所以要改位置:背景图往左走182像素*/
+        /* background-position:-182px 0; */
+    }
+    .box2{
+        width: 27px;
+        height: 25px;
+        background-color: pink;
+        margin: 200px;/*四个方位都有外边距200像素。注意，由于box2上面有个块级box1所以被迫在它下面显示，所以看起来上边距不像是200，因为200是从box1底部开始算起的*/
+        background: url(images/sprites.png) no-repeat -155px -106px;/*背景图往左走155像素往上走106像素。注意，只有右/下才是正值*/
+    }
+    span{
+        display: inline-block;
+        background: url(images/abcd.jpg) no-repeat;
+    }
+    .z{
+        width: 111px;
+        height: 110px;
+        /* background:url(images/abcd.jpg) no-repeat -480px -557px; */
+        background-position:-480px -557px;
+    }
+    .i{
+        width: 63px;
+        height: 107px;      
+        /* background:url(images/abcd.jpg) no-repeat -325px -140px; */
+        background-position:-325px -140px;
+    }
+    .h{
+        width: 104px;
+        height: 105px;      
+        /* background:url(images/abcd.jpg) no-repeat -218px -142px; */
+        background-position:-218px -142px;
+    }
+    .a{
+        width: 109px;
+        height: 115px;      
+        /* background:url(images/abcd.jpg) no-repeat 0 -3px; */
+        background-position:0 -3px;
+    }
+    .o{
+        width: 110px;
+        height: 112px;      
+        /* background:url(images/abcd.jpg) no-repeat -372px -273px; */
+        background-position:-372px -273px;
+    }
+</style>
+<body>
+    <!-- 精灵图 -->
+    <div class="box1"></div>
+    <div class="box2"></div>
+
+    <!-- 用精灵图拼出自己的名字 -->
+    <span class="z"></span>
+    <span class="i"></span>
+    <span class="h"></span>
+    <span class="a"></span>
+    <span class="o"></span>
+
+    <div style="text-align:center"><a href="sample.html">返回主页面</a><br /></div>
+
+</body>
+</html>

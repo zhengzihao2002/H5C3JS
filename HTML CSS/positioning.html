@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            /**/
+            position: relative;
+            top: 100px;
+            left: 100px;
+
+
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        .box2{
+            width: 200px;height: 200px;
+            background-color: blue;
+        }
+
+        .son{
+            position: absolute;
+            top: 100px;
+            right: 200px;
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+        .son2{
+            position: absolute;
+            left: 30px;
+            bottom: 10px;
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+        .father{
+            width: 500px;
+            height: 500px;
+            background-color: aliceblue;
+        }
+        .father2{
+            position: relative;
+            width: 500px;height: 500px;
+            background-color:aquamarine;
+        }
+        .yeye{
+            width: 800px;height: 800px;background-color:powderblue;position: relative;
+            padding: 50px;
+        }
+        .ex1{
+            position: absolute;
+            background-color:darkorange;
+
+            top: 5px;
+            left: 5px;
+
+            height: 100px;
+            width: 100px;
+        }
+        .ex2{
+            position: relative;
+            background-color:lemonchiffon;
+
+            top: 10px;
+            left: 10px;
+
+            height: 100px;
+            width: 100px;
+        }
+        .ex3{
+            position: relative;
+            background-color:yellowgreen;
+
+            top: 20px;
+            left: 20px;
+
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        相对定位：占位置，可移动
+        固定定位：浏览器为准，不占位置，可移动
+        绝对定位：不占位置，可移动
+    -->
+    <!--第一个是绝对定位没有占位置,第二个相对占位置且升上去，第三个相对占位置因为第二个占位置无法升-->
+    <!--
+        子绝父相：
+        子绝因为要在父盒子里随意移动。父相因为如果父绝的话其他盒子会跑到父盒子的底下去（父盒子不保留位置）。
+        父盒子不能没有定位，否则子 盒子（如按钮）会以浏览器为准。
+    -->
+    <div class="ex1"></div>
+    <div class="ex2"></div>
+    <div class="ex3"></div>
+    <br>
+    
+    <!--静态定位static：默认的标准流-->
+    <!--固态定位fixed：固定于浏览器可视区的位置-->
+    
+    
+    <!-- 相对定位relative ： 以原来的位置移动某某像素，且保留原来位置-->
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <br>
+
+    <!-- 绝对定位absolute ：不保留位置-->
+    <div class="son"></div>
+    <div class="father">
+        <!-- 注意父元素没有定位，都是已浏览器为准 -->
+        <div class="son"></div>
+    </div>
+    <br>
+    <div class="father2">
+        <div class="son"></div>
+    </div>
+    <br>
+    <div class="yeye">
+        <div class="father">
+            <!-- 由于爸爸没有定位，就已爷爷为主 （带定位的最近一级且带定位）-->
+            <div class="son2"></div>
+        </div>
+    </div>
+    <br>
+    
+
+
+    <div style="text-align:center; "><a href="sample.html" style="color:#333; text-decoration:none;">返回主页面</a><br /></div>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人注册</title>
+
+    <!--浏览器 标签 小图标 （一般存在根目录下current directory）-->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <!-- 引入我们初始化样式文件 -->
+    <link rel="stylesheet" href="css/base.css">
+    <!-- 引入我们自己注册的注册页面 -->
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+    <div class="w">
+        <header>
+            <div class="logo">
+                <a href="index2.html"><img src="images/pyg_logo.png" alt=""></a>
+            </div>
+        </header>
+        <div class="registerarea">
+            <h3>
+                注册新用户
+                <div class="login">我有账号，去<a href="#">登入</a></div>
+            </h3>
+            <div class="reg_form">
+                <form action="">
+                    <ul>
+                        <li>
+                            <label for="">手机号：</label>
+                            <input type="text" class="inp">
+                            <span class="error"><i class="error_icon"></i> 手机号格式不正确，请重新输入</span>
+                        </li>
+                        <li>
+                            <label for="">短信验证码：</label>
+                            <input type="text" class="inp">
+                            <span class="success"><i class="success_icon"></i> 短信验证码输入正确</span>
+                        </li>
+                        <li>
+                            <label for="">登入密码：</label>
+                            <input type="password" class="inp">
+                            <span class="error"><i class="error_icon"></i> 手机号格式不正确，请重新输入</span>
+                        </li>
+                        <!--
+                            < i > 表示无意义的加粗，无意义的斜体，仅仅表示样式上是粗体或斜体，而没有强调的语义。
+                            < em >表示一般的强调文本，这个标签具有语义。该标签中的内容在搜索引擎中更受重视,一些语音阅读器也会根据它在阅读时加强语气。
+                        -->
+                        <li class="safe">安全程度 <em class="ruo">弱</em> <em class="zhong">中</em> <em class="qiang">强</em></li>
+                        <li>
+                            <label for="">确认密码：</label>
+                            <input type="password" class="inp">
+                            <span class="error"><i class="error_icon"></i> 手机号格式不正确，请重新输入</span>
+                        </li>
+                        <li class="agree"><input type="checkbox" name="" id="">
+                            同意协议并注册 <a href="#">《知晓用户协议》</a>
+                        </li>
+                        <li>
+                            <input type="submit" value="完成注册" class="btn">
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <footer class="footer">
+            <!-- 结尾 -->
+            <div class="mod_copyright">
+                <!-- 底部链接 -->
+                <div class="links">
+                    <a href="#">关于我们</a> | <a href="#">联系我们</a> | <a href="#">联系客服</a> | <a href="#">商家入驻</a> | <a href="#">营销中心</a> | <a href="#">手机品优购</a> | <a href="#">友情链接</a> | <a href="#">销售联盟</a> | <a href="#">品优购社区</a> | <a href="#">品优购公益</a> | <a href="#">English Site</a> | <a href="#">Contact U</a>
+                </div>
+
+                <!-- 商标 -->
+                <div class="copyright">
+                    地址：北京市昌平区建材城西路金燕龙办公楼一层 邮编：100096 电话：400-618-4000 传真：010-82935100 邮箱: zhanghj+itcast.cn <br>
+                    京ICP备08001421号京公网安备110108007702
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿土豆网显示隐藏遮罩案例</title>
+</head>
+<style>
+    .tudou {
+        position: relative;
+        width: 444px;
+        height: 320px;
+        background-color: pink;
+        margin: 30px auto;
+    }
+
+    .tudou img {
+        /*图片宽高和父盒子一样大*/
+        width: 100%;
+        height: 100%;
+    }
+
+    .tudou::before {
+        content: '';
+
+        /*隐藏遮罩层*/
+        display: none;
+
+        /*让此mask不占位置（盖住）并且在父盒子的左上角显示*/
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4) url(images/arr.png) no-repeat center;
+    }
+
+    /*当我们的鼠标经过了土豆这个盒子，就让里面before遮罩层显示出来*/
+    .tudou:hover::before {
+        /*显示元素*/
+        display: block;
+    }
+</style>
+
+<body>
+    <div class="tudou">
+        <!-- <div class="mask"></div> -->
+        <img src="images/tudou.jpg" alt="">
+    </div>  
+    <div class="tudou">
+        <!-- <div class="mask"></div> -->
+        <img src="images/tudou.jpg" alt="">
+    </div>
+    <div class="tudou">
+        <!-- <div class="mask"></div> -->
+        <img src="images/tudou.jpg" alt="">
+    </div>
+    <div class="tudou">
+        <!-- <div class="mask"></div> -->
+        <img src="images/tudou.jpg" alt="">
+    </div>
+    <div style="width: 100%; float: left;">
+        <div style="text-align:center; "><a href="sample.html" style="color:#333; text-decoration:none;">返回主页面</a></div>
+    </div>
+</body>
+
+</html>

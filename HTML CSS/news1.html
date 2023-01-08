@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新闻页面1</title>
+    <style>
+        body {
+            font: 16px/28px 'Microsoft YahHei';
+            /* 16相素行高28 */
+        }
+
+        h1 {
+            font-weight: normal;
+            text-align: center;
+        }
+
+        .gray {
+            color: #888;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .searchBar {
+            color: #666;
+            width: 170px;
+        }
+
+        .btn {
+            font-weight: bold;
+        }
+
+        p {
+            /* 首行缩进两个字的距离 */
+            text-indent: 2em;
+        }
+
+        .footer {
+            color: #888;
+            font-size: 12px;
+        }
+        ol li{
+            /* 后代选择器 */
+            color:pink;
+            /* 将所有在ordered list 中的小例文字颜色改成粉色 */
+        }
+        ol li a{
+            /* 所有ol标签里面的小例，小例里面的a标签 */
+        }
+        .nav li a{
+            /* 含有类nav里面的小例，小例里面的所有a标签 */
+        }
+        .nav>a{
+            /* 子元素选择器 */
+            /* 含有nav 类的标签，里面的a（仅限儿子，非孙子等后代） */
+        }
+        .bitch,div,p.classA,.classA li{
+            color:red;
+            text-decoration: underline;
+            /* 并集选择器：将div和p标签，和含有classA类的小例子里 文本颜色改为黑色 */
+        }
+        input:focus{
+            background-color: azure;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>北方高温明日达鼎盛 京津冀多地地表温度将超60°C</h1>
+    <div class="gray"> 2019-07-03 16:31:47 来源：<a href="http://www.weather.com.cn/" target="_blank">中国天气网</a> <input
+            type="text" value="请输入查询条件" class="searchBar"><button class="btn">搜索</button></div>
+    <hr>
+
+    <p>中国天气网讯 今天（3日），华北、黄准多地出现高温天气，截至下午2点，北京、天津、郑州等地气温突破35°C。预报品示，今后
+        三天（3-5日），这一带的高温天气将继续发酵，高温范国以及强度将在4日达到鼎盛，预计北京、天津
+        石家庄、济南等地明天的最高气温有望突破38°C，其中北京和石家庄的最高气温还有望
+        创今年以来的新高。</p>
+
+    <h4>气温41.4°C！地温66.5！北京强势迎七月首个高温日 </h4>
+
+    <p style="text-align:center ;">
+        <img src="images/dangqi.jpg" alt="图片已破损">
+    </p>
+
+    <p>今天，华北、黄准一带的高温持续发酵，截至今天下午2点，陕西北部、山西西南部、河北南部、北京、天津、山东西
+        部、河南北部最高气温己普遍超过35°C。大城市中，北京、天津、郑州均迎来高温日。</p>
+
+    <p>在阳光暴晒下，地表温度也逐渐走高。
+        今天下午2点，华北黄淮大部地区的地表温度都在50°C以上，部分
+        地区地表温度甚至超过60°C。其中，河北衡水地表温度高达68.3°C，天津站和北京站附近的地表温度分别高达66.6°C和66.5°C。</p>
+
+    <h4>明日热度再升级！京津冀携手冲击38°C+ </h4>
+
+    <p>中国天气网气象分析师王伟跃介绍，明天（4日），
+        华北、黄准地区35°C以上的高温天气还将继续升级，并进入鼎盛阶段，高温强度和范国都将发展到最强。明天，北京南部、天津大部、河北中部和南部、山东中
+        部和西部、山西南部局地、河南北部、东北部分地区的最高气温都将达到或超过 35°C。</p>
+
+    <p>不过，专家提醒，济南被雨水天气完美绕开，因此未来一周，当地的高温还会天天上岗。在此提醒当地
+        居民注意防暑降温，防范持续高温带来的各种不利影响。（文/张慧 数据支持/王伟跃 胡味 审核/刘文静 张方丽）</p>
+
+    <p class="footer">本文来源：中国天气网 责任编辑：刘京 NO5631</p>
+    <br>
+    <div style="text-align:center"><a href="sample.html">返回主页面</a><br /></div>
+    <ul class="classA">
+        <dt>中国共产党党员原则</dt>
+        <li>不忘初心</li>
+        <li>牢记使命</li>
+        <li>永远跟党走</li>
+    </ul>
+    <!--
+        <div></div>
+        <div></div>
+        1.div*2 
+        2. tab
+
+        <ul>
+        <li></li>
+        </ul>
+        1.ul>li
+        2.tab
+
+        <div class="banner"></div>
+        1. .banner
+        2.tab
+
+        <p class="one"></p>
+        1. p.one
+        2.tab
+
+        <div class="demo1"></div>
+        <div class="demo2"></div>
+        <div class="demo3"></div>
+        <div class="demo4"></div>
+        <div class="demo5"></div>
+         1..demo$*5
+    -->
+
+</body>
+
+</html>

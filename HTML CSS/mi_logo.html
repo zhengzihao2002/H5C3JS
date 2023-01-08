@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小米logo渐变</title>
+
+    <style>
+        .header-logo {
+            position: relative;
+        }
+
+        /* 设置a标签的样式 */
+        .logo{
+            display: block;
+            background-color: #ff6700;
+
+            width: 550px;height: 550px;
+            /* width: 55px;height: 55px; */
+
+            /* overflow: hidden;
+            text-align: left;
+            text-indent: -9999em; */
+        }
+
+        /* mi logo的样式 */
+        .logo::before{
+            content: '';
+            background: url(images/mi-logo.png) no-repeat center center;
+            background-size: contain;
+
+            width: 550px;height: 550px;
+            /* width: 55px;height: 55px; */
+
+            /* 设置滑动时的过渡 */
+            transition: all .3s;
+
+            /* 透明度 （零=不见了）*/
+            opacity: 1;
+
+            /*由于content为空，所以必须添加绝对定位来显示:不用定位的话如何显示？？？浮动，块/行内块 */
+            position: absolute;
+            left: 0;top: 0;
+
+        }
+        /* mi home的样式 */
+        .logo::after{
+            content: '';
+            background: url(images/mi-home.png) no-repeat center center;
+            background-size: contain;
+
+            width: 550px;height: 550px;
+            /* width: 55px;height: 55px; */
+
+            /* 设置过渡 */
+            transition: all .3s;
+
+            /* 透明度 （零=看不见）*/
+            opacity: 0;
+
+            /*由于content为空，所以必须添加绝对定位来显示(不添加则像给div一个背景颜色但是里面没有任何东西):不用定位的话如何显示？？？浮动，块级/行内块*/
+            position: absolute;
+            left: 0;top: 0;
+
+            /*让第二个图片先往左移动550像素*/
+            margin-left: -550px;
+            /* margin-left: -55px; */
+        }
+
+        /* 鼠标hover logo盒子的时候， 让mi logo 往右侧滑动 且让透明度设为零 */
+        .logo:hover::before {
+            opacity: 0;
+            /*如果没有transition，动画特效会特别不丝滑*/
+            margin-left: 550px;
+        }
+
+        /* 鼠标hover logo盒子的时候， 让mi home 往右侧滑动 且让透明度设为1 */
+        .logo:hover::after {
+            opacity: 1;
+            /*如果没有transition，动画特效会特别不丝滑*/
+            margin-left: 0;
+        }
+
+        /* 疑问：鼠标经过的时候margin变了是正常的，为什么鼠标移开后margin会返回原值？？？ */
+    </style>
+</head>
+<body>
+    <div class="header-logo">
+        <a href="sample.html" class="logo" title="小米官网"></a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5新增语义化标签</title>
+</head>
+<style>
+    header,nav{
+        height: 120px;
+        background-color: pink;
+        border-radius: 15px;
+        width: 800px;
+        margin:15px auto;
+
+        /*为了兼顾IE9（默认行内元素）*/
+        display: block;
+    }
+    section{
+        width: 500px;
+        height: 300px;
+        background-color: skyblue;
+
+        /*为了兼顾IE9*/
+        display: block;
+    }
+    .video{
+        width: 100%;
+    }
+    .video2{
+        height: 100%;
+    }
+
+    input::placeholder{
+        /* 将input里的伪元素placeholder颜色改成灰色 */
+        color:gray;
+    }
+    
+</style>
+<body>
+    <header>头部标签</header>
+    <nav>导航栏标签</nav>
+    <section>某个区域</section>
+
+    <br>
+
+
+
+
+    <!-- 
+        自动播放(谷歌浏览器必须静音播放)        ->      autoplay="autoplay"
+        静音播放                            ->      muted="muted"
+        播放控件                            ->      controls="controls"
+        无限循环                            ->      loop="loop"
+        版图:视频加载出来前会看到(网速慢等)     ->      poster="media/mi9.jpg"
+    -->
+    
+
+
+    <!-- 视频 -->
+    <video class="video2" src="media/daigula.mp4" autoplay="autoplay" controls muted="muted" loop="loop" poster="media/mi9.jpg">
+        <source src="media/daigula.mp4" type="video/mp4">
+        您的浏览器不支持video 元素
+    </video>
+
+    <!-- 音频:谷歌把autoplay禁用了 -->
+    <audio src="media/music.mp3" autoplay="autoplay"></audio>
+
+    <!-- 照顾低版本浏览器写法-音频 -->
+    <audio controls autoplay loop >
+        <source src="media/music.mp3" type="audio/mpeg">
+        您的浏览器不支持audio元素
+    </audio>
+
+    <!-- 简单验证 -->
+    <form action="">
+        <!-- 我们验证的时候必须添加form表单域 -->
+        <ul>
+            <li>邮箱：<input type="email" placeholder="如：xxx@qq.com"></li>
+            <li>网址：<input type="url"></li>
+            <li>日期：<input type="date"></li>
+            <li>日期：<input type="time"></li>
+            <li>数量：<input type="number"></li>
+            <li>手机号码：<input type="tel" required></li>
+
+            <!-- required就是必须输入   autofocus就是自动获取焦点   autocomplete默认打开;会自动保存上次输入且提交的信息;注意必须要有个name才能实现-->
+            <li>搜索：<input type="search" id="" required="required" placeholder="代古拉K成名视频" autofocus="autofocus" name="search" autocomplete="off"></li> 
+            <li>颜色：<input type="color"></li>
+
+            <!-- 提交文件 且提交多个文件-->
+            <input type="file" name="" id="" multiple="multiple">
+
+            <!-- 当我们点击按钮的时候就可以提交表单了 -->
+            <li><input type="submit" value="提交"></li>
+        </ul>
+    </form>
+
+    <button>提交</button>
+    <button>提交</button>
+    <button style="cursor:pointer">提交</button>
+    <button disabled>提交</button>
+
+    <!-- 返回 -->
+    <div style="text-align:center">
+        <a href="sample.html">
+            <video class="video" src="media/mi.mp4" autoplay="autoplay" muted="muted" loop="loop" poster="media/mi9.jpg"></video>
+        </a>
+    </div>
+
+
+
+
+</body>
+</html>

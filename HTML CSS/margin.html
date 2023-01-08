@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>margin负值的巧妙运用</title>
+</head>
+<style>
+    
+
+    ul li{
+        list-style: none;
+        float: left;
+
+        width: 150px;
+        height: 200px;
+        border: 1px solid red;
+        
+        /*每个盒子都有一个一像素边框1+1=2像素在俩盒子中间。只要每个盒子往左走（margin-left是往左边添加边距实则往右边移）一像素就能压住额外不需要的边框（看不见）*/
+        margin-left: -1px;
+    }
+    ul li:hover{
+
+        border: 1px solid blue;
+    }
+    .ul li:hover{
+        /*鼠标经过某个盒子的时候，提高当前盒子的层级即可（如果没有定位，则家相对定位（保留位置），如果有定位，则加z-index）*/
+        position: relative;
+
+        border: 1px solid blue;
+    }
+
+
+    .fuck li{
+        position: relative;
+        list-style: none;
+        float: left;
+
+        width: 150px;
+        height: 200px;
+        border: 1px solid red;
+        
+        /*每个盒子都有一个一像素边框1+1=2像素在俩盒子中间。只要每个盒子往左走（margin-left是往左边添加边距实则往右边移）一像素就能压住额外不需要的边框（看不见）*/
+        margin-left: -1px;
+    }
+    .fuck li:hover{
+        /*鼠标经过某个盒子的时候，提高当前盒子的层级即可（如果没有定位，则家相对定位（保留位置），如果有定位，则加z-index）*/
+        z-index: 1;
+
+        border: 1px solid blue;
+    }
+
+
+    .box{
+        width: 300px;
+        height: 70px;
+        background-color: pink;
+        margin: 0 auto;
+        padding: 5px;
+    }
+    .pic{
+        float: left;
+        width: 120px;
+        /* height: 60px; */
+        height: 70px;
+        margin-right: 5px;
+        
+        overflow: hidden;
+    }
+    .pic img{
+        /* width: 100%; */
+
+        /*we want to cut off the extra, or just place the images directy in the center of a fixed box and it will cut off evenly on left and right*/
+        height: 100%;
+    }
+    p,.box2 input{
+        /* 清除p的内外边距 */
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .box2{
+        text-align: center;
+    }
+    .box2 a{
+        /* 权重11 */
+        display: inline-block;
+
+        width: 36px;
+        height: 36px;
+
+        background-color: #f7f7f7;
+        color:#333;
+
+        border:1px solid #ccc;
+
+        text-align: center;
+        line-height: 36px;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    /* .prev,.next{
+        权重10
+        width: 35px;
+    } */
+    .box2 .prev,.box2 .next{
+        width: 85px;
+    }
+    .box2 .current, .box2 .elp{
+        background-color: #fff;
+        border: none;
+    }
+    .box2 input{
+        height: 36px;
+        width: 45px;
+        border: 1px solid #ccc;
+        outline:none;
+    }
+    .box2 button{
+        width: 60px;
+        height: 36px;
+        background-color: #f7f7f7;
+        border: 1px solid #ccc;
+    }
+
+
+
+    .box3{
+        width: 0;
+        height: 0;
+
+        /*将上边边框宽度调大*/
+        border-top: 100px solid transparent;
+        border-right: 50px solid skyblue;
+
+        /*左边和下边的边框宽度设置为0*/
+        border-bottom:0 solid blue;
+        border-left: 0 solid green;
+
+        /*简写*/
+        border-color: transparent skyblue transparent transparent;
+        border-style: solid;
+        border-width: 100px 50px 0 0;
+    }
+
+
+    .price{
+        /*主盒子*/
+        width: 160px;
+        height: 24px;
+
+        /* 设置边框 */
+        border: 1px solid red;
+
+        /* 让其水平居中 */
+        margin:0 auto;
+
+        /* 让内部文字垂直居中 */
+        line-height: 24px;
+    }
+    .miaosha{
+        /*减价的价格浮动到左边*/
+        float: left;
+
+        /* 设置宽度且让高度和父盒子一样 */
+        width: 90px;
+        height: 100%;
+
+        /* 背景颜色为红色 文字水平居中 颜色为白色 */
+        background-color: red;
+        text-align: center;
+        color: #fff;
+
+        /*加粗且把旧的价格往右推*/
+        font-weight: 700;
+        margin-right: 8px;
+
+        /*为了配合内部三角形的绝对定位，作为其父盒子，设置相对定位*/
+        position: relative;
+    }
+    .miaosha i{
+        /* 将三角形设置绝对定位且将其放在新价格部分的最右边（距离右边没有距离，距离上面没有距离（下面也同样效果）） */
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        /*三角形是边距绘制而成，没有任何高度宽度*/
+        height: 0;
+        width: 0;
+
+        /*颜色样式大小等设置*/
+        border-color: transparent #fff transparent transparent;
+        border-style: solid;
+        border-width: 24px 10px 0 0;
+    }
+    .orgin{
+        /*原始价格设置*/
+        font-size: 12px;
+        color:gray;
+        text-decoration: line-through;
+    }
+</style>
+<body>
+    <!-- 
+        浮动回顾：
+        浮动只会影响后面的盒子，浮动后面的盒子会跑到浮动盒子的下面去。如果浮动前面有个标准流盒子浮动盒子不会跑到他的下面去
+        浮动元素只会压住下面标准流的盒子，但是不会压住下面标准流的文字
+        绝对定位和固定定位 会压住下面标准流的所有内容。浮动的目的就是文字环绕效果。
+
+        清除浮动方法：
+        1. 额外标签法 添加同级别元素div再赋予clear:both
+        2. 给父盒子添加overflow:hidden;
+        3. after 伪元素 :父元素直接调用clearfix
+            .clearfix:after{
+                content:"";
+                display: table;
+            }
+            .clearfix:after{
+                clear:both;
+            }
+            .clearfix{
+                *zoom:1;
+            }
+        4.双伪元素
+            .clearfix:before,.clearfix:after{
+                content:"";
+                display: table;
+            }
+            .clearfix:after{
+                clear:both;
+            }
+            .clearfix{
+                *zoom:1;
+            }
+    -->
+    
+    <!--巧妙运用margin值-->
+    <ul style="overflow: hidden;">
+        <li>正常所有盒子往左边移动一像素</li>
+        <li>正常所有盒子往左边移动一像素</li>
+        <li>正常所有盒子往左边移动一像素</li>
+        <li>正常所有盒子往左边移动一像素</li>
+        <li>正常所有盒子往左边移动一像素</li>
+    </ul>
+    <ul style="overflow: hidden;" class="ul">
+        <li>突出盒子添加相对定位</li>
+        <li>突出盒子添加相对定位</li>
+        <li>突出盒子添加相对定位</li>
+        <li>突出盒子添加相对定位</li>
+        <li>突出盒子添加相对定位</li>
+    </ul>
+    <ul style="overflow: hidden;" class="fuck">
+        <li>我们都有相对定位（为了内部的绝对定位），我们添加了层级</li>
+        <li>我们都有相对定位（为了内部的绝对定位），我们添加了层级</li>
+        <li>我们都有相对定位（为了内部的绝对定位），我们添加了层级</li>
+        <li>我们都有相对定位（为了内部的绝对定位），我们添加了层级</li>
+        <li>我们都有相对定位（为了内部的绝对定位），我们添加了层级</li>
+    </ul>
+
+    <!--文字环绕浮动元素巧妙运用-->
+    <div class="box">
+        <div class="pic">
+            <img src="images/tudou.jpg" alt="">
+        </div>
+        <p>【集锦】热身赛-巴西0-1秘鲁 内马尔踢不良人学萨塞茶馆</p>
+    </div><br>
+
+
+    <!--行内块元素巧妙运用-->
+    <div class="box2">
+        <!-- a{$}*8 -->
+        <a href="#" class="prev">&lt&lt上一页</a>
+        <a href="#" class="current">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#" class="elp">...</a>
+        <a href="#" class="next">&lt&lt下一页</a>
+        到第
+        <input type="text">
+        页
+        <button>确定</button>
+    </div><br>
+
+    <!--创建直型三角-->
+    <div class="box3"></div><br>
+
+    <!--减价小标签-->
+    <div class="price">
+        <span class="miaosha">
+            ¥1650
+            <i></i>
+        </span>
+        <span class="orgin">¥5650</span>
+    </div><br>
+
+
+    <!--返回主页面-->
+    <div style="text-align:center;background-color: pink;"><a href="sample.html">返回主页面</a><br /></div>
+
+    
+
+    <!-- <div style="width: 100%; float: left;">
+        <div style="text-align:center; "><a href="sample.html" style="color:#333; text-decoration:none;">返回主页面</a></div>
+    </div> -->
+</body>
+</html>

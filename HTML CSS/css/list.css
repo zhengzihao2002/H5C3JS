@@ -1,0 +1,168 @@
+/* 列表页专有的css */
+.nav{
+    overflow: hidden;
+}
+.sk{
+    position: absolute;
+    border-left: 1px solid #c81523;
+    
+    /*注意，我们logo也是有绝对定位的！！！*/
+    left: 190px;
+    top: 40px;
+
+    /*顺时针*/
+    padding: 3px 0 0 14px;
+}
+
+
+
+
+
+
+.sk_list{
+    float: left;
+
+}
+.sk_list ul li{
+    float: left;
+}
+.sk_list ul li a{
+    /*li是行内块，a是块，a会撑大li*/
+    display: block;
+
+    /*和common.css 里的nav一样高：注意，会压住下边距*/
+    line-height: 47px;/*（下边距是2px）45就不用上面.nav里的overflowhidden.nav行高是47px,由于是css3盒子，边距不会撑大盒子（跑到内部去了）。你把行高设置为47，就等于没有边距的nav行高，就等于把边距压住了，而且这些东西可能自带外边距之类了，就会溢出，就会压住下面的东西*/
+    padding: 0 30px;
+
+    font-size: 16px;
+    font-weight: 700;
+    color:#000;
+}
+.sk_con{
+    float: left;
+}
+.sk_con ul li{
+    float: left;
+}
+.sk_con ul li a{
+    /*li是行内块，a是块，a会撑大li*/
+    display: block;
+
+    /*不和common.css 里的nav一样高。如果一样高只会垂直居中。不同大小的文字垂直居中底部是不一样高的。如果要底部一样，行高要增加（行高>高度=文字偏下）。我们的目的不是让198和168的肚脐对齐，而是让他们站在同一个高度！*/
+    line-height: 49px;/*（下边距是2px）45px就不用上面.nav里的overflowhidden. nav行高是47px,由于是css3盒子，边距不会撑大盒子（跑到内部去了且由于行高太大压住了边距且还超出了）。你把行高设置为49，就等于溢出去了。而且还浮动，所以会压住下面的东西。*/
+    padding: 0 20px;
+
+    font-size: 14px;
+}
+.sk_con ul li:last-child a::after{
+    content: '\e91e';
+    font-family:'icomoon';
+}
+
+
+.sk_bd ul li {
+    width: 290px;
+    height: 460px;
+    
+    /*让li有个透明边框，这样hover的时候不会突然出现一个边框而导致整个盒子抖动*/
+    border: 1px solid transparent;
+
+    /*图片和盒子一样大，导致压住了边框。修它*/
+    overflow: hidden;
+
+    /*让盒子一行显示：加浮动*/
+    float: left;
+    margin-right: 13px;
+
+    /*盒子内部有绝对定位*/
+    position: relative;
+}
+.sk_bd ul li:nth-child(4n){
+    /*每第四个都不要右边的外边距*/
+    margin-right: 0;
+}
+.sk_bd ul li:hover{
+    border: 1px solid #c81523;
+}
+
+
+
+
+.sk_bd ul li a{
+    /*取消链接默认的下划线*/
+    text-decoration: none;
+}
+.sk_bd ul{
+    /*取消列表默认的小圆点*/
+    list-style: none;
+}
+.sk_bd ul li em {
+    /* 让斜体不倾斜 */ 
+    font-style: normal;
+}
+.goods_title{
+    font-size: 14px;
+    color:#666;
+    font-weight: normal;
+    padding: 10px;
+}
+.goods_price{
+    padding:0 10px;
+}
+.goods_price em {
+    font-size: 22px;
+    color: #e60012;
+}
+.goods_price del{
+    color: #a4a4a4;
+    font-size: 14px;
+
+    font-weight: normal;
+}
+.goods_progress {
+    padding: 0 10px;
+}
+.bar{
+    /* 进度条外部 */
+    
+    width: 130px;
+    height: 10px;
+    border: 1px solid #b1191a;
+
+    /* 转成行内块否则会另起一行来显示 */
+    display: inline-block;
+
+    /* 圆角为高度的一半，垂直居中 ，左右边距*/
+    border-radius:5px;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+/* 进度条内部 */
+.bar_in{
+    width: 87%;
+    height: 100%;
+    background-color: #f24349;
+}
+/*“已售出”和“还剩余”的数字改成红色*/
+.goods_progress em, .goods_progress i{
+    font-size: 14px;
+    color: #f24349;
+}
+.goods_buy{
+    /*设置链接盒子的样式*/
+
+    position: absolute;
+
+    bottom: 0;
+    width: 100%;
+
+    /*让文字水平居中和垂直居中*/
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+
+    height: 50px;
+    background-color: #b1191a;
+    color: #fff;
+
+}

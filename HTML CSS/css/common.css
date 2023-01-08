@@ -1,0 +1,388 @@
+/* 声明字体图标 ：这里一定要注意路径的变化*/
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?tomleg');
+    src:  url('../fonts/icomoon.eot?tomleg#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?tomleg') format('truetype'),
+        url('../fonts/icomoon.woff?tomleg') format('woff'),
+        url('../fonts/icomoon.svg?tomleg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+/* 版心 */
+.w{
+    width: 1200px;
+
+    /*让版心居中对齐*/
+    margin: 0 auto;
+}
+
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.style_red{
+    color:#c81623;
+}
+
+
+
+
+
+/* 快捷导航模块 */
+.shortcut{
+    height: 31px;
+    background: #f1f1f1;
+
+    line-height: 31px;
+}
+.shortcut ul li{
+    float: left;
+}
+/*选择所有偶数的小li*/
+.shortcut .fr ul li:nth-child(even){
+    width: 1px;
+    height: 12px;
+    background-color: #666;
+    /* 上，左右，下 */
+    margin: 9px 15px 0;
+}
+/*快捷导航模块里需要右侧有个 下箭头 的来个after伪元素*/
+.arrow-icon::after{
+    content:'\e91e';
+    font-family: icomoon;
+
+    margin-left: 6px;
+}
+
+
+
+
+
+/* header头部制作 */
+.header{
+    height: 105px;
+
+    position: relative;
+}
+.logo{
+    width: 171px;height: 61px;
+
+    position: absolute;
+    top: 25px;
+}
+.logo a{
+    /*让链接和logo父盒子一样大（如果不转换成块级元素则无法设置宽高）*/
+    display: block;
+    width: 171px;
+    height: 61px;
+    background:url(../images/pyg_logo.png) no-repeat;
+
+    /* 文字隐藏 （并非链接隐藏）京东做法：让a链接里的文字不可见 */
+    font-size: 0;
+
+    /* 文字隐藏 （并非链接隐藏）淘宝做法:让文字往左边走直到超出盒子，让后隐藏文字 */
+    /* text-indent: -9999em;
+    overflow:hidden; */
+}
+.search{
+    position: absolute;
+    left: 346px;
+    top: 25px;
+
+    width: 538px;
+    height: 36px;
+    border:2px solid #b1191a;
+}
+.search input{
+    float: left;
+
+    width: 454px;
+    height: 32px;
+
+    /* 将里面的文字往右移动10像素 ：本来会撑大盒子，可是我们在base。css里有box-sizing: border-box;*/
+    padding-left: 10px;
+}
+.search button{
+    /*input 和button都是行内块，中间会有个缝隙，加了浮动就没有缝隙（定位也可以）*/
+    float: left;
+
+    width: 80px;
+    height: 32px;
+    background-color: #b1191a;
+    font-size: 16px;
+    color:#fff;
+}
+.hotwords{
+    position: absolute;
+    top: 66px;
+    left: 346px;
+}
+.hotwords a{
+    /*注意：这些外边距没有合并*/
+    margin: 0 10px;
+}
+.shopcart{
+    position: absolute;
+    right: 60px;
+    top:25px;
+
+    width: 140px;
+    height: 35px;
+    border:1px solid #dfdfdf;
+    background-color: #f7f7f7;
+
+    /*垂直水平居中*/
+    line-height: 35px;
+    text-align: center;
+}
+.shopcart::before{
+    font-family: icomoon;
+    content:'\e93a';
+
+    margin-right: 5px;
+
+    color: #b1191a;
+}
+.shopcart::after{
+    font-family: icomoon;
+    content:'\e920';
+
+    margin-left: 10px;
+}
+.count{
+    /*购物车内商品数量小模块*/
+
+    height: 14px;
+    color:#fff;
+    background-color: #e60012;
+
+    padding:0 5px;
+    position: absolute;
+    top: -5px;
+    /*为什么要距离左边105像素而不是距离右边某某像素呢？应为如果是右对齐，数字加大需要更多空间的时候会往左边移动（因为必须要距离右边某某像素，而左边没限制）。左对齐相反*/
+    left:105px;
+
+    /*行高会继承所以得重新设置*/
+    line-height: 14px;
+
+    /*左上 右上 右下 左下*/
+    border-radius:7px 7px 7px 0;
+}
+
+
+/*导航栏模块*/
+.nav{
+    height: 47px;
+    border-bottom: 2px solid #b1191a;
+}
+.nav .dropdown{
+    float: left;
+
+    width: 210px;
+    height: 45px;
+    background-color: #b1191a;
+
+    /*试试取消注释，dd就变没了*/
+    /* overflow:hidden; */
+}
+.nav .navitems{
+    float: left;
+}
+/*
+<!-- 为什么dropdown可以压住下面？因为他浮起来了！overflow 是允许的所以droppdown会溢出（除非dropdown不浮动溢出部分才能被footer压住）。只有同级别的（浮动）才能压到溢出部分的上面去 -->
+<div style="height: 300px; width:400px; background-color:blue;">
+    nav
+    <div style="height: 150px; width:150px; background-color:red;float: left;">
+        <!-- dropdown（浮动） -->
+        <div style="height: 100px; width:150px; background-color:black;">description</div>
+        <div style="height: 300px; width:150px; background-color:darkorange;">stuff</div>
+    </div>
+    <!-- <div style="height: 150px; width:350px; background-color:green; float: left;">
+        nav items
+    </div> -->
+    <div style="height: 150px; width:150px; background-color:green; float: left;">
+        nav items （浮动）
+    </div>
+</div>
+<div style="height: 400px; width:1400px; background-color:pink">footer</div>
+<br>
+<div style="height: 100px; width:100px; background-color:blue;">
+    <div style="height: 300px; width:50px; background-color:red;"> </div>
+</div>
+*/
+.dropdown .dt{
+    width: 100%;
+    height: 100%;
+
+    color:#fff;
+    font-size: 16px;
+
+    text-align: center;
+    line-height: 45px;
+}
+.dropdown .dd{
+    margin-top: 2px;
+    width: 210px;height: 465px;
+    background-color: #c81623;
+
+    /*隐藏*/
+    /* display: none; */
+}
+.dropdown .dd ul li{
+    /*相对定位除了占位置（保留原来的位置）和配合相对定位，就没有任何作用了吗？答案：可以移动*/
+    position: relative;
+
+    height: 31px;
+
+    /* 垂直居中 */
+    line-height: 31px;
+
+    margin-left: 2px;
+    padding-left: 10px;
+}
+.dropdown .dd ul li:hover{
+    /*当鼠标经过li*/
+    background-color: #fff;
+}
+.dropdown .dd ul li:hover a{
+    /*当鼠标经过li,变化a*/
+    color:#c81623;
+}
+.dropdown .dd ul li a{
+    font-size: 14px;
+    color: #fff;
+
+    /*点击区域变大；bug：一行很多a的出错*/
+    /* display: block;
+    height: 31px;
+    width: 210px; */
+}
+.dropdown .dd ul li::after{
+    /*也可以右浮动或者右margin*/
+    position: absolute;
+    top: 1px;
+    right: 10px;
+
+    color: #fff;
+
+    font-family: icomoon;
+    content: '\e920';
+    
+    font-size: 14px;
+
+}
+.navitems ul li {
+    /*让小li取消原有的一行一行的有两种方法：1.浮动(自动转行内块)   2.inline/inlineblock,因为li本来就是一个块级元素，独占一行*/
+    float: left;
+    /*注意，因为li浮动了，ul就理应（按理论上来说应该是）没有高度。ul同级别的盒子会跑到ul下面去，被li压住。但是不会压住字*/
+}
+.navitems ul li a{
+    /*为什么要给a高宽和padding？因为会增大点击范围*/
+    display: block;
+    height: 45px;
+    line-height: 45px;
+    font-size: 16px;
+    padding:0 25px;
+}
+
+
+
+/* 底部模块制作 */
+.footer{
+    height: 415px;
+    background-color: #f5f5f5;
+
+    padding-top: 30px;
+    margin-top: 37px;
+}
+.mod_service{
+    height: 80px;
+    border-bottom: 1px solid #ccc;
+}
+.mod_service ul li{
+    /*在同一行显示*/
+    float: left;
+
+    /*1200平分5个小模块=240像素每个盒子*/
+    /* width: 300px; */
+    width: 240px;
+    height: 50px;
+
+    padding-left: 35px;
+    /* margin:0 35px; */
+}
+.mod_service ul li h5{
+    /*图标浮动，这样右边的字可以显示在他的右边（div跑到下面去，但是不会盖住字，aka字在图标右边）*/
+    float: left;
+
+    width: 50px;
+    height: 50px;
+
+    margin-right: 8px;
+}
+.mod_service ul li h5.one{
+    /*精灵图坐标为-252 -2*/
+    background: url(../images/icons.png) no-repeat -252px -2px;
+}
+.mod_service ul li h5.two{
+    /*图片往左移动254像素，图片往上移动53像素*/
+    background: url(../images/icons.png) no-repeat -254px -53px;
+}
+.mod_service ul li h5.three{
+    background: url(../images/icons.png) no-repeat -256px -105px;
+}
+.mod_service ul li h5.four{
+    background: url(../images/icons.png) no-repeat -258px -157px;
+}
+.mod_service ul li h5.five{
+    background: url(../images/icons.png) no-repeat -256px -209px;
+}
+.service_txt h4{
+    font-size: 14px;
+}
+.service_txt p{
+    font-size: 12px;
+}
+
+
+.mod_help{
+    height: 185px;
+    border-bottom: 1px solid #ccc;
+    padding-top: 20px;
+    padding-left: 50px;
+}
+.mod_help dl{
+    float: left;
+    width: 200px;
+}
+.mod_help dl:last-child{
+    /* background-color: skyblue; */
+    width: 90px;
+    text-align: center;
+}
+.mod_help dl dt{
+    font-size:16px;
+    margin-bottom: 10px;
+}
+.mod_copyright{
+    text-align: center;
+
+    padding-top: 20px;
+}
+.links{
+    margin-bottom: 15px;
+}
+.links a{
+    margin:0 3px;
+}
+.copyright{
+    line-height: 20px;
+}
+
+
+

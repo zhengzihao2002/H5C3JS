@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+            只让浮动在父盒子内部影响，不影响父盒子外面的其他盒子：
+            父窗体为标准，小例为浮动。父窗体为了能容纳更多的小例，选择了不设置高度。
+            下面的东西就会跑到小例的下面去。为了防止这样的事情发生，父窗体必须随着
+            小例的数量而变化。
+
+            --清除浮动1-额外标签法--
+            在小例后端加入一个块级元素，在给这个元素设置clear：both
+
+            --清除浮动2-overflow--
+            给父元素添加 overflow: hidden;
+
+            --清除浮动3-:after伪元素--
+
+            --清除浮动4--：父级添加双伪元素
+        */
+        .clear{
+            /*清除浮动1*/
+            /* 相当于盒子的 ”踏板“ */
+            /*正常情况下，因为最后一个块级标签是标准版，他会跑到浮动标签的下面去。
+            clear：both能解决这个问题。这样，即使非浮动他也不会跑到浮动下面去。
+            父窗体因为有了这个”踏板“，被迫拉长。记住标签里不要写任何东西否则会额外拉长！*/
+            clear: both;
+        }
+        .box{
+            /*清除浮动2*/
+            /* overflow: hidden; */
+
+            width: 800px;
+            border: 1px solid blue;
+            margin: 0 auto;
+        }
+
+        /* 清除浮动3：相当于为盒子右侧添加了C柱 */
+        /*给父元素添加 class"clearfix"*/
+        /* .clearfix:after{
+            伪元素必须写的属性
+            content:"";
+
+            插入的元素必须是块级元素
+            display: block;
+
+            不要看见这个元素
+            height: 0;
+
+            核型代码清除浮动
+            clear: both;
+
+            不要看见这个元素
+            visibility: hidden;
+        }
+        .clearfix{
+            *zoom:1;
+        } */
+
+        /* 清除浮动4：相当于为盒子左右侧添加了C柱 */
+        .clearfix:before,.clearfix:after{
+            content:"";
+
+            /*转换成块级元素并且在一行显示*/
+            display: table;
+        }
+        .clearfix:after{
+            clear: both;
+        }
+        .clearfix{
+            *zoom:1;
+        }
+
+        .damao{
+            float: left;
+            width: 300px;
+            height: 200px;
+            background-color: purple;
+
+        }
+        .ermao{
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        .footer{
+            height: 200px;
+            background-color: black;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="damao">大毛</div>
+        <div class="ermao">二毛</div>
+        <!-- <p style="background-color:darkorange; float: right;height: 200px; margin: 0 0;">p</p> -->
+        <div style="background-color: red;" class="clear"></div>
+    </div>
+    <div class="footer"></div>
+
+    <div style="text-align:center; "><a href="sample.html" style="color:#333; text-decoration:none;">返回主页面</a><br /></div>
+
+</body>
+</html>
