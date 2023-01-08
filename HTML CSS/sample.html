@@ -98,7 +98,7 @@
     </div>
 
     <!-- 头部导航 -->
-    <div style="position: sticky;top: 0;z-index: 100;">
+    <div style="position: sticky;top: 0;z-index: 100;" >
         <ul class="nav clearfix" style="margin-top:0;">
             <li>
                 <a href="javascript:;">周子泉专栏</a>
@@ -122,6 +122,12 @@
                     </li>
                     <li>
                         <a href="javascript:;" id="startMarquee">开启跑马灯</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" id="hideMarquee">隐藏跑马灯</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" id="showMarquee">显示跑马灯</a>
                     </li>
                     <li>
                         <a href="javascript:;">更换壁纸</a>
@@ -177,6 +183,8 @@
         // 停止跑马灯
         let startMarquee=document.querySelector('#startMarquee');
         let stopMarquee=document.querySelector('#stopMarquee');
+        let showMarquee=document.querySelector('#showMarquee');
+        let hideMarquee=document.querySelector('#hideMarquee');
         let MarqueeStatus = true;
         startMarquee.addEventListener('click',function(){
             if(MarqueeStatus==false){
@@ -189,6 +197,12 @@
                 MarqueeStatus = false;
                 clearInterval(marqueeTimer);
             }
+        });
+        hideMarquee.addEventListener('click',function(){
+            mq.style.display='none';
+        });
+        showMarquee.addEventListener('click',function(){
+            mq.style.display='block';
         });
         // 音乐
         let musicMenu = document.querySelector('#pickMusic');
@@ -231,7 +245,7 @@
     <!-- <h3 class="czsh">成长守护平台</h3> -->
 
     <!-- 公告栏（低配版） -->
-    <div style="position: sticky;top:43px;z-index: 90;">
+    <div style="position: sticky;top:43px;z-index: 90;" id="mq-container">
         <!-- 左边部分 -->
         <div style="border: 5px solid transparent;box-sizing:border-box;height:100px;width:50px;position: absolute;line-height: 95px;border-right:0;text-align: center;background-color:rgba(0, 0, 0, 0.7) ;font-size: 30px;">
             <!-- 引入css文件（iconmoon）就够了，然后就能加上你的span -->
@@ -252,6 +266,7 @@
     
     <!-- 文字无缝滚动：跑马等/走马灯 -->
     <script>
+        let mq = document.querySelector('#mq-container');
         const marqueeContainer = document.querySelector('.marquee-container');
         const marquee = document.querySelector('.marquee-text');
         const logoMarquee = document.querySelector('.icon-sound').parentNode;
