@@ -1,0 +1,4246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 小案例</title>
+    <!-- 2. 内嵌式JS -->
+    <script>
+        // alert('我要操周子泉')
+    </script>
+    <!-- 3. 外部JS -->
+    <script src="my.js"></script>
+
+    <!-- 视频控件js -->
+    <link rel="stylesheet" href="zy.media.min.css">
+    <script src="zy.media.min.js"></script>
+    <!-- jquery -->
+    <script src="jquery.min.js"></script>
+    <style>
+        section{
+            /* background-color: lightskyblue; */
+            background: -webkit-linear-gradient(top,lightskyblue ,skyblue);
+            padding: 20px;
+        }
+        .container{
+            margin: 20px 0;padding-top: 10px;
+            padding-bottom: 10px;
+            background-color:aliceblue;
+        }
+
+
+        .btn,.hidden{
+            height: 50px;
+            width: 200px;
+            background-color: lightgreen;
+
+            border: 0;
+            border-radius: 25px;
+
+            font-size: 30px;
+
+            margin: 0;
+            padding: 0;
+            margin-top: 10px;
+        }
+        input:nth-of-type(2n),button:nth-of-type(2n){
+            background-color: lightblue;
+        }
+        input{
+            text-align: center;
+        }
+        /* scrollbar */
+        /* width */
+        /* ::-webkit-scrollbar {
+            width: 20px;
+        } */
+        
+        /* Track */
+        /* ::-webkit-scrollbar-track { */
+            /* box-shadow: inset 0 0 5px grey;  this*/ 
+
+            /* border-radius: 10px; */
+        /* } */
+        
+        /* Handle */
+        /* ::-webkit-scrollbar-thumb {
+            background: lightskyblue; 
+            border-radius: 10px;
+        } */
+        
+        /* Handle on hover */
+        /* ::-webkit-scrollbar-thumb:hover {
+            background: skyblue; 
+        } */
+
+
+
+
+        div.shanchushijian {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            border: 1px solid white;
+            border-collapse: collapse;
+        }
+        .father {
+            overflow: hidden;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            background-color: pink;
+            text-align: center;
+        }
+        .son {
+            width: 200px;
+            height: 200px;
+            margin: 50px;
+            background-color: purple;
+            line-height: 200px;
+            color: #fff;
+        }
+
+
+        /* offset */
+        .father1 {
+            /* position: relative; */
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 150px;
+        }
+        
+        .son1 {
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+            margin-left: 45px;
+        }
+        
+        .w1 {
+            height: 200px;
+            background-color: skyblue;
+            margin: 0 auto 200px;
+            padding: 10px;
+            border: 15px solid lightgreen;
+        }
+
+
+        /* 简单动画函数封装 */
+        div.easyAnimate {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: lightskyblue;
+        }
+        span.easyAnimate {
+            position: absolute;
+            left: 0;
+            /* top: 200px; */
+            display: block;
+
+            width: 150px;
+            height: 150px;
+            background-color: lightgreen;
+        }
+
+
+        .sliderbar {
+            position: fixed;
+            right: 0;
+            bottom: 100px;
+
+            width: 40px;
+            height: 40px;
+            
+            text-align: center;
+            line-height: 40px;
+
+            cursor: pointer;
+            color: #fff;
+
+            z-index: 9999999;
+        }
+        .con {
+            /* 绝对定位在固定定位的盒子里 */
+            position: absolute;
+            /* 内容因为过于长已经超出页面 */
+            left: 0;
+            top: 0;
+
+            width: 200px;
+            height: 40px;
+            
+            background-color: purple;
+            z-index: -1;
+        }
+
+
+
+        div.yidongTOUCH {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        div.yidongTOUCH2 {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+
+
+        /* 视频控件 */
+        #modelView {
+            background-color: #DDDDDD;
+            z-index: 0;
+            opacity: 0.7;
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+        .playvideo {
+            padding-top: auto;
+            z-index: 9999;
+            position: relative;
+            width: 95%;
+            /* height: 2000px; */
+
+            margin:0 auto;
+        }
+        .zy_media {
+            z-index: 999999999
+        }
+
+        div.normal {
+            width: 200px;
+            height: 200px;
+            background-color: lightgreen;
+        }
+
+
+
+
+        .current_czl{
+            background-color: lightgreen!important;
+            transform: rotate(360deg);
+        }
+        #czl{
+            width: 150px;
+            height: 150px;
+            background-color: lightblue;
+            margin: 0 auto;
+            transition: all 1s;
+        }
+
+        /* jQuery被卷去的头部 */
+        .back {
+            position: fixed;
+            right: 30px;
+            bottom: 50px;
+            
+            width: 50px;
+            height: 50px;
+            background-color:rgba(140, 210, 219, 0.416);
+            z-index: 9999999;
+
+            display: none;
+        }
+
+
+
+
+        .panel {
+            border: 15px solid transparent;
+            border-image-width: 51px 38px 20px 132px;
+            border-image-source: url(echarts/images/border.png);
+            border-image-slice: 51 38 20 132;
+
+            width: 300px;
+            height: 50px;
+        }
+    </style>
+
+    
+</head>
+<body>
+    <!-- 即使用let申明，还是会出错如果和上面scripts的let名字重复var则会重新声明 -->
+    <div style="font-size: 30px; text-align:center;font-weight:bolder;background-color:lightgray;margin: 10px 400px" id="title">Java Script 合集</div>
+    <!-- JavaScript基础（ECMA Script） -->
+
+    <!-- 1. 行内式js 直接写到元素内部 -->
+    <input type="button" value="???" onclick="alert('周子泉我要肏爆你！')" disabled name="cao" class="btn" id="zzq">
+
+    <input type="button" class="btn" value="计算年龄" onclick="
+        var yearBorn=prompt('请输入您的出生年份')
+
+        // Return today's date and time
+        var currentTime = new Date()
+
+        // returns the month (from 0 to 11)
+        var month = currentTime.getMonth() + 1
+
+        // returns the day of the month (from 1 to 31)
+        var day = currentTime.getDate()
+
+        // returns the year (four digits)
+        var year = currentTime.getFullYear()
+
+        // write output MM/dd/yyyy
+        // document.write(month + '/' + day + '/' + year)
+
+        alert('今年过完生日后，您已经'+(year-yearBorn)+'岁了')
+    ">
+
+    <input type="button" class="btn" value="计算身高" onclick="
+        // 这是一个输入框
+        var height=prompt('请输入您的身高(厘米)');
+
+        //强制转字符串
+        height=height.toString();
+        height=String(height);
+
+        //强制转换整数:java-> Integer.parseInt(s)    c-> atoi()     
+        height=parseInt(height);//注意这里会自动去掉后面的字符串，如：123pp -> 123 , px123-> NaN
+        //强制转数字型
+        Number(height);
+
+        //alert 弹出警示框
+        alert('您的身高是'+height+'厘米')
+
+        if(height>=170){
+            alert('高个子！')
+        }else{
+            alert('矮个子！')
+        }
+
+        // 控制台输出
+        console.log('程序员能看到'+typeof height + typeof 123);
+
+        var name,sex,flag;
+        flag=false; //true = 1 false = 0
+
+        console.log(18 == '18');//true (判断)
+        console.log(18 === '18');//false (全等)
+
+        // 3. 逻辑与短路运算  如果表达式1 结果为真 则返回表达式2  如果表达式1为假 那么返回表达式1
+        console.log(123 && 456); // 456
+        console.log(0 && 456); //  0
+
+        // 4. 逻辑或短路运算  如果表达式1 结果为真 则返回的是表达式1 如果表达式1 结果为假 则返回表达式2
+        console.log(123 || 456); // 123
+        console.log(123 || 456 || 456 + 123); // 123
+        console.log(0 || 456 || 456 + 123); // 456
+    ">
+
+    <input type="button" class="btn"  value="平/润 年" onclick="
+    var year=prompt('输入年份')
+
+    if((year%4==0 && year%100!=0)||(year%400==0)){
+        alert('是闰年！');
+    }else{
+        alert('是平年！');
+    }
+    
+    ">
+
+    <input type="button" class="btn"  value="计算数字" onclick="
+        var time=prompt('输入一个数字0-59')
+
+        // is time less than 10? if so add 0 to the front. if not then return original.
+        var result= time<10? '0' + time : time;
+        alert(result);
+
+        // switch(true){
+        //     //表达式必须与case一致，数据同类型
+        //     case result<10:
+        //         alert('switch'+result);
+        //         break;
+        //     case result>10:
+        //         alert('原：'+result);
+        //         break;
+        //     default:
+        //         alert('错误');
+        // }
+    ">
+
+    <input type="button" class="btn"  value="查询女孩" onclick="
+        var name=prompt('输入姓名');
+        switch(name){
+            case 'zzq':
+            case '周子泉' :
+                alert('大屁孩！');
+                break;
+            case 'lzx':
+            case '李贞贤' : 
+                alert('小屁孩！');
+                break;
+            default: 
+                alert('没有此女孩');
+        }
+            
+    ">
+
+    <input type="button" class="btn"  value="1-100" onclick="
+        var n=prompt('输入您想要1-100之间第一个能被X整除的数字的和');
+        n=parseInt(n);
+
+        if(n<1 || n>100){
+            console.log(typeof n);
+            alert('错误'+n);
+            return;
+        }
+        for(var i = 1;i<=100;i++){
+            if(i%n==0){
+                console.log(i);
+            }
+        }
+        
+    ">
+
+    <input type="button" class="btn"  value="计算平均成绩" onclick="
+        var people=prompt('输入班级人数');
+        people=parseInt(people);
+
+        var sum=0,i;
+
+        for(i = 0;i< people; i++){
+            sum+=parseFloat(prompt('输入学生'+(i+1)+'的成绩'));
+            console.log(sum);
+        }
+
+        alert('总成绩:'+sum);
+        alert('平均成绩:'+(sum/people));
+    ">
+
+    <input type="button" class="btn"  value="打印星星" onclick="
+        // 打印n行n列的星星
+        var rows = prompt('请您输入行数:');
+        var cols = prompt('请您输入列数:');
+        var str = '';
+        for (var i = 1; i <= rows; i++) {
+            for (var j = 1; j <= cols; j++) {
+                str = str + '★';
+            }
+            str += '\n';
+        }
+        alert(str);
+    ">
+
+    <input type="button" class="btn"  value="打印乘法口诀" onclick="
+        var str = '';
+        var rows = prompt('请您输入行数:');
+        var str = '',i,j;
+        for(i=1;i<=rows;i++){
+            for(j=1;j<=i;j++){
+                str += j + '×' + i + '=' + (i * j) + '\t';
+            }
+            str+='\n'
+            
+        }
+        alert(str);
+        console.log(str);
+    ">
+
+    <input type="button" class="btn"  value="登陆" onclick="
+        var msg = prompt('账号');
+        var pwd = prompt('密码');
+        var error=0;
+        while (msg != '1779928940' || pwd != '1774523940') {
+            alert('请你先登录');
+            msg = prompt('账号');
+            pwd = prompt('密码');
+            error++;
+            if(error>3){
+                alert('错误!');
+                break;
+            }
+        }
+    ">
+
+    <input type="button" class="btn"  value="简易ATM" onclick="
+        var shuru,qian;
+        shuru = prompt('操作:\n1.存钱\n2.取钱\n3.显示余额\n4.退出');
+        qian = 100;
+        while (qian >= 10) {
+            if (shuru == '1') {
+                var msg = prompt('存钱');
+                msg = parseInt(msg);
+                qian = qian + msg;
+                alert('余额' + qian);
+                shuru = prompt('操作:\n1.存钱\n2.取钱\n3.显示余额\n4.退出');
+            }
+            if (shuru == '2') {
+                var msg = prompt('存钱');
+                msg = parseInt(msg);
+                qian = qian - msg;
+                alert('余额' + qian);
+                shuru = prompt('操作:\n1.存钱\n2.取钱\n3.显示余额\n4.退出');
+            }
+            if (shuru == '3') {
+                alert('余额' + qian);
+                shuru = prompt('操作:\n1.存钱\n2.取钱\n3.显示余额\n4.退出');
+            }
+            if (shuru == '4' || shuru==null) {
+                shuru = false;
+                break;
+            }
+        }
+    ">
+
+    <input type="button" class="btn"  value="输入秒数获时间" onclick="
+        let second = +prompt('请输入总的秒数');
+
+        function getTimes(time){
+            // total seconds / 60 = minutes; minuets / 60 = hours; hours mod 24 = hours that absolutely cannot make up a day, could be 0-23.999hours
+            let hour= parseInt(time/60/60%24);
+            // total seconds / 60 = minutes ; mod 60 means divide as most as you can 60, take remainder, which is what cant fully go into 60, aka left over minutes that cannot go into a hour
+            let minutes= parseInt(time/60%60);
+            //total seconds mod 60, means divide as most as you can 60, take remainder, which is what cant fully go into 60 aka leftover seconds that cannot become one minute
+            let seconds= parseInt(time%60); 
+
+            hour=hour<10? '0'+hour:hour;
+            minutes=minutes<10? '0'+minutes:minutes;
+            seconds=seconds<10? '0'+seconds:seconds;
+
+            return `计算之后的时间是${hour}小时${minutes}分${seconds}秒`
+        }
+        alert(getTimes(second));
+    ">
+
+    <!-- JS: var arr = new Array(); var arr=[];-->
+    <!-- js修改数组长度：arr.length=x -->
+
+    <!-- JAVA: int[] intArray = new int[20]; -->
+
+    <input type="button" class="btn"  value="冒泡排序" onclick="
+        // 冒泡排序：Bubble sort, sometimes referred to as sinking sort
+        var arr = [5, 4, 3, 2, 1]; 
+        // var arr = [4, 1, 2, 3, 5];
+        for (let i = 0; i <= arr.length - 1; i++) { // 外层循环管趟数 
+            for (let j = 0; j <= arr.length - i - 1; j++) { // 里面的循环管 每一趟的交换次数
+                // 内部交换2个变量的值 前一个和后面一个数组元素相比较。一趟内循环过完后最大值已经到最后了，所以不需要下一次内循环再和最后做对比
+                if (arr[j] > arr[j + 1]) {
+                    var temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+
+            }
+        }
+        alert(arr); //change > to < to change order
+
+        //every run thru the outer loop, they bring the greatest towards the end of its possible. in theory, and in fact, it will take 4 runs in outer loop to completely sort a 5 element array.
+        // in every run of outer loop, 1 element is completely sorted, thats why in inner loop we dont go through the sorted anymore with '-i'
+    ">
+
+    <!-- 函数大合集 -->
+    <script>
+        function getSum(one,two){
+            return one+two
+        }
+        function getSums(start,end){
+            var sum=0;
+            for(var i=start;i<=end;i++){
+                sum+=i;
+            }
+            return sum;
+        }
+        function getMax(one,two){
+            return one>two?one:two;
+        }
+        function getArrMax(arr){
+            var max=arr[0];
+            for(var i =1;i<=arr.length;i++){
+                if(arr[i]>max){
+                    max=arr[i];
+                }
+            }
+            return max;
+        }
+        function getMax2(){
+            var max= [0];
+            for(var i =1;i<=arguments.length;i++){
+                if(arguments[i]>max){
+                    max=arguments[i];
+                }
+            }
+            return max;
+        }
+        function reverseArr(arr){
+            //检测设否为数组
+            if((arr instanceof Array) == false){
+                //Array.isArray(arr)也可以
+                return '不是数组!';
+            }
+            var newArr=[];
+            for(var i=arr.length-1;i>=0;i--){
+                newArr[newArr.length]=arr[i];
+            }
+            return newArr; 
+        }
+        console.log(getSum(1,2))
+        console.log(getSums(1,2));
+        console.log(getMax(100,1));
+        console.log(getArrMax([1,2,3,4,5,100.500,666]));
+        console.log(getMax2(1,2,3,4,5,6,7,8,9  ));
+        console.log(reverseArr([1,2,3,4,5]));
+    </script>
+
+    <!-- 对象合集 -->
+    <script>
+        // 对象
+        var zzq = {
+            // 数据
+            name:'周子泉',
+            age: 20,
+            sex:'女',
+
+            //创建匿名方法 （对象里的函数）
+            moan : function(){
+                console.log('周子泉:我要吃郑子豪的大鸡巴！ 啊～');
+            }
+        }
+        console.log(zzq.name);
+        console.log(zzq['name']);
+        zzq.moan();
+
+        var lzx = new Object();
+        //空对象里动态新增这些属性
+        lzx.name= '李贞贤';
+        lzx.age=14; 
+        lzx.sex='女';
+        lzx.moan=function(){
+            console.log('李贞贤：即使郑子豪哥哥比我大六岁，可是我还是忍不住想和他做爱！');
+        }
+        lzx.moan();
+
+
+        //  构造函数
+        function Girl(name,age,sex){
+            this.name=name;
+            this.sex=sex;
+            this.age=age;
+            this.moan = function(dialogue){
+                console.log(dialogue);
+            }
+        }
+        //一个为Girl类的对象，叫tsgn
+        var tsgn = new Girl('图书馆女',20,'女');
+        console.log(typeof tsgn);
+        console.log(tsgn.name)
+        tsgn.moan('图书馆女：郑子豪哥哥，我忍不住了！我要叫出来了！希望在这么安静的图书馆里的没有人能听到我的骚叫声！ ');
+
+        //类似于for each:遍历对象
+        for(var items in zzq){
+            console.log(zzq[items]);
+            //zzq.items === zzq里面的items属性，没有items属性
+        }
+
+        //内置对象
+        console.log(Math.max(1,99,-99,))
+
+        var myMath = {
+            myMax:function(){
+                var max=arguments[0];
+                for(var i= 1;i<arguments.length;i++){
+                    if(arguments[i]>max){
+                        max=arguments[i];
+                    }
+                }
+                return max ;
+            },
+            myMin:function(){
+                var min=arguments[0];
+                for(var i= 1;i<arguments.length;i++){
+                    if(arguments[i]<min){
+                        min=arguments[i];
+                    }
+                }
+                return min;
+            },
+            myRandom:function(min,max){
+                // 0-10 -> 0.55*11 = 5.5 ; floor = 5 + 0 = 5
+                return Math.floor(Math.random()*(max-min+1))+min;
+            }
+        }
+        console.log(myMath.myMax(1,2,3,4,5,6,7,8,9));
+        console.log(myMath.myMin(1,2,3,4,5,6,7,8,9));
+
+        //随机函数
+        function getRandom(min,max){
+            return Math.floor(Math.random()* (max - min +1))+min
+        }
+        console.log(getRandom(1,10));
+
+        var students= ['逆战','给他爱','CF','CODOL','神枪手','生死狙击']
+        console.log(students[getRandom(0,students.length-1)]);
+
+        var arr=new Array();
+        var obj=new Object();
+        // 1. 使用Date  如果没有参数 返回当前系统的当前时间
+        // 2. 参数常用的写法  数字型  2019, 10, 01  或者是 字符串型 '2019-10-1 8:8:8'
+        var date= new Date();
+        console.log(date);
+        console.log(date.getFullYear()); // 返回当前日期的年  2019
+        console.log(date.getMonth() + 1); // 月份 返回的月份小1个月   记得月份+1 呦
+        console.log(date.getDate()); // 返回的是 几号
+        console.log(date.getDay()); // 3  周一返回的是 1 周六返回的是 6 但是 周日返回的是 0
+
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var dates = date.getDate();
+        function getTime(){
+            //refresh
+            date=new Date();
+            let hour = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+            seconds=seconds<10?'0'+seconds:seconds;
+            if(hour<=12){
+                var systemTime= hour + ':'+ minutes + ':'+ seconds + 'AM';
+            }else{
+                var systemTime= (hour-12) + ':'+ minutes + ':'+ seconds + 'PM';
+            }
+
+            return systemTime;
+        }
+        var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        var day = date.getDay();//根据日期返回 0-6 
+        function getDate(){
+            return '今天是：' + year + '年' + month + '月' + dates + '日 ' + arr[day] + getTime();
+        }
+        console.log(getDate());
+
+        var date1 = new Date(2019, 10, 1);
+        console.log(date1); // 返回的是 11月 不是 10月 
+        var date2 = new Date('2019-10-1 8:8:8');
+        console.log(date2);
+        
+    </script>
+
+
+    <input type="button" class="btn"  value="猜数字" onclick="
+        //随机的函数
+        function getRandom(min,max){
+            return Math.floor(Math.random()* (max - min +1))+min
+        }
+        var ans=getRandom(1,10);
+        console.log(ans);
+        var chance=3;
+        while (true) {
+            if(chance==0){
+                alert('失败');
+                break;
+            }
+            var num=prompt('请输入1～10之间的数值。你有3次机会');
+            if(num>10 || num<1){
+                alert('失败');
+                break;
+            }
+            chance--;
+            console.log(chance+'chances');
+            if(num>ans){
+                alert('太大了');
+            }else if(num<ans){
+                alert('太小了');
+            }else{
+                alert('恭喜答对 '+ans);
+                break;
+            }
+        }
+    ">
+
+    <!-- 计时器 -->
+    <script>
+        function countDown(time){
+            
+            var currentTime=+new Date(); //返回当前时间的总毫秒数 
+            var inputTime=+new Date(time); //返回用户输入时间的总毫秒数 
+            var result= (inputTime - currentTime)/1000; //剩余时间秒数
+
+            let day = parseInt(result/60/60/24);//秒->分->时->天
+            day = day < 10 ? '0' + day : day;
+            let hours = parseInt(result/60/60 %24);//秒->分->时
+            hours = hours < 10 ? '0' + hours : hours;
+            let minutes = parseInt(result/60 %60);//秒->分
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            let seconds = parseInt(result %60); 
+            if(seconds<0){
+                return 0 + '天' + 0 + '时' + 0 + '分' + 0 + '秒' 
+            }
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            
+            return day + '天' + hours + '时' + minutes + '分' + seconds + '秒'
+        }
+        console.log(countDown('2022-6-24 14:00:00'));
+    </script>
+
+
+    <!-- 数组和字符串 -->
+    <script>
+        let girls = ['周子泉','李贞贤','图书馆女']
+        girls.push('小麟','小蒋');//添加至尾部：返回值为当前长度
+        girls.unshift('西湖女');//添加至头部：返回值为当前长度
+        girls.push('肏');
+        girls.pop();//删除最后一个：返回值为删除的那个元素
+        girls.unshift('肏');
+        girls.shift();//删除第一个：返回值为删除的那个元素
+        console.log(girls);
+
+
+        // 有一个包含工资的数组[1500, 1200, 2000, 2100, 1800]，要求把数组中工资超过2000的删除，剩余的放到新数组里面
+        var arr = [1500, 1200, 2000, 2100, 1800];
+        arr.indexOf(1800);//从前往后查找; indexOf(1800,3) 从第三索引位置开始查找，否则返回第一个找到的位置
+        arr.lastIndexOf(1800);//从后往前查找
+        arr.reverse();
+        arr.sort();//冒泡排序(个位数only)
+        arr.sort(function(a, b) {//全位数冒泡排序
+            //  return a - b; 升序的顺序排列
+            return b - a; // 降序的顺序排列
+        });
+        var newArr = [];
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] < 2000) {
+                newArr.push(arr[i]);
+            }
+        }
+
+        console.log(newArr);
+
+
+        // indexOf()
+        function unique(arr2){
+            var newArr2=[];
+            for(let i = 0 ; i<arr2.length;i++){
+                //如果新数组里没有这个 元素 我们就将其加入我们新数组 否则忽略
+                if(newArr2.indexOf(arr2[i])===-1){
+                    newArr2.push(arr2[i]);
+                }
+            }
+            return newArr2
+        }
+        console.log(unique([1,2,3,4,5,5,6,6,7,7,8,8,9]));
+
+
+        // 转字符串
+        arr.toString();
+
+        // join(分隔符) 返回字符串形式
+        var arr1 = ['green', 'blue', 'pink'];
+        // console.log(arr1.join(''));// greenbluepink
+        // console.log(arr1.join()); // green,blue,pink
+        // console.log(arr1.join('-')); // green-blue-pink
+        // console.log(arr1.join('&')); // green&blue&pink
+
+        //concat() -> 链接俩或者多个数组 不影响元数组 -> 返回一个新数组
+        //slice() -> 数组截取slice（beginnign，end） -> 返回被截取项目的新数组
+        //splice() -> 数组删除 splice（第几个开始，删除个数）-> 返回被删除项目的数组 (注意这个方法会影响原数组)。如果删索引号2，arr.splice(2,1);如果只给一个值，就从这个index开始删，后面全给我删掉
+        
+
+        // 基本包装类型
+        var str = 'zhouziquan';
+        console.log(str.length);
+        // 对象 才有 属性和方法   复杂数据类型才有 属性和方法 
+        // 简单数据类型为什么会有length 属性呢？ 
+        // 基本包装类型：  就是把简单数据类型 包装成为了 复杂数据类型 
+        // (1) 把简单数据类型包装为复杂数据类型 
+        var temp = new String('andy');
+        // (2) 把临时变量的值 给 str
+        str = temp;
+        // (3) 销毁这个临时变量
+        temp = null;
+
+
+
+
+        let word = "oabcoefoxyozzopp";
+        let index = word.indexOf('o');
+
+        let appear=0;
+        while(index!==-1){
+            console.log('出现在索引号为：'+index);
+            appear++;
+
+            //在此字之后继续查找o
+            index = word.indexOf('o',index+1);
+        }
+        console.log('总出现次数：'+appear);
+
+        
+
+
+        //charAt(index) -> 根据位置返回字符
+        //charCodeAt(index) -> 返回此位置的ASCII码
+
+
+
+        var o = {
+            age: 18
+        }
+        if (o['sex']) {
+            console.log('里面有该属性');
+
+        } else {
+            console.log('没有该属性');
+
+        }
+
+        var str = 'abcoefoxyozzopp';
+        var obj = {};
+        for(let i= 0;i<str.length;i++){
+            let letter= str.charAt(i);
+            if(obj[letter]){//检查是否有该属性
+                obj[letter]++;
+            }else{
+                obj[letter]=1;
+            }
+        }
+        console.log(obj);
+
+        let objMax=0;
+        let character;
+        for(let element in obj){
+            if(obj[element]>objMax){
+                objMax=obj[element]; 
+                character=element;
+            }
+        }
+
+        console.log(character+ ' '+ objMax);
+
+
+
+        //substr('截取位置','截取长度')
+        //replace('被替换字符','替换为的字符') -> 只会替换第一个字符
+
+        zzq= 'zhouziquan';
+        zzq=zzq.replace('q','Q');
+        while(zzq.indexOf('z')!==-1){
+            zzq=zzq.replace('z','Z'); //替换完会形成新的字符串
+        }
+        console.log(zzq);
+
+        // 2. 字符转换为数组 split('分隔符')    前面我们学过 join 把数组转换为字符串
+        var str2 = 'red, pink, blue';
+        console.log(str2.split(','));
+        var str3 = 'red&pink&blue';
+        var arrstr3=str3.split('&')
+        console.log(arrstr3);
+        console.log(arrstr3.join('-'));
+    </script>
+
+    <!-- ES6 (ECMA SCRIPT 6) 新增 (2022 JS) -->
+    <script>
+        //----------ES6 新----------
+ 
+        //tab 上面的键；'`'
+        // let agee=5;
+        // document.write(`<div style="background-color:lightgreen;height:100px;">${agee}</div>`);
+        // "" 相当于 innerText ，`` 相当于 innerHtml
+
+
+
+
+        // 全等 值等
+        // ==  判断：要求 值 相等
+        // === 全等：要求 值+数据类型 相等
+
+        
+
+
+
+        // 如何判断用户是否输入一个值
+        //num = num || 0 -> 如果第一个短路（如null,undefined,0）则执行第二个
+
+
+
+
+        // 如何将prompt得到的字符串立刻转为number
+        // let number = +prompt(`请输入第 ${i} 季度的数据`); 
+        // 相等于 
+        // let number = parseInt(xxx);
+        // let number = Number(xxx);
+        
+
+
+
+
+        // 立即执行函数原理：
+        // 1. callMe();
+        // 2. (callMe)():
+        // 3. (function(){})();
+        // or (function(x,y){}(1,2))
+
+
+
+
+        // 为数组为什么叫为数组
+        // 少了pop push 等方法
+        // 有长度 有索引号
+
+
+
+        //作用域
+        //let num = 10;
+        // {
+        //     let num = 20; //符合规矩
+        // }
+        // (function(){let num = 30})(); //符合规矩
+
+
+
+
+        // 双击不选定 文本内容
+        // window.getSelection? window.getSelection().removeAllRanges():document.selection.empty();
+
+
+
+
+        //ES6之前 创建对象的方式 （没有类之前）------------------ 
+        // 1. 利用 new Object() 创建对象
+        // var obj1 = new Object({uname:'zihao'});
+        // obj1.sex='Men';
+        // 2. 利用 对象字面量创建对象
+        // var obj2 = {uname:'zihao',sex:'Men'};
+        // 3. 利用构造函数创建对象(第一个字母必须大写)
+        function Star(uname, age) {
+            this.uname = uname;
+            this.age = age;
+            this.sing = function() {}
+        }
+        var ldh = new Star('刘德华', 18);
+
+        // 实例成员 静态成员
+        // 构造函数里的属性(uname)和方法(sing)都是成员。构造函数通过this添加的都是 1）实例成员（ldh中所有的成员都是）。这些只能通过实例化对象来访问（ldh.uname）。2）静态成员 就是在构造函数本身上添加的成员(such as : Star.sex='男')。静态成员只能通过构造函数来访问(Star.sex).静态成员的值可以共享（Star1 and Star2 可以共享这个值）
+        Star.boss='郑子豪';//只能这样调用 静态成员属于类 (ES6前，后面创建class就可以用static)
+
+        // 原型对象 prototype
+        // 可以共享某个对象的函数，这样实例化多个同一类对象时，不会一直开辟空间用来储存同样的方法。公共的方法放到原型对象身上来共享。原型对象里面的this指向的是实例对象eg. ldh
+        // 构造函数.prototype.函数名 = function(){}
+        Star.prototype.sing=function(){};
+        Star.prototype={
+            constructor:Star, //不指回来就丢了！
+            sing:function(){},
+            movie:function(){console.log('看电影');},
+            nigga:"heri"
+        }
+        var ldh = new Star('刘德华', 18);
+        var zxy = new Star('张学友', 18);
+        ldh.movie(); zxy.movie();// 都可以，调用的都是一个函数
+        // ldh.__proto__ === Star.prototype 成立
+        // Star.prototype里面有个constructor（指向实例对象）和公共函数
+        console.log(ldh.nigga);//原型成员属于类上的原型
+
+
+        // 原型对象 prototype：铁三角指向问题
+        // Star构造函数 --Star.prototype--> Star原型对象prototype
+        // Star原型对象prototype --Star.prototype.constructor--> Star构造函数
+        // Star构造函数 ----> ldh实例对象 --ldh.__proto__--> Star原型对象prototype 
+
+
+        // object 的 原型对象（最顶层相当于全局变量）
+        // Star原型对象prototype --Star原型对象prototype.__proto--> Object原型对象
+        // Object原型对象 --Object原型对象.contrcuctor-> object构造函数
+        // object构造函数 --Object.prototype--> object原型对象
+
+
+
+        // 原型继承
+        // 假如Man对象想要继承Star的原型对象
+        // function Human(){this.eyes=2,this.head=1};
+        // Human.prototype.bitch=function(){
+        //     console.log('niga');
+        // }
+        const Human={
+            //这样设置自己是不能有prototype的。
+            eyes:2,
+            head:1
+        }
+        function Man(){};
+        Man.prototype = Human;
+        Man.prototype.constructor = Man; //指回去否则就丢了,since you threw out the original prototype and added a new one which does not have constructor pointer。疑问：Human的constructor是否会同时更改，还是Man的只是复制了Human一份？你理解错了，我们没有设置：Man.prototype=Human.prototype.如果我们是那样设置的，那么Human的prototype的constructor会受到影响，因为他们指向的是同一个地址！前提是Human用第一个方法设置，目前的（第二个）方法无法设置prototype因为他没有
+        Man.prototype.shave=function(){console.log('刮胡子');};
+        //假如Woman也继承Human，那么如果后续给Man的原型对象里添加的shave Woman也能收到，毕竟添加到的地方是Human。如果不想共享，那么可以Woman.prototype = new Human();
+
+
+
+
+        // JS成员查找机制 ：找不到就一直往上找
+        // ldh对象 -> Star.prototype -> Object.prototype -> null 
+        // Object 原型对象（prototype）里面有个公共函数toString
+        // 意味着我们可以使用 ldh.toString();
+
+
+        // 原型对象this指向问题
+        // 构造函数this -> 实例对象(ldh) <- 原型对象this
+
+
+        // 原型对象应用 扩展内置对象方法
+        Array.prototype.sum = function(){
+            //覆盖原有的 sum 方法
+            var sum =0;
+            //this 指向调用者 arr_123
+            for(let i =0;i<this.length;i++){
+                sum+=this[i];
+            }
+            sum=this.reduce((prev,value)=>prev+value,0);
+            return sum;
+        }
+        let arr_123=[1,2,3];
+        // let arr_123 = new Array(1,2,3);
+        console.log('自定义数组 原型对象',arr_123.sum(),Array.prototype);
+
+        // 组合继承 ES6 extends 之前 (call方法)
+        // fn.call(fn内this的指向,arg1.arg2);
+        function FatherConstructor(uname,age){
+            //this 指向父构造函数的对象实例
+            this.uname=uname;
+            this.age=age;
+        }
+        FatherConstructor.prototype.money=function(){console.log('Father原型对象内部money函数',100000)};
+        function SonConstructor(uname,age,sex_amount){
+            //this 指向 子构造函数的对象实例
+            FatherConstructor.call(this,uname,age);
+            this.sex_amount=sex_amount;
+        }
+        let son_example = new SonConstructor('周子泉',20,0);
+        console.log(son_example);
+        //子原型对象继承父原型对象（非copy而是继承,这样子即使son添加东西都这个原型对象里，原有的father原型对象不变）
+        SonConstructor.prototype=new FatherConstructor();
+        SonConstructor.prototype.constructor= son_example;
+        SonConstructor.prototype.__proto__.money();
+
+        
+
+
+
+
+        // ES6 类的本质
+        (function(){
+            class Star{}
+            Star.prototype.sing=function(){
+                console.log('shit');
+            };
+            let ldh = new Star();
+            console.log(ldh.__proto__ === Star.prototype);//true
+        }());
+
+
+        
+        // ES5 数迭代（遍历）方法：
+        //forEach(): 
+        (function(){
+            let arr = [1,2,3]
+            let sum=0;
+            // forEach return 不会终止迭代aka一致循环直到最后
+            arr.forEach(function(value,index,array){
+                // value : 每个数组元素
+                // index : 每个数组元素 的索引号
+                // array : 数组本身
+                sum+=value;
+            })
+        }());
+        //filter():
+        (function(){
+            let arr = [11,22,33]
+            // 返回新数组 不会影响原来的数组
+            let newArr = arr.filter(function(value,index,array){
+                // value : 每个数组元素
+                // index : 每个数组元素 的索引号
+                // array : 数组本身
+
+                //返回 偶数 Even
+                return value % 2 == 0;
+            })
+        }());
+        //some()：
+        (function(){
+            // 返回true或false
+            let arr = [1,2,3]
+            let flag = arr.some(function(value,index,array){
+                // value : 每个数组元素
+                // index : 每个数组元素 的索引号
+                // array : 数组本身
+                // 总结：只要第一个就满足条件，就不会继续执行了，返回布尔值。相比于filter，他会返回一个数组。
+
+                //如果有大于等于3的我们就返回true
+                return value >=3;
+
+                // Another Example
+                // return value == 'target';
+            })
+        }());
+        //reduce()
+        (function(){
+            let arr = [
+                {
+                    name:'zihao',
+                    salary:1000000
+                },
+                {
+                    name:'ziwen',
+                    salary:10
+                }
+            ];
+            let newArr = arr.reduce(function(prev,value){
+                // prev: 累计值 (default是起始值)
+                // value
+                // 0: 起始值 (可以省略)
+                return prev+(value.salary*0.5);
+            },0);
+            console.log(newArr);// (1,000,000*0.5)+(10*0.5)=500,005
+        }());
+        //map():和forEach差不多，只不过对数组本身的操作如value++等，会以返回一个新数组的方式展现。反观forEach不但不会返回任何东西，操作value无效
+        //every(): 和some差不多，some要找到了一个就返回true，every要所有都是才true
+
+
+        // ES5 新增方法
+        /* 
+        1)  trim 去除两侧的空格
+                str.trim()
+        2)  Object.keys(obj) 返回一个有属性名组成的数组
+                let arr = Object.keys(obj1);
+                arr.forEach(function(value){
+                    // 输出数组内的属性名
+                    console.log(value);
+                })
+        3)  Object.defineProperty() 定义新属性或修改原有的属性
+            旧方法：
+                let obj1={
+                    id=1
+                }
+                obj1.name='shit';
+            新方法
+                Object.defineProperty(obj1,'price',{
+                    value: 9.9, //设置属性值
+                    writable : false, //price不允许被修改 相当于const关键字
+                    enumerable: true, //不允许被遍历 默认false enu只对defineProp属性生效
+                    configurable: true //默认false不允许 是否可以被删除或再次修改特性
+                })
+                delete obj1.price //删除price属性（如果被configurable允许）
+                Object.defineProperty(obj1,'price',{
+                    value: 9.9, //只有被configurable允许才会生效 修改
+                })
+        4) Object.values(对象)
+            以数组的形式返回“对象”里的属性
+        */
+    
+        
+
+        // 函数定义方式
+        /*
+            1)  自定义函数
+                    function fn(){}
+            2)  函数表达式 (匿名函数)
+                    let fun = function(){}
+            3)  利用 new Function('参数1','参数2'.'函数体')
+                    let f = new Function('a','b','console.log(a+b)');
+                    f(1,2);
+                    console.log(f instanceof Object); // true 函数属于对象
+        */
+
+        
+        // 函数的调用方式 以及其this指向: 一般是谁调用我 this就指向谁（一般是对象，如果不是对象而是函数，this就继承那个函数的this）
+        /*
+            1)  普通函数：this 指向window(除非用call)
+                function fn() {
+                    console.log('人生的巅峰');
+                }
+                fn();
+                fn.call(fn内this的指向,arg1.arg2) //改变this指向
+            2)  对象的方法：this指向的是对象 o
+                    var o = {
+                        sayHi: function() {
+                            console.log('人生的巅峰');
+                        }
+                    }
+                    o.sayHi();
+            3)  构造函数：this指向ldh这个实例对象.原型对象里面的this指向的也是ldh这实例对象
+                    function Star() {};
+                    new Star();
+            4)  绑定事件函数：this 指向的是函数的调用者btn这个按钮对象
+                    btn.onclick = function() {};   // 点击了按钮就可以调用这个函数
+            5)  定时器函数：this指向window
+                    setInterval(function() {}, 1000);  这个函数是定时器自动1秒钟调用一次
+            6)  立即执行函数 立即执行函数是自动调用：this指向window
+                    (function() {
+                        console.log('人生的巅峰');
+                    })();
+        */
+    
+        // call 方法应用
+        // fn.call(thisArg,arg1,arg2,...)
+        // apply 方法应用
+        (function(){
+            let arr = [1,2,3,4,5,6,7];
+
+            // fn.apply(fn内this的指向,['参数1','参数2'])
+            let max = Math.max.apply(Math,arr);
+            let min = Math.min.apply(Math,arr);
+
+            console.log(max,min,Math.max);
+
+            // Math.max 和 Math.min 是一个函数
+            console.log(Math.min(1,2,3));
+        }());
+        // bind 方法应用
+        (function(){
+            // 基本使用
+            // fun.bind(thisArg,arg1,arg2,...);
+            // '不会调用函数' 但是能改变内部this指向
+            // 返回的是原函数改变this之后产生的新函数
+            // bind适合回调函数 call是适合立刻调用 apply是适合传输数组并立刻调用
+            // 不调用并改this    做继承/调用函数           数组有关
+            let o={
+                name:'andy'
+            }
+            function fn(a,b){
+                console.log(this);
+                console.log(a+b);
+            }
+            let f = fn.bind(o,1,2);
+            f();// o ,3 
+            fn(1,2);// window ,3
+
+
+            // 高级应用
+            let btn = document.querySelector('input[type=button]');
+            btn.addEventListener('click',function(){
+                this.disabled=true;
+                setTimeout(function(){
+                    // 这里this指向window，但是bind里面的this属于事件内部setTimeout外部，this指向btn
+                    this.disabled=false;
+                }.bind(this),3000);
+            });
+        }());
+    
+
+
+        // 严格模式
+        /*
+            strict mode 就是正常代码模式
+            正常模式就是 低级语言
+
+            比如变量要先声明再使用，不能随意删除已经声明的变量比如 delete variable, this在全局作用域中(比如函数 和非函数正常代码，但是setTimeOut除外)不再指向window对象而是undefined，构造函数必须加new来声明，函数参数不能重名，不能在if语句和循环里'定义'函数
+
+            <script>
+                // 为整个脚本 （script标签）开启严格模式。如果添加到函数内，这一个函数就按照严格模式执行，其他没影响
+                'use strict'
+            <\script>
+        */
+   
+        // 高阶函数
+        /*
+            如果某个函数接收另外一个函数作为参数 或 将函数作为返回值输出 他就会被称为高阶函数
+            <script>
+                function fn(callback){
+                    // callback(参数)若存在(非null非undefined非空)则调用 不存在则不调用（&&是且的意思 两边必须为真）
+                    callback && callback();
+                }
+                fn(function(){alert('hi')});
+
+                function fn2(){
+                    return function(){}
+                }
+                fn2();
+            <\script>
+        */
+   
+        // 闭包 ： 延长变量使用范围
+        /*
+            闭包（closure）是指有权访问另一个函数作用域中的变量的函数
+
+            // 正常操作
+            function fn(){
+                var num = 10;
+                function fun(){
+                    // 闭包: 我们fun函数作用域访问了另外一个函数fn里面的局部变量
+                    console.log(num);
+                }
+                fun();
+            }
+            fn();
+
+            // 惊掉下巴操作：fn同级别的函数反问fun
+            function fn(){
+                var num = 10;
+                function fun(){
+                    console.log(num);
+                }
+                return fun;
+            }
+            let gotFun = fn();
+            gotFun();
+
+            // 惊掉下巴操作写法2
+            function fn(){
+                var num = 10;
+                return function fun(){
+                    console.log(num);
+                };
+            }。。。。。。。。。。
+
+
+
+            // 利用闭包的方式得到当前小li 的索引号 经典面试题
+            for (var i = 0; i < lis.length; i++) {
+                // 做法1 效率高
+                lis[i].index = i;
+                lis[i].onclick = function() {
+                    console.log(this.index);
+                }
+
+                // 做法2 利用闭包 效率低
+                (function(i) {
+                    // 这个时候i已经储存在参数里了，不会变了，我们输出的是参数的值
+                    // 立即执行函数也成为小闭包因为立即执行函数里面的任何一个函数都可以使用它的i这变量
+                    lis[i].onclick = function() {
+                        console.log(i);
+                    }
+                })(i);
+
+                // 错误做法
+                lis[i].onclick = function() {
+                    //循环后i++，点击时再去访问i时，他已经加到天地去了，最后每一个li点击后都会是4，而不是对应的index
+                    console.log(i);
+                }
+
+                // 用定时器 利用闭包
+                (function(i) {
+                    // 假如没有用立刻执行函数，由于setTimeOut是异步任务而循环是同步任务，等到setTimeOut开始执行的时候i已经到4了（循环结束了）
+                    setTimeOut(function(){
+                        console.log(lis[i].innerHTML);
+                    },3000);
+                })(i);
+            }
+
+        */
+        let taxi = (function(){
+            // 闭包应用：计算打车价格
+            // 起步价13rmb（3km内），之后每1km增加5rmb。如果堵车，总价多收取10rmb
+            let start = 13;
+            let total = 0;
+
+            // return 里面的对象里面的函数使用了另外一个函数里面的变量start和total，aka闭包
+            return {
+                // 正常的总价
+                price: function(km){
+                    if(km<=3){
+                        total = start;
+                    }else{
+                        total = (13+((km - 3)*5));
+                    }
+                    return total;
+                }, 
+                // 拥堵之后的费用
+                traffic:function(flag){
+                    return flag? total+10:total;
+                } 
+            }
+        }());
+        console.log(taxi.price(1));
+
+        // 属性
+        /*
+            任何东西都可以添加属性
+            lis[i].index = blah blah blah
+
+            我们将 xxx 存到lis[i].index中，也可以创建自定义属性来储存
+        */
+        
+        // 递归
+        /*
+            在函数内部自己调用自己，递归里面必须假如退出条件否则无限循环
+
+            利用递归求1-n的阶乘
+            function fn(n){
+                if(n==1){
+                    // 不加这个条件的话会变成负数，而且没到1之前还有0，结果就是0了。注意审题 求1-n的阶乘
+                    return 1;
+                }
+                return n*f(n-1);
+            }
+
+            斐波那契 序列 fibbonachi
+            function fb(n){
+                // 用户输入1到n 的返回结果：1,1,2,3,5,8,13,21 ...
+                // n = (n-1) + (n-2)
+
+                if(n==1 || n==2){
+                    return 1;
+                }
+                return fb(n-1) + fb(n-2)
+            }
+            fb(3) -> 2
+            fb(6) -> 8
+        */
+
+        // 删除属性
+        // delete objs.shit_disease;
+        
+        
+        // 浅拷贝 深拷贝 （对象类型数据版）
+        (function(){
+            let objs={
+                shit_color:'dark',
+                shit_type:'hard',
+                shit_disease:{
+                    virus_A : 'negative',
+                    virus_B : 'positive'
+                },
+                shit_disease2:['positive','negative','neutral']
+            };
+            let results={};
+
+            //浅拷贝 1
+            for(let k in objs){
+                // 相当于for each 循环
+                // objs[k] = 'dark' / 'hard'
+                // k = 'shit_color' / 'shit_type'
+                results[k]=objs[k];
+            }
+            
+
+            //浅拷贝2 : assign 关键词 (推荐)
+            Object.assign(results,objs);//把obj拷贝给results
+
+            //浅拷贝3：展开运算符
+            // results = {...obj} // 三点代表移除大括号（展开了内部的东西），外面再加大括号代表有创建了一个对象（复制！）
+            // results = [...array] // 如果是数组
+
+            //深拷贝
+            function deepCopy(newObj,oldObj){
+                for(let k in oldObj){
+                    // 1. 获取属性值
+                    let attribute = oldObj[k];
+                    // 2. 判断这个值是否是数组:注意数组也是对象所以先检测是否是数组
+                    if(attribute instanceof Array){
+                        newObj[k] = []; // 新开辟一个空间 而不是复制地址（浅拷贝。aka先开辟空间仔使用递归浅拷贝=深拷贝）
+                        deepCopy(newObj[k],attribute);
+                        //递归的时候到时候的oldObj[k]就是数组内的元素(如shit_disease2[0]='positive')，既不属于数组类型也不属于对象，而是简单类型
+                    }else if(attribute instanceof Object){
+                        // 3. 判断是否是对象
+                        newObj[k]={};
+                        deepCopy(newObj[k],attribute);
+                    }else{
+                        // 4. 属于简单数据类型
+                        newObj[k]= attribute;
+                    }
+
+                }
+            }
+            // deepCopy(results,objs);
+
+            //深拷贝2：前提先引用lodash.js 插件
+            // const newObj = _.cloneDeep(oldObj);
+
+            //深拷贝3（推荐）
+            // const newObj = JSON.parse(JSON.stringify(oldObj));
+
+
+            // 证明深拷贝与浅拷贝的区别
+            objs.shit_disease.virus_A='positive';//证明了拷贝的地址：修改obj会影响results如果使用浅拷贝（深拷贝会新开辟一个空间）
+            console.log(objs,results);
+        }());
+
+    </script> 
+
+    <!-- HTML 知识补给 -->
+    <div class="container" style="display: block;height:300px">
+        <h4>如果某个元素（块级）将宽高设置为父级的100%，而父级不是块级，则会找最近一级</h4>
+        <!-- 首先最内部div会找爸爸a，然后爷爷div，然后老爷爷container，是，最后以老爷爷为准 -->
+        <div style="width: 200px;height:200px;background-color:lightblue;display:inline">
+            <a href="">
+                <div style="height: 100%;width:100%;background-color: plum;"></div>
+            </a>
+        </div>
+    </div>
+    <!-- 补给2
+        ----------HTML----------
+        让文本框文字处于选定状态
+        1) document.querySelector('input').select();
+
+        让文本域 自动聚焦
+        1) document.querySelector('input').focus();
+        2) <input type="text" autofocus>
+
+        ----------CSS----------
+        属性选择器:必须属于input且同时有value属性
+        input[value]{}
+
+        不同的值来选择
+        input[type=text]{}
+
+        选择首先是div让后具有class属性并且属性值必须是icon 开头 的这些元素
+        div[class^=icon]{}
+
+        有data为 结尾 的类名
+        section[class$=data]{}
+
+        含有 “-d”元素的类名 且必须是section内部的
+        section[class*=-d]{}
+    -->
+
+
+
+    <!-- 开启DOM (Document Object Model 文档对象模型) WebAPI部分 -->
+    <!-- 总结： 
+        创建 —-> document.write ; innerHTML ; createElement
+        增 —-> appendChild ; insertBefore
+        删 —-> removeChild,remove
+        改 —-> 元素属性：scr,href,title 等; 普通元素内容:innerHTML,innerText;表单元素: value,type,disabled等; 元素样式：style, className
+        查 —-> DOM提供：getElementById, getElementByTagName,；H5 提供：querySelector,querySelectorAll；利用节点获取：parentNode,children,previousElementSibling,nextElementSibling；利用事件对象：e.target
+        自定义属性操作 —-> setAttribute, getAttribute, removeAttribute
+        事件操作 —-> onclick, onmouseoer, onmouseout, onfocus, onblur, onmousemove, onmouseup, onmousedown
+    -->
+    
+    <!-- 选择器 -->
+    <script>
+        // 注意：这边let就出错。var可以重新定义，let不可以。在上面的某一个script中zzq已被声明
+        var zzq=document.getElementById('zzq');
+        console.log(zzq);
+        console.log(typeof zzq);
+        // 打印我们返回元素的对象，更好的查看里面的属性和方法
+        console.dir(zzq);
+
+
+
+
+
+
+        // 1.返回的是 获取过来元素对象的集合 以伪数组的形式存储的
+        //返回的是获取过来元素对象的集合（伪数组，没有push pop等 但是有长度和索引号）：获取所有的li
+        var lis= document.getElementsByTagName('li');
+        console.log(lis);
+        console.log(lis[0]); //第一个元素
+        // 2. 我们想要依次打印里面的元素对象我们可以采取遍历的方式
+        for (var i = 0; i < lis.length; i++) {
+            console.log(lis[i]);
+
+        }
+        // 3. 如果页面中只有一个li 返回的还是伪数组的形式 
+        // 4. 如果页面中没有这个元素 返回的是空的伪数组的形式
+        // 5. element.getElementsByTagName('标签名'); 父元素必须是指定的单个元素
+        // var ol = document.getElementsByTagName('ol'); // [ol] ； 获取了所有的ol
+        // console.log(ol[0].getElementsByTagName('li')); //第一个ol里面的所有的li
+        //下面同样的效果：
+        // var ol = document.getElementById('ol'); 
+        // console.log(ol.getElementsByTagName('li'));
+
+
+
+
+        // 1. getElementsByClassName 根据类名获得某些元素集合:通过类名来获取
+        var buttons= document.getElementsByClassName('btn');
+        console.log(buttons);
+        // 2. querySelector 返回指定选择器的 第一个 元素对象  切记 里面的选择器需要加符号 .box  #nav
+        var firstBox = document.querySelector('.btn');
+        console.log(firstBox);
+        var nav = document.querySelector('#zzq ');
+        console.log(nav);
+        var li = document.querySelector('li');
+        console.log(li);
+        // 3. querySelectorAll()返回指定选择器的所有元素对象集合
+        var allBox = document.querySelectorAll('.btn');
+        console.log(allBox);
+        var inputss = document.querySelectorAll('input');
+        console.log(inputss);
+
+        // 总结：所有正常的（idselector除外）都返回为数组
+        // queryselector要返回为数组必须用all
+
+
+
+        // 1.获取body 元素
+        var bodyElement = document.body;
+        console.log(bodyElement);
+        console.dir(bodyElement);
+        // 2.获取html 元素
+        var htmlElement = document.documentElement;
+        console.log(htmlElement);
+    </script>
+
+    <!-- 事件选择器 -->
+    <button id="lzx" class="btn">李贞贤</button>
+    <script>
+        // 点击一个按钮，弹出对话框
+        // 1. 事件是有三部分组成  事件源  事件类型  事件处理程序   我们也称为事件三要素
+        //(1) 事件源 事件被触发的对象   谁  按钮
+        var lzx_btn = document.getElementById('lzx');
+        //(2) 事件类型  如何触发 什么事件 比如鼠标点击(onclick) 还是鼠标经过 还是键盘按下
+        //(3) 事件处理程序  通过一个函数赋值的方式 完成
+        lzx_btn.onclick = function() {//给一个匿名函数
+            alert('郑子豪2002喜欢李贞贤2008');
+        }
+
+
+
+        //选中第一个div : 头部 div 鼠标经过 显示时间
+        var head = document.querySelector('div');
+        let headerTitle = head.innerText;
+        let id_no;
+        function getTimeVer2(){
+            //refresh
+            date=new Date();
+            let hour = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+            minutes=minutes<10?'0'+minutes:minutes;
+            seconds=seconds<10?'0'+seconds:seconds;
+            if(hour<=12){
+                var systemTime= hour + ':'+ minutes + ':'+ seconds + 'AM';
+            }else{
+                var systemTime= (hour-12) + ':'+ minutes + ':'+ seconds + 'PM';
+            }
+            head.innerText=systemTime;
+        }
+        head.onmouseenter = function(){
+            head.style.transition= "all .5s"
+            head.style.backgroundColor="darkgray";
+
+            //每过一秒（1000毫秒）调用一次
+            id_no=setInterval(getTimeVer2, 1000);
+
+            //innerHTML 可以识别 html标签，如:
+            // head.innerHTML = '<strong>今天是:</strong>'+getTime();
+            // head.innerText = getTime(1);
+        }
+        head.onmouseleave = function(){ 
+            head.style.transition= "all .5s"
+            head.style.backgroundColor="lightgray";
+
+            //停止计时器
+            clearInterval(id_no);
+            head.innerText = headerTitle;
+        }
+        htmlElement.onclick=function(){
+            bodyElement.style.transition= "all .5s"
+            bodyElement.style.backgroundColor="white";
+        }
+    </script>
+
+    <input type="text" name="" id="" style="outline: none; border:0;" class="hidden">
+
+
+    <button id="ldh" class="btn">刘德华</button>
+    <button id="zxy" class="btn">张学友</button>  
+    <img src="images/ldh.jpg" alt="" title="刘德华" style="width: 300px; height:220px;vertical-align: top;" >
+    <img src="images/s.gif" alt="" style="width:300px;vertical-align: top;" id="morning">
+
+    <!-- 根据时间来换 -->
+    <script>
+        // 修改元素属性  src
+        // 1. 获取元素
+        var ldh = document.getElementById('ldh');
+        var zxy = document.getElementById('zxy');
+        var img = document.querySelector('img');
+        // 2. 注册事件  处理程序
+        zxy.onclick = function() {
+            img.src = 'images/zxy.jpg';
+            img.title = '张学友思密达';
+        }
+        ldh.onclick = function() {
+            img.src = 'images/ldh.jpg';
+            img.title = '刘德华';
+        }
+
+
+        // 1.获取元素
+        var img2 = document.getElementById('morning');
+        // 2. 得到当前的小时数
+        var date = new Date();
+        var h = date.getHours();
+        // 3. 判断小时数改变图片和文字信息
+        if (h < 12) {
+            img2.src = 'images/s.gif';
+        } else if (h < 18) {
+            img2.src = 'images/x.gif';
+        } else {
+            img2.src = 'images/w.gif';
+        }
+    </script>
+
+    <button id="button1" class="btn">按钮</button>
+    <input type="text" placeholder="输入内容" id="input1" class="btn">
+
+    <!-- 操作元素 -->
+    <script>
+        let btn = document.getElementById('button1');
+        let input = document.getElementById('input1')
+        let btn_count=false;
+
+        btn.onclick= function(){
+            this.style.backgroundColor='plum'
+            input.placeholder='被点击了'
+            // btn.disabled = true;
+            this.disabled = true;
+        
+        }
+    </script>
+    
+    <!-- H5 自定义属性 /  自定义属性 -> (第二种获取方法):data -->
+    <div  id="a0b0c0" getTime="20" data-index="2" data-my-name="ZiHao"></div>
+    <script>
+        console.log('----------------H5 自定义属性 (第二种获取方法):data----------------');
+        //可以操作普通属性以及自定义属性(管你是不是data，care的是h5的dataset,data is just a way for h5 to 识别。没有什么是attribute干不了的，只是有点不方便面。他可以干普通，自定义，和h5（也是自定义))
+        //getAttribute可以获取自定义属性（data开头也行）和自带属性如id
+        //setAttribute可以设置自定义（data也行）和自带属性如id
+        //removeAttribute可以删除自定义（data也行）和自带属性如id
+
+        //一般使用情况：普通->普通获取 / 自定义->attribute获取，偶尔也会使用h5提高方便
+        //获取普通属性 -> div.id 
+        //设置普通属性 -> div.id = 'fuckyou'
+        //获取自定义属性 -> div.getAttribute('--fuckyou--')
+        //设置自定义属性 -> div.setAttribute('fuckyou',123)
+        //删除(自定义和普通)属性 -> div.removeAttribute('id')
+        //获取自定义属性H5 -> div.dataset.fuckyou
+        //设置自定义属性H5 -> div.dataset.fuckyou='fuck'
+
+
+        let div1 = document.querySelector('#a0b0c0');
+        console.log(div1.getAttribute('getTime'));//20
+        div1.setAttribute('data-time',24);//24
+
+        // h5新增的设置自定义属性的方法 它只能设置data-开头的
+        // dataset 是一个集合里面存放了所有以data开头的自定义属性
+        console.log(div1.dataset);//index ; time ; myName
+        console.log(div1.dataset.index);//2
+        console.log(div1.dataset['index']);//2
+
+        // 如果自定义属性里面有多个-链接的单词，我们获取的时候采取 驼峰命名法
+        console.log(div1.dataset.myName);
+        console.log(div1.dataset['myName']);
+    </script>
+
+
+    <!-- 节点(Node)概述：
+        之前，我们可以利用DOM提供的方法获取元素有getElementsById(),getElementsByTagName(),querySelector()等 。如果有父子或者兄弟，我们要获取每一个元素（如父亲和孩子都要获取）
+
+        节点：可获取父子以及兄弟关系等元素
+        nodeType -> 1:元素节点（常用）,2:属性节点,3:文本节点（文字空格换行）
+        nodeName
+        nodeValue
+
+        node.parentNode
+    -->
+    <h4>节点(Node)概述:</h4>
+    <section id="nodegaishu">
+        <div class="demo">
+            <div class="box">
+                <span class="erweima">我是二维码</span>
+            </div>
+        </div>
+        <span>我是span</span>
+        <ul class="jiedian_ul">
+            <li>我是li1</li>
+            <li>我是li2</li>
+            <li>我是li3</li>
+            <li>我是li4</li>
+        </ul>
+        <ol class="jiedian_ol">
+            <li>我是li1</li>
+            <li>我是li2</li>
+            <li>我是li3</li>
+            <li>我是li4</li>
+            <li>我是li5</li>
+        </ol>
+        <ul class="empty">
+            <li>
+                弥茶女·星巴克女
+            </li>
+        </ul>
+        <button id="delete">删除</button>
+        <button class="cloneOne">克隆第一个</button>
+        <ul class="deleteMe">
+            <li>熊大</li>
+            <li>熊二</li>
+            <li>光头强</li>
+        </ul>
+    </section>
+    <script>
+        console.log('----------------节点概述----------------');
+
+        //父元素操作
+        // 以前：
+        // let erweima = document.querySelector('.erweima');
+        // let box = document.querySelector('.box');
+
+        // 现在：(如果找不到则返回null)
+        let erweima = document.querySelector('.erweima');
+        let box = erweima.parentNode; //不一定要存在变量里，可以直接调用的！
+        console.log(erweima.parentNode.parentNode);
+
+
+
+
+        //子元素操作
+        let ul = document.querySelector('.jiedian_ul');
+        console.log(ul);
+        let lis_1 = ul.querySelectorAll('li');
+        // 1. 子节点  childNodes 所有的子节点 包含 元素节点 文本节点等等
+        console.log(ul.childNodes);//很多text 和li：li就是li本身，text就是换行
+        console.log(ul.childNodes[0].nodeType);//3:文本节点（文字空格换行）
+        console.log(ul.childNodes[1].nodeType);//1:元素节点
+
+        // 2. children 获取所有的子元素节点 也是我们实际开发常用的
+        console.log(ul.children);//非标准方法可是被浏览器接受
+
+
+
+
+
+        // 子节点操作进阶
+        let ol = document.querySelector('.jiedian_ol');
+        // 1. firstChild 第一个子节点 不管是文本节点还是元素节点
+        console.log(ol.firstChild);//#text
+        console.log(ol.lastChild);//#text
+        // 2. firstElementChild 返回第一个子元素节点 ie9才支持
+        console.log(ol.firstElementChild);
+        console.log(ol.lastElementChild);
+        // 3. 实际开发的写法  既没有兼容性问题又返回第一个子元素
+        console.log(ol.children[0]);
+        console.log(ol.children[ol.children.length - 1]);
+
+
+
+        //兄弟节点操作
+        let demo = document.querySelector('.demo');
+        // 1.nextSibling 下一个兄弟节点 包含元素节点或者 文本节点等等
+        console.log(demo.nextSibling);//#text
+        console.log(demo.previousSibling);//#text
+        // 2. nextElementSibling 得到下一个兄弟元素节点
+        console.log(demo.nextElementSibling);//span
+        console.log(demo.previousElementSibling);//script
+
+
+
+
+        //创建节点 Create Node（动态创建元素节点）
+        // 1. 创建节点元素节点
+        let lis_2 = document.createElement('li');
+        // 2. 添加节点 node.appendChild(child)  node 父级  child 是子级 后面追加元素  类似于数组中的push: 插入刚创建的
+        let emp_ul = document.querySelector('.empty');
+        emp_ul.appendChild(lis_2);
+        // 3. 添加节点 node.insertBefore(child, 指定元素);->把child插入到指定元素的前面
+        var lis_3 = document.createElement('li');
+        emp_ul.insertBefore(lis_3,emp_ul.children[0]);
+        // 4. 我们想要页面添加一个新的元素 ： 1. 创建元素 2. 添加元素
+
+
+
+
+        //删除元素操作
+        let ul_deleteMe = document.querySelector('.deleteMe');
+        let btn_deleteMe = document.querySelector('#delete');
+        // 2. 删除元素  node.removeChild(child)
+        // ul.removeChild(ul.children[0]);
+        // 3. 点击按钮依次删除里面的孩子
+        btn_deleteMe.onclick = function() {
+            if (ul_deleteMe.children.length == 0) {
+                this.disabled = true;
+                this.nextElementSibling.disabled = true;
+            } else {
+                //这里我们用的是孩子数组。如果我们有某个节点（node），恰好是他的孩子，我们也可以直接传进来
+                ul_deleteMe.removeChild(ul_deleteMe.children[0]);
+                
+
+                //直接有某个节点对象 例子
+                //node.firstElementChild
+                //node.lastElementChild
+                //node.parentNode
+                //node.nextElementSibling node.previousElementSibling
+                //document.removeChild(document.querySelector(#delete));
+            }
+
+            if (ul_deleteMe.children.length == 0) {
+                this.disabled = true;
+                this.nextElementSibling.disabled = true;
+            }
+
+        }
+
+
+
+        // 克隆节点
+        // 1. node.cloneNode(); 括号为空或者里面是false 浅拷贝 只复制标签不复制里面的内容。aka不克隆后代
+        // 2. node.cloneNode(true); 括号为true 深拷贝 复制标签复制里面的内容。aka克隆后代
+        let cloneButton = document.querySelector('.cloneOne');
+        cloneButton.style.backgroundColor= 'red';
+        cloneButton.onclick=function(){
+            let new_li = ul_deleteMe.children[0].cloneNode(true);
+            ul_deleteMe.appendChild(new_li);
+        }
+    </script>
+
+    <!-- 创建元素方式 -->
+    <!-- <script>
+        // 会创建元素，但是文档流执行完毕他会重绘
+        document.write();
+
+        //拼接字符串：慢 3000+毫秒
+        var inner = document.querySelectory('.inner');
+        for (var i = 0; i <= 100; i++) {
+            inner.innerHTML += '<a href="#">百度</a>'
+        }
+        //拼接字符串进阶：很快 8毫秒
+        for (var i = 0; i <= 100; i++) {
+            arr.push('<a href="#">百度</a>');
+        }
+        inner.innerHTML = arr.join('');//join为将数组转换成字符串
+
+        //直接创建：快 20毫秒
+        var create = querySelector('.create');
+        for (var i = 0; i <= 100; i++) {
+            var a = document.createElement('a');
+            create.appendChild(a);
+        }
+
+        // 面试题：用innerHTML和createElement来创建元素，谁的效率更高？
+        // 答：innerHTML不用拼接字符串，用数组，innerHTML会更高。createElement会低一点点，不过结构更清晰
+
+        //计算毫秒方法
+        var d1 = +new Date();
+        var d2 = +new Date();
+        console.log(d2 - d1);
+    </script> -->
+
+
+    <!-- 注册事件新方法 -->
+    <h4>注册事件 新方法</h4>
+    <button class="zhucexinshijian">传统注册事件</button>
+    <button class="zhucexinshijian">方法监听注册事件</button>
+    <button class="zhucexinshijian">ie9 attachEvent</button>
+    <script>
+        var btns = document.querySelectorAll('.zhucexinshijian');
+        // 1. 传统方式注册事件
+        btns[0].onclick = function() {
+            alert('hi');
+        }
+        btns[0].onclick = function() {
+                alert('hao a u');
+            }
+        // 2. 事件侦听注册事件 addEventListener 
+            // (1) 里面的事件类型是字符串 必定加引号 而且不带on
+            // (2) 同一个元素 同一个事件可以添加多个侦听器（事件处理程序）
+        btns[1].addEventListener('click', function() {
+            alert(22);
+        })
+        btns[1].addEventListener('click', function() {
+            alert(33);
+        })
+        // 3. attachEvent 只有ie9以前的版本支持（现已被抛弃）
+        // btns[2].attachEvent('onclick', function() {
+        //     alert(11);
+        // })
+    </script>
+
+    <!-- 删除事件 -->
+    <h4>删除事件</h4>
+    <div class="shanchushijian">1</div>
+    <div class="shanchushijian">2</div>
+    <div class="shanchushijian">3</div>
+    <script>
+        let div_scsj = document.querySelectorAll('.shanchushijian');
+        div_scsj[0].onclick=function(){
+            alert(11);
+            // 1. 传统方式删除事件(解绑)
+            div_scsj[0].onclick = null;
+            div_scsj[0].style.backgroundColor='lightgray';
+        }
+
+        // 里面的fn 不需要调用加小括号'()'
+        div_scsj[1].addEventListener('click',fn);
+        function fn(){
+            alert(22);
+            div_scsj[1].removeEventListener('click', fn);
+            div_scsj[1].style.backgroundColor='lightgray';
+        }
+    
+        //老版本ie678
+        // div_scsj[2].attachEvent('onclick', fn1);
+        function fn1() {
+            alert(33);
+            div_scsj[2].detachEvent('onclick', fn1);
+        }
+    </script>
+
+    <!-- DOM事件流 三个阶段 -->
+    <!--
+        假如以下都有绑定点击事件
+        <div class="father">
+            <div class="son">son盒子</div>
+        </div>
+        1. JS 代码中只能执行捕获或者冒泡其中的一个阶段。
+        2. onclick 和 attachEvent（ie） 只能得到冒泡阶段。
+        3. 捕获阶段(TRUE) 如果addEventListener 第三个参数是 true 那么则处于捕获阶段  document -> html -> body -> father -> son
+        4. 冒泡阶段 如果addEventListener 第三个参数是 false 或者 省略 那么则处于冒泡阶段(FALSE)  son -> father ->body -> html -> document
+        什么是冒泡：从下往上冒；点击son后先会弹出son对应的对话框,然后自动弹出father对应的对话框
+        什么是捕获：从上往下；点击son后先会弹出father对应的对话框然后才是son因为从上往下，然后发现father有一个点击事件
+        
+        dblclick:双击
+    -->
+
+    <!-- 事件对象 基础 -->
+    <!--
+        // 1. event 就是一个事件对象 写到我们侦听函数的 小括号里面 当形参来看
+        // 2. 事件对象只有有了事件才会存在，它是系统给我们自动创建的，不需要我们传递参数
+        // 3. 事件对象 是 我们事件的一系列相关数据的集合 跟事件相关的 比如鼠标点击里面就包含了鼠标的相关信息，鼠标坐标啊，如果是键盘事件里面就包含的键盘事件的信息 比如 判断用户按下了那个键
+        // 4. 这个事件对象我们可以自己命名 比如 event 、 evt、 e
+        // 5. 事件对象也有兼容性问题 ie678 通过 window.event 兼容性的写法  e = e || window.event;
+
+        var div = document.querySelector('div');
+        div.onclick = function(e) {
+                // console.log(e);
+                // console.log(window.event);
+                // e = e || window.event;
+                console.log(e);
+            }
+        // div.addEventListener('click', function(e) {
+            //console.log(e);
+        //})
+    -->
+
+    <!-- 事件对象进阶: e.target e.type e.preventDefault -->
+    <div class="container">
+        <h4>事件对象进阶: e.target, e.type, e.preventDefault,e.stopPropagation</h4>
+        <div class="div_tar" style="width:100px;height: 100px;background-color:lightgreen;line-height: 100px;text-align: center;">Click Me</div>
+        <ul class="ul_tar">
+            <li>e.target</li>
+            <li>e.currentTarget</li>
+            <li>this</li>
+        </ul>
+        <div class="father">
+            <div class="son">son盒子</div>
+        </div>
+        <a href="http://www.baidu.com" id="baidu">百度</a>
+        <div id="noRight">阻止默认行为（事件）</div>
+    </div>
+    <script>
+        console.log('----------事件对象----------');
+        // 常见事件对象的属性和方法
+        // 1. e.target 返回的是触发事件的对象（元素）  this 返回的是绑定事件的对象（元素）
+        // 区别 ： e.target 点击了那个元素，就返回那个元素 this 那个元素绑定了这个点击事件，那么就返回谁
+        let div_tar = document.querySelector('.div_tar');
+        div_tar.addEventListener('click',function(e){
+            console.log(e.target);
+            console.log(this);
+        });
+
+
+        let ul_tar =document.querySelector('.ul_tar');
+        ul_tar.addEventListener('click', function(e) {
+            // 我们给ul 绑定了事件  那么this 就指向ul  
+            console.log(this);
+            console.log(e.currentTarget);
+
+            // e.target 指向我们点击的那个对象 谁触发了这个事件 我们点击的是li e.target 指向的就是li
+            console.log(e.target);
+        })
+    
+
+
+
+        // 1.返回事件类型
+        //e.type 返回 click,mouseover,mouseout 等。可以尝试addEventListener来查看。
+        // let div = document.querySelector('div');
+        // div.addEventListener('click',fn(e));
+        // function fn(e){
+        //     console.log(e.type);
+        // }
+
+        //2.阻止默认行为（事件） 让链接不跳转 或者让提交按钮不提交
+        let a_ =document.querySelector('#baidu');
+        a_.addEventListener('click',function(e){
+            e.preventDefault();//  dom 标准写法
+        })
+        //传统写法element.onclick
+        a_.onclick=function(e){
+            // 普通浏览器 e.preventDefault();  方法
+            // e.preventDefault();
+            // 低版本浏览器 ie678  returnValue  属性
+            // e.returnValue;
+            // 我们可以利用return false 也能阻止默认行为 没有兼容性问题 特点： return 后面的代码不执行了， 而且只限于传统的注册方式
+            return false;
+        }
+
+
+        let son = document.querySelector('.son');
+        son.addEventListener('click',function(e){
+            alert('son');
+            // stop 停止  Propagation 传播
+            e.stopPropagation();
+            // 非标准 cancel 取消 bubble 泡泡
+            // e.cancelBubble=true;
+        },false);
+        let father = document.querySelector('.father');
+        father.addEventListener('click',function(e){
+            //由于没有阻止冒泡，会弹出document的
+            alert('father');
+        },false);
+        // document.addEventListener('click',function(e){
+        //     alert('document');
+        // });
+
+
+
+        // 1. contextmenu 我们可以禁用右键菜单
+        let noRight=document.querySelector('#noRight');
+        noRight.addEventListener('contextmenu',function(e){
+            // 阻止默认行为（事件）
+            e.preventDefault();
+        });
+        // 2. 禁止选中文字 selectstart
+        noRight.addEventListener('selectstart',function(e){
+            e.preventDefault();
+        });
+    </script>
+
+    <!--事件对象 之 事件委托-->
+    <h4>事件对象 之 事件委托</h4>
+    <ul id="weituo_ul">
+        <li>我会变色儿1</li>
+        <li>我会变色儿2</li>
+        <li>我会变色儿3</li>
+        <li>我会变色儿4</li>
+        <li>我会变色儿5</li>
+    </ul>
+    <script>
+        //提醒，我们如果要改某一个元素，我们不需要每次都用query等先获取元素。更改和获取没有任何关系。e.target也能改，node.silbiling node.children node.parentNode都能
+
+        // 注意：如果你点击li，但是你没有给这个li绑定任何事件，浏览器依然会检测到！只是不会有任何事件发生而已。注册事件的目的就是点击后会有事情发生！
+
+        //以前如果要每个li弹出对话框，我们要给每个li一个注册点击事件。
+        let weituo_ul=document.querySelector('#weituo_ul');
+        //默认的事冒泡（false就是冒泡）
+        weituo_ul.addEventListener('click',function(e){
+            //clicked on li,nothing happened, then it maopao to ul, which have a event 
+
+            // alert('知否知否，点我应有弹框在手！');
+            // e.target 这个可以得到我们点击的对象
+
+
+            for(let i =0;i<weituo_ul.children.length;i++){
+                // console.log(weituo_ul.children[i].innerText);
+                weituo_ul.children[i].style.backgroundColor='';
+            }   
+            e.target.style.backgroundColor='lightskyblue';
+
+            // e.stopPropagation(); //这会阻止冒泡，委托失效
+            alert('我是ul注册的点击事件');
+        });
+        
+        let newLI = document.createElement('li');
+        newLI.innerHTML='我是动态创建的6';
+        weituo_ul.appendChild(newLI);
+    
+
+
+        //鼠标事件对象 MouseEvent
+        // 0. 先注册点击事件
+        document.addEventListener('click',function(e){
+            // 1. client 鼠标在 '可视区' 的x和y坐标
+            // console.log('可视区->   X:'+e.clientX +' Y:'+ e.clientY);
+
+
+            // 2. page 鼠标在 '页面文档' 的x和y坐标
+            // console.log('文档页面->   X:'+e.pageX +' Y:'+ e.pageY);
+
+
+            // 3. screen 鼠标在 电脑屏幕(或者手机屏幕) 的x和y坐标
+            // console.log('电脑屏幕->   X:'+e.screenX +' Y:'+ e.screenY);
+
+
+            // 4. offset 获取光标相对于 当前DOM元素左上角的位置
+        })
+    </script>
+    
+    <!-- 常用的键盘事件 -->
+    <script>
+        //1. keyup 按键弹起的时候触发 
+        document.addEventListener('keyup', function() {
+            //传统方法document.onkeyup=function()
+            // console.log('我弹起了');
+        })
+        //2. keydown 按键按下的时候触发  (能识别功能键 比如 ctrl shift 左右箭头啊)
+        document.addEventListener('keydown', function() {
+            // console.log('我按下了');
+        })
+        //3. keypress 按键按下的时候触发  (不能识别功能键 比如 ctrl shift alt 左右箭头啊)
+        document.addEventListener('keypress', function() {
+            // console.log('我按下了press');
+        })
+        // 4. 三个事件的执行顺序  keydown -- keypress -- keyup
+
+
+
+
+        // 键盘事件对象中的keyCode属性可以得到相应键的ASCII码值(用key直接获取字符串)
+        // 1. 我们的keyup 和keydown事件不区分字母大小写  a 和 A 得到的都是65
+        // 2. 我们的keypress 事件 区分字母大小写  a  97 和 A 得到的是65
+        document.addEventListener('keyup',function(e){
+            // console.log('up:' + e.keyCode);//(a) e.key -> a e.keyCode(65)
+            // 我们可以利用keycode返回的ASCII码值来判断用户按下了那个键
+            // if (e.keyCode === 65) {
+            //     alert('您按下的a键');
+            // } else {
+            //     alert('您没有按下a键')
+            // }
+        });
+    </script>
+
+    <!-- 搜索框按下s键自动获取焦点 element.focus();-->
+    <input type="text" id="jdsearch" placeholder="按S自动获取焦点">
+    <script>
+        let search = document.querySelector('#jdsearch')
+        document.addEventListener('keyup',function(e){
+            if(e.key==='s' || e.key==='S'){
+                search.focus();
+            }
+        });
+    </script>
+
+    <!-- 时间戳（总毫秒数自1970）
+        1. 使用 getTime() 方法
+            let date = new Date();
+            console.log(date.getTime());
+        2. 简写 +new Date()    -> 推荐
+            console.log(+new Date()); //+ 号就是字符型隐式转换成数字行
+            console.log(+new Date('2022-8-21 16:05:00')); //返回指定时间的时间戳
+        3. 使用 Date.now()
+            console.log(Date.now());
+    -->
+
+    <!-- 其他事件 (可监听)
+        scroll: 滚动事件
+        load:页面所有资源进来后执行监听事件
+        DOMContentLoaded
+        resize
+
+        mouseenter：鼠标进入
+        mouseleave：鼠标离开
+        focus：获取焦点
+        blur：失去焦点
+        change：只要离开时（相当于blur）值改变就会触发
+        input：用户输入input框 只要输入就会触发
+        mousemove：鼠标移动
+        mouseup
+        mousedown
+        dblclick：双击
+        submit：提交时候触事件
+    -->
+
+    <!-- 正则表达式 (2022 JS)
+        用法：表单验证，过滤敏感词，提取某些字符串等
+        正则表达式是一个对象
+
+        1. 定义正则表达式语法 -> let 变量名 = /表达式/
+            let qianduan = /前端/
+            var regexp = new RegExp(/123/); //老式写法
+
+        2. 使用test()方法来检测（重点）：true或false 
+            let solution = qianduan.test('我们大家都在学前端')
+            答案：true 因为given字符串里包含‘前端’二字,不管在哪个位置
+            /哈/.test('很二哈哈') -> true
+
+        3. 使用exec()方法来检索：数组或null
+            let solution = qianduan.exec('我们大家都在学前端')
+            答案：["前端",index:7,input:"我们大家都在学前端",groups:undefined]
+            解释：index为索引号
+
+        4. 元字符 / 边界符
+            ^ 表示匹配行首的文本（以谁开始）
+            /^哈/.test('二哈') -> false
+            /^哈/.test('二哈很傻') -> true
+
+            $ 表示匹配行尾的文本（以谁结束）
+            /^哈$/.test('哈哈') -> false 只要加了^和$就成了精确匹配 俩符号中间必须完全一样
+            /^哈$/.test('哈') -> true
+
+        5. 量词 ：设定某个模式出现的次数
+            a) * -> 可以出现 0次以上
+                /a*/.test('b') -> true
+
+            b)+ -> 必须出现 1次以上
+                /a+/.test('') -> false
+                /^哈+$/.test('哈哈哈') -> false (哈开头 哈结尾 哈出现1次以上)
+
+            c)？-> 出现0或1次
+                /^a?$/.test('') -> true (a开头a结尾可以出现0次)
+                /^a?$/.test('a') -> true 
+                /^a?$/.test('aa') -> false (超过1次了)
+
+            {n} -> 只能出现n次
+            /^a{3}$/.test('aa') -> false
+            /^a{3}$/.test('aaa') -> true
+            /^a{3}$/.test('aaaa') -> false
+
+            {n,} -> 大于等于n
+            /^a{3,}$/.test('aa') -> false
+            /^a{3,}$/.test('aaa') -> true
+            /^a{3,}$/.test('aaaa') -> true
+
+            {n,m} -> 大于等于n 小于等于m
+            /^a{3,6}$/.test('aa') -> false
+            /^a{3,6}$/.test('aaa') -> true
+            /^a{3,6}$/.test('aaaa') -> true
+            /^a{3,6}$/.test('aaaaaaa') -> false
+
+        6. 字符类
+            /abc/.test('abc') -> true
+            /abc/.test('ab') -> false 没有找到abc
+            /操妈/.test('我要操你妈'); -> false
+            /[abc]/.test('ab') -> true 包含了a和b 相当于 a|b|c 三选一
+            /[abc]/.test('') -> false
+
+            /^[abc]$/.test('abc') -> false ([abc]是三挑一a|b|c，加了边界符就是精确匹配，'/^a$/' 或 '/^b$/' 或 '/^c$/' start with x end with x and must be one letter)
+            /^[abc]$/.test('a') -> true
+            /^[abc]$/.test('b') -> true
+            /^[abc]$/.test('c') -> true
+
+            /^(abc){3}$/.test('abcabcabc') -> true //始于abc终于abc，并且3次
+
+            /^[a-zA-Z0-9-_]$/.test('5') -> true (26字母选一 不区分大小写 可以出现数字 可以出现‘-’(短横线)和‘_’(下划线))
+
+            /^[1-9][0-9]{4,}$/ -> 1-9开头 0-9结尾 4位数以上(指的是0-9)
+
+            /^abc+$/ -> abc开头结尾（精确匹配） 1位数以上(指的是c)
+            /^abc+$/.test('abbc') -> false
+            /^abc+$/.test('abcc') -> true
+
+            /^[a-zA-Z0-9-_]{6,16}$/ 
+            starts with one of them, ends with none of them, 6-16位
+
+            /^[\u4e00-\u9fa5{2,8}]$/
+            只能输入中文 2-8位
+
+            /^1[3|4|5|7|8]\d{9}$/
+            国内手机号
+
+            /^[1-9]\d{4,}$/
+            QQ号
+
+            /[^a-z]/ 
+            除了小写a-z之外的所有字符 aka非
+
+            '.' 匹配换行符之外的所有字符
+            /./.test('\n') -> false
+
+        7. 字符类 常见模式的简写方式
+            \d -> [0-9]
+            \D -> [^0-9]
+            \w -> [a-zA-Z0-9_]
+            \W -> [^a-zA-Z0-9_]
+            \s -> 匹配空格（包括换行符，制表符，空格符等等），相当于[\t\r\n\v\f]
+            \S -> [^\t\r\n\v\f]
+
+            日期格式：/^\d{4}-\d{1,2}-\d{1,2}$/ (pink版后面没有$)
+
+        8. 修饰符
+            i：ignore的缩写，表示 不区分大小写
+            g：global的缩写2，表示 匹配所有满足正则表达式的结果
+
+            /a/i.test('a') -> true
+            /a/i.test('A') -> true
+
+            replace 替换
+            字符串.replace(/正则表达式/,'替换的文本')
+            eg. '前端是傻逼'.replace(/傻逼/,**) -> 前端是**
+    -->
+
+
+
+
+
+
+
+
+    <!-- 开启BOM (Browser Object Model 浏览器对象模型) WebAPI部分 -->
+    <!--BOM顶级对象 window 可以被省略
+        num -> window.num
+        fn() -> window.fn() 
+        setInterval() -> window.setInterval()
+    -->
+
+    <!-- 页面加载 调整窗口 -->
+    <div style="width:200px;height:200px;background-color:lightgreen;line-height: 200px; text-align: center;" id="yc">一旦我小于1000px我会隐藏</div>
+    <script>
+        //（1）传统注册方式
+        // window.onload()=function(){}
+
+        //（2）等页面所有内容加载完了，才回头执行这个事件：有了window.onload可以把JS（script）放在页面的任何一个地方，包括 “外部文件”
+
+        //（3）用 事件监听注册事件 方式
+        // window.addEventListener('load',function(){})
+
+        // (4) DOMContentLoaded
+        // document.addEventListener('DOMContentLoaded', function() {})
+        // load -> 等页面内容全部加载完毕，包含页面dom元素 图片 flash  css 等等
+        // DOMContentLoaded 是DOM 加载完毕，不包含图片 flash css 等就可以执行 加载速度比 load更快一些。只要div，标签加载完，他就可以执行。交互效果有了，顶多图片看不见。
+
+        //（5）如果窗口发生变化则触发resize事件
+        // window.addEventListener('resize',function());
+        //window.innerWidth -> 可视区的宽度
+        let yc = document.querySelector('#yc');
+        window.addEventListener('resize',function(){
+            // 我们会利用此事件做响应式布局
+            if(window.innerWidth<1000){
+                //隐藏
+                yc.style.display='none';
+            }else{
+                //显示
+                yc.style.display='block';
+            }
+        });
+        
+    </script>
+
+    <!-- 事件定时器 ： setTimout SetTimeInterval-->
+    <h4>事件定时器</h4>
+    <button id="plant_bomb">安装炸弹</button>
+    <button id="defuse_stick" disabled>拆除炸弹</button>
+    <button id="begin">开启定时器</button>
+    <button id="stop">停止定时器</button>
+    <script>
+        console.log('----------和时间打交道----------');
+        // 1. setTimeout -> 调用一次
+
+        // 语法规范：  window.setTimeout(调用函数, 延时时间);调用函数也称为回调函数。这个函数需要等待时间，时间到了才去调用，因此称为回调函数
+        // 1. 这个window在调用的时候可以省略
+        // 2. 这个延时时间单位是毫秒 但是可以省略，如果省略默认的是0
+        // 3. 这个调用函数可以直接写函数 还可以写 函数名 还有一个写法 '函数名()'
+        // 4. 页面中可能有很多的定时器，我们经常给定时器加标识符 （名字)
+        // function callback() {
+        //     console.log('爆炸了');
+        // }
+        // var timer1=setTimeout(callback,3000);
+        // var timer2 = setTimeout(callback, 5000);
+
+
+        // 1.1 setTimeout如何使用 
+        let defuse_stick=document.querySelector('#defuse_stick');
+        let plant_bomb=document.querySelector('#plant_bomb');
+
+        plant_bomb.addEventListener('click',function(){
+            alert('您有5秒钟来拆炸弹');
+            defuse_stick.disabled=false;
+            let bomb1 = setTimeout(function(){
+                alert('爆炸了');
+                defuse_stick.innerHTML='拆除失败';
+                defuse_stick.disabled='disabled'
+            },5000);
+            defuse_stick.addEventListener('click',function(){
+                alert('炸弹已拆除');
+                clearTimeout(bomb1);
+                defuse_stick.innerHTML='拆除成功';
+                defuse_stick.disabled='disabled'
+            });
+        });
+        
+
+
+
+
+
+        // 2. setInterval -> 每隔某段时间调用此函数
+
+        // 语法规范：  window.setInterval(调用函数, 延时时间); 调用函数也称为回调函数。函数不加小括号！！！
+        // 2. setTimeout  延时时间到了，就去调用这个回 调函数，只调用一次 就结束了这个定时器
+        // 3. setInterval  每隔这个延时时间，就去调用这个回调函数，会调用很多次，重复调用这个函数。A function to be executed every 延时时间 milliseconds. The first execution happens after 延时时间 milliseconds.
+
+        // setInterval(function() {
+        //     console.log('继续输出');
+        // }, 1000);
+
+        // 2.2 setInterval 如何使用
+        let begin = document.querySelector('#begin');
+        let stop = document.querySelector('#stop');
+        let timer = null;// 全局变量  null是一个空对象
+
+        begin.addEventListener('click', function() {
+            alert('已开启');
+            timer = setInterval(function() {
+                console.log('ni hao ma');
+            }, 1000);
+        })
+        stop.addEventListener('click',function(){
+            alert('已关闭');
+            clearInterval(timer);
+        })
+    </script> 
+
+    <!-- this指向问题 -->
+    <!-- <button>点击</button> -->
+    <!-- <script>
+        // this 指向问题 一般情况下this的最终指向的是那个调用它的对象
+
+        // 1. 全局作用域或者普通函数中this指向全局对象window（注意定时器里面的this指向window）严格模式下是undefined
+        console.log(this);
+
+        function fn() {
+            console.log(this);
+        }
+        window.fn();
+        window.setTimeout(function() {
+            console.log(this);
+
+        }, 1000);
+        // 2. 方法调用中谁调用this指向谁
+        //声明方法
+        var o = {
+            sayHi: function() {
+                console.log(this); // this指向的是 o 这个对象
+
+            }
+        }
+        o.sayHi();
+        var btn = document.querySelector('button');
+        // btn.onclick = function() {
+        //     console.log(this); // this指向的是btn这个按钮对象
+
+        // }
+        btn.addEventListener('click', function() {
+            console.log(this); // this指向的是btn这个按钮对象
+        })
+
+        // 3. 构造函数中（首字母大写位构造函数）this指向构造函数的实例
+        function Fun() {
+            console.log(this); // this 指向的是fun 实例对象
+
+        }
+        var fun = new Fun();
+    </script> -->
+
+    <!--
+        location.href 获取整个url 也能跳转到某个页面
+        location.host 返回主机（域名）
+        location.port 端口号（如果未写返回空字符串）
+        location.pathname 返回路径
+        location.search 返回参数
+        location.hash 返回片段 #后面内容 常见于链接 锚点(某个tag的id为xxx，a链接href为xxx，点击后直接跳转到这个tag)
+        location.reload() 手动刷新 括号内为true则强制刷新(ctrl+f5 不从本地缓存取直接从网上拉)
+    -->
+
+    <!-- location-->
+    <h4>location跳转</h4>
+    <button id="loc_5s">点击</button>
+    <div id="div_5s_jump"></div>
+    <script>
+        let btn_loc = document.querySelector('#loc_5s');
+        let div_5 = document.querySelector('#div_5s_jump');
+
+        btn_loc.innerHTML='刷新页面';
+        btn_loc.addEventListener('click', function() {
+            console.log(window.location.href);
+            //记录浏览历史，所以可以实现后退功能, 快
+            // location.href = 'http://www.itcast.cn';
+
+            // 记录浏览历史，所以可以实现后退功能，安全
+            // location.assign('http://www.itcast.cn');
+
+            //以上俩都有button为中介所以可以记录浏览器历史记录
+
+            // 不记录浏览历史，所以不可以实现后退功能（即使有button中介也不行）
+            // location.replace('http://www.itcast.cn');
+
+            //重新加载页面(从本地缓存)
+            // location.reload();
+
+            //重新加载页面之强制刷新(重新从服务器读取)
+            location.reload(true);
+        })
+
+        // 5秒跳转案例
+        let sec=5;//设置秒数
+        let t = setInterval(function(){
+            if(sec==0){
+                div_5.innerHTML='您将在0秒钟之后跳转到首页'
+
+                //都无法后退；可能是因为定时器原因？
+                // window.location.href= 'http://www.itcast.cn';
+                // window.location.assign('http://www.itcast.cn');
+                setTimeout(function(){
+                    clearInterval(t);
+                    div_5.innerHTML='已跳转'
+                },5000);
+            }else{
+                div_5.innerHTML='您将在'+sec+'秒钟之后跳转到首页'
+                sec--;
+            }
+        },1000);
+    </script>
+
+    <!-- navigator：检测 移动端和PC端 ； history：浏览器箭头 -->
+    <script>
+        //如果被以下检测到是移动端登陆，则打开的是移动端页面
+        if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+            // 记录浏览历史，所以可以实现后退功能:直接转（无button作为中介，无等待几秒再跳，记录历史是不起效果的）
+            // window.location.assign('../HTML CSS/京东移动端/index.html');
+            // window.location.href = "../HTML CSS/京东移动端/index.html"; //手机
+        }
+
+        // 检测 userAgent（浏览器信息）
+        !(function () {
+            const userAgent = navigator.userAgent
+            // 验证是否为Android或iPhone
+            const android = userAgent.match(/(Android);?[\s\/]+([\d.]+)?/)
+            const iphone = userAgent.match(/(iPhone\sOS)\s([\d_]+)/)
+            // 如果是Android或iPhone，则跳转至移动站点
+            if (android || iphone) {
+                location.href = 'http://m.itcast.cn'
+            }
+        })()
+
+        //浏览器前进按钮:如果浏览器历史允许
+        // history.forward();
+        // history.backward();
+
+        //前进一步
+        // history.go(1);
+        
+        //后退一步
+        // history.go(-1);
+    </script>
+
+
+
+
+
+
+    <!-- 开启PC端网页特效 WebAPI部分 DOM续集
+        三大家族：scroll offset client 
+
+        scrollWidth scrollHeight: 实际内容宽高
+        offsetWidth offsetHeight: 盒子实际宽高 包含滚动条边框
+        clientWidth clientHeight: 当前可视区域 不包含滚动条 边框（内外）等
+
+        offsetTop offsetLeft：获取元素距离父元素（带有定位）的位置 否则html为父
+        scrollTop scrollLeft：被卷去的上侧距离 被卷去的左侧距离
+        clientTop clientLeft：返回元素上边框的大小 返回元素左边框的大小 否则0 作为了解
+    -->
+
+    <!-- 元素偏移offset系列:包含边框-> 常用于获取元素位置 -->
+    <h4>元素偏移offset系列</h4>
+    <div class="father1" style="position: relative;">
+        <div class="son1"></div>
+    </div>
+    <div class="w1"></div>
+    <script>
+        console.log('----------offset----------');
+        //获取元素距离父元素（带有定位）的位置
+        //获取元素自身大小（宽高）
+        //注意：返回数值不带单位
+
+        // offset 系列
+        var father1 = document.querySelector('.father1');
+        console.log(father1);
+        var son1 = document.querySelector('.son1');
+
+        // 1.可以得到元素的偏移 位置 返回的不带单位的数值  
+        console.log(father1.offsetTop);//假如div在头部margin:150px -> 150
+        console.log(father1.offsetLeft);//假如body清除内外边距margin:150px -> 150
+
+        // 它以带有定位的父亲为准  如果么有父亲或者父亲没有定位 则以 body 为准
+        console.log(son1.offsetLeft);//假如父亲有定位margin-left:45px -> 45
+
+        // 2.可以得到元素的大小 宽度和高度 是包含padding + border + width
+        var w1 = document.querySelector('.w1'); 
+        console.log(w1.offsetWidth);
+        console.log(w1.offsetHeight);
+
+        // 3. 返回带有定位的父亲 否则返回的是body
+        console.log(son1.offsetParent); // 返回带有定位的父亲 否则返回的是body
+        
+        console.log(son.parentNode); // 返回父亲(DOM) 是最近一级的父亲 亲爸爸 不管父亲有没有定位
+
+
+
+        //offset和style有什么区别
+        // console.log(box.offsetWidth);
+        // console.log(box.style.width);
+
+        //<div class="box" style="width: 200px;"></div>
+        //style只能得到行内样式表的样式值（如果元素没有像以上一样则显示空）。想想每次用.style都是动态加到行内样式表里。style带有单位（字符串）。style拿width不带paddingborder等。offset=获取元素。style=赋值
+    </script>
+
+    <!--client系列 和 scroll系列：都不包含边框，client只返回padding+显示内容的宽度，scroll返回实际内容宽度（包含overflow的）和padding -> client常用于获取元素大小 scroll常用与滚动距离 window.pageXOffset获得页面滚动距离-->
+    <script>
+        // div {
+        //     width: 200px;
+        //     height: 200px;
+        //     background-color: pink;
+        //     border: 10px solid red;//增大盒子
+        //     padding: 10px; //增大盒子
+        
+        //      overflow: auto;//自动显示滚动条(scroll系列)
+        // }
+
+        // client 宽度 和我们offsetWidth 最大的区别就是 不包含边框
+        // var div = document.querySelector('div');
+        // console.log(div.clientWidth); //220 = 200 + 10paddingleft+10paddingright
+        // console.log(div.offsetWidth); //240 = 20 paddingleftright + 20borderleftright
+
+        //element.clientTop 返回元素上边框的大小
+        //element.clientLeft 返回元素左边框的大小
+
+        //假如div里面没有内容，client和scrol是一样的。假如内容超出盒子，client还是盒子，scroll则是里面内容的大小-> scrollsize >= client
+        //element.scrollTop 被卷去的上侧距离（利用滚动条可以看到），返回不带单位
+        //element.scrollLeft 被卷去的左侧距离，返回不带单位
+        //element.scrollWidth elemet.scrollHeight 实际内容宽高
+
+        // div.addEventListener('scroll', function() {
+        //     console.log(div.scrollTop);
+        // })
+
+        // window.addEventListener('scroll', function() {
+        //     console.log(document.documentElement.scrollTop);
+        //     document.documentElement.scrollTop=neirongs[i].offsetTop;
+        // })
+    </script>
+
+    <!-- ！！！立即执行函数！！！-->
+    <script>
+        console.log('---------立即执行函数----------');
+        // 1.立即执行函数: 不需要调用，立马能够自己执行的函数
+        // 2. 写法 也可以传递参数进来
+        // 1.(function(){})()    或者  2. (function(){}());
+        (function (a,b){
+            console.log(a+b);
+            var num = 10; // 局部变量
+        })(333,333);// 第二个小括号可以看做是调用函数
+        (function sum(a, b) {
+            console.log(a + b);
+            var num = 10; // 局部变量
+        }(333, 333));
+        // 3. 立即执行函数最大的作用就是 独立创建了一个作用域, 里面所有的变量都是局部变量 不会有命名冲突的情况
+    </script>
+
+    <!-- mouseeneter 和 mouseover 的区别-->
+    <!-- 
+        mouseover鼠标经过自身盒子就会触发，包括里面的子盒子
+        mouseenter只有经过自身盒子才会触发。不会冒泡
+        mouseleave 对应mouseenter
+    -->
+
+
+    <!-- 简单动画函数封装 -->
+    <div class="easyAnimate"></div>
+    <span class="easyAnimate">夏雨荷</span>
+    <button class="btn500" style="margin-top: 200px">点击夏雨荷到500</button>
+    <button class="btn800">点击夏雨荷到800</button>
+    <script>
+        //简单动画函数封装 obj目标对象 target 目标位置
+        function animate(obj, target){
+            // (1)当我们不断的点击按钮，这个元素的速度会越来越快，因为开启了太多的定时器
+            // 解决方案就是 让我们元素只有一个定时器执行
+            // 先清除以前的定时器，只保留当前的一个定时器执行
+            clearInterval(obj.timer);//开始之前，先清除（如果原先有，那就清除，没有则什么都没有发生）
+
+            //如果已经到达，不需要开始定时器:否则到达后每点击按钮一次他将会走1px，因为假如没有if，他不管有没有到，直接开启timer，然后检查到我们到了，然后再停止。animate2如果用这个if将无法从800退回500，因为到了800后objoffset=800 <= target500 ==> false
+            if(obj.offsetLeft <= target){
+                //(2)不要每次呼叫函数就在内存中开辟新空间（let或var声明），我们用对象就好了，在obj对象里添加属性
+                // 给不同的元素指定了不同的定时器
+                obj.timer = setInterval(function(){
+                    if(obj.offsetLeft == target){
+                        // 停止动画 本质是停止定时器
+                        clearInterval(obj.timer);
+                    }
+                    obj.style.left = obj.offsetLeft + 1 +'px';
+                },30);
+            }else{
+                console.log(obj.offsetLeft , target);
+            }
+        }
+        function animate2(obj, target,callback){
+            //起步快，落步慢
+            // 缓动动画函数封装obj目标对象 target 目标位置
+            // 思路：
+            // 1. 让盒子每次移动的距离慢慢变小， 速度就会慢慢落下来。aka起步快，落步慢
+            // 2. 核心算法：(目标值 - 现在的位置) / 10 做为每次移动的距离 步长
+            // 3. 停止的条件是： 让当前盒子位置等于目标位置就停止定时器
+            clearInterval(obj.timer);//开始之前，先清除（如果原先有，那就清除，没有则什么都没有发生）
+
+            //如果已经到达，不需要开始定时器
+            obj.timer = setInterval(function(){
+                // let step ->步长值写到定时器的里面：每次定时器都要重新计算buchang值
+                // math.ceil -> 把我们步长值改为'整数' 不要出现小数的问题：否则到最后会是196.4就停了而不是200.为什么要往上取整数而不是往下？因为假如剩下9px，step=9/10=0.9 再取floor的话step=0了，所以要ceil，要不然提前停止.我们这里最低step也是1，因为起步快落步慢，0.9之后还有0.85 ... 0.21 .... 0.06 ... 这些全都是 1px 因为ceil
+                // let step = Math.ceil((target - obj.offsetLeft) / 10);
+                let step = (target - obj.offsetLeft) / 10;
+
+                //负值往下取，为了倒退而用。假如800退回500，没有以下就在509px停下来了,因为最后剩下-9px, -9/10=-0.9 -> ceil = 0 =不走了, floor = -1=继续走直到我们走到500。
+                step = step >  0 ? Math.ceil(step) : Math.floor(step);
+                if(obj.offsetLeft == target){
+                    // 停止动画 本质是停止定时器
+                    clearInterval(obj.timer);
+                    // 回调函数写到定时器结束里面:你有这个callback参数传进来吗？
+                    if (callback) {
+                        // 调用函数 ：有，传进来了
+                        callback();
+                    }
+                }
+                // 把每次加1 这个步长值改为一个慢慢变小的值  步长公式：(目标值 - 现在的位置) / 10 
+                // console.log(obj.offsetLeft +'+'+ step +'px'+'='+(obj.offsetLeft + step +'px'));//查看step是怎么加/减的
+                obj.style.left = obj.offsetLeft + step +'px';
+            },15);
+        }
+
+        let div = document.querySelectorAll('.easyAnimate')[0];
+        let span = document.querySelectorAll('.easyAnimate')[1];
+        let btn500 = document.querySelector('.btn500');
+        let btn800 = document.querySelector('.btn800');
+        console.log(div,span);
+        // 调用函数
+        animate(div, 300);
+        btn500.addEventListener('click', function() {
+            // 调用函数
+            animate2(span, 500);
+        })
+        btn800.addEventListener('click', function() {
+            // 调用函数
+            animate2(span, 800,function(){
+                span.style.backgroundColor = 'lightblue';
+            });
+        })
+        // 匀速动画 就是 盒子是当前的位置 +  固定的值 10 
+        // 缓动动画就是  盒子当前的位置 + 变化的值(目标值 - 现在的位置) / 10）
+    </script>
+
+
+    <!-- sliderbar -->
+    <div class="sliderbar">
+        <span>←</span>
+        <div class="con">问题反馈</div>
+    </div>
+    <script>
+        // 1. 获取元素
+        let sliderbar = document.querySelector('.sliderbar');
+        let con = sliderbar.children[1];
+        sliderbar.children[0].style.display='block';
+        sliderbar.children[0].style.transition='all 0.3s';
+        // 当我们鼠标经过 sliderbar 就会让 con这个盒子滑动到左侧
+        // 当我们鼠标离开 sliderbar 就会让 con这个盒子滑动到右侧
+        sliderbar.addEventListener('mouseenter',function(){
+            // animate2(obj,target,callback);
+            animate2(con,-160,function(){
+                // 当我们动画执行完毕，就把 ← 改为 →
+                // sliderbar.children[0].innerHTML='→';
+                sliderbar.children[0].style.transform = 'rotateY(180deg)';
+            });
+            //160哪里来的？con原来是200，sliderbar40，200-40=160,往左走他就是-160
+        });
+        sliderbar.addEventListener('mouseleave',function(){
+            animate2(con,0,function(){
+                // sliderbar.children[0].innerHTML='←';
+                sliderbar.children[0].style.transform = 'rotateY(0)';
+            });
+        });
+    </script>
+
+
+
+
+
+
+    <!-- 开启移动端网页特效 WebAPI部分 -->
+    <!-- touch:
+        touchstart：手指触摸到一个dom元素时触发
+        touchmove：手指在一个dom元素上滑动时触发
+        touchend:手指从一个dom元素上移开时触发
+    -->
+    <h4>touch</h4>
+    <div class="yidongTOUCH" style="margin-top: 100px;">触摸我</div>
+    <script>
+        // 1. 获取元素
+        // 2. 手指触摸DOM元素事件
+        let div_yidong = document.querySelector('.yidongTOUCH');
+        div_yidong.addEventListener('touchstart', function() {
+            div_yidong.innerHTML='我摸了你';
+
+        });
+        // 3. 手指在DOM元素身上移动事件
+        div_yidong.addEventListener('touchmove', function() {
+            div_yidong.innerHTML='我继续摸';
+
+        });
+        // 4. 手指离开DOM元素事件
+        div_yidong.addEventListener('touchend', function() {
+            div_yidong.innerHTML='轻轻的我走了';
+
+        });
+    </script>
+
+    <!-- 触摸事件对象 -->
+    <script>
+        // 触摸事件对象
+        // 1. 获取元素
+        // 2. 手指触摸DOM元素事件
+        div_yidong.addEventListener('touchstart', function(e) {
+            // console.log(e);
+            // touches 正在 '触摸屏幕' 的 '所有手指' 的 '列表' 
+            // targetTouches 正在 '触摸当前(DOM)元素' 的 '手指列表'
+            // 如果侦听的是一个DOM元素，他们两个是一样的
+
+            // changedTouches 手指状态发生了改变的列表 从无到有 或者 从有到无
+            // 因为我们一般都是触摸元素 所以最经常使用的是 targetTouches
+
+            console.log(e.targetTouches[0]);
+            // targetTouches[0] 就可以得到 '正在触摸dom元素' 的 '第一个手指' 的相关信息比如 手指的坐标等等 (clientX , pageX 等等)
+        });
+        // 3. 手指在DOM元素身上移动事件
+        div_yidong.addEventListener('touchmove', function() {
+
+
+        });
+        // 4. 手指离开DOM元素事件
+        div_yidong.addEventListener('touchend', function(e) {
+            // console.log(e);
+            // 当我们手指离开屏幕的时候，就没有了 touches 和 targetTouches 列表
+            // 但是会有 changedTouches
+        });
+    </script>
+
+    <!-- 移动的盒子（触摸版） 
+        之前不知道为什么每次移动盒子都会多往下移动100px导致盒子与我的鼠标始终有100px的距离。最终发现问题在于我们有行内margintop100在div里。我们移动的原理是，盒子的左上角会移动到鼠标点击的位置（通过现在位置减去之前位置计算）pageX是包括我们mt100的。而我们移动到那个位置后，别忘了我们有一个margintop100说明盒子移动到此地点后，要有个mt100所以就会有这个距离。简单来说因为有mt100，无论你移动多少，多会与你想要的距离有个mt100
+    -->
+    <h4>移动的盒子（触摸版）</h4>
+    <div class="yidongTOUCH2">移动我</div>
+    <script>
+        // （1） 触摸元素 touchstart：  获取手指初始坐标，同时获得盒子原来的位置
+        // （2） 移动手指 touchmove：  计算手指的滑动距离，并且移动盒子
+        // （3） 离开手指 touchend:
+        let div_yidong2 = document.querySelector('.yidongTOUCH2');
+        div_yidong2.style.backgroundColor = 'lightgreen'
+        //获取手指初始坐标
+        let startX = 0;
+        let startY = 0;
+        //获得盒子原来的位置
+        let x = 0; 
+        let y = 0;
+        div_yidong2.addEventListener('touchstart',function(e){
+            //  获取手指初始坐标:每次触碰都会获取
+            startX = e.targetTouches[0].pageX;
+            startY = e.targetTouches[0].pageY;
+            //  获取盒子初始坐标:每次触碰都会获取
+            x = this.offsetLeft;
+            y = this.offsetTop;
+            console.log(y,startY);
+        }); 
+        div_yidong2.addEventListener('touchmove',function(e){
+            //  计算手指的 移动距离： 手指移动之后的坐标减去手指初始的坐标 ->:每次移动都会获取
+            let moveX = e.targetTouches[0].pageX - startX; 
+            let moveY = e.targetTouches[0].pageY - startY ; 
+            console.log(moveY);
+            // 移动我们的盒子 盒子原来的位置 + 手指移动的距离
+            this.style.left = x + moveX + 'px';//new left = old spot + (newPagex - oldPageX)
+            this.style.top = y + moveY + 'px';
+            e.preventDefault(); // 阻止屏幕滚动的默认行为
+        }); 
+    </script>
+
+    
+
+
+    <!-- 非DOM非BOM非jQuery非网页特效非移动特效 ： 其他方法 -->
+    <!-- classList 返回元素类名（伪数组）
+        添加类(后面追加，不会覆盖)：element.classList.add('name');
+        移除类：element.classList.remove('name');
+        切换类(有就删掉，没有就加上)：element.classList.toggle('name');
+        查看类：elememt.classList.contains('name'); -> 返回true或false
+
+        用处 -> 开关灯按钮 ：给按钮添加一个点击事件，如果我们有.bg类则移除他。没有则加上(element.classList.toggle('name'))。排他思想也可以使用
+
+        对比className：覆盖
+        <div class="one"></div>
+        element.className = "two"
+        最终 -> class = two
+    -->
+
+    <!-- 视频控件 -->
+    <h4 style="margin-top: 150px;text-align: center;">视频控件</h4>
+    <div class="playvideo">
+        <div class="zy_media">
+            <!-- 视频 -->
+            <video data-config='{"mediaTitle": "露骨内容"}'>
+                <source src="media/露骨内容/one.mp4" type="video/mp4">
+                您的浏览器不支持HTML5视频
+            </video>
+        </div>
+        <!-- 控件 -->
+        <div id="modelView">&nbsp;</div>
+    </div>
+    <!-- 调用js：这个js文件内部事件应该是需要调用的 -->
+    <script>
+        zymedia('video', {
+            // 自动播放与否
+            autoplay: false
+        });
+        let videoArray = ['one','two','three','four','five','six']
+        let videoRandom = getRandom(0,videoArray.length-1);
+        let videoo=document.querySelector('.zy_media video source');
+        console.log('VIDEO',videoRandom);
+        videoo.src=`media/露骨内容/${videoArray[videoRandom]}.mp4`;
+    </script>
+    <!-- autoplay只有和muted在一起才起效。没有autoplay点击播放自动播放声音 -->
+    <video id="hkd2" src="media/露骨内容/one.mp4" style="height:100%;width:95%;margin:0 auto;display:block;display: none;" controls ></video>
+    <!-- 框架与插件的区别
+        框架 一套解决方案：Bootstrap,Vue, Angular, React 等。技能开发PC端也能开发移动端
+        插件 某个功能解决方案：swiper等
+    -->
+    
+
+
+
+    <!-- 本地存储
+        存储数据 : localStorage.setItem(key,value);
+        获取数据 : localStorage.getItem(key);
+        删除数据 : localStorage.getItem(key);
+
+        储存复杂 数据类型
+        JSON.stringify(复杂数据类型) —> 将复杂数据类型转换成JSON字符串
+        JSON.parse(JSON字符串) —> 将JSON字符串转换为对象
+        
+        举例：
+        let obj ={
+            name:'shit',
+            address='shit'
+        }
+        localStorage.setItem('key',JSON.stringify(obj));
+        JSON.parse(localStorage.getItem('key'));
+    -->
+    <h4>本地存储</h4>
+    <input type="text" id="session" style="text-align: left;">
+    <button class="set">存储数据</button>
+    <button class="get">获取数据</button>
+    <button class="remove">删除数据</button>
+    <button class="del">清空所有数据</button>
+    <script>
+        let ipt = document.querySelector('#session');
+        let set = document.querySelector('.set');
+        let get = document.querySelector('.get');
+        let remove = document.querySelector('.remove');
+        let del = document.querySelector('.del');
+
+        set.addEventListener('click',function(){
+            // 当我们点击了之后，就可以把表单里面的值存储起来
+            let val = ipt.value;
+            //存储数据：生命周期为关闭浏览器窗口
+            sessionStorage.setItem('uname',val);
+            sessionStorage.setItem('pwd', val);
+
+            //到别的页面也能正常使用这个数据（只要同一个浏览器就行）
+            localStorage.setItem('username',val);
+        });
+        get.addEventListener('click',function(){
+            //获取数据
+            console.log('sessionStorage',sessionStorage.getItem('uname'));
+
+            console.log('localStorage',localStorage.getItem('username'));
+        });
+        remove.addEventListener('click',function(){
+            //移除数据
+            sessionStorage.removeItem('uname');
+
+            localStorage.removeItem('username');
+        });
+        del.addEventListener('click', function() {
+            // 当我们点击了之后，清除所有的
+            sessionStorage.clear();
+
+            localStorage.clear();
+        });
+    </script>
+    <!-- 本地存储练习 -->
+    <script>
+        //数组里面有一个对象
+        let todolist = [
+            {
+                title:'我要"野战"肏周子泉',
+                done:false
+            },
+            {
+                title:'我要肏李贞贤',
+                done:false
+            },
+        ];
+        // 1.本地存储只能存储字符串的格式：以下不可用
+        // localStorage.setItem("test1",todolist);
+
+        //把我们数组对象转换为字符串格式 JSON.stringify()
+        localStorage.setItem("test2",JSON.stringify(todolist));
+    </script>
+
+
+
+    <!-- 边框图片 -->
+    <!--
+        border-image-source：用在边框的图片等路径（哪个图片）
+        border-image-slice：图片边框内偏移 上右下左(不带单位)
+        border-image-width：图片边框的宽度 设置边框的图片的宽度 默认border宽度
+        border-image-repeat：图片边框是否平铺repeat（真正的一个透明div盖住图片），铺满round，或拉伸stretch默认
+    -->
+    <div class="container" style="background-color: lightgreen;">
+        <h4>边框图片</h4>
+        <div class="container" style="display: flex;">
+            <div style="flex:1;">
+                <h4 style="margin-top:0;">边框图片repeat</h4>
+                <div class="borderImage" style="
+                width: 400px;
+                height:300px;
+                border: 1px solid red;
+                border-image-source:url(images/border.jpg);
+                border-image-slice:30 30 30 30;
+                border-image-width:15px;
+                border-image-repeat:repeat;
+    
+                transition: all 0.5s;
+                "><button id="qh">换15</button></div>
+            </div>
+            <div style="flex:1;">
+                <h4 style="margin-top:0;">边框图片round</h4>
+                <div class="borderImage" style="
+                width: 400px;
+                height:300px;
+                border:15px solid skyblue;
+                border-image-source:url(images/border.jpg);
+                border-image-slice:30 30 30 30;
+                border-image-width:30px;
+                border-image-repeat:round;
+                "></div>
+            </div>
+            <div style="flex:1;">
+                <h4 style="margin-top:0; font-size: 13.3999px;">边框图片stretch</h4>
+                <div class="borderImage" style="
+                width: 400px;
+                height:300px;
+                border:15px solid skyblue;
+                border-image-source:url(images/border.jpg);
+                border-image-slice:30 30 30 30;
+                border-image-width:30px;
+                border-image-repeat:round;
+                ">
+                    <img src="images/pinpu.jpeg" alt="" style="height: 230px;border:1px solid red;margin-left: 100px; margin-top :40px; ">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h4>border从15缩为1的时候他是一定会动的</h4>
+            <p>border: 15px solid transparent;</p>
+            <p> !!! border-<strong>image</strong>-width: 51px 38px 20px 132px;</p>
+            <p>border-image-width会溢出但是他是溢出在内部，非外部！原本边框是15，拿右边为例，20BIW，说明右边图片占了125%。边框缩小为1的时候，你可以想象边框collapse in了（这时候图占0.0001%，0%or0px边框的话图片无法显示），而图片也会跟着collapse in，毕竟不能溢出，能‘溢进’（图片‘边边’必须贴着边框‘边边’，虽然边框内缩但是图片依然贴着’边边‘所以跟着内缩）。最后，实体空间缩小，图片没有（溢进了，所以有可能四边占比有冲突，所以可能也会减少一点，理论上来说是基本没有的）</p>
+            <p>
+                如果不是设置BIW而是直接设border，缩小为1时结构会塌掉（萎缩）因为有些边需要更多像素来显示全，全部统一缩为1的话缩的不平均，如有些缩50%有些20%
+            </p>
+            <div class="panel"></div>
+            <button id="qh2">换1</button>
+        </div>
+    </div> 
+    <script>
+        let flagqh = false;
+        let qh = document.querySelector('#qh');
+        let qh21 = document.querySelector('#qh2');
+        qh.addEventListener('click',function(){
+            let bi = document.querySelectorAll('.borderImage')[0];
+            if(flagqh==false){
+                bi.style.borderWidth = '15px';
+                flagqh=true;
+                qh.textContent='换1'
+            }else{
+                bi.style.borderWidth = '1px';
+                flagqh=false;
+                qh.textContent='换15'
+            }
+            
+        });
+        qh2.addEventListener('click',function(){
+            let bi = document.querySelectorAll('.panel')[0];
+            bi.style.transition='all .5s';
+            if(flagqh==false){
+                bi.style.borderWidth = '1px';
+                flagqh=true;
+                qh2.textContent='换 15'
+            }else{
+                bi.style.borderWidth = '15px';
+                flagqh=false;
+                qh2.textContent='换 1'
+            }
+            
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+    <!-- jQuery部分 （非原生JS）
+        概述：jQuery实际上就是一种JavaScript库，里面封装了很多函数供我们调用
+        j-> JavaScript 
+        Query->查询
+    -->
+    <script>
+        //等着DOM文档加载完再执行 1
+        // $(document).ready(function(){
+        //     //隐藏盒子
+        //     $('.normal').hide();
+        // });
+
+        //等着DOM文档加载完再执行 2
+        $(function(){
+            //隐藏盒子
+            $('.normal').hide();
+        });
+
+
+        // 1. $ 是jQuery的别称（另外的名字）
+        // $(function() {
+        //     alert(11)
+        // });
+        jQuery(function(){
+            // $('.normal').hide();
+            // jQuery('.normal').hide();
+        });
+        // 2. $同时也是jQuery的 顶级对象
+    </script>
+    <div class="normal"></div>
+
+
+    <!-- jQuery对象 和 DOM 对象 以及互相转 -->
+    <script>
+        // <div></div>
+        // <span></span>
+
+        // 1. DOM 对象：  用原生js获取过来的对象就是DOM对象
+        let myDiv = document.querySelector('div'); // myDiv 是DOM对象
+        let mySpan = document.querySelector('span'); // mySpan 是DOM对象
+        console.dir(myDiv);
+
+        // 2. jQuery对象： 用jquery方式获取过来的对象是jQuery对象。 本质：通过$把DOM元素进行了包装
+        $('div'); // $('div')是一个jQuery 对象
+        $('span'); // $('span')是一个jQuery 对象
+        console.dir($('div'));
+
+        // 3. jQuery 对象只能使用 jQuery 方法，DOM 对象则使用原生的 JavaScirpt 属性和方法
+        // myDiv.style.display = 'none';
+        // myDiv.hide(); myDiv是一个dom对象不能使用 jquery里面的hide方法
+        // $('div').style.display = 'none'; 这个$('div')是一个jQuery对象不能使用原生js 的属性和方法
+
+
+
+        $('#hkd2');//用jQuery获取对象
+        let myVideo = document.querySelector('#hkd2');//用DOM获取
+
+        // 1. DOM对象转换为 jQuery对象
+        $(myVideo);//转成jq对象
+        // myVideo.play(); //DOM 播放视频方法-需要先静音（或者直接设置autoplay）
+
+        // 2.  jQuery对象转换为DOM对象 （两种方式）：jQuery对象是以伪数组形式来存储，用数组的形式来调用他
+        // $('#hkd2')[0].play(); //获取我们第一个拥有id为hkd2（id只有一个）
+        // $('#hkd2').get(0).pause();
+    </script>
+
+    <!-- jQuery选择器 筛选方法 文本属性值-->
+    <script>
+        // $("#id");    -> ID 选择器：获取指定ID元素
+        // $('*');      -> 全选选择器：匹配所有元素
+        // $(".class"); -> 类选择器
+        // $("div");    -> 标签选择器
+        // $("div,p,li");->并集选择器
+        // $("li.current");->交集选择器
+        
+        //$('li:first') -> 获取第一个li元素
+        //$('li:last')  -> 获取最后一个li元素
+        //$("li:eq(2)") -> 获取到的li元素中，选择选择到索引号为2的元素，索引号从0开始.这是选择器写法
+        //$("li:odd") ->获取到的li元素中，选择索引号为奇数的元素
+        //$("li:even") -> 获取到的li元素中，选择索引号为偶数的元素
+
+        //$("li").parent(); //查找父级 返回的是 最近一级的父级元素 亲爸爸
+        //$("li").parents(".one"); //返回指定祖先元素 或 所有的父级元素如果为空。但必须是直系亲属
+        //$("ul").children("li"); //相当于 $("ul>li"),亲儿子
+        //$("ul").find("li");//相当于$("ul li"), 后代选择器
+        //$(".first").siblings("li") //查找兄弟节点，不包括自己
+        //$(".first").nextAll() //查找当前元素之后所有元素同辈
+        //$(".first").prevAll() //查找当前元素之前所有元素同辈
+        //$("div").hasClass("protected") //检查当前元素是否有某个特定类。如果有则返回true
+        //$("li").eq(index) //选择第x个li，等价于$("ul li:eq(index)"); 推荐写法：选择方法
+
+        //获取设置元素内容（相当于原生innerHTML） ： $("div").html("123");
+        //获取设置文本内容（相当于原生innerText） ： $("div").text("123");
+        //获取设置表单值 （相当于原生value）: $("input").val("123");
+        $(function() {//入口函数
+            // 1. 获取x个div元素 :相当于原生的querySelectorAll
+            // console.log($(".nav"));
+
+            // console.log($("ul>li"));
+            // console.log($("ul li"));
+
+            // 2. 给x个div设置背景颜色为粉色(所有) jquery对象不能使用style
+            // $("div").css("background", "pink");
+
+            // 3. 隐式迭代就是把匹配的所有元素内部进行遍历循环，给每一个元素添加css这个方法：原生的话不管是用querySelectorAll-li，或者querySelector-ul，我们都要循环，either querySelectorAll-li.length or querySelector-ul.children.length
+            // $("ul li").css("color", "red");
+
+            // $("ul li:first").css("color", "red");//第1个小li
+            // $("ul li:eq(2)").css("color", "blue");//第2个
+        })
+    </script>
+
+    <!--jQuery操作CSS
+        $("div").css("width", "300px");
+        或
+        $("div").css("width", 300); 因为是数字。字符串需要加引号
+
+
+        $("div").css({
+            // 如果是复合属性则必须采取驼峰命名法，如果值不是数字，则需要加引号
+            width: 400, height: 400, backgroundColor: "red"
+        })
+    -->
+
+    <div class="container" style="height:150px;">
+        <h4 style="float: left;">显示</h4>
+        <div id="czl"></div>
+    </div>
+    <script>
+        $(function(){
+            $("#czl").click(function() {
+                $(this).toggleClass("current_czl");
+            });
+        })
+    </script>
+    <!-- jQuery操作类
+        ---------- 追加非覆盖（类似于原生classList操作）----------
+        1. 添加类 addClass()
+            ("div").click(function() {
+                $(this).addClass("current");
+            });
+
+        2. 删除类 removeClass()
+            $("div").click(function() {
+                $(this).removeClass("current");
+            });
+
+        // 3. 切换类 toggleClass()
+            $("div").click(function() {
+                $(this).toggleClass("current_czl");
+            });
+    -->
+
+    <!-- jQuery效果
+        隐藏显示
+        1）show([speed,[easing],[fn]])
+            speed: 'slow', 'normal', 'fast', 1000 :1秒
+            easing: "swing","linear"
+            fn:回调函数
+        2) hide([speed,[easing],[fn]])
+        3）toggle()
+
+        滑动
+        4) slideDown(回调函数或无)
+        5) slideUp(回调函数或无)
+        6) slideToggle(回调函数或无) //相互切换
+
+        淡入淡出
+        5) fadeIn([speed,[easing],[fn]])
+        6) fadeOut([speed,[easing],[fn]]);
+        7) fadeToggle()
+        8) fadeTo([speed,[easing],[fn]])
+
+        9) .stop() : 每个动画都要排队，加到某个动画前面，这样能清空队伍，然后我再来（我是老大我不需要排队给我清空队伍）
+
+        自定义动画
+        animate(params,[speed],[easing],[fn])
+            params：要修改的CSS属性
+
+        事件切换
+        $().hover(mouseenter-fn,mouseleave-fn) 如果一个fn则两种情况都会执行
+    -->
+    <div class="container">
+        <h4>jq效果显示与隐藏进阶</h4>
+        <button class="xgbtn">显示</button>
+        <button class="xgbtn">隐藏</button>
+        <button class="xgbtn">切换</button>
+        <button class="xgbtn">取消transition</button>
+        <button class="xgbtn">修改透明度</button>
+    </div>
+    <script>
+        let xg = true;
+        let fade = false;
+        $(function(){
+            $("button.xgbtn").eq(0).click(function(){
+                // $("#czl").show(1000,function(){});
+                // $("#czl").slideDown();
+                $("#czl").fadeIn(1000);
+            });
+            //所有以上btn里的第二个
+            $("button.xgbtn").eq(1).click(function(){
+                // $("#czl").hide(1000,function(){});
+                // $("#czl").slideUp(300);//三分之一秒 aka300毫秒，1000毫秒=1秒
+                $("#czl").fadeOut(1000);
+            });
+            $("button.xgbtn").eq(2).click(function(){
+                // $("#czl").toggle(1000);
+                // $("#czl").slideToggle(500);
+                $("#czl").fadeToggle(1000);
+            });
+            // 一般情况下，我们都不加参数直接显示隐藏就可以了
+            $("button.xgbtn").eq(3).click(function(){
+                if(xg == true){
+                    $("#czl").css("transition","none");
+                    xg = false;
+                }else{
+                    $("#czl").css("transition","all 1s");
+                    xg = true;
+                }
+            });
+            $("button.xgbtn").eq(4).click(function(){
+                if(fade == false){
+                    $("#czl").fadeTo(100,0.3);
+                    fade = true;
+                }else{
+                    $("#czl").fadeTo(100,1);
+                    fade=false;
+                }
+            });
+        });
+    </script>
+
+    <!-- jQuery属性操作 
+        1）获取属性值：$(element).prop("属性名如href或type")
+        2）设置属性值：$(element).prop("修改的属性如title","修改的属性值如fuckyou")
+
+        3) change 改变
+        $(this).change(function(){
+            //只有什么东西change了才会运行如checkbox gets checked
+        })
+
+        4）获取自定义属性：$(element).attr("index") 类似于原生getAttribute（）
+        5）设置自定义属性：$(element).attr("index","1") //类似于原生的setAttribute()
+
+        6）数据缓存 data() 这个里面的数据是存放在元素的内存里面（DOM看不见）
+            $("span").data("uname", "andy");
+            console.log($("span").data("uname"));
+        7）获取h5属性：
+            <div index="1" data-index="2">我是div</div>
+            console.log($("div").data("index"));
+
+    -->
+
+    <!-- 行内改字面改（原生） -->
+    <div class="container">
+        <h4>体验 字面改(.value) 和 行内改字面改(.setAttribute) value值：.value有压倒性优势而setAttribuite没有</h4>
+        <input type="text" value="123" id="caonima">
+        <a href="javascript:;" id="addd">+</a>
+        <script>
+            let addd=document.querySelector('#addd');
+            let innn=document.querySelector('#caonima');
+            // innn.value=555;//字面改
+            innn.setAttribute('value',777);//行内改字面改（除非注释以上那就是字面改和行内改。如果value和setAttribute同时在场，value会压过setAttribute，无论行内怎么变字面都不会变，导致按钮失效）
+            addd.addEventListener('click',function(){
+                let valll= innn.value;
+                valll++;
+                // innn.value=valll;//字面改
+                innn.setAttribute('value',valll);//行内改字面改
+                //这里两个同时启动是没有问题的！虽然value有压倒性优势但是这样做你先改了字面后改了行内，相当于只用value,让setAttribute去更新行内，实际setAttribute无法访问字面的
+                
+                //jq一样效果，用attr来行内字面改，val来字面改
+            });
+        </script>
+    </div>
+
+    <!-- jQuery元素操作 之 遍历 -->
+    <div class="container">
+        <h4>jQuery元素操作</h4>
+        <div class="bianliJQ">1</div>
+        <div class="bianliJQ">2</div>
+        <div class="bianliJQ">3</div>
+    </div>
+    <script>
+        console.log('----------jQuery元素操作----------');
+        //给他们全弄成红色:隐式迭代
+        // $(".bianliJQ").css("color", "red");
+
+        // 如果针对于同一类元素做不同操作，需要用到遍历元素（类似for，但是比for强大）: loop throught this array of all this kind element
+
+        //语法1:$("div").each(function(index,domEle){xxx;})
+        //index : 索引号        domEle：DOM元素对象，不是jq 
+        //主要用于DOM处理 （必须是DOM，非DOM如数组无法使用 todolist教训）
+        let arrColor = ["plum", "lightgreen", "lightblue"];
+        let sum=0;
+        $(".bianliJQ").each(function(index,domEle){
+            // 回调函数第一个参数一定是 '索引号'  可以自己指定索引号号名称
+            // console.log(index); -> 0 , 1 , 2
+
+            // 回调函数第二个参数一定是 'DOM元素对象' 也是自己命名
+            // console.log(domEle); -> <div class="bianliJQ">1</div> , ... , ...
+
+            $(domEle).css("backgroundColor", arrColor[index]);
+            sum += parseInt($(domEle).text());//数字相加
+        })
+        console.log(sum);//输出数字
+
+
+        //语法2:$.each( object , function(index,element){xxx;} )
+        //index : 索引号        element：遍历内容 
+        //主要用于遍历数据，处理数据 (可以是DOM操作也能是非DOM如数组)
+        $.each($(".bianliJQ"),function(index,element){
+            // console.log(index); //-> 0 , 1 , 2
+            // console.log(element); //-> <div class="bianliJQ">1</div> , ... , ...
+
+            $(element).css("backgroundColor", arrColor[index]);
+            sum += parseInt($(element).text());//数字相加
+        })
+        console.log(sum);//输出数字
+        // $.each({
+        //    name : "ZiHao" ,
+        //    age : 20
+        // },function(index,element){
+        //     console.log('0----------');
+        //     console.log(index); // 输出的是 name(第一轮), age(第二轮): 属性名
+        //     console.log(element); // 输出的是 ZiHao(第一轮),20(第二轮): 属性值
+        // })
+    </script>
+
+    <!-- jQuery元素操作 之 创建/添加/删除
+        1. 创建元素:原生createElement
+        let li = $("<li>我是后来创建的</li>");
+
+        2.1 添加元素 内部添加 -> 和添加者是父子关系
+        $("ul").append(li);  内部添加并且放到内容的最后面 原生appendChild
+        $("ul").prepend(li); 内部添加并且放到内容的最前面 原生insertBefore(ul.children[0])
+
+        2.2 添加元素 外部添加 -> 和添加者是兄弟关系
+        let div = $("<div>我是后者</div>");
+        $(".test").after(div);   放在目标元素后面
+        $(".test").before(div);  放在目标元素前面
+
+        // 3. 删除元素
+        $("ul").remove(); 可以删除匹配的元素：自杀（和其内部的孩子）
+        $("ul").empty();  可以删除匹配的元素里面的子节点：杀掉孩子
+        $("ul").html(""); 删除其内部内容：和上面empty同一个作用
+    -->
+
+    <!-- jQuery尺寸 位置操作
+        参数为空：获取相应值，返回数字类型
+        参数为数字：修改相应值
+        
+        1. width() / height() 获取设置元素 width和height大小 
+            $("div").width(300);
+
+        2. innerWidth() / innerHeight()  获取设置元素 width和height + padding 大小 
+            $("div").innerWidth()
+
+        3. outerWidth()  / outerHeight()  获取设置元素 width和height + padding + border 大小 
+            $("div").outerWidth()
+
+        4. outerWidth(true) / outerHeight(true) 获取设置 width和height + padding + border + margin
+            $("div").outerWidth(true)
+
+
+
+        1. 获取设置距离 ‘文档的位置’（偏移）和父亲没有关系 offset
+            ----------------------------------------------
+            获取：
+            $(".son").offset() 
+            $(".son").offset().top -> 拿top值only 不要left值
+            ----------------------------------------------
+            设置：
+            $(".son").offset({
+                top: 200,
+                left: 200
+            });
+            ----------------------------------------------
+
+         2. 获取距离 带有定位父级位置（偏移） position   如果没有带有定位的父级，则以文档为准。这个方法只能获取不能设置偏移
+            $(".son").position()
+    -->
+    <div class="back">返回顶部</div>
+    <script>
+        $(function(){
+            $(document).scrollTop(100);//首次启动html页面生效（刷新无效）
+            //获取“Node概述”盒子距离顶部的距离
+            let boxTop = $("#nodegaishu").offset().top;
+            // 被卷去的头部 scrollTop()  / 被卷去的左侧 scrollLeft()
+
+            $(window).scroll(function(){
+                //每次scroll都会触发这个事件：如果我们滚动的距离大于目标元素的顶部距离就显示，否则隐藏
+                if($(document).scrollTop() >= boxTop){
+                    $(".back").fadeIn();
+                }else{
+                    $(".back").fadeOut();
+                }
+            })
+
+            //返回顶部
+            $(".back").click(function() {
+                //直接跳回顶部
+                // $(document).scrollTop(0);
+
+                //带动画返回顶部:只有元素才能做动画，document不是元素而是文档对象
+                $("body,html").stop().animate({
+                    scrollTop :0
+                });
+                //不能是文档而是 html和body元素做动画
+            })
+        })
+    </script>
+
+    <!-- jQuery事件 
+        事件有：mouseover,mouseout,blur,focus,change,keydown,keyup,resize,scroll等
+
+        1. 事件注册
+            单个事件注册
+                element.事件(function(){})
+                $("div").click(function(){事件处理程序})
+                $("div").click(function(){
+                    $(this).css("background","purple");
+                });
+                $("div").mouseenter(function(){
+                    $(this).css("background","skyblue");
+                });
+        
+
+
+
+        2. 事件处理
+            on:绑定多个事件->重点，就如原生onclick到addeventlistener）
+                1） element.on(events,[selector],fn)
+                    events: 如click或keydown
+                    selector：元素的子元素选择器
+                    fn：回调函数 即绑定在元素身上的侦听函数
+                    
+                2） $("div").on({
+                        // on可以绑定1个或者多个事件处理程序
+                        mouseenter:function(){
+                            $(this).css("background","skyblue")
+                        },
+                        click:function(){
+                            $(this).css("background","lightgreen")
+                        },
+                        mouseleave:function(){
+                            $(this).css("background","blue)
+                        }
+
+                    });
+
+                3） $("div").on("mouseenter mouseleave",function(){
+                        //经过 离开 都会触发:经过和离开切换颜色
+                        $(this).toggleClass("current");
+                    });
+
+                4)  on可以实现事件委托（委派)：把原来给子元素绑定的事件绑定在父元素身上，把事件委派给父元素，只给父元素绑定事件
+                    $("ul").on("click", "li", function() {
+                        //(click)事件 是绑定在ul 身上的，但是 触发的对象是 (ul 里面的)小li。点击li后会冒泡到父亲ul身上，然后父亲执行程序（可以这样想?：ul的点击事件绑定在li身上***）
+                        alert(11);
+                    });
+
+                5)  on可以给未来动态创建的元素绑定事件（特殊写法）
+                    $("ol li").click(function() {
+                        alert(11); //无效：必须先创建元素。我们找不到li
+                    })
+                    $("ol li").on("click", function() {
+                        alert(11);//无效：必须先创建元素。我们找不到li，无法绑定点击事件
+                    })
+                    $("ol").on("click", "li", function() {
+                        alert(11);//有效：我们找到了ol，虽然暂时没有li，但是li可以触发。父债子还，无论子在不在 ***
+                    })
+                    var li = $("<li>我是后来创建的</li>");
+                    $("ol").append(li);
+
+            off()解绑事件
+                1） 解绑事件：
+                    解绑所有事件
+                        $("div").off(); 
+                    解绑某个事件
+                        $("div").off("click");
+                    解出事件委托
+                        $("ul").on("click", "li", function() {
+                            alert(11);//事件绑定在ul身上，触发的是小li
+                        });
+                        $("ul").off("click","li"); //解除li触发，但是ul还有事件？毕竟如果直接$("ul").off("click")也行
+                    触发一次:one()
+                    $("p").one("click",function(){});
+
+                2） 自动触发事件：
+                    首先，事件
+                        $("div").on("click", function() {xxx});
+                    自动触发trigger 两种方式
+                        $("div").click(); //会触发元素的默认行为
+                        $("div").trigger("click");//会触发元素的默认行为
+                        $("input").trigger("focus");
+                    自动触发triggerHandler : 不会触发元素的默认行为
+                        $("div").triggerHandler("click");
+
+                        如果你点击文本域,文本域会有一个 光标 一闪一闪。triggerHandler不会，因为不会触发 默认行为
+        
+        
+        3.  事件对象
+            1) 介绍
+                element.on(events,[selector],function(event){})
+                    event: 事件对象
+                    event.preventDefault():阻止默认行为
+                    event.stopPropagation(): 阻止冒泡
+            2）应用：没有阻止的话会从div身上冒泡到document
+                $(document).on("click", function() {
+                    console.log("点击了document");
+
+                })
+                $("div").on("click", function(event) {
+                    console.log("点击了div");
+                    event.stopPropagation();
+                })
+            
+    --> 
+
+    <!-- jQuery其他方法 -->
+    <script>
+        console.log('----------jQuery其他方法----------');
+        $(function(){
+            // 对象拷贝 : 覆盖target以前同名数据
+            // $.extend([deep], target, object1, [objectN]);
+            // deep:true 深拷贝，默认false
+            // target： 拷贝目标
+            // object1：待拷贝对象（第一个）
+            // [objectN]：其他待拷贝的对象
+            var zzq = {
+                name:'周子泉',
+                age: 20,
+                sex:'女',
+
+                //创建匿名方法 （对象里的函数）
+                moan : function(){
+                    console.log('周子泉:我要吃郑子豪的大鸡巴！ 啊～');
+                },
+
+                husband:{
+                    name : "郑子豪",
+                    age:19
+                }
+            }
+            let targetObj={};
+            $.extend(targetObj,zzq);
+            console.log('jQuery其他方法',targetObj);
+            targetObj.husband.age=20;
+            //拷贝原理：（浅拷贝把原来对象里面的复杂数据类型地址拷贝给目标对象。如果原对象变了，target对应的也会变。深拷贝把里面的数据完全复制一份给目标对象 如果里面有不冲突的属性,会合并到一起。深拷贝就会在heap里面开辟一个新空间，这样就不受影响）
+
+
+
+
+            //多库共存：别的js库里的$符号和jq冲突了
+            // function $(ele) {
+            //     return document.querySelector(ele);
+            // }
+
+            //解决方案->把$改为jQuery：jQuery.each();
+
+            //解决方案2->把$改为’自定义‘：
+            //var suibian = jQuery.noConflict();
+            //suibian("span");suibian.each();
+
+
+            
+
+            //图片懒加载：当我们滑动到了某个区域，那个区域的图片再加载，减轻服务器负载
+
+        })
+
+        
+    </script>
+
+
+
+
+
+
+    <!-- 2022 JS 部分 (以上还有两个部分属于2022) -->
+    <!-- 类和对象 -->
+    <div class="container">
+        <h4>类和对象-原生JavaScript</h4>
+        <button id="lhdxbtn1">点击调用子类的函数</button>
+    </div>
+    <script>
+        console.log('----------类和对象----------');
+
+        (function(){
+            // 1. 创建class，继承，构造函数，函数，等
+            class Father{
+                constructor(){
+
+                }
+                fatherFunction(name){
+                    console.log(`this is ${name}'s father talking`);
+                }
+            }
+            // 创建 class
+            class girl extends Father{
+                //构造函数:自动调用
+                constructor(name,age){
+                    super();//必须先调用super才能用this
+                    this.name=name;
+                    this.age=age;
+                }
+                moan(msg){
+                    console.log(this.name+': 郑子豪哥哥～'+msg);    
+                }
+            }
+            // 利用类创建对象
+            let zzq = new girl('周子泉',20);
+            console.log(zzq);
+            zzq.moan('求求你和我做爱吧');
+            zzq.fatherFunction(zzq.name);
+
+
+
+            // 2. 为什么要先调用super？
+            // 答：因为只要extends就有可能调用父亲的函数，父亲的函数无法知道子类内部的变量。如果说这个父类函数需要用到某些只有父亲才有的变量我们先要设置一下。唯一设置方法就是用构造函数。所以，先调用父亲的构造函数super，而且必须在子类使用this之前调用
+            // 3. 如果父类 和 子类 函数名字有冲突会调用那个？
+            // 答：就近原则 -> 优先调用子类。除非你手动调用父类同名的函数，如super.fatherFunctionSameNameAsChild();
+            // 4. 构造函数里的this指向的是 创建的实例对象。普通函数里要看谁调用了他。如果是son.sum,sum里this指向实例对象。如果是btn调用的hi，hi里this指向btn（这种情况如果要得到实例对象的话需要在外面声明一个变量来储存，之后在使用这个变量that）。aka调用者。
+            let that;
+            class Father1 {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                }
+                sum() {
+                    console.log(this.x + this.y);
+                }
+
+                hi(){
+                    console.log('肏！');
+                }
+            }
+            class Son extends Father1 {
+                constructor(x, y) {
+                    super(x, y); //调用了父类中的构造函数
+                    that = this;
+
+                    //this.xxx -> xxx variable belongs to this object now
+                    this.button=document.querySelector('#lhdxbtn1');
+                    //1 简单
+                    this.button.addEventListener('click',this.hi);
+
+                    //2 困难
+                    this.button.shuxing=this.hi;//把函数赋值给属性
+                    this.button.addEventListener('click',function(){
+                        //此时this指向调用者button
+                        //如果要调用hi,需要在1)外面储存实例对象（最外面储存）或者2)hi函数（赋值给某个获取来的东西的属性）
+                        // 1)
+                        that.hi();
+                        // 2)
+                        this.shuxing();
+
+                    });
+                }
+                hi(){
+                    console.log('我很害羞');
+                }
+                fatherSayHi(){
+                    super.hi();
+                }
+            }
+            var son = new Son(1, 2);
+            son.sum();
+            son.fatherSayHi();//调用父类中的 与 子类函数同名 的函数与
+
+            
+        }());
+    </script>
+
+    <!-- Miscellaneous
+        const:
+        const array=[1,2,3];
+        array[0]=9; // yes,cuz固定的是地址
+        array=[4,5,6] // no，这是修改地址
+
+        数组解构 赋值：
+        let [a,b,c]=[1,2,3]; // 相当于a=1,b=2,c=3
+        let [a,b,c]=array; // 假如array有三个元素，那么就和一上一样
+        let [a,b,[c,d]]= [1,2,[3,4]];
+
+        对象解构：
+        let person = {name:'郑子豪', age:20}
+        let {name,age} = person; // 等价于name=person.name 而且结构变量和属性名必须相同!!
+        let {name:myName,age}={name:'郑子豪', age:20}; // 将name变量名更改为myName， 什么值：赋值给谁
+
+        对象数组解构：就是添加一个中括号'[]'
+        let person = [{name:'郑子豪', age:20}]
+        let [{name,age}]=person; 
+
+        多级对象解构：
+        var zihao = {
+            name:'郑子豪',
+            age:20,
+            family:{
+                wife:'Eva Li'
+            }
+        }
+        let {name,age,family:{wife}}=zihao;
+        console.log(name,age,wife);
+    -->
+
+    <!-- 箭头函数 -->
+    <script>
+        (function(){
+            //普通函数 
+            const fn1 = function(){
+                // 箭头函数的this是上一层作用域this的指向（window）
+                // console.log(this);
+            } 
+
+
+            //箭头函数
+            // 1. 基本语法
+            const fn2 = ()=>{
+                //console.log(123);
+            }
+            // 2. 只有一个形参的时候可以省略小括号“()”
+            const fn3 = x =>{
+                console.log(x);
+            }
+            // 3. 只有一行代码可以省略大括号
+            const fn4 = x => console.log(x);
+            // 4. 只有一行代码可以省略return
+            const fn5 = x => x+x;
+            // 5. 箭头函数可以直接返回一个对象(必须这样写)
+            const fn6 = (uname) => ({name:uname});
+
+
+
+
+            // 6. this 指向 
+            const obj={
+                boy:()=>{
+                    // 箭头函数没有this，他会沿用上一层的this
+                    console.log(this);
+                },
+                girl:function(){
+                    // 谁调用我this就指向谁。除非用call方法把“目标this”传给他aka obj.call(target);  。在严格模式下this是undefined
+                    console.log(this);
+                }
+            }
+            obj.boy(); // window: objects cannot have 作用域so im registered in window
+            obj.girl(); // obj: obj call girl, this指向obj
+        })();
+    </script>
+
+    <!-- 剩余参数 和 展开运算符-->
+    <script>
+        // 剩余参数 （...args）: 函数参数使用，得到真正的数组
+        sum = (...args)=>{
+            console.log(args); // output an array
+            args.forEach(fn=(value) =>{
+                // “fn=” 和value左右的括号可以省略，因为我们不需要给这个函数一个名字，并且只有一个参数value，所以不需要括号
+                console.log(value);
+            })
+        };
+        sum(1,2,3,4,5,6,7,8,9,10);
+
+
+
+        // 数组解构 and 剩余参数: ... creates an array of elements if on non left side (...返回的是伪数组，但是可以用ary[x]来访问其内容。通过let ele=[...ary]就能转换为真正的数组. (arguments就是伪数组，因为没有确定长度)
+        let ary1=['Eva Li','周子泉','李贞贤','蒋行积']
+        let [s1='Eva',...s2]=ary1; // Everyone after Eva Li stored into s2 as Array, with Eva as default value for s1 （默认值）
+        console.log(s1,s2);// Eva Li, ['周子泉','李贞贤','蒋行积'] <- 真数组
+
+        // 对象解构 and 剩余参数
+        let obj222 = {a:1,b:2,c:3,d:4}
+        let {a,b,...c} = obj222;
+        console.log(a,b,c); // 1,2,{3,4}
+
+        // let new_a = document.querySelector(".shit"); 
+        // new_a.addEventListener('click',function(e){
+        //     let {tagName,dataset,className } = e.target;
+        //     console.log(tagName);//A
+        //     console.log(dataset);//this is an object
+        //     console.log(className);//shit
+        // });
+
+
+
+
+        // 扩展运算符/展开运算符：数组中使用，数组展开
+        console.log(...ary1); // --> console.log('Eva Li','周子泉','李贞贤','蒋行积')
+        console.log({...obj222});// spread the data,re-wrap into a new obj(目前匿名)
+
+        // 数组合并:... removes the braces temporarily, aka spread. It takes in an iterable (e.g an array) and expands it into individual elements.
+        let ary2=['Undefined'];
+        let ary3=[...ary1,...ary2];//['Eva Li','周子泉','李贞贤','蒋行积','Undefined']
+
+        // 数组合并2：只有真正的数组才能使用push等方法
+        // ary3.push(ary2); -> NO, pushes array into array
+        ary3.push(...ary2); //YES:removes braces then push
+        console.log(ary3);
+
+        //求最大值
+        const arrnum=[1,2,3,4,5];
+        console.log(Math.max(...arrnum));//5
+    </script>
+
+    <!-- 数组方法 字符串方法 数字方法等-->
+    <script>
+        var ary=[{id:1,name:'Eva Li',color_egg:"Eva i love you"},{id:2,name:'Jessie Li',color_egg:"Jessie, I have a crush on your elder sister"}]
+
+        // 伪数组转换真正的数组
+        // let newAry=Array.from(伪数组);
+        // let newAry=Array.from(伪数组，value=>value*2); // 其内部所有变量乘2（注意：箭头函数已经省略掉了左边的括号()和右边的{},以及右边内部的return）
+
+        // find()
+        // value : 每个数组元素
+        // index : 每个数组元素 的索引号
+        // array : 数组本身
+        let target= ary.find((value,index,arr)=>{return value.id==2 && value.name=='Jessie Li'});
+        console.log(target.color_egg); // jessie's color_egg
+
+        // findIndex()
+        let target2=ary.findIndex((value,index,arr)=>{return value.id==2 && value.name=='Jessie Li'});
+        console.log(target2); // returns index 1, jessie
+
+        // includes()
+        // Jessie.includes('Eva'); // true if Jessie array includes string Eva
+        // str.includes('Eva') // true if the string includes Eva
+
+        //模版字符串:可以调用函数（显示返回值）
+        let girlfriend = ' Eva Li ';
+        console.log(`i love you,${girlfriend}`);
+
+        // startsWith() endsWith()
+        // str.startsWith('！');//判断字符串是否以“！”开头，返回布尔值
+
+        // repeat()
+        console.log(girlfriend.repeat(10));//concated 10 times
+
+        // 字符串变量.split(符号) -> 和join相反，从字符串转换为数组
+        // 字符串变量.substring(开始索引号，结束索引号)->结束索引号 不包括这个index，可省略
+
+        // 利用set数据结构去重
+        const set1 = new Set(['Eva Li','Jessie Li','Kristin Li','Eva Li']);//自动去掉重复
+        console.log([...set1]);//三点把set转换成零散的elements，然后用括号转换成array
+
+        // set添加,删除,查询,清除
+        set1.add('a');
+        set1.has('a');
+        set1.delete('a');
+        // set1.clear();
+        
+        // set遍历
+        set1.forEach((value) => {
+            console.log(value);
+        });
+
+        // 数字变量.toFixed() ->如10.123 转为10.如果括号里面有数字n，那么就保留n个小数点
+    </script>
+
+    <!-- 异常处理 -->
+    <script>
+    (function(){
+
+
+        function fn2(x,y){
+            if(!x||!y){
+                throw new Error('没有参数传递进来');
+            }
+            return x+y;
+        }
+
+
+
+        function fn(){
+        try{
+            //代码
+        }catch(err){
+            //捕获到错误信息后打印信息并且立刻中断，后面代码除了finally都不会执行
+            console.log(err.message);//catch后用log输出了不能算error，只能算错误string
+            return;
+        }finally{
+            //这块无论如何都会执行
+            alert('我操！');
+        }
+
+
+
+    }
+    })();
+    </script>
+
+    <!-- 性能优化
+        1. 节流阀 throttle
+        2. 防抖 debounce：触发事件后在n秒内函数只能执行一次，如果在n秒内又触发了事件，则会重新计算函数执行时间
+    -->
+    <div class="container">
+        <h4>性能优化：节流阀 和 防抖</h4>
+        <p>防抖 debounce：触发事件后在n秒内函数只能执行一次，如果在n秒内又触发了事件，则会重新计算函数执行时间</p>
+        <div style="height: 200px;width: 200px;background-color: lightgray; text-align: center;line-height: 200px; font-size: 90px;" id="fuckthatnigga"></div>
+        <div style="width: 100%;text-align: center;">
+            <h4>ontimeupdate onloadeddata 节流效果</h4>
+            <p>视频设置ontimeupdate，每次播放有进度就会调用throttle。throttle会每过0.5秒调用一次回调函数（我们将其设置为匿名）。调用这个函数时，我们用video.currentTime来获取当前播放进度，将其存入localStorage。同时，视频设置onloadeddata，每当我们载入页面时都会调用一个匿名函数，这个函数会用video.currentTime来设置当前视频进度。视频进度来自localStorage</p>
+            <video src="media/xyy/90.mp4" controls style="width: 60%;" id="bairimengxyy"></video>
+        </div>
+    </div>
+    <script>
+        let boxss = document.querySelector('#fuckthatnigga');
+        let countermouse=0;
+        function mouseMove(){
+            boxss.innerHTML=++countermouse;
+        }
+        
+        function throttle(fn,time){
+            //起始时间
+            let startTime=0
+            return function(){
+                //这样才不会被立刻调用
+                let now = Date.now();// miliseconds passed since 1/1/1970
+                if(now-startTime >= time){
+                    //调用函数 
+                    fn();
+                    //起始时间=现在时间 
+                    startTime=now;
+                }
+            }
+        }
+        // boxss.addEventListener('mousemove',throttle(mouseMove,500));
+        
+
+        function debounce(fn,time){
+            // 存放定时器address的变量
+            let timeID;
+            return function(){
+                //如果有定时器就清除
+                if(timeID){
+                    clearTimeout(timeID);
+                }
+                // 清除后添加新的定时器：只有200毫秒过了之后才会调用fn
+                timeID = setTimeout(function(){
+                    //这样才不会每次运行以上代码就立刻调用一次fn()，也就是mouseMove()
+                    // fn() 或 function(){}()-> 立刻调用 此函数
+                    // function(){} -> 创建匿名函数
+                    fn();
+                },time);
+            }
+        }
+        boxss.addEventListener('mousemove',debounce(mouseMove,200));
+
+
+
+
+
+        // 应用
+        let video_xyy = document.querySelector('#bairimengxyy');
+        video_xyy.onloadeddata = ()=> video_xyy.currentTime = localStorage.getItem('currentTimeV2')||0;//防止内存里没有这个数据（如果没有前面就是undefined）
+        //所有视频必须用on方法来写
+        video_xyy.ontimeupdate = throttle(()=>{
+            //throttle will be called multiple times in a second. isn't settimeout a 节流too, aka same as throttle?NO：setTimeOut一开始就开始计时，而throttle要调用一次后才开始计时
+
+            //获得当前视频的 时间:video_xyy.currentTime
+            localStorage.setItem('currentTimeV2',video_xyy.currentTime);
+        },500);
+    </script>
+
+</body>
+</html>
