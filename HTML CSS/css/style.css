@@ -192,7 +192,7 @@ body{
     background-position: center center;
     /* background-position:center 53px ; */
     
-    background-size:cover;
+    background-size:contain;
 
     /*将背景图片固定*/
     background-attachment: fixed;
