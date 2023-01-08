@@ -87,18 +87,18 @@
     
 
     <!-- 遮罩层：专门为明星放大而设计 -->
-    <div style="background-color: rgba(0, 0, 0, 0.5);position: fixed;height: 100%;width: 100%;z-index: 4;top: 0;left:0;" id="mask" class="noDisplay">
+    <div style="background-color: rgba(0, 0, 0, 0.5);position: fixed;height: 100%;width: 100%;z-index: 200;top: 0;left:0;" id="mask" class="noDisplay">
         <!-- 记得用fixed定位(不占位置/可以动/以浏览器为准)来固定mask在屏幕的中间 -->
         <!-- 主体 (on the mask)-->
-        <div style="position:relative;height: 100%;width: 100%;opacity: 1;z-index: 6;right:50%;left:50%;top:50%;bottom:50%;transform: translate(-50%,-50%);" class="" id="containerMX">
+        <div style="position:relative;height: 100%;width: 100%;opacity: 1;right:50%;left:50%;top:50%;bottom:50%;transform: translate(-50%,-50%);" class="" id="containerMX">
             <!-- imgBOX(which goes into here, direct son) serves the same purpose as this container so its kind of useless -->
         </div>
         <!-- 关闭按钮(on the mask) -->
-        <div style="position:fixed;height:50px;width:50px;top: 0;right:10px;font-size: 50px;color:white;z-index: 9;" class="icon-cancel" id="bigimghide"></div>
+        <div style="position:fixed;height:50px;width:50px;top: 0;right:10px;font-size: 50px;color:white;" class="icon-cancel" id="bigimghide"></div>
     </div>
 
     <!-- 头部导航 -->
-    <div style="position: sticky;top: 0;z-index: 999;">
+    <div style="position: sticky;top: 0;z-index: 100;">
         <ul class="nav clearfix" style="margin-top:0;">
             <li>
                 <a href="javascript:;">周子泉专栏</a>
@@ -137,7 +137,7 @@
             </li>
             <li style="float:right;" id="musicMENU">
                 <a href="javascript:;">
-                    <audio controls autoplay loop style="vertical-align: middle;height: 43px;" id="MusicPlayer">
+                    <audio controls autoplay loop style="vertical-align: middle;height: 40px;" id="MusicPlayer">
                         <source src="" type="audio/mpeg">
                         您的浏览器不支持audio元素
                     </audio>
@@ -231,7 +231,7 @@
     <!-- <h3 class="czsh">成长守护平台</h3> -->
 
     <!-- 公告栏（低配版） -->
-    <div style="position: sticky;top:43px;">
+    <div style="position: sticky;top:43px;z-index: 90;">
         <!-- 左边部分 -->
         <div style="border: 5px solid transparent;box-sizing:border-box;height:100px;width:50px;position: absolute;line-height: 95px;border-right:0;text-align: center;background-color:rgba(0, 0, 0, 0.7) ;font-size: 30px;">
             <!-- 引入css文件（iconmoon）就够了，然后就能加上你的span -->
