@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单小米侧边栏</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+         
+        body>a{
+           display: block;
+            width: 200px;
+
+            /*文字垂直居中小技巧：lh=h* 注意，lh不等于text-size*/
+            height: 40px;
+            line-height: 40px;
+
+            background-color: gray;
+            text-decoration: none;
+            font-size: 14px;
+            color:white;
+            
+            /*padding：注意，如果没有指定宽或高，padding不会撑开盒子*/
+            padding-left: 30px;
+        }
+        a:hover{
+            background-color: #ff6700;
+        }
+        div.padding{
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+
+            /* padding-left: 5px;
+            padding-right: 5px;
+            padding-top:5px;
+            padding-bottom: 5px; */
+            padding:5px 10px;
+
+            /*
+            一个值：全体设置
+            两个值：上 下
+            三个值：上 左右 下
+            四个值：上 左 下 右
+            */
+
+            background-color: aliceblue;
+        }
+        .box{
+            width: 298px;
+            height: 415px;
+            background-color: white;
+
+            /*上下 左右*/
+            margin: 100px auto;
+        }
+        body{
+            background-color: #f5f5f5;
+        }
+        .box img{
+            /* 和父类宽度一样 */
+            width:100%;
+        }
+        .review{
+            height: 70px;
+            font-size: 14px;
+            margin-top: 30px;
+            /* 上下0左右28 */
+            padding:0 28px;
+        }
+        .appraise{
+            font-size: 12px;
+            color: #b0b0b0;
+            margin-top: 20px;
+            padding: 0 28px;
+        }
+        .info{
+            margin-top: 15px;
+            font: 14px;
+            padding: 0 28px;
+        }
+        .box em{
+            font-style: normal;
+            color: #ebe4e0;
+
+            /*上有下左*/
+            margin: 0 6px 0 15px;
+            
+        } 
+
+
+
+
+        .box2{
+            width: 1226px;
+            height: 615px;
+            background-color: beige;margin: 0 auto;
+        }
+        .left{
+            float: left;
+            width: 234px;
+            height: 615px;
+            background-color:honeydew;
+        }
+        .right{
+            float: left;
+            width: 992px;
+            height: 615px;
+            background-color:wheat;
+        }
+        .right>div{
+            /*right里面的亲儿子*/
+            float: left;
+            margin-left: 14px;
+            margin-bottom:14px;
+            width: 234px;
+            height: 300px;
+            background-color:mediumaquamarine;
+        }
+
+
+        .quad li{
+            /*去掉圆点*/
+            list-style: none;
+            width: 296px;
+            height: 285px;
+            background-color:lightblue;
+            float: left;
+            margin-right: 14px;
+
+        }
+        .quad{
+            width: 1226px;
+            height: 285px;
+            background-color: aliceblue;
+
+            /*上下0左右auto*/
+            margin: 0 auto;
+        }
+        .quad .last{
+            margin-right: 0px;
+        }
+        
+        
+        .top{
+            height: 50px;
+            background-color: gray;
+        }
+        .banner{
+            width: 980px;
+            height: 150px;
+            background-color: gray;
+
+            /*水平居中并且上面有10px距离*/
+            margin: 10px auto;
+        }
+        .box3{
+            width: 980px;
+            margin: 0 auto;
+            height: 300px;
+            background-color: pink;
+        }
+        .box3 li{
+            /*去掉圆点*/
+            list-style: none;
+
+            width: 237px;
+            height: 300px;background-color: gray;
+            float: left;
+            margin-right: 10px;
+        }
+        .box3 .last{
+            /*因权限问题，.last 无法实现。.last权限为10，.box li权限为11，.box3 .last  权限为20*/
+            margin-right: 0;
+        }
+        .footer{
+            /*通栏的盒子（和浏览器一样宽）不需要知道宽度*/
+            height: 200px;
+            background-color: gray;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#">手机 电话卡</a>
+    <a href="#">电视 盒子</a>
+    <a href="#">笔记本 平板</a>
+    <a href="#">出行 穿戴</a>
+    <a href="#">智能 路由器</a>
+    <a href="#">健康 儿童</a>
+    <a href="#">耳机 音响</a>
+
+    <div class="padding">我是你爸</div>
+
+    <!-- 产品模块案例 -->
+    <div class="box">
+        <img src="images/dangqi.jpg" alt="">
+        <p class="review">中国共产党无愧为伟大的光荣的正确的党</p>
+        <div class="appraise">来自于 中国人民 的评价</div>
+        <div class="info">
+            <h4 style="display: inline-block; font-weight: normal;"><a href="#" >中国共产党</a> </h4>
+            <em>|</em>
+            <span style="color:#ff6700 ;">100 周年华诞</span>
+        </div>
+    </div>
+
+    <!-- quads -->
+    <ul class="quad">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class="last"></li>
+        <div class="clear"></div>
+    </ul>
+    <br>
+
+    <!-- Duo -->
+    <div class="box2">
+        <!--.left+.right -->
+        <div class="left"></div>
+        <div class="right">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div><br>
+
+
+    <!-- Layout 1-->
+    <!-- .top+.banner+.box3+.footer -->
+    <div class="top">top</div>
+    <div class="banner">banner</div>
+    <div class="box3">
+        <!-- ul>li*4{$} -->
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li class="last">4</li>
+        </ul>
+    </div>
+    <div class="footer">footer</div>
+
+    <div style="text-align:center; "><a href="sample.html" style="color:#333; text-decoration:none;">返回主页面</a><br /></div>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品列表</title>
+</head>
+<style>
+    body {
+    background-color: #fff;
+    font: 12px/1.5 'Microsoft YaHei', 'Heiti SC', tahoma, arial, 'Hiragino Sans GB', \\5B8B\4F53, sans-serif;
+    color: #666;
+    }
+
+    /* 取出盒子的默认内外边距 */
+    *{
+        margin: 0;padding: 0;
+    }
+
+    /*取消链接默认的下划线*/
+    a{
+        text-decoration: none;
+    }
+
+    /*取消列表默认的小圆点*/
+    ul{
+        list-style: none;
+    }
+
+    /* 让斜体不倾斜 */ 
+    em {
+        font-style: normal;
+    }
+
+    /* li 的样式 */
+    .goods{
+        float: left;
+        position: relative;
+        width: 288px;
+        height: 458px;
+    }
+
+    /* 2号盒子标题的样式 */
+    .goods_title{
+        font-size: 14px;
+        color:#666;
+        font-weight: normal;
+        padding: 10px;
+    }
+
+    /* 3号盒子价格样式 */
+    .goods_price{
+        padding:0 10px;
+    }
+    
+    /* 3号盒子里面 左侧价格样式 */
+    .goods_price em {
+        font-size: 22px;
+        color: #e60012;
+    }
+
+    /* 3号盒子里面 右侧价格样式 */
+    .goods_price del{
+        color: #a4a4a4;
+        font-size: 14px;
+
+        font-weight: normal;
+    }
+
+    /* 4号盒子样式 */
+    .goods_progress {
+        padding: 0 10px;
+    }
+
+    /* 进度条外部 */
+    .bar{
+        width: 130px;
+        height: 10px;
+        border: 1px solid #b1191a;
+
+        /* 转成行内块否则会另起一行来显示 */
+        display: inline-block;
+
+        /* 圆角为高度的一半，垂直居中 ，左右边距*/
+        border-radius:5px;
+        vertical-align: middle;
+        margin: 0 5px;
+    }
+
+    /* 进度条内部 */
+    .bar_in{
+        width: 87%;
+        height: 100%;
+        background-color: #f24349;
+    }
+
+    /*“已售出”和“还剩余”的数字改成红色*/
+    .goods_progress em, .goods_progress i{
+        color: #f24349;
+    }
+
+    /*设置链接盒子的样式*/
+    .goods_buy{
+        position: absolute;
+
+        bottom: 0;
+        width: 100%;
+
+        /*让文字水平居中和垂直居中*/
+        text-align: center;
+        line-height: 50px;
+        font-size: 20px;
+
+        height: 50px;
+        background-color: #b1191a;
+        color: #fff;
+    }
+</style>
+<body>
+    <ul>
+        <li class="goods">
+            <img src="images/mobile.jpg" alt="">
+            <h5 class="goods_title">Apple苹果iPhone 6s Plus（A1699）32G 金色 移动联通电信4G手机</h5>
+            <p class="goods_price"><em>¥6088</em> <del>￥6988</del></p>
+            <div class="goods_progress">
+                <!-- <i>让字体倾斜，行内元素-->
+                已售<i>87%</i>
+                <!-- 进度条外部盒子-->
+                <div class="bar">
+                    <!--进度条内部红色水水-->
+                    <div class="bar_in"></div>
+                </div>
+                剩余<em>29</em>件
+            </div>
+            <a href="sample.html" class="goods_buy">立即抢购</a>
+        </li>
+    </ul>
+</body>
+</html>

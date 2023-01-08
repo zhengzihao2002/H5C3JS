@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小盒子</title>
+    <style>
+        .red{
+            width: 100px;
+            height:100px;
+            background-color: red;
+        }
+        .green{
+            width: 100px;
+            height:100px;
+            background-color: green;
+        }
+        .margin{
+            /* 添加外边距 */
+            margin-bottom: 20px;
+
+            /*
+            margin: 30px; 上下左右30像素外边距
+            margin: 30px 50px; 上下30左右50
+            */
+        }
+        .margin2{
+            /*水平居中:上下100左右auto*/
+            margin:100px auto;
+        }
+        .tac{
+            text-align: center;
+        }
+
+
+
+        .father{
+            width: 400px;
+            height: 400px;
+            
+            background-color: purple;
+            margin-top: 50px;
+
+        }
+        .son{
+            width: 200px;
+            height: 200px;
+
+            background-color: pink;
+            margin-top: 100px;
+        }
+        .show{
+            /*border:1px solid red;*/
+            
+            /*
+            padding:1px;
+            */
+            overflow: hidden;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div class="red margin">红色</div>
+    <div class="green margin">绿色</div>
+    <div class="red margin2">红色</div>
+    <br>
+
+    <div class="green tac" style="width:300px; line-height: 100px;">
+        <span >
+            行内元素或者行内块元素居中对齐
+        </span>
+    </div>
+    <br>
+
+    <div class="container" style="display: table;">
+        <div style="display: table-row">
+          <div class="red" style="display: table-cell;">
+          </div>
+          
+          <div class="green" style="display: table-cell;">
+          </div>
+
+          <div class="red" style="display: table-cell;">
+          </div>
+
+        </div>
+    </div>
+    <br>
+    <span class="red">红色</span>
+    <span class="green">绿色</span>
+    <span class="red">红色</span>
+    <br>
+
+    <div style="background-color:skyblue;">
+        <!-- 
+        外边距塌陷（啃老一族） 解决方案：
+        1. 添加border
+        2.添加pading
+        3.overflow hidden （推荐）
+        -->
+        <div class="father" >
+            <div class="son"></div>
+        </div>
+
+        <div class="father show" >
+            <div class="son"></div>
+        </div>
+    </div>
+    <br>
+
+
+    <!-- 注意：如果给 行内/块级 元素添加浮点，则具有 行内块元素 的特性 -->
+    <!-- 注意：浮动盒子不可以go under标准盒子，但是标准盒子可以go under浮动盒子！ -->
+    <div style="float: left;" class="green"></div>
+    <div style="float: right;" class="red"></div>
+    <div style="background-color: black; height: 300px; width: 300px;"></div>
+    <br>
+
+    <div style="height: 500px; width:400px; background-color: aqua; margin:0 auto ;">
+        <div style="height: 400px; width: 200px; background-color:darkcyan; float: left;"></div>
+        <div style="height: 400px; width: 200px; background-color:lawngreen; float: left;"></div>
+    </div>
+    <div style="text-align:center"><a href="sample.html">返回主页面</a><br /></div>
+
+</body>
+</html>
