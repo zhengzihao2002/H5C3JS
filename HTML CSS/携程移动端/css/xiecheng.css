@@ -1,0 +1,530 @@
+body {
+    max-width: 540px;
+    min-width: 320px;
+    margin: 0 auto;
+    font: normal 14px/1.5 Tahoma, "Lucida Grande", Verdana, "Microsoft Yahei", STXihei, hei;
+    color: #000;
+    background: #f2f2f2;
+
+    /*永远不会出现 "水平滚动条" */
+    overflow-x: hidden;
+
+    -webkit-tap-highlight-color: transparent;
+
+}
+a{
+    /*所有a链接均不要下划线*/
+    text-decoration: none;
+
+    color:#222;
+}
+div{
+    /* CSS3盒子模型：盒子不会被撑大 */
+    box-sizing: border-box;
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*搜索模块*/
+.search-index{
+    position: fixed;
+    top: 0;
+    /*水平居中：或者left：auto ; 提示：固定定位使用margin 是无效的！*/
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+
+    /*
+    1.固定定位是以浏览器（屏幕）为主（为准），和父级（body）没有任何关系。不会继承body的minwidth maxwidth,所以盒子会变得和浏览器（可视区）一样宽（如果设置宽度100%而且没有设置max min）
+    2.固定定位的盒子要写宽度：不会自动继承任何宽度（这个情况下，浏览器是他本应该继承的对象），而会随着自身能挤多小就挤多小。如果写了max+min且没写宽度，则取min为宽度。如果写了宽100%，则取max为宽度。(BTW:如果没写max min，没写宽->最小possible，写宽100%宽->浏览器宽度)
+    */
+    height: 44px;
+    width: 100%;
+    min-width: 320px;
+    max-width: 540px;
+    
+
+
+    display: flex;
+    /*让子元素垂直居中:但是我们不要，因为如果search垂直居中的话，加上他盒子下面的阴影会显得偏下*/
+    /* align-items: center; */
+
+    background-color: #f6f6f6;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+.search-index .search{
+    flex:1;
+
+    height: 26px;
+    border: 1px solid #ccc;
+    margin: 7px 10px;
+
+    /*如果要圆角的话就是搞的的一半*/
+    border-radius: 5px;
+
+    position: relative;
+
+    font-size: 12px;
+    color:#666;
+    /*CSS3盒子，减掉上下边框的1像素*/
+    line-height: 24px;
+    padding-left: 25px;
+
+    /*水平 垂直 模糊 颜色以及透明度*/
+    box-shadow: 0 2px 4px rgba(0,0,0,.2);
+}
+.search::before{
+    content: "";
+
+    position: absolute;
+    top: 5px;
+    left: 5px;
+
+    width: 15px;
+    height: 15px;
+    background: url(../images/sprite.png) no-repeat -59px -279px;
+    background-size: 104px auto;
+
+}
+.search-index a.user{
+    width: 44px;
+    height: 44px;
+
+    /*如果没有flex布局，以下均无效，则只能使用子绝父相定位*/
+    top: 0;
+    right: 0;
+
+    font-size: 12px;
+
+    text-align: center;
+    color:#2eaae0;
+}
+.search-index a.user::before{
+    content: "";
+    display: block;
+
+    width: 23px;
+    height: 23px;
+
+    /*我们的精灵图是二倍图：坐标是缩小后的坐标，bgs是用来缩小的*/
+    background: url(../images/sprite.png) no-repeat;
+    background-position: -59px -194px;
+    background-size: 104px auto;
+
+    /*上 左右 下*/
+    margin:4px auto -2px;
+}
+
+
+/*焦点图*/
+.focus{
+    /*上面是固定定位，不占位置，所以会跑到他底下去*/
+    padding-top: 44px;
+}
+.focus img{
+    width: 100%;
+}
+
+
+/*局部导航栏*/
+.local-nav{
+    height: 64px;
+    background-color: #fff;
+    border-radius: 8px;
+
+    /*上下 左右*/
+    margin:3px 4px;
+
+    /*自动把子元素转行内块了。所以所有li都一行显示了*/
+    display: flex;
+}
+.local-nav li{
+    /*每个li平均分配空间*/
+    flex:1;
+}
+.local-nav a{
+    /*自动把子元素转行内块了。所以都一行显示了*/
+    display: flex;
+
+    /*到这一地步，子元素都是行内块，且是一列显示，不是一行。*/
+    flex-direction: column;
+
+    /*侧轴居中对齐(因为是单行，其实这种情况下应该是单列)：这种情况下，侧轴是x，所以是水平居中*/
+    align-items: center;
+
+    /*虽然以下代码会在此情况下垂直居中对齐（y是主轴），但是还是显示偏上（因为a有paddingmargin等还没清除）*/
+    /* justify-content: center; */
+
+    height: 100%;
+    width: 100%;
+
+    font-size: 12px;
+}
+/*两种写法*/
+.local-nav-icon,.local-nav li [class^="local-nav-icon"]{
+    width: 32px;
+    height: 32px;
+    background-color: pink;
+
+    margin-top: 8px;
+}
+.local-nav li:nth-child(1) .local-nav-icon , .local-nav li .local-nav-icon-icon1{
+    background: url(../images/localnav_bg.png) no-repeat 0 0;
+    background-size: 32px auto;
+}
+.local-nav li:nth-child(2) .local-nav-icon , .local-nav li .local-nav-icon-icon2{
+    background: url(../images/localnav_bg.png) no-repeat 0 -32px;
+    background-size: 32px auto;
+}
+.local-nav li:nth-child(3) .local-nav-icon , .local-nav li .local-nav-icon-icon3{
+    background: url(../images/localnav_bg.png) no-repeat 0 -64px;
+    background-size: 32px auto;
+}
+.local-nav li:nth-child(4) .local-nav-icon , .local-nav li .local-nav-icon-icon4{
+    background: url(../images/localnav_bg.png) no-repeat 0 -96px;
+    background-size: 32px auto;
+}
+.local-nav li:nth-child(5) .local-nav-icon , .local-nav li .local-nav-icon-icon5{
+    background: url(../images/localnav_bg.png) no-repeat 0 -128px;
+    background-size: 32px auto;
+}
+
+
+/*主导航栏*/
+nav{
+    border-radius: 8px;
+    /*上 左右 下*/
+    margin:0 4px 3px;
+
+    /*我们给nav小圆角，子元素div没有，所以还是尖角因为div溢出了*/
+    overflow: hidden;
+    
+    /*注意没给宽高，则随着子元素而被撑大*/
+}
+.nav-common{
+    /*
+    只给高度，宽度则会自动和父级（nav）一样。nav没有（会被子元素撑大），那么久随最近一级，body（有设置max宽度）；
+    京东移动端注释：如果只给高度不给宽度，宽度会自动继承父盒子body的100%（相对定位用的！固定定位不起效的！）
+    */
+
+    height: 88px;
+    background-color: lightblue;
+
+    /*让子元素一行显示（还有更多功能需要父盒子这行代码）*/
+    display: flex;
+}
+.nav-common:nth-child(2){
+    /*上下 左右*/
+    margin: 3px 0;
+}
+.nav-common .nav-items{
+    flex: 1;
+
+    /*作为儿子，自己有flex。我们的孙子(a)也要flex*/
+    display: flex;
+    /*转完行内块后，我们要一列显示，不是一行*/
+    flex-direction: column;
+}
+.nav-common .nav-items:nth-child(-n+2){
+    /* 只要前俩儿砸 */
+    border-right: 1px solid #fff;
+}
+.nav-common .nav-items a{
+    flex:1;
+
+    /* 水平居中 垂直居中（父盒子高度的一半） */
+    text-align: center;
+    line-height: 44px;
+
+    color: #fff;
+    /*文字阴影*/
+    text-shadow: 1px 1px rgba(0, 0, 0,.2)
+}
+.nav-common .nav-items a:nth-child(1){
+    /*给每个a指定下边框*/
+    border-bottom: 1px solid #fff;
+}
+.nav-common .nav-items:nth-child(1) a{
+    /*第一列里的a不需要下边框*/
+    border: 0;
+
+    /*无需垂直居中的*/
+    /* line-height: 88px; */
+
+    /*三倍图！*/
+    background: url(../images/hotel.png) no-repeat bottom center;
+    background-size: 121px auto;
+}
+nav .nav-common:nth-child(1){
+    /* 背景渐变必须添加浏览器私有前缀:默认上往下，left：左到右，top 撇 left：左上角到右下角 */
+    background: -webkit-linear-gradient(left,#fa5a55 ,#fa994d);
+}
+nav .nav-common:nth-child(2){
+    background: -webkit-linear-gradient(left,#4b90ed ,#53bced);
+}
+nav .nav-common:nth-child(3){
+    background: -webkit-linear-gradient(left,#34c2a9 ,#6cd559);
+}
+
+
+
+
+
+
+/* 侧导航栏 */
+.subnav-entry{
+    /* ul是块级元素：如果没有任何子元素则隐身。如果有至少一个，宽度是父级的100% */
+
+    /*为什么8像素？因为我们所盒子都这样！*/
+    border-radius: 8px;
+    background-color: #fff;
+    margin:0 4px;
+
+    /*一行显示*/
+    display: flex;
+    /*强制换行：两行显示*/
+    flex-wrap: wrap;
+
+    /*上下 左右*/
+    padding:5px 0;
+}
+.subnav-entry li{
+    /*(在父盒子没有任何宽高的情况下每个)占父盒子20%：一行5个*/
+    flex: 20%;
+}
+.subnav-entry li a{
+    display: flex;
+
+    /*将主轴设置为y轴,且让侧轴x 水平居中*/
+    flex-direction: column;
+    align-items: center;
+
+    /*文字阴影*/
+    text-shadow: 1px 1px rgba(0, 0, 0,.2)
+}
+.subnav-entry-icon{
+    width: 28px;
+    height: 28px;
+    background-color: lightblue;
+    margin-top: 4px;
+
+    
+}
+.subnav-entry li:nth-child(1) a .subnav-entry-icon{
+    background: url(../images/subnav-bg.png) no-repeat 0 0;
+    background-size: 28px auto;
+}
+.subnav-entry li:nth-child(2) a .subnav-entry-icon{
+    background: url(../images/subnav-bg.png) no-repeat 3px -28px;
+    background-size: 28px auto;
+}
+.subnav-entry li:nth-child(3) a .subnav-entry-icon{
+    background: url(../images/subnav-bg.png) no-repeat 2px -62px;
+    background-size: 28px auto;
+}
+.subnav-entry li:nth-child(4) a .subnav-entry-icon{
+    background: url(../images/subnav-bg.png) no-repeat 2px -100px;
+    background-size: 28px auto;
+}
+.subnav-entry li:nth-child(5) a .subnav-entry-icon{
+    background: url(../images/subnav-bg.png) no-repeat 2px -128px;
+    background-size: 28px auto;
+}
+.subnav-entry li:nth-child(6) a .subnav-entry-icon{
+    background: url(../images/subnav-bg.png) no-repeat 5px -160px;
+    background-size: 28px auto;
+}
+.subnav-entry li:nth-child(7) a .subnav-entry-icon{
+    background: url(../images/subnav-bg.png) no-repeat 2px -196px;
+    background-size: 28px auto;
+}
+.subnav-entry li:nth-child(8) a .subnav-entry-icon{
+    background: url(../images/subnav-bg.png) no-repeat 2px -230px;
+    background-size: 28px auto;
+}
+.subnav-entry li:nth-child(9) a .subnav-entry-icon{
+    background: url(../images/subnav-bg.png) no-repeat 0px -258px;
+    background-size: 28px auto;
+}
+.subnav-entry li:nth-child(10) a .subnav-entry-icon{
+    background: url(../images/subnav-bg.png) no-repeat 4px -286px;
+    background-size: 28px auto;
+}
+
+
+
+
+
+
+/*销售模块*/
+.sales-box1,.sales-box2{
+    background-color: #fff;
+    border-top: 1px solid #bbb;
+
+    margin: 4px;
+}
+.sales-hd1,.sales-hd2{
+    height: 44px;
+    /* height: 33px; */
+    border-bottom: 1px solid #ccc;
+
+    position: relative;
+
+}
+.sales-hd1 h2,.sales-hd2 h2{
+    /*把文字切掉*/
+    text-indent: -999px;
+    overflow: hidden;
+
+    /*子绝父相*/
+    position: relative;
+    
+    /*自己添加*/
+    margin: 0;
+    padding: 0;
+}
+.sales-hd1 h2::after,.sales-hd2 h2::after{
+    content:"";
+    width: 79px;
+    height: 15px;
+    background:url(../images/hot.png) no-repeat 0 -20px;
+    background-size: 79px auto;
+
+    /*用定位将伪元素定位到左侧*/
+    position: absolute;
+    top: 15px;
+    left: 8px;
+
+}
+.sales-box1 .sales-hd1 h2::after{
+    background-position: 0 0;
+}
+.sales-hd1 a.more,.sales-hd2 a.more{
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    background: -webkit-linear-gradient(left,#ff506c,#ff6bc6);
+    border-radius: 15px;
+    padding: 3px 20px 3px 10px;
+
+    color:#fff;
+}
+.sales-hd1 a.more::after,.sales-hd2 a.more::after{
+    content: "";
+    position: absolute;
+    top: 9px;
+    right: 9px;
+
+    height: 7px;
+    width: 7px;
+
+    /* 制作三角 */
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: rotate(45deg);
+}
+.sales-box2 .row{
+    display: flex;
+}
+.sales-box2 .row a{
+    flex:1;
+    border-bottom: 1px solid #eee;
+}
+.sales-box2 .row a:nth-child(1){
+    border-right: 1px solid #eee;
+}
+.sales-box2 .row a img{
+    /*让img和父盒子a一样宽，a已经因为flex有宽度了（平分空间）*/
+    width: 100%;
+}
+
+.sales-box1 .sales-bd1{
+    height: 200px;
+    background-color: lightgrey;
+    display: flex;
+
+    /*为了防止塌陷/外边距合并*/
+    /* overflow: hidden; */
+    /* padding: 5px; */
+}
+.sales-box1 .column{
+    flex:1;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    margin: 5px;
+}
+.sales-box1 .column:nth-child(1){
+    background-color: lightgreen;
+    margin-right: 2px;
+}
+.sales-box1 .column:nth-child(2){
+    margin-left: 2px;
+}
+.sales-box1 .column:nth-child(2) .row:nth-child(1){
+    height: 40%;
+    background-color: lightblue;
+}
+.sales-box1 .column:nth-child(2) .row:nth-child(2){
+    height: 60%;
+    display: flex;
+}
+.sales-box1 .column:nth-child(2) .row:nth-child(2) a{
+    flex: 1;
+}
+.sales-box1 .column:nth-child(2) .row:nth-child(2) a:nth-child(1){
+    background-color: lightpink;
+    margin: 4px 2px 0 0;
+}
+.sales-box1 .column:nth-child(2) .row:nth-child(2) a:nth-child(2){
+    background-color: lightyellow;
+    margin: 4px 0 0 2px;
+}
+
+.help{
+    display: flex;
+    height: 60px;
+    margin: 4px;
+}
+.help a{
+    flex:1;
+    background-color: lightblue;
+
+    display: flex;
+    flex-direction: column;
+    /*将图片和文字水平居中*/
+    align-items: center;
+    /*将图片和文字垂直居中*/
+    justify-content: center;
+
+    border: 1px solid #ccc;
+    border-left: 0;
+    border-right: 0;
+    background-color: #fff;
+}
+
+.help a:before{
+    content: "";
+    height: 18px;
+    width: 18px;
+    /*后面俩参数：显示宽 后是高*/
+    /* background: url(../images/sprite.png) no-repeat -120px -307px; */
+}
+.help a:nth-child(1)::before{
+    background: url(../images/sprite.png) no-repeat -58.5px -153.5px;
+    background-size: 104px auto;
+}
+.help a:nth-child(2)::before{
+    background: url(../images/sprite.png) no-repeat -58.5px -174px;
+    background-size: 104px auto;
+}
+.help a:nth-child(3)::before{
+    background: url(../images/sprite.png) no-repeat -60px -310px;
+    background-size: 104px auto;
+}

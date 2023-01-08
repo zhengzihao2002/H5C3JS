@@ -1,0 +1,40 @@
+@font 14 {
+  font-size: 14px;
+}
+body {
+  background-color: lightgray;
+}
+/*假如header div里有个a*/
+.header {
+  width: 200px;
+  height: 200px;
+  background-color: pink;
+  /*子元素直接嵌套到父元素里*/
+}
+.header a {
+  color: red;
+}
+.header a:hover {
+  color: blue;
+}
+/*假如div.nav 里有个 div.logo*/
+.nav .logo {
+  color: green;
+}
+.nav::before {
+  content: "";
+}
+html {
+  font-size: 50px;
+}
+div {
+  width: 150px;
+  height: 500px;
+  border: 10px solid red;
+  background-color: #444444;
+}
+img {
+  /*前面rem，后面px：如果有俩单位，是以前面的单位为准*/
+  width: 82rem / 50px;
+  height: 82rem / 50px;
+}

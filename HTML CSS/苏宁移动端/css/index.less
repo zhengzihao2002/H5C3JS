@@ -1,0 +1,168 @@
+//首页less样式文件
+
+// 页面元素rem计算公式：页面元素的px / html 字体大小
+
+//导入common的所有样式
+@import "common";
+
+body{
+    min-width: 320px;
+    /*设计稿750像素，1rem=50像素，750/50=15rem*/
+    width: 15rem;
+    margin: 0 auto;
+
+    /*字体的1.5倍*/
+    line-height: 1.5;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f2f2f2;
+}
+
+
+// 顶部搜索框
+//这边是html最大宽度的字体大小变量：我们先设计以最大宽度为准，然后因为是以rem设计的，他会等比例缩放
+@baseFont:50;//为什么要设置变量？因为我们以后可能会改最大字体大小
+.search-content{
+    // 固定定位必须写宽度：
+    // 实际像素 -> rem * 字体大小 = 实际像素
+    // 最大 -> 15*50=750px（设计稿最大宽度的满屏）
+    // 最小 -> 15*21.33=320px（设计稿最小宽度的满屏）
+    width: 15rem;
+
+    //在最大尺寸下，高度是88像素（最小尺寸不是88），字体是50像素（最小尺寸不是50）。我们得到答案是1.76rem。其他尺寸等比例缩放。
+    //这个rem答案再乘于字体大小，如 1.76 * 50 = 88px 高度
+    height: (88rem/@baseFont);
+
+    background-color: #ffc001;
+
+    /*固定定位（以浏览器为准，水平居中对齐）*/
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+
+
+
+    /*子元素转行内块（x轴显示）*/
+    display: flex;
+
+    .classify{
+        // 最大宽度页面下，宽44高70，字体大小50。rem = x / 50 。 x = rem * font-size
+        width: (44rem/@baseFont);
+        height: (70rem/@baseFont);
+
+        background-color: lightpink;
+
+        //最大宽度下的外边距
+        // margin: 11px 25px 7px 24px;
+        margin:  (11rem/@baseFont) (25rem/@baseFont) (7rem/@baseFont) (24rem/@baseFont);
+
+        background:url(../images/classify.png) no-repeat;
+        //背景缩放:父亲多大咱就多大
+        background-size:(44rem/@baseFont) (70rem/@baseFont) ;
+    }
+    .search{
+        flex:1;        
+        input{
+            //最大宽度下的页面是66像素
+            // height: 66px;
+            // 66/50=1.32rem ;最大宽度 1.32 * 50 = 66px ;最小宽度 1.32 * 21.33 = 28.16px
+            height: (66rem/@baseFont);
+
+            border-radius: (33rem/@baseFont);
+            background-color: #fff2cc;
+
+            // 最大宽度的页面：margin-top: 12px;
+            margin-top: (12rem/@baseFont);
+
+            width: 100%;
+            border: 0;
+            outline: none;
+
+            // 最大宽度页面：font-size: 25px;
+            font-size: (25rem/@baseFont);
+
+            padding-left: (55rem/@baseFont);
+            padding-right: (55rem/@baseFont);
+
+            color:#757575;
+
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+    }
+    .login{
+        // 最大宽度下的宽高
+        // width: 75px;
+        // height: 70px;
+
+        //  最大宽度页面下，宽75，字50 ; 75/50=1.5rem ; 1.5rem * font-size = actual width
+        width: (75rem/@baseFont);
+        height: (70rem/@baseFont);
+
+        //最大宽度下的外边距
+        // margin: 10px ;
+        margin:  (10rem/@baseFont) ;
+
+
+        //最大宽度下，文字大小为25像素
+        font-size: (25rem/@baseFont);
+        color:#fff;
+
+        //行高=高
+        line-height: (70rem/@baseFont);
+        text-align: center;
+        
+    }
+
+}
+
+//banner部分
+.banner{
+    // 最大宽度页面：宽750字50
+    width: (750rem/@baseFont);
+    height: (368rem/@baseFont);
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+//广告部分
+.ad{
+    /*子元素转行内块（x轴显示）*/
+    display: flex;
+    a{
+        flex:1;
+        img{
+            width: 100%;
+            // height: 100%;
+        }
+    }
+}
+
+//nav部分
+nav {
+    width: (750rem/@baseFont);
+    a{
+        float: left;
+        width: (150rem/@baseFont);
+        height: (140rem/@baseFont);
+
+        /*内部元素居中对齐*/
+        text-align: center;
+
+        img{
+            width: (82rem/@baseFont);
+            height: (82rem/@baseFont);
+
+            display: block;
+            margin: (10rem/@baseFont) auto 0;
+        }
+        
+        span{
+            font-size: (25rem/@baseFont);
+            color:#333;
+        }
+    }
+}
