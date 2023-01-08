@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REM (root em) 适配布局</title>
+    <style>
+        html{
+            /* font-size: 14px; */
+        }
+        img{
+            /* width: 82px;
+            height: 82px; */
+
+            /* REM number = desired length/fontsize:82/50=1.64 */
+            /* under a height and width of 82px, font size should be 50px. the larger the img the bigger the font size, etc*/
+            /* rem 值：页面元素（如div）在某某像素下的px值 除以 html里面的文字大小 */
+            /* width: 1.64rem;
+            height: 1.64rem; */
+        }
+        div.box,div.box2{
+            border-bottom: 1px solid red;
+            box-sizing: border-box;
+            padding: 20px;
+            /* text-align: center; */
+            padding-left: 100px;
+
+            /*清除浮动*/
+            overflow: hidden;
+        }
+        div.box>div{
+            display: inline-block;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+        div.one{
+            font-size: 12px;
+            width: 15rem;
+            height: 15rem;
+            background-color: lightgreen;
+        }
+        div.one>p{
+            /* 10em等于10x12=120像素 */
+            /* width: 10em;
+            height: 10em; */
+
+            /*rem相对于html元素 字体大小来说*/
+            /*140x140*/
+            width: 10rem;
+            height: 10rem;
+            background-color: lightblue;
+        }
+
+
+
+        /*媒体查询可以根据不同的屏幕尺寸再改变不同的样式*/
+        /*screen在电脑屏幕上进行代码 并且只有大于539px才会执行*/
+        @media screen and (max-width:539px){
+            /*屏幕小于540改颜色*/
+            body{
+                transition: all 1s;
+                background-color: lightgreen;
+            }
+            html{
+                transition: all 1s;
+                font-size: 15px;
+            }
+        }
+        @media screen and (min-width:540px) {
+            /*屏幕540～970改颜色*/
+            /*可有可无：and (max-width:969px)*/
+            body{
+                transition: all 1s;
+                background-color: lightblue;
+            }
+            html{
+                transition: all 1s;
+                font-size: 20px;
+            }
+        }
+        @media screen and (min-width:970px){
+            /*屏幕大于970改颜色*/
+            body{
+                transition: all 1s;
+                background-color: lightgray;
+            }
+        }
+
+
+        .top{
+            height: 3rem;
+            font-size: 1.5rem;
+            background-color: lightpink;
+            color:#fff;
+
+            text-align: center;
+            line-height: 3rem;
+        }
+
+
+
+
+        
+    </style>
+
+    <link rel="stylesheet" href="rem320.css" media="screen and (min-width:320px)">
+    <link rel="stylesheet" href="rem640.css" media="screen and (min-width:640px)">
+
+</head>
+<body>
+    <div class="box">
+        <h2>1）rem单位</h2>
+        <div class="one">
+            <p></p>
+        </div>
+    </div>
+
+    <div class="box2">
+        <h2>2）媒体查询小案例：缩小放大浏览器尺寸即可</h2>
+        <div class="top">购物车</div>
+    </div>
+
+    <div class="box2">
+        <h2>3）引入外部资源</h2>
+        <p>当我们拼命大于等于640px，我们让div一行显示俩。小于640 我们div一行一个</p>
+        <div class="yh">1</div>
+        <div class="yh">2</div>
+    </div>
+
+    <div class="box2" style="width: 25rem;height: 25rem;background-color:lightcyan;">
+        
+    </div>
+    <!--
+        流式：用百分比因为不同设备有不同宽度
+        Flex：随着拉伸，div会变大变小（流式加强）
+        REM：细节包括文字图片都会变大（Flex加强）
+    -->
+
+    <div style="text-align:center; "><a href="sample.html" style="color:#333; text-decoration:none;">返回主页面</a><br /></div>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div.one{
+        /* width: 100px;
+        height: 100px; */
+        width: 10vw;
+        height: 10vh;
+
+        background-color: lightblue;
+    }
+    
+    /* vw会把可视区分为100份（100%） */
+    /* 我们页面50*50 的盒子 转换为 vw */
+    /* ip6 视口 375px  1vw=3.75*/
+    /* total px / worth of 1 vw = number of vw   ->   50/3.75 */
+    div.two{
+        width: 13.333333vw;
+        height: 13.333333vw;
+        background-color: lightgreen;
+
+        /* 20px */
+        font-size: 5.333333vw;
+    }
+</style>
+<body>
+    <div class="one"></div>
+    <div class="two">傻逼</div>
+</body>
+</html>

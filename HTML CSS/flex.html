@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexible Box (FLEX 弹性)布局</title>
+</head>
+<style>
+    .quit{
+        width: 200px;
+        height: 50px;
+
+        text-align:center;
+        display: flex;
+        background-color: lightblue; 
+        justify-content: center; 
+        align-items: center;
+        margin: 30px auto;
+        
+        transition: all 1s;
+        
+        /*如果用%会是另外一种效果*/
+        border-radius: 50px;
+    }
+    .quit:hover{
+        background-color: lightgreen;
+        box-shadow: #333;
+    }
+    /*
+    Flex布局 / 伸缩布局 / 弹性布局 / 伸缩盒布局 / 弹性盒布局 ->
+    float，clear，vertical-align均失效
+    */
+
+    div.one{
+        width: 80%;
+        height: 300px;
+
+        background-color: skyblue;
+
+        /*把span一行显示（没有用到浮动，无需清除浮动,行内块）*/
+        display: flex;
+
+        /*平等旁边的宽度（自适应）*/
+        justify-content: space-around;
+    }
+    div.one span{
+        /* width: 150px; */
+        height: 100px;
+        background-color: pink;
+        margin-right: 5px;
+
+        /*根据父盒子平均分配子盒子的宽度直到父盒子一行被填满*/
+        flex: 1;
+    }
+
+
+
+
+    div.two{
+        /*给父亲添加flex*/
+        display: flex;
+
+        width: 800px;
+        height: 300px;
+        background-color: pink;
+
+        /* 默认主轴是x轴，行row 。y轴就是侧轴。我们的元素是跟着主轴来排列的*/
+
+        /* 跟着y轴来排列：y设为主轴，x轴就成了侧轴 */
+        flex-direction: column;
+
+        /*主轴反方向*/
+        /* flex-direction: row-reverse; */
+        /* flex-direction: column-reverse; */
+    }
+    div.two span{
+        width: 150px;
+        height: 100px;
+        background-color: skyblue;
+    }
+
+
+
+
+    div.three{
+        display:flex;
+
+        width: 800px;
+        height: 300px;
+
+        background-color: pink;
+        
+        /* 默认主轴方向是x轴 */
+        flex-direction: row;
+        /*justifycontent是设置 "主轴(方向)的子元素" 排列方式:flex-start：贴着左边对齐，flex-end：右边对齐，center：居中对齐,space around:平分剩余空间,space-between：先两边贴边，再分配剩余空间*/
+        justify-content:space-between;
+    }
+    div.three span{
+        width: 150px;
+        height: 100px;
+
+        background: skyblue;
+    }
+
+
+
+
+
+
+    div.four{
+        display: flex;
+
+        width: 600px;
+        height: 400px;
+        background-color: pink;
+
+        /*flex布局默认状态：如果一行转不开，会缩小子元素（flex -> 一行显示）*/
+        flex-wrap: wrap;
+    }
+    div.four span{
+        width: 150px;
+        height: 100px;
+        background-color: skyblue;
+        color:#fff;
+        margin: 10px;
+    }
+
+
+
+
+
+
+    div.five{
+        display: flex;
+
+        width: 600px;
+        height: 400px;
+        background-color: pink;
+
+        /* flex-direction: column; */
+
+        /*水平居中（主轴x）*/
+        justify-content: center;
+
+        /*垂直居中（侧轴y）*/
+        align-items: center;
+
+        /* 你先去掉子元素高度，使用后会子元素被拉伸至父盒子高度 */
+        /* align-items: stretch; */
+    }
+    div.five span{
+        width: 150px;
+        height: 100px;
+        background-color: skyblue;
+        color:#fff;
+        margin: 10px;
+    }
+
+
+
+    div.six{
+        display: flex;
+
+        width: 800px;
+        height: 400px;
+        background-color: pink;
+
+        /*换行：因为有了换行，我们侧轴上控制子元素的对齐方式我们用align content*/
+        flex-wrap:wrap;
+        /*y alignment*/
+        align-content: center;
+    }
+    div.six span{
+        width: 150px;
+        height: 100px;
+        background-color: skyblue;
+        color:#fff;
+        margin: 10px;
+    }
+
+
+    div.seven{
+        display: flex;
+
+        width: 600px;
+        height: 300px;
+        background-color: pink;
+
+        /*沿着y轴：设置主轴方向*/
+        /* flex-direction: column; */
+
+        /*自动换行*/
+        /* flex-wrap: wrap; */
+
+        /*简写*/
+        flex-flow: column wrap;
+
+    }
+    div.seven span{
+        width: 150px;
+        height: 100px;
+        background-color: skyblue;
+        color:#fff;
+    }
+
+
+    section.eight{
+        display: flex;
+
+        width: 60%;
+        height: 150px;
+        background-color: lightblue;
+        margin:0 auto;
+    }
+    section.eight div:nth-child(1){
+        /*固定宽高*/
+        width: 100px;
+        height: 150px;
+        background-color: lightpink;
+    }
+    section.eight div:nth-child(2){
+        /*自适应宽高：flex默认0，这是用来表示占多少份数*/
+        flex: 1;
+        background-color: lightgreen;
+    }
+    section.eight div:nth-child(3){
+        /*固定宽高*/
+        width: 100px;
+        height: 150px;
+        background-color: lightslategray;
+    }
+
+
+
+    p.nine{
+        display: flex;
+
+        width: 60%;
+        height: 150px;
+        background-color: lightblue;
+        margin:20px auto;
+    }
+    p.nine span{
+        flex:1;
+    }
+    p.nine span:nth-child(2){
+        flex: 2;
+        background-color: lightgray;
+    }
+
+
+
+
+    div.ten{
+        display: flex;
+
+        width: 80%;
+        height: 300px;
+        background-color: skyblue;
+
+        /*让三个字盒子沿着侧轴底侧对齐*/
+        /* align-items: flex-end; */
+
+        /*我们只让3号盒子下来底侧*/
+    }
+    div.ten span{
+        width: 150px;
+        height: 100px;
+        background-color: lightpink;
+        margin-right: 5px;
+    }
+    div.ten span:nth-child(2){
+        /*默认是0，-1比0小，所以在前面*/
+        order: -1;
+    }
+    div.ten span:nth-child(3){
+        align-self: flex-end;
+    }
+</style>
+<body>
+    <p>
+        flex体验
+    </p>
+    <div class="one">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+
+    <p>flex主轴方向</p>
+    <div class="two">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+
+    <p>justify-content 设置主轴子元素排列</p>
+    <div class="three">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+    </div>
+
+    <p>flex是否换行</p>
+    <div class="four">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+    </div>
+
+    <p>align items设置侧轴子元素排列(一般单行用)</p>
+    <div class="five">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+
+    <p>align content 设置侧轴上的子元素的排列方式（一般多行用，单行没有效果）</p>
+    <div class="six">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+    </div>
+
+
+    <p>flex flow</p>
+    <div class="seven">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+    </div>
+
+    <p>flex布局子元素 常见属性</p>
+    <section class="eight">
+        <div></div>
+        <div></div>
+        <div></div>
+    </section>
+
+    <p>切蛋糕</p>
+    <p class="nine">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </p>
+
+    <p>align self 控制子元素在侧轴上的排列方式（作为了解即可）</p>
+    <div class="ten">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+    <div class="quit">
+        <a href="sample.html" style="color:#333; text-decoration:none;height: 100%;width: 100%;line-height: 50px;">返回主页面</a>
+    </div>
+</body>
+</html>

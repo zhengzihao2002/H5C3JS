@@ -1,0 +1,64 @@
+//ctrl+s 会自动生成my.css
+
+//定义一个颜色变量
+@color:lightgray;
+//定义一个14像素的变量
+@font14{
+    font-size:14px;
+}
+
+body{
+    background-color: @color;
+}
+
+/*假如header div里有个a*/
+.header{
+    width: 200px;
+    height: 200px;
+    background-color: pink;
+    /*子元素直接嵌套到父元素里*/
+    a{
+        color:red;
+        &:hover{
+            //必须要补&否则会变成子元素
+            color:blue;
+        }
+    }
+}
+
+/*假如div.nav 里有个 div.logo*/
+.nav{
+    .logo{
+        color:green;
+    }
+    &::before{
+        //必须要补&否则会变成子元素
+        content:"";
+    }
+}
+
+
+
+
+
+@basefont:50px;
+html{
+    font-size: @basefont;
+}
+//10px
+@border:5px + 5;
+div{
+    //运算符号：左右必须用空格隔开
+    width: 200px - 50;
+    height: (200px + 50px ) * 2;
+    border:@border solid red;
+    //#444
+    background-color: #666 - #222;
+}
+img{
+    /*前面rem，后面px：如果有俩单位，是以前面的单位为准*/
+    width: 82rem / @basefont;
+    height: 82rem / @basefont;
+}
+
+

@@ -1,0 +1,285 @@
+/*本次案例： flex + rem + flexibleJS + LESS*/
+// 页面元素rem计算公式：页面元素的px / html 字体大小
+
+body {
+    /*约束大小*/
+    min-width: 320px;
+    max-width: 750px;
+
+    /*居中显示*/
+    margin: 0 auto;
+
+    background-color: #f2f4f7;
+}
+
+a {
+    text-decoration: none;
+    color: #707070;
+}
+
+//约束当屏幕大于750px的时候，html字体大小就不变化了
+@media screen and (min-width:750px) {
+    html {
+        //基本值:为啥是37.5？因为js插件把我们分为20份数（20rem），20*37.5=750px（desired宽度of body）
+        font-size: 37.5px !important;
+    }
+}
+
+.wrap{
+    background-color: #fff;
+    padding-bottom: 1.1467rem;
+}
+.header{
+    //2.1333是怎么来的？我们在最大宽度显示屏下，header宽为80像素。我们页面被分为20份（flexible.js自带，20份 -> width：20rem），说明一份是75像素（html font size），20rem * 37.5px = 750px （目标:html）最大宽度。
+    //x rem * 37.5 px = 80 px header宽度 -> x= 2.1333rem 
+    height: 2.1333rem;
+    
+    border-bottom: 1px solid #eaeaea;
+
+    text-align: center;
+    line-height: 2.1333rem;
+    // 公式：rem值 * 当前页面html字体大小 = 当前元素的宽/高值
+    //页面最大宽度下，里面显示的字为35px。 x rem * 37.5 px = 35px (最大宽度页面字体大小) -> x=0.9333rem
+    font-size: .9333rem;
+
+    color:#1c1c1c;
+}
+.nav{
+    /*子元素转行内块,且强制一行*/
+    display: flex;
+    /*显示不开换行*/
+    flex-wrap: wrap;
+
+
+    //45px 0 60px 0
+    // 最大页面宽度显示：rem * 37.5px = 45px -> rem=1.2
+    padding: 1.2rem 0 1.6rem 0;
+    .item{
+        //用flex：33.33%也行
+        width: 33.33%;
+        
+        display: flex;
+        //纵向显示
+        flex-direction: column;
+        //水平居中
+        align-items: center;
+        
+        img{
+            // 最大页面宽度显示：rem * 37.5px = 139px宽 -> rem=3.7
+            width: 3.7067rem;
+            // 最大页面宽度显示：rem * 37.5px = 139px高 -> rem=3.7
+            height: 3.7067rem;
+        }
+        span {
+            //最大页面宽度显示：rem * 37.5px = 25px大小 -> rem=0.6
+            font-size: 0.666667rem;
+            color: #707070;
+        }
+        // 选择前面三个 -n + 3 选择前3个item
+        &:nth-child(-n + 3) {
+            //最大页面宽度显示：rem * 37.5px = 62px外边距 -> rem=1.65
+            margin-bottom: 1.653333rem;
+        }
+    }
+}
+
+.go{
+    // 在最大宽度页面下， margin: 0 10px 0 10px;
+    // x rem * 37.5 px = 10px -> x = 0.2667 rem
+    margin: 0 .2667rem 0 .2667rem ;
+}
+
+
+.content{
+    //最大宽度页面下，上下40 左右24
+    // x rem * 最大字体大小 = 目标的最大尺寸
+    // x rem * 37.5px = 40px -> x = 1.0667rem
+    padding: 1.066667rem 0.64rem;
+    background-color: #fff;
+    margin-top: 0.266667rem;
+    .con-hd{
+        height: 1.0133rem;
+        //垂直居中
+        line-height: 1.0133rem;
+        // align-items: center;
+    
+    
+        display: flex;
+        //定位到左右两边（他们每个元素之间的距离必须是平等的，不包括某个元素和墙的距离，只是他们之间）
+        justify-content: space-between;
+    
+        //最大宽度页面34px-> x rem * 37.5px = 34px
+        margin-bottom: .9067rem;
+    
+        h4{
+            margin: 0;
+    
+            //最大宽度页面28px
+            font-size: 0.746667rem;
+            color:#333;
+    
+    
+            .icon{
+                display: inline-block;
+                //最大宽度页面38*38px
+                width: 1.013333rem;
+                height: 1.013333rem;
+    
+                //本来图片是和文字基线对齐，这个可以让后面的文字垂直居中
+                vertical-align: middle;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+        .more{
+            //最大宽度页面22px
+            font-size: 0.586667rem;
+            color: #999999;
+        }
+    }
+}
+
+
+.get_job_focus {
+    position: relative;
+    .swiper-container {
+      height: 100%;
+      // 根据需求把宽度定位 540px
+      width: 14.4rem;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+  
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      // 竖向显示
+      flex-direction: column;
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      transition: 300ms;
+      // 其余的兄弟是 0.8
+      transform: scale(0.8);
+      opacity: 0.4;
+      a {
+        width: 9.013333rem;
+        height: 10.026667rem;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      p {
+        width: 9.013333rem;
+        font-size: 0.666667rem;
+        margin-top: 0.64rem;
+        color: #333;
+      }
+    }
+    // 当前选中的 slide   中间那个
+    .swiper-slide-active,
+    .swiper-slide-duplicate-active {
+        transform: scale(1);
+        //压住其他
+        z-index: 999;
+        //当前盒子不透明
+        opacity: 1;
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+      outline: none;
+      &:after {
+        font-size: 1.066667rem;
+        color: #333;
+      }
+    }
+}
+
+.study_con{
+    //140px
+    //他会覆盖掉content类里的padding值，因为值更大
+    padding-bottom: 3.7333rem;
+}
+// 学习模块的轮播图
+.study {
+  .study_fo {
+    padding: 0.266667rem;
+  }
+  .swiper-slide {
+    font-size: 18px;
+    background: #fff;
+    width: 7.733333rem;
+    height: 9.066667rem;
+    background-color: #fff;
+    border-radius: 0.266667rem;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+    h5 {
+      font-size: 0.693333rem;
+      margin: 0.533333rem 0;
+      font-weight: 400;
+      padding: 0 0.266667rem;
+    }
+    p {
+      font-size: 0.693333rem;
+      color: #ff4400;
+      padding: 0 0.266667rem;
+    }
+  }
+}
+
+
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    height: 2.9333rem;
+    width: 100%;
+
+    z-index: 99990;
+    display: flex;
+
+    //最大宽度页面，字37.5，内边距20px
+    padding: .533333rem;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+    .item{
+        flex:1;
+
+        //让每个a都有flex布局，并且让a内部x轴居中
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img{
+            //39*41 最大宽度页面 字37.5
+            width: 1.04rem;
+            height: 1.0933rem;
+        }
+        p{
+            //22px
+            font-size: .5867rem;
+
+            color:#666;
+            /* 背景渐变必须添加浏览器私有前缀:默认上往下，left：左到右，top 撇 left：左上角到右下角 */
+            // color: -webkit-linear-gradient(top,#52c4f0 ,#2ccac7);
+
+            margin-top: .2667rem;
+        }
+    }
+}

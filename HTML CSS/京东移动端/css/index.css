@@ -1,0 +1,321 @@
+body{
+    width: 100%;
+    min-width: 320px;
+    max-width: 640px;
+
+    margin:0 auto;
+
+    background-color: #fff;
+    font-size: 14px;
+    font-family: -apple-system, Helvetica , sans-serif;
+    /* 行高1.5:当前字体size的1.5倍(14*1.5=21)*/
+    line-height: 1.5;
+    color: #666;
+
+    
+}
+
+/*点击高亮我们需要清除清除  设置为transparent 完成透明*/
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+/*在移动端浏览器默认的外观在iOS上加上这个属性才能给按钮和输入框自定义样式*/
+input {
+    -webkit-appearance: none;
+}
+
+/*禁用长按页面时的弹出菜单*/
+img,a {
+    -webkit-touch-callout: none;
+}
+
+
+
+/* 顶部模块 */
+.app{
+    /*这个是父亲，给了高度，里面的孩子就不会有清除浮动的问题（无需清除浮动，下面的盒子因为父盒子有高度，不会跑到app盒子的孩子的下面去）*/
+    height: 45px;
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+a{
+    color:#666;
+    /*没有下划线*/
+    text-decoration: none;
+}
+img{
+    /*去除图片底册的空白缝隙*/
+    vertical-align: middle;
+}
+div{
+    box-sizing: border-box;
+}
+.clearfix:after {
+    content: "";
+    display: block;
+    line-height: 0;
+    visibility: hidden;
+    height: 0;
+    clear: both;
+}
+.app ul li{
+    float: left;
+
+    height: 45px;
+    background-color: #333333;
+    color: #fff;
+
+    /*让sentence成为45px高*/
+    line-height: 45px;
+    text-align: center;
+}
+
+.app ul a:nth-child(1){
+    /* 原 title：.app ul li:nth-child(1) */
+    display: inline-block;float: left;/*原没有这个*/
+
+    width: 8%;
+}
+.app ul a:nth-child(1) li{
+    /*原没有这个*/
+    width: 100%;
+    text-align: center;
+}
+.app ul a:nth-child(1) li img{
+    /* 原title：.app ul li:nth-child(1) img */
+    /*在sentence里垂直居中*/
+    vertical-align: middle;
+    width: 10px;
+}
+
+.app ul li:nth-child(2){
+    width: 10%;
+}
+.app ul li:nth-child(2) a{
+    /*原没有这个*/
+    display: inline-block;
+    width: 100%;
+}
+.app ul li:nth-child(2) a img{
+    /* 原：.app ul li:nth-child(2) img */
+    vertical-align: middle;
+    width: 30px;
+}
+.app ul li:nth-child(3){
+    width: 57%;
+}
+
+.app ul a:nth-child(4){
+    /* 原title：.app ul li:nth-child(4) */
+    display: inline-block;/*原没有这个*/
+
+    width: 25%;
+    background-color: #F63515;
+}
+.app ul a:nth-child(4) li{
+    /*原没有这个*/
+    width: 100%;
+    background-color: #F63515;
+}
+
+
+
+
+
+
+
+
+/*搜索模块*/
+.search-wrap{
+    /*如果只给高度不给宽度，宽度会自动继承父盒子body的100%（相对定位用的！固定定位不起效的！）*/
+    /* height: 44px; */
+    /* position: relative; */
+
+    /*固定在浏览器的某个位置*/
+    position: fixed;
+    width: 100%;
+    
+    min-width: 320px;
+    max-width: 640px;
+
+    /*清除外边距合并*/
+    overflow: hidden;
+}
+.search-btn{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 40px;
+    height: 44px;
+}
+.search-btn::before{
+    content:"";
+    display: block;
+
+    width: 20px;
+    height: 18px;
+    background: url(../images/s-btn.png) no-repeat;
+    background-size: 20px 18px;
+
+    margin: 14px 0 0 15px;
+    
+}
+.search-login{
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 40px;
+    height: 44px;
+
+    color:#fff;
+    line-height: 44px;
+}
+
+
+.search{
+    height: 30px;
+    background-color: #fff;
+
+    margin: 0 50px;
+
+    border-radius: 15px;
+    margin-top: 7px;
+
+    position: relative;
+
+
+    padding:0 10px 0 68px;
+    line-height: 30px;
+}
+.jd-icon{
+    width: 20px;
+    height: 15px;
+
+    position: absolute;
+    top: 8px;
+    left: 13px;
+
+    background:url(../images/jd.png) no-repeat;
+    background-size: 20px 15px;
+}
+.jd-icon::after{
+    content:"";
+    display: block;
+
+    width: 1px;
+    height: 15px;
+    background-color: #ccc;
+
+    position: absolute;
+    top: 0;
+    right:-8px;
+}
+.search input{
+    border: 0;
+    background: 0 0;
+
+    font-size: 12px;
+    color: #232326;
+    padding-left: 5px;
+    width: 19em;
+    box-sizing: border-box;
+    -webkit-box-flex: 1;
+    height: auto;
+    margin: 0 0 0 5px;
+
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    width: 100%;
+    line-height: 16px;
+
+    outline: none;
+}
+.sou{
+    width: 18px;
+    height: 15px;
+
+    position: absolute;
+    top: 8px;
+    left: 50px;
+
+    /*注意，如果缩放，则是整个精灵图缩放，而不是一小块：先变小(原本二倍图来增加清晰度)然后再测量位置*/
+    background: url(../images/jd-sprites.png) -81px 0;
+    background-size: 200px auto;
+}
+
+
+
+
+/*主体部分之轮播图*/
+.slider img{
+    width: 100%;
+}
+
+/*主体部分之品牌日*/
+.brand{
+    /*切掉的是盒子，而不是图片。所以，隐藏溢出部分即可*/
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+}
+.brand div {
+    float: left;
+    width: calc(100%/3);
+}
+.brand div img{
+    width: 100%;
+}
+
+
+
+
+nav{
+    padding-top: 5px;
+}
+nav a{
+    /*有了浮动自动转行内块。可以直接设置宽度*/
+    float: left;
+    width: 20%;
+
+    text-align: center;
+}
+nav a img{
+    width: 40px;
+
+    /*上下 左右*/
+    margin: 10px 0;
+}
+nav a span{
+    display: block;
+}
+
+
+
+
+.news{
+    margin-top: 20px;
+}
+.news img{
+    width: 100%;
+}
+.news a{
+    /*浮动后自动转行内块则可以直接设置宽高*/
+    float: left;
+
+    /*加了边框之后会破坏width所以加css3模型这样border就不会撑开盒子*/
+    box-sizing: border-box;
+}
+.news a:nth-child(1){
+    width: 50%;
+}
+.news a:nth-child(2),.news a:nth-child(3){
+    /* 或者 -> .news a:nth-child(n+2) */
+    width: 25%;
+    border-left: 1px solid #ccc;
+}
