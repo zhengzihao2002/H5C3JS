@@ -1,0 +1,1137 @@
+<!--
+    前置(HTML骨架)：
+    1. "!"
+    2. 点击第一个选项
+
+    border-box info：sample.html->css (just 应用), new2.html (brief explanation), JS/pinyougou->css (great example)
+-->
+
+<!-- 
+        浮动回顾：
+        浮动只会影响后面的盒子，浮动后面的盒子会跑到浮动盒子的下面去。如果浮动前面有个标准流盒子浮动盒子不会跑到他的下面去
+        浮动元素只会压住下面标准流的盒子，但是不会压住下面标准流的文字
+        绝对定位和固定定位 会压住下面标准流的所有内容。浮动的目的就是文字环绕效果。
+
+        清除浮动方法：
+        1. 额外标签法 添加同级别元素div再赋予clear:both
+        2. 给父盒子添加overflow:hidden;
+        3. after 伪元素 :父元素直接调用clearfix
+            .clearfix:after{
+                content:"";
+                display: table;
+            }
+            .clearfix:after{
+                clear:both;
+            }
+            .clearfix{
+                *zoom:1;
+            }
+        4.双伪元素
+            .clearfix:before,.clearfix:after{
+                content:"";
+                display: table;
+            }
+            .clearfix:after{
+                clear:both;
+            }
+            .clearfix{
+                *zoom:1;
+            }
+    -->
+    <!--
+        nth-child 选择器， nth-of-type选择器复习
+        如果有以下代码
+
+        <div>123</div>
+
+        <p>space</p>
+
+        <div>abc</div>
+
+        <p>space</p>
+
+        <div class="stuff">not me</div>
+
+        <p>space</p>
+
+        <div class="stuff">im the one</div>
+
+
+        如何选择最后一个div？
+
+        1. 使用nth child 选择器
+            div.stuff:nth-child(7) {
+                background-color: lightgreen;
+            }
+            顺序：在所有孩子里找到第七个，然后查看是否是stuff类。
+            解答：所有代码里第七个孩子就是“im the one”，而且还是div，而且还是stuff类。(如果不是stuff类则无法被选中。)
+        2. 使用nth-of-type选择器
+            div.stuff:nth-of-type(4){
+                background-color: lightgreen;
+            }
+            顺序：在所有div里找到第四个，然后查看是否是stuff类。
+            解答：所有div里（并非所有div.stuff里）第四个就是“im the one”，而且还是stuff类。(如果不是stuff类则无法被选中。)
+    -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>郑子豪</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../JavaScript/icomoon/style.css"></head>
+    <link rel="shortcut icon" href="images/favicon1.ico">
+    <script src="../JavaScript/jquery.js"></script>
+</head>
+<body id="root">
+    
+
+    <!-- 遮罩层：专门为明星放大而设计 -->
+    <div style="background-color: rgba(0, 0, 0, 0.5);position: fixed;height: 100%;width: 100%;z-index: 4;top: 0;left:0;" id="mask" class="noDisplay">
+        <!-- 记得用fixed定位(不占位置/可以动/以浏览器为准)来固定mask在屏幕的中间 -->
+        <!-- 主体 (on the mask)-->
+        <div style="position:relative;height: 100%;width: 100%;opacity: 1;z-index: 6;right:50%;left:50%;top:50%;bottom:50%;transform: translate(-50%,-50%);" class="" id="containerMX">
+            <!-- imgBOX(which goes into here, direct son) serves the same purpose as this container so its kind of useless -->
+        </div>
+        <!-- 关闭按钮(on the mask) -->
+        <div style="position:fixed;height:50px;width:50px;top: 0;right:10px;font-size: 50px;color:white;z-index: 9;" class="icon-cancel" id="bigimghide"></div>
+    </div>
+
+    <!-- 头部导航 -->
+    <div>
+        <ul class="nav clearfix" style="margin-top:0;">
+            <li>
+                <a href="javascript:;">周子泉专栏</a>
+                <ul>
+                    <li>
+                        <a href="javascript:;">写真</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">微信</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">回忆</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">文档设置</a>
+                <ul>
+                    <li>
+                        <a href="javascript:;" id="stopMarquee">停止跑马灯</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" id="startMarquee">开启跑马灯</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">更换壁纸</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">JavaScript系列链接</a>
+                <ul>
+                    <li><a href="../JavaScript/demo1.html" target="_blank">笔记</a></li>
+                    <li><a href="../JavaScript/JD-login.html" target="_blank">案例</a></li>
+                </ul>
+            </li>
+            <li style="float:right;" id="musicMENU">
+                <a href="javascript:;">
+                    <audio controls autoplay loop style="vertical-align: middle;height: 43px;" id="MusicPlayer">
+                        <source src="" type="audio/mpeg">
+                        您的浏览器不支持audio元素
+                    </audio>
+                </a>
+                <ul id="pickMusic">
+                    <li>
+                        <a href="javascript:;"  id="WaterMan_ZhengZhiHua" fileName="郑智化 - 水手.mp3">水手</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;"  id="LittleWei_HuangPingYuan" fileName="黄品源 - 小薇.mp3">小薇</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+        let navigator = document.querySelector('.nav');
+        let nav_options = navigator.children;
+        //给每个我们看得见的li绑定事件
+        for(let i=0;i<nav_options.length;i++){
+            nav_options[i].addEventListener('mouseover',function(){
+                this.children[1].style.display='block';
+            });
+            nav_options[i].addEventListener('mouseout',()=>{
+                nav_options[i].children[1].style.display='none';
+            });
+            //修改我们看得见的li的宽度，如果submenu比他还要大
+            let subMenu = nav_options[i].querySelector('ul');
+            subMenu.style.display = 'block';
+            let subMenu_size =subMenu.offsetWidth;
+            subMenu.style.display = 'none';
+            let menuSize = nav_options[i].offsetWidth;
+            if(subMenu_size>menuSize){
+                nav_options[i].style.width=subMenu_size+'px';
+            }
+        };
+        // 停止跑马灯
+        let startMarquee=document.querySelector('#startMarquee');
+        let stopMarquee=document.querySelector('#stopMarquee');
+        let MarqueeStatus = true;
+        startMarquee.addEventListener('click',function(){
+            if(MarqueeStatus==false){
+                MarqueeStatus=true;
+                marqueeTimer = setInterval(update, 20);
+            }
+        });
+        stopMarquee.addEventListener('click',function(){
+            if(MarqueeStatus==true){
+                MarqueeStatus = false;
+                clearInterval(marqueeTimer);
+            }
+        });
+        // 音乐
+        let musicMenu = document.querySelector('#pickMusic');
+        let MusicPlayer = document.querySelector('#MusicPlayer');
+        for(let j=0;j<musicMenu.children.length;j++){
+            // musicMenu.children[j].children[0] is 'a' in 'li' in 'ul' which is music menu
+            musicMenu.children[j].children[0].addEventListener('click',function(){
+                //被点击的音乐名称
+                let newMusic = this.getAttribute('fileName');
+                // 目前正在播放的音乐（已被加码，所以要解码）
+                let decodedSrc = decodeURIComponent(MusicPlayer.children[0].src);
+                // 解码后会返回一整个地址，我们用split（pink教过）来分开，并返回数组
+                let parts = decodedSrc.split('/');
+                // 返回数组最后一个字符串
+                let lastPart = parts.pop();
+                // 如果正在播放！=即将播放
+                if(newMusic!=lastPart){
+                    MusicPlayer.children[0].src='media/'+newMusic;
+                    MusicPlayer.load();
+                    MusicPlayer.play();
+                }else{
+                    // 假如我们暂停播放音乐X，看了菜单后又点击来音乐X，则继续播放
+                    MusicPlayer.play();
+                }
+            });
+        }
+        // 开局就播放音乐：user must interact with Document first in less than '5000ms'
+        // window.onload = function(){
+        //     console.log(musicMenu.children[0].children[0].getAttribute('fileName'));
+        //     MusicPlayer.children[0].src='media/'+musicMenu.children[0].children[0].getAttribute('fileName');
+        //     setTimeout(function(){
+        //         MusicPlayer.load();
+        //         MusicPlayer.play();
+        //     },5000);
+        // }
+        
+
+    </script>
+    <!-- 成长守护 -->
+    <!-- <h3 class="czsh">成长守护平台</h3> -->
+
+    <!-- 公告栏（低配版） -->
+    <div style="border: 5px solid transparent;box-sizing:border-box;height:100px;width:50px;position: absolute;line-height: 95px;border-right:0;text-align: center;background-color:rgba(0, 0, 0, 0.7) ;font-size: 30px;">
+        <!-- 引入css文件（iconmoon）就够了，然后就能加上你的span -->
+        <span class="icon-sound" style="transform: rotate(45deg);display: inline-block;color:white"></span>
+    </div>
+    <div class="marquee-container colorRed font35" style="border: 5px solid tranparent;box-sizing:border-box;overflow: hidden;border-left:0;position: relative; height:100px;background:rgba(0, 0, 0, 0.7);margin-bottom: 50px;font-style: normal;line-height: 95px;margin-left: 50px;">
+        <!-- https://blog.csdn.net/XVJINHUA954/article/details/112225484?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167242545516800184130095%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167242545516800184130095&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-112225484-null-null.142^v68^js_top,201^v4^add_ask,213^v2^t3_control1&utm_term=marquee&spm=1018.2226.3001.4187 -->
+        <!-- https://www.lexiangwang.net/wendangdaquan/274303.html -->
+        <!-- <marquee behavior="scroll" direction="" scrollamount="10" id="m1" loop="">
+            公告栏
+        </marquee> -->
+        <div class="marquee-text noSelect" style="position: absolute;white-space: nowrap;">
+            为中国人民谋幸福，为中华民族谋复兴，是中国共产党人的初心和使命。自觉在思想上政治上行动上同以习近平同志为核心的党中央保持高度一致，始终忠诚于党、忠诚于人民、忠诚于马克思主义。认真贯彻落实以习近平同志为核心的党中央决策部署，扎实开展“不忘初心、牢记使命”主题教育。
+        </div>
+    </div>
+    
+    <!-- 文字无缝滚动：跑马等/走马灯 -->
+    <script>
+        const marqueeContainer = document.querySelector('.marquee-container');
+        const marquee = document.querySelector('.marquee-text');
+        const logoMarquee = document.querySelector('.icon-sound').parentNode;
+        let left = 0;
+        marqueeContainer.style
+        const update = () => {
+            //最初left为0，每次都会往左移动1像素。如果left的绝对值达到比container的宽度，left则设为container的宽度（字体会出现在container的最右侧开始往左移动）
+            left--;
+            if (left <= -marquee.offsetWidth) {
+                left = marqueeContainer.offsetWidth;
+            }
+            marquee.style.left = left + 'px';
+        };
+        const borderColor= () =>{
+            if(marqueeContainer.style.borderColor == 'red'){
+                marqueeContainer.style.borderColor = 'yellow';
+                logoMarquee.style.borderColor = 'yellow';
+            }else{
+                marqueeContainer.style.borderColor = 'red';
+                logoMarquee.style.borderColor = 'red';
+            }
+        }
+        // 跑马灯走动
+        var marqueeTimer = setInterval(update, 20);
+
+        // border变色:重启需要修改上面的transparent->red
+        // let containerTimer = setInterval(borderColor,1000);
+
+        //鼠标经过清除定时器：暂停轮播
+        // marqueeContainer.addEventListener('mouseover',function(){
+        //     clearInterval(marqueeTimer);
+        //     clearInterval(containerTimer);
+        // });
+        //鼠标离开回复定时器：继续轮播
+        // marqueeContainer.addEventListener('mouseout',function(){
+        //     marqueeTimer = setInterval(update, 20);
+        //     containerTimer = setInterval(borderColor,1000);
+        // });
+    
+        document.documentElement.style.overflowX = 'hidden';
+    </script>
+
+
+    <!-- 逆战图标 -->
+    <!-- <div class="logoNZ"></div> -->
+
+    <div style="height: 250px;"></div>
+
+
+    <!--可以寄那个js代码编写到外部js文件中，然后通过script标签引入。script标签一旦用于映入外部文件了，就不能再编写代码了。即使编写了浏览器也会忽略。
+        如果需要则可以创建一个新的script标签用于编写代码-->
+
+    <!--
+        <script src="script.js">
+            //注意：这个script会运行script.js 代码
+
+            //内容在此处无效
+            
+            /*
+            此处代码无效
+            */
+        </script>
+        -->
+    <script>
+        //alert("我是script标签中的代码");
+        //document.write("你好，页面<br/>");
+        //向控制台输出一个内容
+        console.log("我在控制台");
+    </script>
+
+    <script type="text/javascript">
+        /*
+         * 字面量，都是一些不可改变的值
+         * 比如：1 2 3 4 5
+         * 字面里那个都是可以直接使用的，但是我们一般不会直接使用字面量
+         * 如：alert(12345);
+         * 
+         * 变量：可以用来保存我们的字面量
+         * 如：x=12345
+         * 
+         * String 字符串
+         * Number 数值
+         * Boolean 布尔值
+         * Null 空值
+         * Undefined 未定义
+         * Object 对象
+         */
+
+        var a = 123;
+        a = a.toString();
+        var str = "周子泉";//prompt("请输入”她“的名字");
+        var tf = true;
+        var str2 = "郑子豪说：\"" + str + "\" 我喜欢你！<br/>";
+        //document.write(str2);
+        //document.writeln(typeof str2);
+    </script>
+
+    
+    
+
+
+
+    <!--欢迎标语-->
+    <div class="special2 font35" style="background:rgba(109, 217, 109, 0.7); color:black; border-radius: 20px;"><h3 id="welcome">你好，郑子豪</h3></div>
+    
+    <script>
+        // 1.获取元素
+        var biaoyu = document.getElementById('welcome');
+        // 2. 得到当前的小时数
+        var date = new Date();
+        var h = date.getHours();
+        // 3. 判断小时数改变图片和文字信息
+        if (h < 12) {
+            biaoyu.innerHTML = '清晨好，郑子豪';
+        } else if (h < 18) {
+            biaoyu.innerHTML = '中午好，郑子豪';
+        } else {
+            biaoyu.innerHTML = '夜深了，郑子豪';
+        }
+    </script>
+    <!-- 政治宣传 -->
+    <h1 class="colorRed font35" style="background:rgba(240,248,255,0.7); border-radius:50px;margin-bottom: 20px;" >伟大的，光荣的，正确的，中国共产党万岁！</h1>
+    <h1 class="colorRed font35" style="background:rgba(240,248,255,0.7); border-radius:50px;margin-bottom: 50px;" >紧密团结在以习近平同志为核心的党中央周围！</h1>
+
+    <!--
+        border-radius
+        圆形：高度或者宽度的一半，或者50%
+        矩形：高度一半
+
+        如：border-radius: 10px 20px 30px 40px;
+        顺势针：左上 右上 坐下 右下
+
+        如；border-radius: 10px 20px；
+        X：左上右下 右上左下
+
+        border-top-left-radius .....
+    -->
+    
+    
+    <!--
+        <h2>子豪公告栏</h2>
+        <h4>郑子豪坚决解放被困的周子泉同志</h4>
+        <p> <b>郑子豪</b> <i><u>喜欢</u></i> <strong>周子泉</strong> </br>周子泉喜欢 <del>马敬轩</del> 郑子豪</p>
+    -->
+
+
+    <!-- 图片 -->
+    <!-- <div style="text-align:center"><img id="img1" src="images/rocket1.jpg" alt="图片已破损" title="你是怎么找到我的？" width="500" border=2 ></div> -->
+
+
+    <!-- <div style="color:darkseagreen; font-size: 50px; text-align: center;">我是div标签</div>
+    <span>span1</span>
+    <span>span2</span>
+    <span>span3</span> -->
+
+
+    <!--可以将js代码编写到标签的onclick属性中-->
+    <!-- <button onclick="alert('讨厌，你点我干嘛 ～～');">点我一下</button> -->
+
+
+
+    <!--可以将js代码写在超链接的href属性中，这样当点击超链接时，会执行js代码-->
+    <!--虽然可以写在标签的属性中，但是他们属于结构与行为耦合，不方便维护，不推荐使用-->
+    <!-- <a href="javascript:alert('让你点就点')">你也点我一下</a>
+    <a href="javascript:；">空</a> -->
+
+
+
+    <!-- tab栏切换案例：前端人员必备 （可以添加至sample.html来缩短页面长度） -->
+    <div class="tab" style="margin:0 auto" id="xiangqing">
+        <div class="tab_list" style="border-radius: 0;">
+            <ul style="list-style: none; display: flex;">
+                <li style="flex:1">罗格斯快捷链接</li>
+                <li style="flex:1">内部/外部 链接 （4-35-0-3）</li>
+                <li style="flex:1">学习视频 快捷链接 （14）</li>
+                <li style="flex:1">键盘快捷方式 Keyboard Shortcuts</li>
+                <li style="flex:1">前端视频介绍</li>
+                <li style="flex:1">笔记</li>
+                <li style="flex:1" class="">黑马前端教程</li>
+                <li style="flex:1" class="">黑马程序员</li>
+                <li style="flex:1">明星</li>
+            </ul>
+        </div>
+        <div class="tab_con" style="border: 1px solid black;border-top: 0;">
+            <!-- 罗格斯SPN申请 -->
+            <div class="item item_info" >
+                <div style="background-color: aliceblue;border-top-left-radius: 10px;border-top-right-radius: 10px; padding: 20px 0 20px 0;">
+                    <h4 style="text-align: center; font-size: 40px;">罗格斯快捷链接跳转</h4>
+                </div>
+                <div class="kuaijie" style="height: 300px;background-color: aliceblue; padding: 20px 0 20px 0;">
+                    <div>
+                        <ol>
+                            <li><a href="https://secure.sas.rutgers.edu/apps/special_permission/cs" target="_blank">申请CS-SPN  /查看CS-SPN申请状态</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- 自己的作品链接 -->
+            <div class="item item_info" >
+                <div id="code" style="background-color: aliceblue;border-top-left-radius: 10px;border-top-right-radius: 10px; padding: 20px 0 20px 0;">
+                    <h4 style="text-align: center; font-size: 40px;">链接</h4>
+                    <h4 style="text-align: center; font-size: 15px; color:darkgray">淡灰则是注释重区（Comment Heavy）</h4>
+                </div>
+                <div class="container kuaijie1" style="width: 100%; display: table; background-color: aliceblue;display: flex;">
+                    
+                    <!--第一行：链接-->
+                    <!-- <div style="display: table-row"> -->
+                      <!--第一列：外部链接-->
+                      <div style="flex: 1;display: table-cell; ">
+                        <h3><b>外部链接</b></h3>
+                        <ol>
+                            <!--自定义列表-->
+                            <li><a href="http://www.81.cn" target="_blank">中国军网链接</a></li>
+                            <li><a href="http://www.douyin.com" target="_blank">抖音短视频</a></li>
+                            <li><a href="http://www.apple.com.cn" target="_blank">苹果中国官网</a></li>
+                            <li><a href="http://www.amazon.com" target="_blank">亚马逊美国</a></li>
+                        </ol>
+                      </div>
+                      
+                      <!--第二例：内部链接-->
+                      <div style="flex: 1;display: table-cell;">
+                        <h3><b>内部链接</b></h3>
+                        <ol>
+                            <li><a href="zzq.html" class="comments">卡哇伊链接</a></li>
+                            <li><a href="girls.html">女孩表格</a></li>
+                            <li><a href="jianli.html">CEO郑子豪介绍</a></li>
+                            <li><a href="news1.html">新闻案例</a></li>
+                            <li><a href="box.html">盒子案例</a></li>
+                            <li><a href="easysidebar.html">侧边栏案例</a></li>
+                            <li><a href="wucaidaohang.html">五彩导航案例</a></li>
+                            <li><a href="cssbox.html">设置盒子案例</a></li>
+                            <li><a href="none.html">无边框案例</a></li>
+                            <li><a href="pinyougou.html">新闻快报模块</a></li>
+                            <li><a href="tiaopi.html">清除浮动案例</a></li>
+                            <li><a href="index.html">学成在线案例</a></li>
+                            <li><a href="positioning.html" class="comments">定位</a></li>
+                            <li><a href="taobao.html">某宝轮播图案例</a></li>
+                            <li><a href="tudou.html">仿土豆网显示隐藏遮罩案例</a></li>
+                            <li><a href="jingling.html">精灵图</a></li>
+                            <li><a href="tubiao.html" class="comments">图标</a></li>
+                            <li><a href="margin.html" class="comments">margin巧妙运用</a></li>
+                            <li><a href="new.html" class="comments">html5新增</a></li>
+                            <li><a href="new2.html">css3新增</a></li>
+                            <li><a href="goods.html">商品案例</a></li>
+                            <li><a href="mi_logo.html">小米logo案例</a></li>
+                            <li><a href="index2.html">品优购案例</a></li>
+                            <li><a href="translate.html" class="comments">2D 3D</a></li>
+                            <li><a href="yidong.html">移动简介</a></li>
+                            <li><a href="京东移动端/index.html">京东移动端（流式布局案例）</a></li>
+                            <li><a href="flex.html">Flex布局</a></li>
+                            <li><a href="携程移动端/xiecheng.html">携程移动端（Flex布局案例）</a></li>
+                            <li><a href="rem.html">REM布局</a></li>
+                            <li><a href="苏宁移动端/index.html">苏宁移动端（rem布局案例）</a></li>
+                            <li><a href="黑马面面/index.html">黑马面面（flex + js + rem 直播案例）</a></li>
+                            <li><a href="rwd.html">响应式布局</a></li>
+                            <li><a href="阿里百秀移动端/index.html">阿里百秀（响应式布局案例）</a></li>
+                            <li><a href="./vhvw.html">vh vw 布局</a></li>
+                            <li><a href="B素材/index.html">vhvw案例</a></li>
+                        </ol>
+                      </div>
+            
+                      <!-- 第三例：功能 -->
+                      <div style="display: table-cell;flex: 1;">
+                        <h3><b>功能</b></h3>
+                        <ul>
+                            <!--speacial features-->
+                            <li><a href="#top">返回顶部</a></li>
+                        </ul>
+                      </div>
+            
+                      <!-- 第四例：HTML-CSS-JS视频重要 -->
+                      <div style="display: table-cell;flex: 1;">
+                        <h3><b>HTML5 CSS3 JS 重要视频</b></h3>
+                        <ol>
+                            <li><a href="https://www.bilibili.com/video/BV1RK4y1X7qd?p=153" target="_blank">153集:外边距 塌陷/合并</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV1RK4y1X7qd?p=185" target="_blank">185集:清除浮动用overflow</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV1RK4y1X7qd?p=247" target="_blank">247集:overflow真正应用</a></li>
+                        </ol>
+                      </div>
+            
+                    <!-- </div> -->
+                </div>
+            </div>
+            <!-- 学习视频链接 -->
+            <div class="item item_info">
+                <div class="kuaijie" style="background-color: aliceblue; padding: 20px 0 20px 0;" id="tabs">
+                    <h4 style="text-align: center; font-size: 40px;">快捷链接</h4>
+                    <h4 style="text-align: center; font-size: 15px; color:darkgray">关键字：高级 / 进阶 / 就业 / 实战</h4>
+                    <!-- html -->
+                    <div>
+                        <ol>
+                            <dt>HTML5 CSS3</dt>
+                            <li><a href="https://www.bilibili.com/video/BV1RK4y1X7qd?p=161&spm_id_from=pageDriver" target="_blank">黑马程序员前端Web全套教程，会打字就能学会的Web前端课程</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV1zb4y167cd" target="_blank">Web前端全套_零基础自学到精通必备，Html+Css+前端web就业项目源码实操</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV14J4114768?p=127" target="_blank" class="video_done">黑马程序员pink老师前端入门教程，零基础必看的h5(html5)+css3+移动端前端视频教程</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV17z4y1D7Yj/?spm_id_from=333.788.recommend_more_video.0" target="_blank">千锋web前端开发项目教程_1000集完全零基础入门HTML5+CSS3+JS到精通</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV19i4y147WF?p=21" target="_blank">【爱创课堂】最新web前端开发零基础入门html5+css3+js全套前端教程 | 从入门到就业全套前端教程</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV1y64y1r7PU?spm_id_from=333.337.search-card.all.click" target="_blank">web前端必备技能Ajax/Git/node.js/mysql/vue.js详细教程（web前端就业课程）</a></li>
+                            <li><a href="https://www.bilibili.com/video/av96953550?spm_id_from=333.788.b_636f6d6d656e74.25" target="_blank">求知讲堂web前端 96天完整版 学完可就业</a></li>
+                        </ol>
+                    </div>
+            
+                    <!-- js -->
+                    <div >
+                        <ol>
+                            <dt>JavaScript ReactJS</dt>
+                            <li><a href="https://www.bilibili.com/video/BV1YW411T7GX?p=12" target="_blank">尚硅谷JavaScript基础&实战丨JS入门到精通全套完整版</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV14s411E7qf/?spm_id_from=333.788.video.desc.click" target="_blank">尚硅谷JavaScript高级教程(javascript实战进阶)</a></li>
+                            <li><a href="https://search.bilibili.com/all?vt=17047972&keyword=javascript" target="_blank">Bilibili搜JS</a></li>
+                            <li><a href="https://search.bilibili.com/all?keyword=react&from_source=webtop_search&spm_id_from=333.1007" target="_blank">Bilibili搜React</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV1wy4y1D7JT?spm_id_from=333.337.search-card.all.click" target="_blank">尚硅谷React技术全家桶全套完整版（零基础入门到精通/男神天禹老师亲授）</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV1dP4y1c7qd?spm_id_from=333.337.search-card.all.click" target="_blank">千锋2022版React全家桶教程_react零基础入门到项目实战完整版</a></li>
+                        </ol>
+                    </div>
+            
+                    <!-- mysql -->
+                    <div>
+                        <ol>
+                            <dt>MySQL</dt>
+                            <li><a href="https://www.bilibili.com/video/BV1Vy4y1z7EX?p=2&spm_id_from=pageDriver" target="_blank">老杜带你学_mysql入门基础（mysql基础视频+数据库实战)</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV12b411K7Zu?from=search&seid=16828103040564214589&spm_id_from=333.337.0.0" target="_blank">MySQL_基础+高级篇- 数据库 -sql -mysql教程_mysql视频_mysql入门_尚硅谷</a></li>
+                            <li><a href="https://search.bilibili.com/all?vt=41570633&keyword=mysql&from_source=webtop_search&spm_id_from=333.851&order=click" target="_blank">Bilibili搜MySQL</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV1iF411z7Pu?p=2" target="_blank">2022黑马程序员最新MySQL知识精讲+mysql实战案例_零基础mysql数据库入门到高级全套教程</a></li>
+                            <li><a href="https://search.bilibili.com/all?keyword=mysql%E5%85%A8%E5%A5%97&from_source=webtop_search&spm_id_from=333.788" target="_blank">Bilibili搜mysql全套</a></li>
+                            <li><a href="https://search.bilibili.com/all?keyword=mysql%20%E5%B0%B1%E4%B8%9A&from_source=webtop_search&spm_id_from=333.1007" target="_blank">Bilibili搜MySQL就业</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV1e64y117iM?spm_id_from=333.337.search-card.all.click" target="_blank">求知讲堂大数据（mysql）视频 99天完整版（不断更新中）学完可就业</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV1iq4y1u7vj?spm_id_from=333.337.search-card.all.click" target="_blank">MySQL数据库教程天花板，mysql安装到mysql高级，强！硬！
+                            </a></li>
+                        </ol>
+                    </div>
+            
+                    <!-- python -->
+                    <div >
+                        <ol>
+                            <dt>Python</dt>
+                            <li><a href="https://www.bilibili.com/video/BV1wD4y1o7AS?p=2" target="_blank">花了2万多买的Python教程全套，现在分享给大家，入门到精通(Python全栈开发教程)</a></li>
+                        </ol>
+                    </div>
+            
+                    <!-- C++ -->
+                    <div>
+                        <ol>
+                            <dt>C++</dt>
+                            <li><a href="https://www.bilibili.com/video/BV1et411b73Z?p=2" target="_blank">黑马程序员匠心之作|C++教程从0到1入门编程,学习编程不再难</a></li>
+                            <li><a href="https://search.bilibili.com/all?keyword=C%2B%2B+%E5%85%A8%E5%A5%97&from_source=webtop_search&spm_id_from=333.1007" target="_blank">Bilibili搜C++</a></li>
+                        </ol>
+                    </div>
+            
+                    <!-- ssm -->
+                    <div>
+                        <ol>
+                            <dt>SSM框架</dt>
+                            <p style="text-align: center; font-size: 15px; color:darkgray">主要  ->  <i style="color:red;font-size: 20px;">(1) 此处第一个</i> + <i  style="color:red;font-size: 20px;">(2) 下面的Java学习路线图</i></p>
+                            <li><a href="https://www.bilibili.com/video/BV1WZ4y1P7Bp?from=search&seid=12427324773599784024&spm_id_from=333.337.0.0" target="_blank" class="video_special">黑马程序员最全SSM框架教程|Spring+SpringMVC+MyBatis全套教程(spring+springmvc+mybatis)</a></li>
+                            <li><a href="https://search.bilibili.com/all?keyword=springboot&from_source=webtop_search&spm_id_from=333.788" target="_blank">Bilibili搜Spring Boot</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV19K4y1L7MT?from=search&seid=18259079546500227797&spm_id_from=333.337.0.0" target="_blank">尚硅谷雷神SpringBoot2零基础入门springboot全套完整版（spring boot2）</a></li>
+                            <li><a href="https://www.bilibili.com/read/cv5216534?spm_id_from=333.788.b_636f6d6d656e74.8" target="_blank">Java快速学习路线图 作者：尚硅谷 </a></li>
+                            <li><a href="https://www.bilibili.com/read/cv9965357?spm_id_from=333.788.b_636f6d6d656e74.7" target="_blank">Java学习路线图（2022版，视频已更新） 作者：黑马程序员 </a></li>
+                        </ol>
+                    </div>
+            
+                    <!-- jw -->
+                    <div>
+                        <ol>
+                            <dt>Java Web</dt>
+                            <li><a href="https://www.bilibili.com/video/BV1Qf4y1T7Hx?from=search&seid=13540232972038391458&spm_id_from=333.337.0.0" target="_blank">黑马程序员最新版JavaWeb基础教程，Java web从入门到企业实战完整版</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV1Y7411K7zz?from=search&seid=13540232972038391458&spm_id_from=333.337.0.0" target="_blank">尚硅谷最新版JavaWeb全套教程,java web零基础入门完整版</a></li>
+                        </ol>
+                    </div>
+            
+                    <!-- money -->
+                    <div>
+                        <ol>
+                            <dt>Money Shit</dt>
+                            <li><a href="https://studentaid.gov/fsa-id/sign-in/landing?redirectTo=%2F" target="_blank">FAFSA</a></li>
+                            <li><a href="https://www.mohela.com/DL/secure/account/sessionTimeout.aspx" target="_blank">MOHELA</a></li>
+                            <li><a href="https://finservices.rutgers.edu/faaward/letter/faaward.htm" target="_blank">Rutgers Award Letter</a></li>
+                        </ol>
+                    </div>
+            
+                    <!-- ios -->
+                    <div>
+                        <ol>
+                            <dt>Swift</dt>
+                            <li><a href="https://www.bilibili.com/video/BV1rb411C7eN?spm_id_from=333.337.search-card.all.click" target="_blank">【中文字幕】斯坦福（Stanford）Swift 语言教程 iOS 11 开发 苹果公司 编程 CS193P</a></li>
+                        </ol>
+                    </div>
+            
+                    <!--PHP：落后语言-->
+                    <div>
+                        <ol>
+                            <dt>PHP</dt>
+                            <li><a href="https://www.bilibili.com/video/BV18x411H7qD?spm_id_from=333.337.search-card.all.click" target="_blank">黑马程序员PHP零基础入门到精通教程（P1基础6天）</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV1AA411L7S8?spm_id_from=333.337.search-card.all.click" target="_blank">PHP全套教学-就业班（1625集）上部</a></li>
+                        </ol>
+                    </div>
+            
+                    <!--ui-->
+                    <div>
+                        <ol>
+                            <dt>UI设计</dt>
+                            <li><a href="https://search.bilibili.com/all?keyword=ui&from_source=webtop_search&spm_id_from=333.1007" target="_blank">Bilibili搜UI</a></li>
+                        </ol>
+                    </div>
+            
+                    <!--java-->
+                    <div>
+                        <ol>
+                            <dt>Java</dt>
+                            <li><a href="https://www.bilibili.com/video/BV1Tf4y1S7zj?spm_id_from=333.880.my_history.page.click" target="_blank">java黑马就业班全套学习视频超完整(IDEA版)持续更新中</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV18J411W7cE?spm_id_from=333.337.search-card.all.click" target="_blank">黑马程序员全套Java教程_Java基础入门视频教程，零基础小白自学Java必备教程
+                            </a></li>
+                            <li><a href="https://search.bilibili.com/all?vt=82473932&keyword=java+%E5%B0%B1%E4%B8%9A&from_source=webtop_search&spm_id_from=333.788&order=click" target="_blank">Bilibili搜Java就业</a></li>
+                            <li><a href="https://www.bilibili.com/video/BV1CJ411m7gg?spm_id_from=333.337.search-card.all.click" target="_blank">求知讲堂Java视频 128天完整版 学完可就业</a></li>
+            
+                        </ol>
+                    </div>
+            
+                    <!--学习路线图-->
+                    <div>
+                        <ol>
+                            <dt>学习路线图</dt>
+                            <li><a href="https://www.bilibili.com/read/cv9965357" target="_blank" class="video_special">2022黑马程序员Java学习路线图</a></li>
+                            <li><a href="https://www.bilibili.com/read/cv10431130" target="_blank">2022年web前端开发学习路线图</a></li>
+                            <li><a href="https://www.bilibili.com/read/cv10593914" target="_blank">2022年黑马程序员Python学习路线图</a></li>
+                        </ol>
+                    </div>
+            
+                    <!-- bj -->
+                    <div >
+                        <ol>
+                            <dt>BJ's</dt>
+                            <li><a href="https://www.myworkday.com/wday/authgwy/bjswholesaleclub/login.htmld?returnTo=%2fbjswholesaleclub%2fd%2funifiedinbox%2finitialinbox%2f2998%2423221.htmld" target="_blank">My WorkDay</a></li>
+                            <li><a href="https://ath05.prd.mykronos.com/authn/XUI/?realm=/bjswholesale_prd_01#login&goto=https%3A%2F%2Fbjswholesale.prd.mykronos.com%3A443%2F" target="_blank">My Kronos</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- 键盘快捷方式 -->
+            <div class="item item_info">
+                <div style="">
+                    <h4 style="color: red">COMPILE AND RUN:</h4>
+                    <p style="font-size:25px; font-weight:normal">javac -d bin src/Demo1.java</p>
+                    <p style="font-size:25px; font-weight:normal">java -cp bin Demo1</p>
+                    <p style="font-size:25px; font-weight:normal">Auto Format：shift+opt+f</p>
+                    
+                    <h4 style="color: red">快捷指令</h4>
+                    <p style="font-size:25px; font-weight:normal">cmd + ctrl  + F -> 满屏</p>
+                    <p style="font-size:25px; font-weight:normal">cmd + shift + F -> 隐藏搜索栏</p>
+                    <p style="font-size:25px; font-weight:normal">opt + shift + F -> VS-CODE 格式化</p>
+                    <p style="font-size:25px; font-weight:normal">cmd + opt + I -> 浏览器-检查</p>
+                    <p style="font-size:25px; font-weight:normal">cmd + left arrow key -> 浏览器-返回上一页面</p>
+                    <p style="font-size:25px; font-weight:normal">cmd + opt + arrow key -> 浏览器-切换标签</p>
+                    <p style="font-size:25px; font-weight:normal">ctrl + arrow keys -> 切换全屏应用或者返回mac主页面</p>
+                    <p style="font-size:25px; font-weight:normal">ctrl + tab -> 切换全屏应用或者返回mac主页面（升级版）</p>
+                    <p style="font-size:25px; font-weight:normal">ctrl + cmd + i -> 检查多个文件/文件夹 的简介</p>
+                </div>
+            </div>
+            <!-- 视频介绍（JS）（可删） -->
+            <div class="item item_info">
+                <p >
+                    <ol class="classA colorRed" style="padding-left: 50px;">
+                        <dt>前端学习路线第一、二阶段讲解前端入门HTML5 +Css3+电商网页制作以及JavaScript系列
+                            学习内容：</dt>
+                        <li>HTML5 网页开发基础，使用常见的标签制作网页内容</li>
+                        <li>Css3精细控制网页布局，装饰美化网页内容，增强用户体验，能够编写大型综合性网页</li>
+                        <li>电商网页制作，借助蓝湖协同平台，体验真实团队开发流程</li>
+                        <li>JavaScript 基础语法</li>
+                        <li>WebAPI/Dom Bom操作方法</li>
+                        <li>jQuery</li>
+                        <li>数据可视化 ECharts 实战</li>
+                    </ol>   
+                </p>
+            </div>
+            <!-- 笔记 -->
+            <div class="item item_info">
+                <p>节约你们记笔记的时间[微笑]</p>
+                <a href="https://blog.csdn.net/wuyxinu/article/details/103515157" target="_blank">HTML</a>
+                <a href="https://blog.csdn.net/wuyxinu/article/details/103583618" target="_blank">CSS</a>
+                <a href="https://blog.csdn.net/wuyxinu/article/details/103642800" target="_blank">JS</a>
+                <a href="https://blog.csdn.net/wuyxinu/article/details/103646041" target="_blank">JS-下 </a>
+                <a href="https://blog.csdn.net/wuyxinu/article/details/103669718" target="_blank">还有jQuery的</a>
+                <a href="https://blog.csdn.net/wuyxinu/article/details/103774211" target="_blank">Node.js + Gulp 知识点汇总 </a>
+                <a href="https://blog.csdn.net/wuyxinu/article/details/103965753" target="_blank">Vue 知识点汇总（上）--附案例代码及项目地址 </a>
+                <a href="https://blog.csdn.net/wuyxinu/article/details/103966175" target="_blank">Vue 知识点汇总（下）--附案例代码及项目地址</a>
+
+                <div class="container kuaijie1 specialtranslate2percent" style="width: 100%; display: table; background-color: aliceblue;display: flex;">
+                    <div style="flex: 0.3;display: table-cell; ">
+                        <h3><b>很强的 复习资料</b></h3>
+                        <ol>
+                            <!--自定义列表-->
+                            <li><a href="https://www.w3schools.com/cssref/css_selectors.php" target="_blank">CSS选择器</a></li>
+                        </ol>
+                      </div>
+                </div>
+                
+                </p>
+            </div>
+            <!-- 黑马前端教程（独立） -->
+            <div class="item item_info" >
+                <div style="position: relative; height:208.77px;">
+                    <a href="https://www.bilibili.com/video/BV1RK4y1X7qd?p=949&vd_source=5aa881712d75cb93d417ec42058f1d6a" style="position: relative; display: block;" target="_blank">
+                        <img src="images/hmqd.png" alt="" style="position: absolute;left: 50%;transform: translateX(-50%); width: 300px;border:2px solid green;border-radius: 10px;">
+                    </a>
+                </div>
+                
+                <div class="wrap">
+                    <i class="top-icon">置顶</i> 免费领取教程配套资料、源码，请添加播妞QQ：1905496411
+                    <br> 
+                    学习交流q群 873028020
+                    <br>
+                    前端学习路线图【自学必看】 
+                    <br>
+                    <img src="images/infoicon.png" alt="">
+                    <a href="javascript:;">2021年黑马程序员前端学习路线图</a>
+                </div>
+
+                <!-- <a href="" target="_blank"></a><br> -->
+
+                <div class="wrap">
+                    <h3>2022前端自学全套教程（更新中……）</h3>
+                    1、Html+Css+前端web就业项目：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1zb4y167cd" target="_blank">Web前端全套_零基础自学到精通必备，Html+Css+前端web就业项目源码实操</a>
+                    <br>
+                    2、前端JavaScript入门到精通：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1Kq4y1e7d2" target="_blank">2022最新版JavaScript入门到精通，前端js全套基础&实战教程</a>
+                    <br>
+                    3、前端JS进阶webAPIs：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1AT4y1v75t" target="_blank">JavaScript进阶webAPI全套教程，Pink老师web前端api进阶DOM、BOM精讲</a>
+                    <br>
+                    4、前端JS高级：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1DY41177dM" target="_blank">ES6必学实用教程，JavaScript高级_js面向对象+es6全套视频教程</a>
+                    <br>
+                    5、Ajax+Git：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1ZS4y1w7Yz" target="_blank">前端进阶Ajax+Git零基础到精通_ajax前后端数据交互&异步编程全套学习教程</a>
+                    <br>
+                    6、Node.js：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1DS4y1Y7L4" target="_blank">web前端Node.js全套教程，nodejs知识精讲+案例实战_含es6模块化+npm+express+webpack+promise等</a>
+                    <br>
+                    7、Vue2.0+3.0（上）：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV15v411T7UX" target="_blank">Web前端VUE2.0+VUE3.0全套教程（上部），前端vuejs必备教程_从入门到精通vue项目实战挑战高薪，人类高质量课程</a>
+                    <br>
+                        &emsp;&ensp;Vue2.0+3.0（中）：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1yg411j7VJ" target="_blank">Web前端VUE2.0+VUE3.0全套教程（中部），前端vuejs必备教程_从入门到精通vue项目实战挑战高薪，人类高质量课程</a>
+                        <br>
+                        &emsp;&ensp;Vue2.0+3.0（下）：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1h64y1e7mp" target="_blank">Web前端VUE2.0+VUE3.0全套教程（下部），前端vuejs必备教程_从入门到精通vue项目实战挑战高薪，人类高质量课程</a>
+                        <br>
+                    8、React：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1KS4y1h7jY" target="_blank">React框架基础入门到原理详解，中高级前端工程师必备react框架_好客租房前端实战项目教程</a>
+                </div>
+
+                <div class="wrap">
+                    <h3>热门教程</h3>
+                    Pink老师前端Web全套教程：<a href="https://www.bilibili.com/video/BV1RK4y1X7qd" target="_blank">黑马程序员前端Web全套教程，会打字就能学会的Web前端课程</a>
+                    <br>
+                    web前端必会的Ajax/node.js/mysql/vue.js教程：<a href="https://www.bilibili.com/video/BV1y64y1r7PU" target="_blank">web前端必备技能Ajax/Git/node.js/mysql/vue.js详细教程</a>
+                </div>
+
+                <div class="wrap">
+                    <h3>热门爆款项目（毕设）教程 </h3>
+                    前端Fetch API实战：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1ZT411L7hN" target="_blank">Web前端必会实用技术Fetch API实战视频教程_企业高频使用下一代ajax技术</a><br>
+                    超简单的微信小程序：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV13L4y1w729" target="_blank">前端实战教程_超简单的微信小程序开发(html+css+js轻松玩转小程序)</a><br>
+
+                    头条新闻vue实战：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1t3411N7aP" target="_blank">前端web实战项目，玩转Vue全家桶，头条新闻vue客户端开发实战</a><br>
+                    Vue实战开发：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1KL4y1c7bm" target="_blank">宇宙星系：硬核vue开发实战：码出炫酷宇宙星系</a><br>
+                    Vue3.2+TS+Axios手写B站移动端：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1R34y1v7sk" target="_blank">前端web手写B站移动端项目，Vue3.2 + TypeScript + Axios入门到实战</a><br>
+                    JavaScript实战3D大波浪：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1BY4y1H7Pe" target="_blank">前端JavaScript项目开发教程，3D&CSS基础&JavaScript循环遍历_3D大波浪实战案例</a><br>
+                    Flutter实战开发：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1EY41177y4" target="_blank">Web前端框架Flutter实战开发教程，两小时快速掌握flutter移动App开发</a><br>
+                    H+C+J美食美刻实战项目：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1rP4y1x79Y" target="_blank">Web前端项目实战-美食美刻网站制作_HTML+CSS+JavaScript前端网站基础项目教程</a><br>
+                    华为鸿蒙系统应用开发：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV14f4y1t7XV" target="_blank">华为鸿蒙2.0应用开发_基础到进阶真机实战，快速上手鸿蒙OS系统（HarmonyOS）开发app应用入门教程</a><br>
+                    微信小程序入门到实战：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1h64y1b7K7" target="_blank">微信小程序2小时带你入门到项目实战_黑马程序员前端微信小程序开发教程，微信小程序开发制作</a><br>
+                    Electron两小时轻松实现桌面应用：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1Wo4y1X7cg" target="_blank">Electron两小时轻松实现桌面应用_结合react和vue，免费实战开发视频前端web教程</a><br>
+                    Node听歌识曲：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1Qy4y1G71n" target="_blank">黑马程序员Node.js实战服务器项目《听歌识曲》</a><br>
+                    智慧学成数据展示平台：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1Cq4y1N7p2" target="_blank">黑马程序员智慧学成数据展示平台web前端项目实战</a>
+                </div>
+
+                <div class="wrap">
+                    教程学习可能遇到的问题答疑（非技术型）：<img src="images/infoicon.png" alt="">
+                    <a href="https://www.bilibili.com/read/cv11844062" target="_blank">黑马程序员学习常见问题答疑</a>
+                </div>
+                
+            </div>
+            <!-- 黑马程序员（黑马前端） -->
+            <div class="item item_info">
+                <div style="position: relative; height:218.84px;">
+                    <a href="https://www.bilibili.com/video/BV1Sy4y1C7ha?p=445&vd_source=5aa881712d75cb93d417ec42058f1d6a" style="position: relative; display: block;" target="_blank">
+                        <img src="images/hmqd2.png" alt="" style="position: absolute;left: 50%;transform: translateX(-50%); width: 300px;border:2px solid green;border-radius: 10px;">
+                    </a>
+                </div>
+                
+                <div class="wrap">
+                    <i class="top-icon">置顶</i>  全套配套资料教程，关注微信公众号：黑马程序员，回复：领取资源02
+                    <br>
+                    <h3>2022版前端最新最全学习路线图</h3>
+                    <img src="images/infoicon.png" alt="">
+                    <a href="https://www.bilibili.com/read/cv10431130" target="_blank">2022年web前端开发学习路线图</a>
+                    <br>
+                    <h3>资源下载问题</h3>
+                    <img src="images/infoicon.png" alt="">
+                    <a href="https://www.bilibili.com/read/cv11763184" target="_blank">黑马程序员教程资源下载指南</a>
+                </div>
+                
+                <div class="wrap">
+                    <h3>web入门</h3>
+                    H5C3+移动布局 ： <img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV14J4114768" target="_blank">黑马程序员pink老师前端入门教程，零基础必看的h5(html5)+css3+移动端前端视频教程</a><br>
+                    JavaScript系列：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1Sy4y1C7ha" target="_blank">JavaScript基础语法-dom-bom-js-es6新语法-jQuery-数据可视化echarts黑马pink老师前端入门基础视频教程(500多集)持续</a>
+                </div>
+                
+
+                <div class="wrap">
+                    <h3>技术进阶</h3>
+                    jQuery：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1a4411w7Gx" target="_blank">黑马程序员前端基础必备教程|jQuery网页开发案例精讲</a><br>
+                    Ajax：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1zs411h74a" target="_blank">黑马程序员AJAX零基础到精通_整合Git核心内容全套教程</a>
+                </div>
+
+                <div class="wrap">
+                    <h3>Vue开发</h3>
+                    Node.js: <img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1a34y167AZ" target="_blank">黑马程序员Node.js全套入门教程，nodejs最新教程含es6模块化+npm+express+webpack+promise等_Nodejs实战案例详解 </a><br>  
+                    Vue2+Vue3全套：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1zq4y1p7ga" target="_blank">黑马程序员Vue全套视频教程，从vue2.0到vue3.0一套全覆盖，前端必会的框架教程</a>
+                </div>
+                
+                <div class="wrap">
+                    <h3>React&小程序开发</h3>
+                    React：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1gh411U7JD" target="_blank">黑马程序员前端React视频教程，react零基础入门原理详解到好客租房项目实战</a><br>
+                    零基础玩转微信小程序：<img src="images/play.png" alt=""><a href="https://www.bilibili.com/video/BV1834y1676P" target="_blank">黑马程序员前端微信小程序开发教程，微信小程序从基础到发布全流程_企业级商城实战(含uni-app项目多端部署)</a>
+                </div>
+                
+                <div class="wrap">
+                    教程学习可能遇到的问题答疑（非技术型）：<img src="images/infoicon.png" alt=""><a href="https://www.bilibili.com/read/cv7964085" target="_blank">黑马程序员学习常见问题答疑</a>
+                </div>
+                
+            </div>
+            <!-- 女孩模块 -->
+            <div class="item item_info" id="MX">
+                <!-- head -->
+                <div style="background-color: aliceblue;border-top-left-radius: 10px;border-top-right-radius: 10px; padding: 20px 0 20px 0;">
+                    <h4 style="text-align: center; font-size: 40px;">明星</h4>
+                </div>
+                <!-- body ： 建议改为小图片如100x100。当我们点击这个小图片的时候会放大并背景会出现遮挡层，并在右上角有一个X来关闭大图模式-->
+                <div style="background-color: aliceblue;text-align: center;padding-bottom: 100px;">
+
+                    <div style="display: inline-block; background-color: transparent;width: 480px;height: 270px;overflow: hidden;" class="pointer">
+                        <img src="images/chaesoobin.jpg" alt="" style="object-fit: cover;width: 100%;height: 100%;"  class="MX">
+                    </div>
+                    <div style="display: inline-block; background-color: transparent;width: 480px;height: 270px;overflow: hidden;"  class="pointer">
+                        <img src="images/zhangzifeng.jpg" alt="" style="object-fit: cover;width: 100%;height: 100%;" class="MX">
+                    </div>
+                    <div style="display: inline-block; background-color: transparent;width: 480px;height: 270px;overflow: hidden;" class="pointer">
+                        <img src="images/zhaojinmai.jpg" alt="" style="object-fit: cover;width: 100%;height: 100%;" class="MX" >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <script>
+        
+        // 案例总结：先把每个部分（元素对象）获取过来。让后给每个li赋值索引号，并且给他们创建点击事件。点击事件里，会让自己变成红色，其余没颜色;并且，循环过每个item，让对应的显示，其余隐藏即可。
+
+        //1. 点击某一个时，当前会是红色，其余不变。修改类名的方式
+        //获取元素:头部，头部里面的li，主体部分的items
+        let options = document.querySelector('.tab_list').children[0].children;
+        let items = document.querySelector('.tab_con').children;
+        // for循环绑定点击事件:循环过头部每一个li,给每个li添加索引号，并且给每个li创建点击事件（点击后才起效果）
+        for(let i=0;i<options.length;i++){
+            // 给每个小li 设置索引号 
+            options[i].setAttribute('data-index-number',i);
+
+            //给每个li创建点击事件：每次点击一个li这里都会运行
+            options[i].onclick = function (){
+                // 1. 上的模块选项卡，点击某一个，当前这一个底色会是红色，其余不变（排他思想） 修改类名的方式:更换颜色
+            
+                // 干掉所有人(杀死所有人包括自己) 其余的li清除 class 这个类
+                console.log(options.length);
+                for(let j=0;j<options.length;j++){
+                    options[j].className='';
+                }
+                // 留下我自己 （复活自己）
+                this.className='current';
+
+                // 2. 下面的显示内容模块：显示对应模块
+                //首先先获取被点击的li的index号码（索引号）
+                let index = this.dataset.indexNumber;
+                // 干掉所有人: 让其余的item 这些div 隐藏
+                for(let j=0;j<items.length;j++){
+                    if(j==index){
+                        items[j].style.display='block';
+                        continue;
+                    }
+                    items[j].style.display='none';
+                }
+
+                localStorage.setItem('TabsMAIN',index);
+            }
+        }
+
+        // 页面加载时先运行一次（封装成函数更好）
+        let index_stored = localStorage.getItem('TabsMAIN')||0;
+        for(let j=0;j<options.length;j++){
+            options[j].className='';
+            if(j==index_stored){
+                options[j].className='current';
+            }
+        }
+        for(let j=0;j<items.length;j++){
+            if(j==index_stored){
+                items[j].style.display='block';
+                localStorage.setItem('TabsMAIN',j);
+                continue;
+            }
+            items[j].style.display='none';
+        }
+    </script>
+    <script src="sentry2.js"></script>
+
+    
+
+    <!-- <div>
+        <h4>给子豪留言</h4>
+        <textarea style="height: 200px; width:600px"></textarea><br>
+        <input type="submit">
+    </div> -->
+
+
+    
+
+    <!-- <div><video width="100%" preload="auto" muted="" id="head_video" class="video-bg" autoplay="autoplay" loop="" src="images/kv.mp4" type="video/mp4"></video></div> -->
+
+    <!-- 左侧妲己 -->
+    <!-- <div class="dj">
+        <img src="images/daji.png" alt="">
+    </div> -->
+    <!-- 回到顶部-左侧妲己 -->
+    <!-- <div class="fixed_btn">
+        <a href="#tabs"><img src="images/arr.png" alt=""></a>
+    </div>
+    <div class="fixed_btn2">
+        <a href="#code"><img src="images/arr.png" alt=""></a>
+    </div>
+    <div class="fixed_btn3">
+        <a href="#top"><img src="images/arr.png" alt=""></a>
+    </div> -->
+
+    <!-- 侧边栏SideBar -->
+    <div class="sidebar">
+        <a href="javascript:;">顶部</a>
+        <a href="javascript:;">快捷导航</a>
+    </div>
+    <script>
+        $(".sidebar").children().eq(0).on("click",function(){
+            $("body,html").stop().animate({
+                scrollTop:0
+            });
+        });
+        $(".sidebar").children().eq(1).on("click",function(){
+            $("body,html").stop().animate({
+                scrollTop:$("#xiangqing").offset().top
+            });
+        });
+    </script>
+
+   
+
+
+    <!-- <script>
+        let container1 = document.getElementById("root");
+        container1.onclick = function (event) {
+            add(event);
+        }
+
+        function add(event) {
+            let arr= ["富强","民主","文明","和谐","自由","平等","公正","法制","爱国","敬业","诚信","友善"];
+            let div1 = document.createElement("div");
+            div1.innerHTML = `♥️${arr[parseInt(Math.random()*12)]}♥️`;
+            let second = 1;
+            let timer = setInterval(() => {
+                if (second <=20) {
+                    div1.className = "pop";
+                    div1.style.cssText = `
+                    position: absolute;
+                    top: ${event.pageY - 15-second*10}px;
+                    left: ${event.pageX - 35}px;
+                    opacity:${1-second/10};
+                    `;
+                    second++;
+                    container1.appendChild(div1);
+                } else {
+                    div1.remove();
+                    clearInterval(timer);
+                }
+            }, 80);
+
+
+        }
+    </script> -->
+
+    <!-- 点击特效 -->
+    <script>
+        // 鼠标爱心的html代码,网页js代码鼠标点击爱心特效（富强、自由、爱国、敬业、友善）...
+        var a_idx = 0;
+        jQuery(document).ready(function ($) {
+            $("body").click(function (e) {
+                var a = new Array("❤富强❤","❤民主❤","❤文明❤","❤和谐❤","❤自由❤","❤平等❤","❤公正❤","❤法治❤","❤爱国❤","❤敬业❤","❤诚信❤","❤友善❤");
+                var $i = $("<span/>").text(a[a_idx]);
+                a_idx = (a_idx + 1) % a.length;
+                var x = e.pageX,
+                    y = e.pageY;
+                $i.css({
+                    "z-index": 5,
+                    "font-size":"25px",
+                    "top": y - 20,
+                    "left": x,
+                    "position": "absolute",
+                    "font-weight": "bold",
+                    // "color": "rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"
+                    "color": "#FF0000",
+                    "white-space":"nowrap",
+                    "user-select":"none"
+                });
+                $("body").append($i);
+                $i.animate({
+                        "top": y - 180,
+                        "opacity": 0
+                    },
+                    1500,
+                    function () {
+                        $i.remove();
+                    });
+            });
+            setTimeout('delay()', 2000);
+        });
+
+        function delay() {
+            $(".buryit").removeAttr("onclick");
+        }
+
+
+    </script>
+
+    <!-- 明星页 点击后出现遮罩层 -->
+    <script>
+        let mask = document.querySelector('#mask');
+        let MXbox = document.querySelector('#MX').children[1];
+        let MXimgs = MXbox.children;
+        let MXcontainer = document.querySelector('#containerMX');
+        let hideBTN = document.querySelector('#bigimghide');
+
+        let data = [{
+            name:"채수빈",
+            src:"images/chaesoobin.jpg",
+            country:"🇰🇷"
+        },{
+            name:"张子枫",
+            src:"images/zhangzifeng.jpg",
+            country:"🇨🇳"
+        },{
+            name:"赵今麦",
+            src:"images/zhaojinmai.jpg",
+            country:"🇨🇳"
+        }];
+        // function noDefault(event) {
+        //     // Prevent the default scroll behavior
+        //     event.preventDefault();
+        // }
+        for(let i = 0;i<MXimgs.length;i++){
+            MXimgs[i].addEventListener('click',function(){
+                let name = data[i].name;
+                let src = data[i].src;
+                let flag = data[i].country;
+
+                mask.className = '';
+
+                MXcontainer.innerHTML = `
+                <div class="imgBOX">
+                    <img src="${data[i].src}" alt="">
+                    <div style="color:lightpink;">${data[i].name}</div>
+                    <div class="flag">${data[i].country}</div>
+                </div>
+                `;
+
+                document.documentElement.style.overflow='hidden';
+            });
+
+        }
+        hideBTN.classList.add('pointer');
+        hideBTN.addEventListener('click',function(){
+            mask.className = 'noDisplay';
+            document.documentElement.style.overflow='auto';
+        });
+
+    </script>
+
+    <footer style="background-color: #f5f5f5;height: 250px;"></footer>
+</body>
+
+<!-- 想法：添加footer -->
+</html>
