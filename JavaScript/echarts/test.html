@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- flexible js这次屏幕划分成了24等分
+        我么基本的屏幕宽度1920px，划分24份，一份80px。
+        将80设置到cssrem插件
+        2.5rem -> 2.5 rem 因为 2.5*80=25rem 也就是说200px这个盒子占用了
+        24份中的2.5份
+
+        也就是说无论你屏幕大还是小，这个盒子都占2.5
+        flexiblejs会自动检测屏幕宽度将其划分为24份，然后将html的fontsize设置为xx。假如检测为1920，就会划分24，设置fs为80px，然后如果你创建div2.5rem就会2.5*80
+    -->
+    <script src="js/flexible.js"></script>
+
+    <style>
+        @media screen and (max-width:1024px){
+            /* 这段代码执行的只有 之前所有到1024px（<1024） */
+            /* 1024/24份 = 42.66 */
+            /* aka不要再缩小了如果屏幕小于1024(就当作你是1024来算) */
+            html{
+                font-size: 42.66px!important;
+            }
+        }
+        @media screen and (min-width:1920px){
+            /* 只要1920起就会生效 */
+            /* 这段代码就是说屏幕宽度超过1920就不要再放大了 */
+            html{
+                font-size: 80px!important;
+            }
+        }
+        div{
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

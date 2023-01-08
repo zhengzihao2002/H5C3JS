@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>ToDoList—最简单的待办事项列表</title>
+    
+    <!-- 引入css -->
+    <link rel="stylesheet" href="css/index.css">
+    <!-- 引入jq -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 引入自己的js -->
+    <script src="js/todolist.js"></script>
+</head>
+
+<body>
+    <header>
+        <section>
+            <label for="title">ToDoList</label>
+            <input type="text" id="title" name="title" placeholder="添加ToDo" required="required" autocomplete="off" />
+        </section>
+    </header>
+    <section>
+        <h2>正在进行 <span id="todocount"></span></h2>
+        <ol id="todolist" class="demo-box" style="height: 250px; overflow: auto; background-color: lightgray;border: 0.2px solid red;border-radius: 10px;"></ol>
+
+        <h2>已经完成 <span id="donecount"></span></h2>
+        <ul id="donelist" style="height: 250px; overflow: auto;background-color: lightgray;border: 0.2px solid rgb(2, 171, 2);border-radius: 10px;"></ul>
+    </section>
+    <footer>
+        Copyright &copy; 2022 todolist.cn
+    </footer>
+
+    <!-- 练习 -->
+    <script>
+        //数组里面有一个对象
+        let todolist = [
+            {
+                title:'我要"野战"肏周子泉',
+                done:false
+            },
+            {
+                title:'我要肏李贞贤',
+                done:false
+            },
+        ];
+        // 1.本地存储只能存储字符串的格式：以下不可用
+        // localStorage.setItem("test1",todolist);
+
+        //把我们数组对象转换为字符串格式 JSON.stringify()
+        localStorage.setItem("test2",JSON.stringify(todolist));
+        
+        //获取数据
+        let data = localStorage.getItem("test2"); 
+        console.log(typeof data);//string
+        console.log(data[0].title);//undefined
+
+        // 2. 获取本地存储的数据，我们需要把里面的字符串数据转换为 对象格式 JSON.parse()
+        data=JSON.parse(data);
+        console.log(data[0].title);//我要"野战"肏周子泉
+    </script>
+
+</body>
+
+</html>

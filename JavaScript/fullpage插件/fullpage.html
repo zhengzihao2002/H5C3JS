@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="../jquery.min.js"></script>
+    <link rel="stylesheet" href="fullpage.min.css">
+    <script src="fullpage.min.js"></script>
+
+    <style>
+        #fp-nav ul li a.active span,
+        #fp-nav ul li a span {
+            background-color: whitesmoke!important;
+        }
+
+        .section1 {
+            background: url(https://www.javbus.com/pics/cover/8znw_b.jpg) ;
+            background-size: cover;
+        }
+        
+        .section2 {
+            background: url(https://www.javbus.com/pics/cover/9148_b.jpg) ;
+            background-size: cover;
+
+        }
+        
+        .section3 {
+            background: url(https://pics.dmm.co.jp/digital/video/1noskn00006/1noskn00006jp-14.jpg) ;
+            background-size: cover;
+
+        }
+        
+        .section4 {
+            background: url(http://idowebok.u.qiniudn.com/77/4.jpg) ;
+                        background-size: cover;
+
+        }
+    </style>
+</head>
+<body>
+    <!-- 复制html -->
+    <div id="dowebok">
+        <div class="section section1">
+            <h3>周子泉</h3>
+        </div>
+        <div class="section section2">
+            <h3>第二屏</h3>
+        </div>
+        <div class="section section3">
+            <h3>第三屏</h3>
+        </div>
+        <div class="section section4">
+            <h3>第四屏</h3>
+        </div>
+    </div>
+
+    <!-- 调用插件 -->
+    <script>
+        $('#dowebok').fullpage({
+            // 背景颜色
+            sectionsColor: ['lightgreen', 'lightskyblue', 'lightpink', 'plum'],
+            // 项目导航
+            navigation: true
+        });
+    </script>
+</body>
+</html>
