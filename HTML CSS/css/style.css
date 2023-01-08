@@ -183,7 +183,8 @@ h3.czsh{
     text-indent: 1.5em;
 }
 body{
-    /* 壁纸 */
+    /* 
+    */
     background-image: url(../images/北京20.jpg);
     /* background-image: url(../images/squirt.jpg); */
     background-repeat: no-repeat;
@@ -192,7 +193,7 @@ body{
     background-position: center center;
     /* background-position:center 53px ; */
     
-    background-size:cover;
+    background-size:100%;
 
     /*将背景图片固定*/
     background-attachment: fixed;
