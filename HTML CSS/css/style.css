@@ -212,7 +212,7 @@ body{
     /*复合型写法*/
     /* background: black url(../images/wzry.jpg) no-repeat fixed center top; */
 
-    animation: bgs 60s ease-in-out infinite;
+    animation: bgs 50s ease-in-out infinite;
 }
 .daohang{
     height: 41px;
